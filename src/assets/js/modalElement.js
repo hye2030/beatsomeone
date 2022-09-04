@@ -89,7 +89,7 @@ class allModal extends HTMLElement {
                 <!-- 이미 가입된 계정- sns 가입 계정인 경우-->
                 <div class="email_info">
                     <div class="icon_box">
-                        <img src="${fileRoute.includes(file[0]) ? "../../" : "../"}images/icon/signUp_facebook.svg" alt="">
+                        <img src="/src/assets/images/icon/signUp_facebook.svg" alt="">
                     </div>
                     <p class="text_box">
                         SNS 가입 (sns@sns.com)
@@ -573,7 +573,7 @@ class allModal extends HTMLElement {
                   </p>
                   <div class="content">
                       <div class="profile_img">
-                          <img src="../../images/dummy/profile_04.jpg" alt="">
+                          <img src="/src/assets/images/dummy/profile_04.jpg" alt="">
                       </div>
                       <div class="text_box">
                           <p class="user_name">

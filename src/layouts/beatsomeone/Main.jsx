@@ -19,6 +19,7 @@ function Main() {
         </div>
         
         {/* 모달 */}
+        <bybeats-modal></bybeats-modal>
       </>
     );
   }

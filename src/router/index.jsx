@@ -17,39 +17,7 @@ function Router() {
         {
           path: "/",
           element: <BeatIndex />,
-        },
-        {
-          path: "page-2",
-          element: <Page2 />,
-        },
-      ],
-    },
-    {
-      path: "/simple-menu",
-      element: <SimpleMenu />,
-      children: [
-        {
-          path: "page-1",
-          element: <Page1 />,
-        },
-        {
-          path: "page-2",
-          element: <Page2 />,
-        },
-      ],
-    },
-    {
-      path: "/top-menu",
-      element: <TopMenu />,
-      children: [
-        {
-          path: "page-1",
-          element: <Page1 />,
-        },
-        {
-          path: "page-2",
-          element: <Page2 />,
-        },
+        }
       ],
     },
   ];
