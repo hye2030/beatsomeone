@@ -1,0 +1,20 @@
+/*
+ |--------------------------------------------------------------------------
+ | BEATSOMEONE
+ |--------------------------------------------------------------------------
+ |
+ | Import CSS BEATSOMEONE CSS.
+ |
+ */
+ @import "./components/common.css";
+ /* @import "./components/content_add.css";
+ @import "./components/detail_page.css";
+ @import "./components/event.css"; */
+ @import "./components/header_footer.css";
+ /* @import "./components/list.css"; */
+ @import "./components/main.css";
+ @import "./components/modal.css";
+ /* @import "./components/notice.css"; */
+ @import "./components/reset.css";
+ /* @import "./components/signinup.css"; */
+ @import "./components/swiper-bundle.min.css";

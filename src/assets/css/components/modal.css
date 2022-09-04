@@ -1,0 +1,2340 @@
+/* 모달 css-------------------------------------------------- */
+.modal_wrap {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 150;
+}
+
+.modal_wrap .modal_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    transform: translate(-50%, -50%);
+    background: #fff;
+}
+
+.modal_wrap .modal_box::before {
+    display: none;
+}
+
+.modal_wrap .modal_box h3 {
+    text-align: center;
+    color: #222;
+}
+
+.modal_wrap .modal_box p {
+    line-height: 1.5;
+    text-align: center;
+}
+
+.message_modal .modal_box {
+    padding: 35px 30px 45px;
+}
+
+.message_modal .beat_some {
+    width: 114px;
+    height: 26px;
+    margin: 0 auto 50px;
+    background: url(@/assets/images/icon/logo_black.png) no-repeat center center / contain;
+}
+
+.modal_box .title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.message_modal .comment,
+.message_modal .comment span {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 160%;
+}
+
+.message_modal .comment span {
+    color: #DF0B17;
+}
+
+.message_modal .small_comment {
+    word-break: keep-all;
+    font-size: 14px;
+    font-weight: 400;
+    color: #222;
+    line-height: 160%;
+}
+
+.message_modal .button_wrap {
+    width: 100%;
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+}
+
+.message_modal .button_wrap button {
+    width: 130px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.message_modal .button_wrap button:nth-child(2) {
+    margin-left: 10px;
+}
+
+.mb_br {
+    display: none;
+}
+
+/* 모달창 아이콘 */
+.modal_box::before {
+    content: "";
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin: 0 auto 16px;
+    background-repeat: no-repeat center / 100%;
+    background-position: center;
+    background-size: 100%;
+}
+
+.modal_box.alert,
+.modal_box.done,
+.modal_box.question {
+    padding-top: 30px;
+}
+
+.modal_box.alert::before {
+    display: block;
+    background-image: url("@/assets/images/icon/icon_alert_modal.svg");
+}
+
+.modal_box.done::before {
+    display: block;
+    margin: 0 auto 16px;
+    background-image: url("@/assets/images/icon/icon_check_modal.svg");
+}
+
+.modal_box.question::before {
+    display: block;
+    background-image: url("@/assets/images/icon/icon_question_modal.svg");
+}
+
+
+/* 휴면해제 완료 모달 */
+.message_modal.dormantClear_modal .modal_box {
+    text-align: center;
+}
+
+.message_modal.dormantClear_modal .comment {
+    text-align: center;
+    font-weight: 500;
+    color: #444;
+}
+
+.message_modal.dormantClear_modal .comment span {
+    color: #000;
+    font-weight: 700;
+}
+
+.message_modal.dormantClear_modal button {
+    width: 100%;
+}
+
+/* 회원가입 중복체크 완료 모달 */
+.message_modal.overlapC_modal .comment {
+    margin-bottom: 10px;
+}
+
+/* 회원탈퇴 완료 모달 */
+.message_modal.withdrawalC_modal .comment {
+    margin-bottom: 20px;
+}
+
+.message_modal.withdrawalC_modal .small_comment {
+    line-height: 140%;
+    font-size: 14px;
+}
+
+.message_modal.withdrawalC_modal .small_comment .red {
+    color: #DF0B17;
+}
+
+.message_modal.withdrawalC_modal .small_comment .bold {
+    color: #000;
+    font-weight: 700;
+}
+
+/* 자동 로그아웃 모달 안내 */
+.autoOut_modal .modal_box {
+    padding: 30px 30px 40px;
+}
+
+.autoOut_modal .modal_box::before {
+    display: block;
+    margin-bottom: 10px;
+    background-image: url("@/assets/images/icon/icon_power.svg");
+}
+
+
+/* 이용약관 모달 */
+.modal_wrap.unitTerms_modal,
+.modal_wrap.terms_modal,
+.modal_wrap.policy_modal {
+    z-index: 155;
+}
+
+.modal_wrap.unitTerms_modal .modal_box,
+.modal_wrap.terms_modal .modal_box,
+.modal_wrap.policy_modal .modal_box {
+    width: 650px;
+}
+
+.big_modal .modal_box {
+    padding: 30px 45px;
+    position: relative;
+}
+
+.big_modal .modal_box .x_btn,
+.declaration_modal .modal_box .x_btn {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 24px;
+    right: 24px;
+    transform: translate(0, -50%);
+    background: url(@/assets/images/icon/icon_close.svg) no-repeat center center / contain;
+}
+
+.big_modal .modal_box .top_area {
+    width: 100%;
+    position: relative;
+}
+
+.big_modal .modal_box .top_area .close_btn {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    background: url(@/assets/images/icon/icon_close.svg) no-repeat center center / contain;
+}
+
+.big_modal .text_area {
+    width: 100%;
+    height: 550px;
+    margin-top: 20px;
+    padding: 15px 15px 30px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #444;
+    line-height: 160%;
+    background: #f7f7f7;
+    overflow: auto;
+}
+
+.big_modal .text_area::-webkit-scrollbar,
+.declaration_modal .content_box.target .user_text::-webkit-scrollbar,
+.modal_box::-webkit-scrollbar {
+    width: 10px;
+}
+
+.big_modal .text_area::-webkit-scrollbar-track,
+.declaration_modal .content_box.target .user_text::-webkit-scrollbar-track,
+.modal_box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.big_modal .text_area::-webkit-scrollbar-thumb,
+.modal_box::-webkit-scrollbar-thumb {
+    background: #acacac;
+    background-clip: padding-box;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 3px solid transparent;
+    border-left: 5px solid transparent;
+    border-radius: 100px;
+}
+
+/* 신고하기 모달 */
+.declaration_modal .modal_box {
+    width: 650px;
+    height: 86vh;
+    overflow: auto;
+    padding: 50px 40px 65px;
+}
+
+.declaration_modal .modal_title {
+    font-size: 20px;
+    margin-bottom: 65px;
+    font-weight: 600;
+    color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.declaration_modal .modal_title::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background: url(@/assets/images/icon/icon-siren-mono.svg) no-repeat center center / contain;
+}
+
+.declaration_modal .content_box p {
+    text-align: left;
+}
+
+.declaration_modal .content_box .title {
+    font-size: 16px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    border-bottom: 1px solid #222;
+    color: #444;
+}
+
+.declaration_modal .content_box .content {
+    padding-top: 20px;
+}
+
+.declaration_modal .content_box.target .content {
+    display: flex;
+}
+
+.declaration_modal .content_box.target .profile_img {
+    width: 44px;
+    height: 44px;
+    margin-right: 25px;
+    border: 50%;
+    overflow: hidden;
+}
+
+.declaration_modal .content_box.target .text_box {
+    flex: 1;
+}
+
+.declaration_modal .content_box.target .user_name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #444;
+}
+
+.declaration_modal .content_box.target .user_name span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #acacac;
+}
+
+.declaration_modal .content_box.target .user_text {
+    height: 150px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 400;
+    line-height: 140%;
+    overflow: auto;
+    color: #444;
+}
+
+.declaration_modal .content_box.target .user_text::-webkit-scrollbar-thumb {
+    background: #acacac;
+    background-clip: padding-box;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 3px solid transparent;
+    border-left: 5px solid transparent;
+    border-radius: 100px;
+}
+
+.declaration_modal textarea {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 15px;
+    border: 1px solid #d9d9d9;
+}
+
+.declaration_modal textarea::placeholder {
+    color: #aaa;
+}
+
+.declaration_modal .confirm_btn {
+    width: 100%;
+    height: 45px;
+    margin-top: 40px;
+}
+
+.declaration_modal [class*="select_box_wrap"].open>ul {
+    height: 304px;
+}
+
+.declaration_modal [class*="select_box_wrap"].open .select_list:nth-child(4) {
+    transition-delay: 0.28s;
+}
+
+.declaration_modal [class*="select_box_wrap"].open .select_list:nth-child(5) {
+    transition-delay: 0.35s;
+}
+
+.declaration_modal [class*="select_box_wrap"].open .select_list:nth-child(6) {
+    transition-delay: 0.42s;
+}
+
+.declaration_modal [class*="select_box_wrap"].open .select_list:nth-child(7) {
+    transition-delay: 0.49s;
+}
+
+.declaration_modal [class*="select_box_wrap"].open .select_list:nth-child(8) {
+    transition-delay: 0.56s;
+}
+
+/* 회원가입 및 로그인 route--------------------------------------*/
+.modal_wrap.big_modal .modal_box .error_txt {
+    width: 100%;
+    line-height: 1.5;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    color: #FF1E1E;
+    margin-top: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    /* background-clip: padding-box;
+    border-top: 20px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-right: 3px solid transparent;
+    border-left: 5px solid transparent; */
+    border-radius: 100px;
+}
+
+.modal_wrap.big_modal .modal_box .error_txt span {
+    color: #acacac;
+}
+
+.modal_wrap.big_modal .modal_box .complete_txt {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    color: #222;
+}
+
+.modal_wrap.big_modal .modal_box .ex_txt {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: 500;
+    text-align: left;
+    color: #444;
+}
+
+.full_btn {
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background: #DF0B17;
+}
+
+.full_btn:disabled {
+    background: #f9ced1;
+}
+
+/* 비밀번호 재설정, 회원가입 링크 */
+.big_modal .link_wrap {
+    width: 100%;
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.big_modal .link_wrap a {
+    font-size: 14px;
+    color: #ACACAC;
+}
+
+.big_modal .link_wrap span {
+    width: 1px;
+    height: 10px;
+    margin: 0 10px;
+    background: #ddd;
+    display: block;
+}
+
+/* 로고 */
+.big_modal .logo_wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 40px;
+}
+
+.big_modal .logo_wrap .beat_some {
+    width: 114px;
+    height: 26px;
+    background: url(@/assets/images/icon/logo_black.png) no-repeat center center / contain;
+}
+
+.big_modal .logo_wrap .icon_x {
+    width: 16px;
+    height: 16px;
+    margin: 0 8px;
+    background: url(@/assets/images/icon/icon_x.svg) no-repeat center center / contain;
+}
+
+.big_modal .logo_wrap .by_beats {
+    width: 86px;
+    height: 26px;
+    background: url(@/assets/images/icon/icon_logo_bybeats.svg) no-repeat center center / contain;
+}
+
+/* 로그인. 회원가입 */
+.big_modal.route_modal .modal_box,
+.big_modal.signUp_modal .modal_box {
+    height: 90vh;
+    /* overflow: auto; */
+    padding: 70px 25px 40px;
+}
+
+.big_modal.route_modal .modal_box .wrap,
+.big_modal.signUp_modal .modal_box .wrap {
+    height: 100%;
+    overflow: auto;
+}
+
+.route_modal .title {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: #111;
+}
+
+.route_modal .title {
+    margin-bottom: 40px;
+}
+
+/* 버튼 */
+.route_modal .btn_wrap {
+    width: 100%;
+}
+
+.route_modal .signIn_btn {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    padding-left: 75px;
+    font-size: 16px;
+    font-weight: 500;
+    background: #fff;
+    color: #222;
+    border: 1px solid #acacac;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.route_modal .signIn_btn::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-right: 20px;
+}
+
+.route_modal .signIn_btn.newly::after {
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    content: "최근";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 42px;
+    transform: translateY(-100%);
+    font-size: 12px;
+    color: #fff;
+    background: url("@/assets/images/icon/icon_new_bubble.svg") no-repeat center / contain;
+    filter: drop-shadow(2px 3px 7px rgba(0, 0, 0, 0.11));
+}
+
+.route_modal .signIn_btn.facebook::before {
+    background: url(@/assets/images/icon/signUp_facebook.svg) no-repeat center center / contain;
+}
+
+.route_modal .signIn_btn.twitter::before {
+    background: url(@/assets/images/icon/signUp_twitter.svg) no-repeat center center / contain;
+}
+
+.route_modal .signIn_btn.google::before {
+    background: url(@/assets/images/icon/signUp_google.svg) no-repeat center center / contain;
+}
+
+.route_modal .signIn_btn.apple::before {
+    background: url(@/assets/images/icon/signUp_apple.svg) no-repeat center center / contain;
+}
+
+.route_modal .signIn_btn.naver::before {
+    background: url(@/assets/images/icon/signUp_naver.svg) no-repeat center center / contain;
+}
+
+.route_modal .signIn_btn.kakaotalk::before {
+    background: url(@/assets/images/icon/signUp_kakao.svg) no-repeat center center / contain;
+}
+
+.route_modal .signIn_btn.soundcloud::before {
+    background: url(@/assets/images/icon/signUp_soundcloud.svg) no-repeat center center / contain;
+}
+
+.route_modal .signIn_btn.email::before {
+    background: url(@/assets/images/icon/signUp_email.svg) no-repeat center center / contain;
+}
+
+.route_modal .btn_area .signIn_btn:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+/* 이메일 인풋 */
+.route_modal .dividing_line {
+    width: 100%;
+    height: 1px;
+    margin: 35px 0 30px;
+    background: #444;
+    position: relative;
+}
+
+.route_modal .dividing_line::after {
+    content: 'or';
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    width: 50px;
+    height: auto;
+    font-size: 16px;
+    font-weight: 500;
+    background: #fff;
+    color: #444;
+    text-align: center;
+}
+
+.route_modal .dividing_line.recently::after {
+    content: '최근 이용한 로그인 채널';
+    width: 170px;
+}
+
+.route_modal .continue_btn {
+    margin-top: 10px;
+}
+
+.route_modal .input_wrap {
+    height: 45px;
+}
+
+/* 통합회원가입 모달--------------------------------------*/
+.signUp_modal .modal_box::-webkit-scrollbar {
+    width: 10px;
+}
+
+.signUp_modal .modal_box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.signUp_modal .modal_box::-webkit-scrollbar-thumb {
+    background: #acacac;
+    background-clip: padding-box;
+    border-top: 20px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-right: 3px solid transparent;
+    border-left: 5px solid transparent;
+    border-radius: 100px;
+}
+
+.signUp_modal .modal_box {
+    height: 90vh;
+    overflow: auto;
+}
+
+.signUp_modal .title {
+    font-size: 20px;
+    margin-bottom: 40px;
+    font-weight: 500;
+    text-align: center;
+    color: #111;
+}
+
+.signUp_modal .select_box_wrap {
+    border-color: #acacac;
+}
+
+.signUp_modal .select_box_wrap.value {
+    border-color: #222;
+}
+
+.signUp_modal .input_wrap {
+    margin-bottom: 10px;
+    height: 43px;
+}
+
+.signUp_modal .error_txt {
+    margin-top: 0;
+}
+
+/* 입력구간 */
+.signUp_modal .input_box.password .error_txt {
+    margin-bottom: 10px;
+}
+
+.signUp_modal .input_box.name {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.signUp_modal .input_box.name .input_wrap:first-child,
+.signUp_modal .input_box .comment {
+    width: 100%;
+}
+
+.signUp_modal .input_box .comment {
+    font-size: 14px;
+    text-align: left;
+    font-weight: 500;
+    color: #666;
+}
+
+.signUp_modal .input_box.name .nicknameChk_btn {
+    width: 100px;
+    height: 43px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.signUp_modal .input_box.name .nickname {
+    flex: 1;
+}
+
+.signUp_modal .input_box.name .error_txt {
+    margin-bottom: 10px;
+}
+
+.signUp_modal .input_box.name .comment {
+    line-height: 140%;
+}
+
+.signUp_modal .input_box.num {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.signUp_modal .input_box.num .select_box_wrap:first-child {
+    width: 100px;
+    height: 43px;
+    margin-right: 10px;
+}
+
+.signUp_modal .input_box.num .select_box_wrap:first-child button {
+    color: #111;
+    font-weight: 500;
+}
+
+.signUp_modal .input_box.num .select_box_wrap:nth-child(3).active button {
+    color: #222;
+    font-weight: 500;
+}
+
+.signUp_modal .input_box.num .input_wrap.phone_num {
+    flex: 1;
+}
+
+.signUp_modal .input_box.num .select_box_wrap:nth-child(3),
+.signUp_modal .input_box.num .getNum_btn,
+.signUp_modal .input_box.num .input_wrap:nth-child(5),
+.signUp_modal .input_box.num .chkNum_btn {
+    width: 100%;
+    height: 43px;
+}
+
+.signUp_modal .input_box.num .select_box_wrap:nth-child(3),
+.signUp_modal .input_box.num .getNum_btn {
+    margin-bottom: 10px;
+}
+
+.signUp_modal .input_box.num .getNum_btn,
+.signUp_modal .input_box.num .chkNum_btn {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.signUp_modal .input_box.num .chkNum_btn {
+    margin-top: 10px;
+}
+
+/* 동의 */
+.signUp_modal .agree_box {
+    margin-top: 30px;
+}
+
+.signUp_modal .agree_box .check_box.top {
+    padding-bottom: 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #444;
+}
+
+.signUp_modal .agree_box .check_box.top label {
+    margin-right: 10px;
+}
+
+.signUp_modal .agree_box .check_box.top .check_box_text {
+    font-size: 16px;
+    color: #111;
+}
+
+.signUp_modal .agree_box .check_box.top .error_txt {
+    width: 50%;
+    margin-top: 0;
+}
+
+.signUp_modal .check_list {
+    margin-top: 20px;
+}
+
+.signUp_modal .check_list .list {
+    display: flex;
+    align-items: center;
+}
+
+.signUp_modal .check_list .list:not(:last-child) {
+    margin-bottom: 13px;
+}
+
+.signUp_modal .check_list p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 10px;
+    color: #acacac;
+}
+
+.signUp_modal .check_list .open_pop {
+    cursor: pointer;
+    position: relative;
+}
+
+.signUp_modal .check_list .open_pop::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 10px;
+    top: 50%;
+    right: -10px;
+    transform: translate(0, -70%);
+    background: url(@/assets/images/icon/icon_arrow_right_gray.svg) no-repeat center center / contain;
+}
+
+.signUp_modal .last_comment {
+    line-height: 1.6;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    margin: 30px 0 10px;
+}
+
+.signUp_modal .complete_btn.full_btn {
+    height: 45px;
+}
+
+/* 로그인모달--------------------------------------*/
+.signIn_modal .title {
+    font-size: 20px;
+    margin-bottom: 40px;
+    font-weight: 500;
+    text-align: center;
+    color: #111;
+}
+
+.signIn_modal.big_modal .modal_box .error_txt {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.signIn_modal .modal_box .error_txt span {
+    color: #acacac;
+}
+
+.signIn_modal .signIn_btn {
+    margin-top: 10px;
+}
+
+.signIn_modal .full_btn {
+    height: 45px;
+    font-size: 16px;
+}
+
+.signIn_modal .link_btn {
+    width: auto;
+    display: flex;
+    align-items: center;
+    margin: 30px auto 0;
+    font-size: 14px;
+    color: #acacac;
+}
+
+.signIn_modal .link_btn::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 10px;
+    margin-left: 5px;
+    background: url(@/assets/images/icon/icon_smallArrow_gray.svg) no-repeat center center / cover;
+}
+
+/* 휴면계정모달--------------------------------------*/
+.big_modal.dormant_modal .modal_box {
+    width: 650px;
+}
+
+.big_modal.dormant_modal .logo_wrap {
+    margin: 0 auto 40px;
+}
+
+.big_modal.dormant_modal .logo_wrap .beat_some {
+    width: 114px;
+    height: 26px;
+}
+
+.dormant_modal .title {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: #111;
+}
+
+.dormant_modal .condition {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #474B5A;
+}
+
+.dormant_modal .condition span {
+    font-weight: 700;
+    font-size: 16px;
+    color: #000;
+}
+
+.dormant_modal .date_info {
+    width: 100%;
+    padding: 20px 0 20px 0;
+    margin: 20px 0 30px;
+    text-align: left;
+    background: #F6F6F6;
+}
+
+.dormant_modal .date_info .one_line {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 45%;
+}
+
+.dormant_modal .date_info .one_line:first-child {
+    margin-bottom: 15px;
+}
+
+.dormant_modal .date_info span,
+.dormant_modal .date_info p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+.dormant_modal .date_info span {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.dormant_modal .date_info p::after {
+    content: ':';
+    display: block;
+}
+
+.dormant_modal .date_info p {
+    width: 112px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dormant_modal .info_box {
+    width: 400px;
+    margin: auto;
+}
+
+.dormant_modal .info_box .one_line {
+    display: flex;
+    align-items: flex-start;
+}
+
+.dormant_modal .info_box .one_line:first-child {
+    margin-bottom: 30px;
+}
+
+.dormant_modal .info_box p,
+.dormant_modal .info_box span {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+}
+
+.dormant_modal .info_box span {
+    display: block;
+    margin-left: 24px;
+    flex: 1;
+}
+
+.dormant_modal .comment {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 160%;
+    text-align: center;
+    color: #acacac;
+}
+
+.dormant_modal .line {
+    width: 100%;
+    height: 1px;
+    display: block;
+    margin: 30px 0;
+    background: #444;
+}
+
+.dormant_modal .button_wrap {
+    display: flex;
+    margin-top: 30px;
+}
+
+.dormant_modal .button_wrap button {
+    flex: 1;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.dormant_modal .button_wrap button:first-child {
+    margin-right: 20px;
+}
+
+/* 비밀번호 재설정 페이지--------------------------------------*/
+.pwResetting_modal .title {
+    font-size: 20px;
+    margin-bottom: 40px;
+    font-weight: 500;
+    text-align: center;
+    color: #111;
+}
+
+.pwResetting_modal.stepTwo .input_wrap:nth-child(2) {
+    margin-bottom: 10px;
+}
+
+.pwResetting_modal .comment,
+.pwResetting_modal.stepTwo .comment {
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: 500;
+    text-align: center;
+    color: #1D1F28;
+}
+
+.pwResetting_modal .modal_box .comment {
+    text-align: left;
+}
+
+.pwResetting_modal.stepTwo .comment {
+    text-align: left;
+    color: #000;
+}
+
+.pwResetting_modal .next_btn {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* 계정 중복 안내 모달 */
+.aleadyJoin_modal .email_info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.aleadyJoin_modal .email_info .icon_box {
+    width: 28px;
+    height: 28px;
+}
+
+.aleadyJoin_modal .email_info .text_box {
+    font-size: 16px;
+    color: #000;
+}
+
+
+
+
+/* =========================== 테블릿 =========================== */
+@media screen and (max-width: 1300px) {
+
+    /* 모달 css-------------------------------------------------- */
+    .modal_wrap .modal_box {
+        width: calc(100vw * (450 /1300));
+    }
+
+    .message_modal .modal_box {
+        padding: calc(100vw * (35 /1300)) calc(100vw * (30 /1300)) calc(100vw * (45 /1300));
+    }
+
+    .message_modal .beat_some {
+        width: calc(100vw * (114 /1300));
+        height: calc(100vw * (26 /1300));
+        margin: 0 auto calc(100vw * (50 /1300));
+    }
+
+    .modal_box .title {
+        font-size: calc(100vw * (22 / 1300));
+        margin-bottom: calc(100vw * (20 / 1300));
+    }
+
+    .message_modal .comment,
+    .message_modal .comment span {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .message_modal .small_comment {
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    .message_modal .button_wrap {
+        margin-top: calc(100vw * (28 / 1300));
+    }
+
+    .message_modal .button_wrap button {
+        width: calc(100vw * (130 / 1300));
+        height: calc(100vw * (45 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .message_modal .button_wrap button:nth-child(2) {
+        margin-left: calc(100vw * (10 / 1300));
+    }
+
+    /* 모달창 아이콘 */
+    .modal_box::before {
+        width: calc(100vw * (32 / 1300));
+        height: calc(100vw * (32 / 1300));
+        margin: 0 auto calc(100vw * (16 / 1300));
+    }
+
+    .modal_box.alert,
+    .modal_box.done,
+    .modal_box.question {
+        padding-top: calc(100vw * (30 / 1300));
+    }
+
+    .modal_box.done::before {
+        margin: 0 auto calc(100vw * (16 / 1300));
+    }
+
+    /* 회원가입 중복체크 완료 모달 */
+    .message_modal.overlapC_modal .comment {
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+    /* 회원탈퇴 완료 모달 */
+    .message_modal.withdrawalC_modal .comment {
+        margin-bottom: calc(100vw * (20 / 1300));
+    }
+
+    .message_modal.withdrawalC_modal .small_comment {
+        line-height: 140%;
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    /* 자동 로그아웃 모달 안내 */
+    .autoOut_modal .modal_box {
+        padding: calc(100vw * (30 / 1300)) calc(100vw * (30 / 1300)) calc(100vw * (40 / 1300));
+    }
+
+    .autoOut_modal .modal_box::before {
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+
+    /* 이용약관 모달 */
+    .modal_wrap.unitTerms_modal .modal_box,
+    .modal_wrap.terms_modal .modal_box,
+    .modal_wrap.policy_modal .modal_box {
+        width: calc(100vw * (650 / 1300));
+    }
+
+    .big_modal .modal_box {
+        padding: calc(100vw * (30 / 1300)) calc(100vw * (45 / 1300));
+    }
+
+    .big_modal .modal_box .x_btn,
+    .declaration_modal .modal_box .x_btn {
+        width: calc(100vw * (16 / 1300));
+        height: calc(100vw * (16 / 1300));
+        top: calc(100vw * (24 / 1300));
+        right: calc(100vw * (24 / 1300));
+    }
+
+    .big_modal .modal_box .top_area .close_btn {
+        width: calc(100vw * (16 / 1300));
+        height: calc(100vw * (16 / 1300));
+    }
+
+    .big_modal .text_area {
+        height: calc(100vw * (550 / 1300));
+        margin-top: calc(100vw * (20 / 1300));
+        padding: calc(100vw * (15 / 1300)) calc(100vw * (15 / 1300)) calc(100vw * (30 / 1300));
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    .big_modal .text_area::-webkit-scrollbar,
+    .declaration_modal .content_box.target .user_text::-webkit-scrollbar,
+    .modal_box::-webkit-scrollbar {
+        width: calc(100vw * (10 / 1300));
+    }
+
+    .big_modal .text_area::-webkit-scrollbar-thumb,
+    .modal_box::-webkit-scrollbar-thumb {
+        border-top: calc(100vw * (20 / 1300)) solid transparent;
+        border-bottom: calc(100vw * (20 / 1300)) solid transparent;
+        border-right: calc(100vw * (3 / 1300)) solid transparent;
+        border-left: calc(100vw * (5 / 1300)) solid transparent;
+    }
+
+    /* 신고하기 모달 */
+    .declaration_modal .modal_box {
+        width: calc(100vw * (650 / 1300));
+        padding: calc(100vw * (50 / 1300)) calc(100vw * (40 / 1300)) calc(100vw * (65 / 1300));
+    }
+
+    .declaration_modal .modal_title {
+        font-size: calc(100vw * (20 / 1300));
+        margin-bottom: calc(100vw * (65 / 1300));
+    }
+
+    .declaration_modal .modal_title::before {
+        width: calc(100vw * (24 / 1300));
+        height: calc(100vw * (24 / 1300));
+        margin-right: calc(100vw * (10 / 1300));
+    }
+
+    .declaration_modal .content_box .title {
+        font-size: calc(100vw * (16 / 1300));
+        padding-bottom: calc(100vw * (10 / 1300));
+    }
+
+    .declaration_modal .content_box .content {
+        padding-top: calc(100vw * (20 / 1300));
+    }
+
+    .declaration_modal .content_box.target .profile_img {
+        width: calc(100vw * (44 / 1300));
+        height: calc(100vw * (44 / 1300));
+        margin-right: calc(100vw * (25 / 1300));
+    }
+
+    .declaration_modal .content_box.target .user_name {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .declaration_modal .content_box.target .user_name span {
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    .declaration_modal .content_box.target .user_text {
+        height: calc(100vw * (150 / 1300));
+        padding-bottom: calc(100vw * (10 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    .declaration_modal .content_box.target .user_text::-webkit-scrollbar-thumb {
+        border-top: calc(100vw * (5 / 1300)) solid transparent;
+        border-bottom: calc(100vw * (5 / 1300)) solid transparent;
+        border-right: calc(100vw * (3 / 1300)) solid transparent;
+        border-left: calc(100vw * (4 / 1300)) solid transparent;
+    }
+
+    .declaration_modal textarea {
+        height: calc(100vw * (200 / 1300));
+        margin-top: calc(100vw * (20 / 1300));
+        font-size: calc(100vw * (14 / 1300));
+        padding: calc(100vw * (15 / 1300));
+    }
+
+    .declaration_modal .confirm_btn {
+        height: calc(100vw * (45 / 1300));
+        margin-top: calc(100vw * (40 / 1300));
+    }
+
+    .declaration_modal [class*="select_box_wrap"].open>ul {
+        height: calc(100vw * (304 / 1300));
+    }
+
+    /* 회원가입 및 로그인 route--------------------------------------*/
+    .modal_wrap.big_modal .modal_box .error_txt {
+        font-size: calc(100vw * (14 / 1300));
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    .modal_wrap.big_modal .modal_box .complete_txt {
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    .modal_wrap.big_modal .modal_box .ex_txt {
+        font-size: calc(100vw * (14 / 1300));
+        margin-top: calc(100vw * (10 / 1300));
+        ;
+    }
+
+    .full_btn {
+        height: calc(100vw * (45 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+
+    /* 비밀번호 재설정, 회원가입 링크 */
+    .big_modal .link_wrap {
+        margin-top: calc(100vw * (14 / 1300));
+    }
+
+    .big_modal .link_wrap a {
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    .big_modal .link_wrap span {
+        height: calc(100vw * (10 / 1300));
+        margin: 0 calc(100vw * (10 / 1300));
+    }
+
+    /* 로고 */
+    .big_modal .logo_wrap {
+        margin: 0 auto calc(100vw * (40 / 1300));
+    }
+
+    .big_modal .logo_wrap .beat_some {
+        width: calc(100vw * (114 / 1300));
+        height: calc(100vw * (26 / 1300));
+    }
+
+    .big_modal .logo_wrap .icon_x {
+        width: calc(100vw * (16 / 1300));
+        height: calc(100vw * (16 / 1300));
+        margin: 0 calc(100vw * (8 / 1300));
+    }
+
+    .big_modal .logo_wrap .by_beats {
+        width: calc(100vw * (86 / 1300));
+        height: calc(100vw * (26 / 1300));
+    }
+
+    /* 로그인. 회원가입 */
+    .big_modal.route_modal .modal_box,
+    .big_modal.signUp_modal .modal_box {
+        padding: calc(100vw * (70 / 1300)) calc(100vw * (25 / 1300)) calc(100vw * (40 / 1300));
+    }
+
+    .route_modal .title {
+        font-size: calc(100vw * (20 / 1300));
+    }
+
+    .route_modal .title {
+        margin-bottom: calc(100vw * (40 / 1300));
+    }
+
+    /* 버튼 */
+    .route_modal .signIn_btn {
+        height: calc(100vw * (45 / 1300));
+        padding-left: calc(100vw * (75 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .route_modal .signIn_btn::before {
+        width: calc(100vw * (28 / 1300));
+        height: calc(100vw * (28 / 1300));
+        margin-right: calc(100vw * (20 / 1300));
+    }
+
+    .route_modal .signIn_btn.newly::after {
+        top: calc(100vw * (16 / 1300));
+        left: calc(100vw * (24 / 1300));
+        width: calc(100vw * (43 / 1300));
+        height: calc(100vw * (42 / 1300));
+        font-size: calc(100vw * (12 / 1300));
+    }
+
+    .route_modal .btn_area .signIn_btn:not(:last-child) {
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+    /* 이메일 인풋 */
+    .route_modal .dividing_line {
+        margin: calc(100vw * (35 / 1300)) 0 calc(100vw * (30 / 1300));
+    }
+
+    .route_modal .dividing_line::after {
+        transform: translate(-50%, -55%);
+        width: calc(100vw * (50 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .route_modal .dividing_line.recently::after {
+        width: calc(100vw * (170 / 1300));
+    }
+
+    .route_modal .continue_btn {
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    .route_modal .input_wrap {
+        height: calc(100vw * (45 / 1300));
+    }
+
+    /* 통합회원가입 모달--------------------------------------*/
+    .signUp_modal .modal_box::-webkit-scrollbar {
+        width: calc(100vw * (10 / 1300));
+    }
+
+    .signUp_modal .modal_box::-webkit-scrollbar-thumb {
+        border-top: calc(100vw * (20 / 1300)) solid transparent;
+        border-bottom: calc(100vw * (35 / 1300)) solid transparent;
+        border-right: calc(100vw * (3 / 1300)) solid transparent;
+        border-left: calc(100vw * (5 / 1300)) solid transparent;
+    }
+
+    .signUp_modal .title {
+        font-size: calc(100vw * (20 / 1300));
+        margin-bottom: calc(100vw * (40 / 1300));
+    }
+
+    .signUp_modal .input_wrap {
+        margin-bottom: calc(100vw * (10 / 1300));
+        height: calc(100vw * (43/ 1300));
+    }
+
+    /* 입력구간 */
+    .signUp_modal .input_box.password .error_txt {
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+    .signUp_modal .input_box.name {
+        margin-top: calc(100vw * (20 / 1300));
+    }
+
+    .signUp_modal .input_box .comment {
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    .signUp_modal .input_box.name .nicknameChk_btn {
+        width: calc(100vw * (100 / 1300));
+        height: calc(100vw * (43 / 1300));
+        margin-left: calc(100vw * (10 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .signUp_modal .input_box.name .error_txt {
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+    .signUp_modal .input_box.num {
+        margin-top: calc(100vw * (20 / 1300));
+    }
+
+    .signUp_modal .input_box.num .select_box_wrap:first-child {
+        width: calc(100vw * (100 / 1300));
+        height: calc(100vw * (43 / 1300));
+        margin-right: calc(100vw * (10 / 1300));
+    }
+
+    .signUp_modal .input_box.num .select_box_wrap:nth-child(3),
+    .signUp_modal .input_box.num .getNum_btn,
+    .signUp_modal .input_box.num .input_wrap:nth-child(5),
+    .signUp_modal .input_box.num .chkNum_btn {
+        height: calc(100vw * (43 / 1300));
+    }
+
+    .signUp_modal .input_box.num .select_box_wrap:nth-child(3),
+    .signUp_modal .input_box.num .getNum_btn {
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+    .signUp_modal .input_box.num .getNum_btn,
+    .signUp_modal .input_box.num .chkNum_btn {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .signUp_modal .input_box.num .chkNum_btn {
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    /* 동의 */
+    .signUp_modal .agree_box {
+        margin-top: calc(100vw * (30 / 1300));
+    }
+
+    .signUp_modal .agree_box .check_box.top {
+        padding-bottom: calc(100vw * (16 / 1300));
+    }
+
+    .signUp_modal .agree_box .check_box.top label {
+        margin-right: calc(100vw * (10 / 1300));
+    }
+
+    .signUp_modal .agree_box .check_box.top .check_box_text {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .signUp_modal .check_list {
+        margin-top: calc(100vw * (20 / 1300));
+    }
+
+    .signUp_modal .check_list .list:not(:last-child) {
+        margin-bottom: calc(100vw * (13 / 1300));
+    }
+
+    .signUp_modal .check_list p {
+        font-size: calc(100vw * (16 / 1300));
+        margin-left: calc(100vw * (10 / 1300));
+    }
+
+    .signUp_modal .check_list .open_pop::after {
+        width: calc(100vw * (6 / 1300));
+        height: calc(100vw * (10 / 1300));
+        right: calc(100vw * (-10 / 1300));
+    }
+
+    .signUp_modal .last_comment {
+        font-size: calc(100vw * (14 / 1300));
+        margin: calc(100vw * (30 / 1300)) 0 calc(100vw * (10 / 1300));
+    }
+
+    .signUp_modal .complete_btn.full_btn {
+        height: calc(100vw * (45 / 1300));
+    }
+
+    /* 로그인모달--------------------------------------*/
+    .signIn_modal .title {
+        font-size: calc(100vw * (20 / 1300));
+        margin-bottom: calc(100vw * (40 / 1300));
+    }
+
+    .signIn_modal.big_modal .modal_box .error_txt {
+        font-size: calc(100vw * (14 / 1300));
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    .signIn_modal .signIn_btn {
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    .signIn_modal .full_btn {
+        height: calc(100vw * (45 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .signIn_modal .link_btn {
+        margin: calc(100vw * (30 / 1300)) auto 0;
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    .signIn_modal .link_btn::after {
+        width: calc(100vw * (6 / 1300));
+        height: calc(100vw * (10 / 1300));
+        margin-left: calc(100vw * (5 / 1300));
+    }
+
+    /* 휴면계정모달--------------------------------------*/
+    .big_modal.dormant_modal .modal_box {
+        width: calc(100vw * (650 / 1300));
+    }
+
+    .big_modal.dormant_modal .logo_wrap {
+        margin: 0 auto calc(100vw * (40 / 1300));
+    }
+
+    .big_modal.dormant_modal .logo_wrap .beat_some {
+        width: calc(100vw * (114 / 1300));
+        height: calc(100vw * (26 / 1300));
+    }
+
+    .dormant_modal .title {
+        font-size: calc(100vw * (20 / 1300));
+        margin-bottom: calc(100vw * (30 / 1300));
+    }
+
+    .dormant_modal .condition {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .dormant_modal .condition span {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .dormant_modal .date_info {
+        padding: calc(100vw * (20 / 1300)) 0 calc(100vw * (20 / 1300)) 0;
+        margin: calc(100vw * (20 / 1300)) 0 calc(100vw * (30 / 1300));
+    }
+
+    .dormant_modal .date_info .one_line:first-child {
+        margin-bottom: calc(100vw * (15 / 1300));
+    }
+
+    .dormant_modal .date_info span,
+    .dormant_modal .date_info p {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .dormant_modal .date_info span {
+        margin-left: calc(100vw * (10 / 1300));
+    }
+
+    .dormant_modal .date_info p {
+        width: calc(100vw * (112 / 1300));
+    }
+
+    .dormant_modal .info_box {
+        width: calc(100vw * (400 / 1300));
+    }
+
+    .dormant_modal .info_box .one_line:first-child {
+        margin-bottom: calc(100vw * (30 / 1300));
+    }
+
+    .dormant_modal .info_box p,
+    .dormant_modal .info_box span {
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    .dormant_modal .info_box span {
+        margin-left: calc(100vw * (24 / 1300));
+    }
+
+    .dormant_modal .comment {
+        font-size: calc(100vw * (14 / 1300));
+    }
+
+    .dormant_modal .line {
+        margin: calc(100vw * (30 / 1300)) 0;
+    }
+
+    .dormant_modal .button_wrap {
+        margin-top: calc(100vw * (30 / 1300));
+    }
+
+    .dormant_modal .button_wrap button {
+        height: calc(100vw * (45 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .dormant_modal .button_wrap button:first-child {
+        margin-right: calc(100vw * (20 / 1300));
+    }
+
+    /* 비밀번호 재설정 페이지--------------------------------------*/
+    .pwResetting_modal .title {
+        font-size: calc(100vw * (20 / 1300));
+        margin-bottom: calc(100vw * (40 / 1300));
+    }
+
+    .pwResetting_modal.stepTwo .input_wrap:nth-child(2) {
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+    .pwResetting_modal .comment,
+    .pwResetting_modal.stepTwo .comment {
+        font-size: calc(100vw * (14 / 1300));
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    .pwResetting_modal .next_btn {
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    /* 계정 중복 안내 모달 */
+    .aleadyJoin_modal .email_info {
+        margin-top: calc(100vw * (30 / 1300));
+    }
+
+    .aleadyJoin_modal .email_info .icon_box {
+        width: calc(100vw * (28 / 1300));
+        height: calc(100vw * (28 / 1300));
+    }
+
+    .aleadyJoin_modal .email_info .text_box {
+        font-size: calc(100vw * (16 / 1300));
+    }
+}
+
+
+
+
+
+/* =============================== 모바일 =============================== */
+@media screen and (max-width: 768px) {
+
+    .pc_layout {
+        display: none;
+    }
+
+    /* 모달 css-------------------------------------------------- */
+    .modal_wrap .modal_box {
+        width: calc(100vw* (396/428));
+    }
+
+    .message_modal .modal_box {
+        padding: calc(100vw* (35/428)) calc(100vw* (20/428)) calc(100vw* (40/428));
+    }
+
+    .message_modal .title {
+        font-size: calc(100vw* (22/428));
+        margin-bottom: calc(100vw* (20/428));
+    }
+
+    .message_modal .comment,
+    .message_modal .comment span {
+        font-size: calc(100vw* (16/428));
+    }
+
+    .message_modal .small_comment {
+        font-size: calc(100vw* (14/428));
+    }
+
+    .message_modal .button_wrap {
+        margin-top: calc(100vw* (20/428));
+    }
+
+    .message_modal .button_wrap button {
+        width: calc(100vw* (130/428));
+        height: calc(100vw* (45/428));
+        font-size: calc(100vw* (16/428));
+    }
+
+    .message_modal .button_wrap button:nth-child(2) {
+        margin-left: calc(100vw* (10/428));
+    }
+
+    .mb_br {
+        display: block;
+    }
+
+    .modal_box::before {
+        width: calc(100vw * (32 / 428));
+        height: calc(100vw * (32 / 428));
+        margin: 0 auto calc(100vw * (16 / 428));
+    }
+
+    .modal_box.alert,
+    .modal_box.done,
+    .modal_box.question {
+        padding-top: calc(100vw * (30 / 428));
+    }
+
+    .modal_box.done::before {
+        margin: 0 auto calc(100vw * (16 / 428));
+    }
+
+    /* 회원가입 중복체크 완료 모달 */
+    .message_modal.overlapC_modal .comment {
+        margin-bottom: calc(100vw* (10/428));
+    }
+
+    /* 회원탈퇴 완료 모달 */
+    .message_modal.withdrawalC_modal .comment {
+        margin-bottom: calc(100vw* (15/428));
+    }
+
+    .message_modal.withdrawalC_modal .small_comment {
+        font-size: calc(100vw* (13/428));
+    }
+
+    /* 이용약관 모달 */
+    .big_modal .modal_box {
+        width: calc(100vw* (396/428));
+        padding: calc(100vw* (40/428)) calc(100vw* (10/428)) calc(100vw* (24/428));
+    }
+
+    .big_modal .modal_box .x_btn,
+    .declaration_modal .modal_box .x_btn {
+        width: calc(100vw* (16/428));
+        height: calc(100vw* (16/428));
+        top: calc(100vw* (20/428));
+        right: calc(100vw* (20/428));
+    }
+
+    .big_modal.unitTerms_modal .modal_box,
+    .big_modal.terms_modal .modal_box,
+    .big_modal.policy_modal .modal_box {
+        width: calc(100vw* (343/428));
+        padding: calc(100vw* (30/428)) calc(100vw* (15/428));
+        height: 70vh;
+    }
+
+    .big_modal .modal_box .top_area .title {
+        font-size: calc(100vw* (16/428));
+    }
+
+    .big_modal .modal_box .top_area .close_btn {
+        width: calc(100vw* (16/428));
+        height: calc(100vw* (16/428));
+    }
+
+    .big_modal .text_area {
+        height: calc(100% - calc(100vw* (35/428)));
+        margin-top: calc(100vw* (20/428));
+        padding: calc(100vw* (10/428));
+        font-size: calc(100vw* (14/428));
+    }
+
+    .big_modal .text_area::-webkit-scrollbar,
+    .declaration_modal .content_box.target .user_text::-webkit-scrollbar {
+        width: calc(100vw* (10/428));
+    }
+
+    .big_modal .text_area::-webkit-scrollbar-thumb {
+        border-top: calc(100vw* (10/428)) solid transparent;
+        border-bottom: calc(100vw* (10/428)) solid transparent;
+        border-right: calc(100vw* (3/428)) solid transparent;
+        border-left: calc(100vw* (5/428)) solid transparent;
+        border-radius: calc(100vw* (100/428));
+    }
+
+    /* 신고하기 모달 */
+    .declaration_modal .modal_box {
+        width: calc(100vw* (396/428));
+        height: 85vh;
+        overflow: auto;
+        padding: calc(100vw* (45/428)) calc(100vw* (25/428)) calc(100vw* (40/428));
+    }
+
+    .declaration_modal .modal_title {
+        font-size: calc(100vw* (20/428));
+        margin-bottom: calc(100vw* (34/428));
+    }
+
+    .declaration_modal .modal_title::before {
+        width: calc(100vw* (24/428));
+        height: calc(100vw* (24/428));
+        margin-right: calc(100vw* (10/428));
+    }
+
+    .declaration_modal .content_box .title {
+        font-size: calc(100vw* (16/428));
+        padding-bottom: calc(100vw* (10/428));
+    }
+
+    .declaration_modal .content_box .content {
+        padding-top: calc(100vw* (20/428));
+    }
+
+    .declaration_modal .content_box.target .profile_img {
+        width: calc(100vw* (44/428));
+        height: calc(100vw* (44/428));
+        margin-right: calc(100vw* (25/428));
+    }
+
+    .declaration_modal .content_box.target .user_name {
+        font-size: calc(100vw* (16/428));
+    }
+
+    .declaration_modal .content_box.target .user_name span {
+        font-size: calc(100vw* (13/428));
+    }
+
+    .declaration_modal .content_box.target .user_text {
+        height: calc(100vw* (140/428));
+        padding-bottom: calc(100vw* (10/428));
+        font-size: calc(100vw* (16/428));
+        margin-top: calc(100vw* (10/428));
+    }
+
+    .declaration_modal .content_box.target .user_text::-webkit-scrollbar-thumb {
+        border-top: calc(100vw* (5/428)) solid transparent;
+        border-bottom: calc(100vw* (5/428)) solid transparent;
+        border-right: calc(100vw* (3/428)) solid transparent;
+        border-left: calc(100vw* (5/428)) solid transparent;
+        border-radius: calc(100vw* (100/428));
+    }
+
+    .declaration_modal textarea {
+        height: calc(100vw* (200/428));
+        margin-top: calc(100vw* (20/428));
+        font-size: calc(100vw* (13/428));
+        padding: calc(100vw* (20/428));
+    }
+
+    .declaration_modal .close_btn {
+        height: calc(100vw* (45/428));
+        margin-top: calc(100vw* (40/428));
+    }
+
+    .declaration_modal [class*="select_box_wrap"] .select_title {
+        padding-right: calc(100vw* (40/428));
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .declaration_modal [class*="select_box_wrap"].open>ul {
+        height: calc(100vw* (250/428));
+    }
+
+    /* 회원가입 및 로그인 route--------------------------------------*/
+    .modal_wrap.big_modal .modal_box .error_txt {
+        font-size: calc(100vw* (14/428));
+        margin-top: calc(100vw* (10/428));
+    }
+
+    .modal_wrap.big_modal .modal_box .complete_txt {
+        font-size: calc(100vw* (14/428));
+    }
+
+    .modal_wrap.big_modal .modal_box .ex_txt {
+        font-size: calc(100vw* (14/428));
+        margin-top: calc(100vw* (10/428));
+    }
+
+    .full_btn {
+        height: calc(100vw* (45/428));
+        font-size: calc(100vw* (16/428));
+    }
+
+    /* 비밀번호 재설정, 회원가입 링크 */
+    .big_modal .link_wrap {
+        margin-top: calc(100vw* (20/428));
+    }
+
+    .big_modal .link_wrap a {
+        font-size: calc(100vw* (14/428));
+        color: #acacac;
+    }
+
+    .big_modal .link_wrap span {
+        height: calc(100vw* (10/428));
+        margin: 0 calc(100vw* (10/428));
+    }
+
+    /* 로고 */
+    .big_modal .logo_wrap {
+        margin: 0 auto calc(100vw* (40/428));
+    }
+
+    .big_modal .logo_wrap .beat_some {
+        width: calc(100vw* (114/428));
+        height: calc(100vw* (26/428));
+    }
+
+    .big_modal .logo_wrap .icon_x {
+        width: calc(100vw* (16/428));
+        height: calc(100vw* (16/428));
+        margin: 0 calc(100vw* (8/428));
+    }
+
+    .big_modal .logo_wrap .by_beats {
+        width: calc(100vw* (86/428));
+        height: calc(100vw* (26/428));
+    }
+
+    /* 로그인. 회원가입 */
+    .big_modal.route_modal .modal_box,
+    .big_modal.signUp_modal .modal_box {
+        width: calc(100vw* (396/428));
+        padding: calc(100vw* (80/428)) calc(100vw* (10/428)) calc(100vw* (40/428));
+    }
+
+    .route_modal .title {
+        font-size: calc(100vw* (24/428));
+        color: #222;
+    }
+
+    .route_modal .title {
+        margin-bottom: calc(100vw* (40/428));
+    }
+
+    /* 버튼 */
+    .route_modal .signIn_btn {
+        height: calc(100vw* (45/428));
+        font-size: calc(100vw* (15/428));
+        padding-left: calc(100vw* (80/428));
+    }
+
+    .route_modal .signIn_btn::before {
+        width: calc(100vw* (28/428));
+        height: calc(100vw* (28/428));
+        margin-right: calc(100vw* (20/428));
+    }
+
+    .route_modal .btn_area .signIn_btn:not(:last-child) {
+        margin-bottom: calc(100vw* (10/428));
+    }
+
+    /* 이메일 인풋 */
+    .route_modal .dividing_line {
+        margin: calc(100vw* (35/428)) 0 calc(100vw* (35/428));
+    }
+
+    .route_modal .dividing_line::after {
+        width: calc(100vw* (50/428));
+        font-size: calc(100vw* (15/428));
+    }
+
+    .route_modal .dividing_line.recently::after {
+        content: '최근 이용한 로그인 채널';
+        width: calc(100vw* (170/428));
+    }
+
+    .route_modal .continue_btn {
+        margin-top: calc(100vw* (10/428));
+    }
+
+    .route_modal .input_wrap {
+        height: calc(100vw* (45/428));
+    }
+
+    /* 통합회원가입 모달--------------------------------------*/
+    .signUp_modal .modal_box::-webkit-scrollbar {
+        width: calc(100vw* (10/428));
+    }
+
+    .signUp_modal .modal_box::-webkit-scrollbar-thumb {
+        border-top: calc(100vw* (20/428)) solid transparent;
+        border-bottom: calc(100vw* (35/428)) solid transparent;
+        border-right: calc(100vw* (3/428)) solid transparent;
+        border-left: calc(100vw* (5/428)) solid transparent;
+        border-radius: calc(100vw* (100/428));
+    }
+
+    .signUp_modal .title {
+        font-size: calc(100vw* (24/428));
+        margin-bottom: calc(100vw* (40/428));
+    }
+
+    .signUp_modal .input_wrap {
+        margin-bottom: calc(100vw* (10/428));
+        height: calc(100vw* (43/428));
+    }
+
+    /* 입력구간 */
+    .signUp_modal .input_box.password .error_txt {
+        margin-bottom: calc(100vw* (10/428));
+    }
+
+    .signUp_modal .input_box.name {
+        margin-top: calc(100vw* (20/428));
+    }
+
+    .signUp_modal .input_box.name .input_wrap:first-child,
+    .signUp_modal .input_box .comment {
+        width: 100%;
+    }
+
+    .signUp_modal .input_box .comment {
+        font-size: calc(100vw* (14/428));
+    }
+
+    .signUp_modal .input_box.name .nicknameChk_btn {
+        width: calc(100vw* (100/428));
+        height: calc(100vw* (43/428));
+        font-size: calc(100vw* (16/428));
+    }
+
+    .signUp_modal .input_box.name #nickname {
+        width: calc(100vw* (255/428));
+    }
+
+    .signUp_modal .input_box.name .error_txt {
+        margin-bottom: calc(100vw* (10/428));
+    }
+
+    .signUp_modal .input_box.num {
+        margin-top: calc(100vw* (20/428));
+    }
+
+    .signUp_modal .input_box.num .select_box_wrap:first-child {
+        width: calc(100vw* (100/428));
+        height: calc(100vw* (43/428));
+    }
+
+    .signUp_modal .input_box.num .input_wrap.phone_num {
+        width: calc(100vw* (255/428));
+    }
+
+    .signUp_modal .input_box.num .select_box_wrap:nth-child(3),
+    .signUp_modal .input_box.num .getNum_btn,
+    .signUp_modal .input_box.num .input_wrap:nth-child(5),
+    .signUp_modal .input_box.num .chkNum_btn {
+        height: calc(100vw* (43/428));
+    }
+
+    .signUp_modal .input_box.num .select_box_wrap:nth-child(3),
+    .signUp_modal .input_box.num .getNum_btn {
+        margin-bottom: calc(100vw* (10/428));
+    }
+
+    .signUp_modal .input_box.num .getNum_btn,
+    .signUp_modal .input_box.num .chkNum_btn {
+        font-size: calc(100vw* (16/428));
+    }
+
+    .signUp_modal .input_box.num .chkNum_btn {
+        margin-top: calc(100vw* (10/428));
+    }
+
+    /* 동의 */
+    .signUp_modal .agree_box {
+        margin-top: calc(100vw* (30/428));
+    }
+
+    .signUp_modal .agree_box .check_box.top {
+        padding-bottom: calc(100vw* (16/428));
+    }
+
+    .signUp_modal .agree_box .check_box.top label {
+        margin-right: calc(100vw* (10/428));
+    }
+
+    .signUp_modal .agree_box .check_box.top .check_box_text {
+        font-size: calc(100vw* (15/428));
+    }
+
+    .signUp_modal .agree_box .check_box.top .error_txt {
+        flex: 1;
+    }
+
+    .signUp_modal .check_list {
+        margin-top: calc(100vw* (20/428));
+    }
+
+    .signUp_modal .check_list .list:not(:last-child) {
+        margin-bottom: calc(100vw* (13/428));
+    }
+
+    .signUp_modal .check_list p {
+        font-size: calc(100vw* (15/428));
+        margin-left: calc(100vw* (10/428));
+    }
+
+    .signUp_modal .check_list .open_pop::after {
+        width: calc(100vw* (6/428));
+        height: calc(100vw* (10/428));
+        right: calc(100vw* (-10/428));
+        transform: translate(0, -50%);
+    }
+
+    .signUp_modal .last_comment {
+        font-size: calc(100vw* (14/428));
+        margin: calc(100vw* (30/428)) 0 calc(100vw* (10/428));
+        line-height: 140%;
+    }
+
+    .signUp_modal .modal_box p.last_comment {
+        text-align: left;
+    }
+
+    .signUp_modal .complete_btn.full_btn {
+        height: calc(100vw* (45/428));
+    }
+
+    /* 로그인모달--------------------------------------*/
+    .signIn_modal .title {
+        font-size: calc(100vw* (20/428));
+        margin-bottom: calc(100vw* (30/428));
+    }
+
+    .signIn_modal.big_modal .modal_box .error_txt {
+        font-size: calc(100vw* (14/428));
+        margin-top: calc(100vw* (10/428));
+    }
+
+    .signIn_modal .signIn_btn {
+        margin-top: calc(100vw* (10/428));
+    }
+
+    .signIn_modal .full_btn {
+        height: calc(100vw* (45/428));
+        font-size: calc(100vw* (16/428));
+    }
+
+    .signIn_modal .link_btn {
+        margin: calc(100vw* (18/428)) auto 0;
+        font-size: calc(100vw* (15/428));
+    }
+
+    .signIn_modal .link_btn::after {
+        width: calc(100vw* (6/428));
+        height: calc(100vw* (10/428));
+        margin-left: calc(100vw* (5/428));
+    }
+
+    /* 휴면계정모달--------------------------------------*/
+    .big_modal.dormant_modal .logo_wrap {
+        margin: 0 auto calc(100vw* (40/428));
+    }
+
+    .big_modal.dormant_modal .logo_wrap .beat_some {
+        width: calc(100vw* (123/428));
+        height: calc(100vw* (28/428));
+    }
+
+    .dormant_modal .title {
+        font-size: calc(100vw* (20/428));
+        margin-bottom: calc(100vw* (16/428));
+    }
+
+    .dormant_modal .condition {
+        font-size: calc(100vw* (16/428));
+        color: #444;
+    }
+
+    .dormant_modal .condition span {
+        font-size: calc(100vw* (16/428));
+    }
+
+    .dormant_modal .date_info {
+        padding: calc(100vw* (20/428)) 0 calc(100vw* (20/428)) 0;
+        margin: calc(100vw* (40/428)) 0 calc(100vw* (20/428));
+    }
+
+    .dormant_modal .date_info .one_line {
+        width: 67%;
+    }
+
+    .dormant_modal .date_info .one_line:first-child {
+        margin-bottom: calc(100vw* (15/428));
+    }
+
+    .dormant_modal .date_info span,
+    .dormant_modal .date_info p {
+        font-size: calc(100vw* (16/428));
+    }
+
+    .dormant_modal .date_info span {
+        margin-left: calc(100vw* (10/428));
+    }
+
+    .dormant_modal .date_info p {
+        width: calc(100vw* (112/428));
+    }
+
+    .dormant_modal .info_box {
+        width: 100%;
+    }
+
+    .dormant_modal .info_box .one_line:first-child {
+        margin-bottom: calc(100vw* (30/428));
+    }
+
+    .dormant_modal .info_box p,
+    .dormant_modal .info_box span {
+        font-size: calc(100vw* (14/428));
+    }
+
+    .dormant_modal .info_box span {
+        margin-left: calc(100vw* (25/428));
+    }
+
+    .dormant_modal .comment {
+        font-size: calc(100vw* (15/428));
+    }
+
+    .dormant_modal .line {
+        margin: calc(100vw* (30/428)) 0 calc(100vw* (20/428));
+    }
+
+    .dormant_modal .button_wrap {
+        margin-top: calc(100vw* (20/428));
+    }
+
+    .dormant_modal .button_wrap button {
+        height: calc(100vw* (45/428));
+        font-size: calc(100vw* (16/428));
+    }
+
+    .dormant_modal .button_wrap button:first-child {
+        margin-right: calc(100vw* (10/428));
+    }
+
+    /* 비밀번호 재설정 모달--------------------------------------*/
+    .pwResetting_modal .title {
+        font-size: calc(100vw* (20/428));
+        margin-bottom: calc(100vw* (40/428));
+    }
+
+    .pwResetting_modal.stepTwo .input_wrap:nth-child(2) {
+        margin-bottom: calc(100vw* (10/428));
+    }
+
+    .pwResetting_modal .modal_box .comment,
+    .pwResetting_modal.stepTwo .modal_box .comment {
+        font-size: calc(100vw* (14/428));
+        margin-top: calc(100vw* (10/428));
+        line-height: 140%;
+        text-align: left;
+    }
+
+    .pwResetting_modal .next_btn {
+        margin-top: calc(100vw* (10/428));
+        font-weight: 600;
+    }
+
+    /* 계정 중복 안내 모달 */
+    .aleadyJoin_modal .email_info {
+        margin-top: calc(100vw* (30/428));
+    }
+
+    .aleadyJoin_modal .email_info .icon_box {
+        width: calc(100vw* (28/428));
+        height: calc(100vw* (28/428));
+    }
+
+    .aleadyJoin_modal .email_info .text_box {
+        font-size: calc(100vw* (16/428));
+        font-weight: 600;
+    }
+
+}
