@@ -1,6 +1,9 @@
 import { Outlet } from "react-router-dom";
 import Header from "@/components/Header/Main";
 import Footer from "@/components/Footer/Main";
+import JoinForm from "@/components/Header/JoinForm";
+import LoginForm from "@/components/Header/LoginForm";
+import PasswordForm from "@/components/Header/PasswordForm";
 
 function Main() {
     return (
@@ -9,17 +12,16 @@ function Main() {
             {/* 헤더 */}
             <Header />
 
-            <div id="wrap_content" className="main_page">
-                <div className="top_deco"></div>
-                <Outlet />
-            </div>
+            <Outlet />
 
             {/* 푸터 */}
             <Footer />
         </div>
         
         {/* 모달 */}
-        <bybeats-modal></bybeats-modal>
+        <JoinForm />
+        <LoginForm />
+        <PasswordForm />
       </>
     );
   }

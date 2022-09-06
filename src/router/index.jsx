@@ -5,6 +5,7 @@ import TopMenu from "../layouts/top-menu/Main";
 
 import BeatLayout from "../layouts/beatsomeone/Main"
 import BeatIndex from "../views/index"
+import SignUp from "../views/signup/sign_up"
 
 function Router() {
   const routes = [
@@ -15,6 +16,10 @@ function Router() {
         {
           path: "/",
           element: <BeatIndex />,
+        },
+        {
+          path: "/signinup/sign_up",
+          element: <SignUp />,
         }
       ],
     },

@@ -1,9 +1,20 @@
+import { useEffect } from "react";
+
 import MainVideoUrl from "@/assets/video/temporary.mp4";
 
 function Main() {
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "/src/assets/js/main.js";
+        script.async = true;
+        document.body.appendChild(script);
+    });
+
     return (
       <>
         {/* BEGIN: Page Layout */}
+        <div id="wrap_content" className="main_page">
+            <div className="top_deco"></div>
             <section className="content_section">
                 <div className="video_wrap">
                     <video playsInline autoPlay loop muted>
@@ -1687,6 +1698,7 @@ function Main() {
                     </div>
                 </div>
             </section>
+        </div>
         {/* END: Page Layout */}
       </>
     );

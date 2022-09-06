@@ -207,16 +207,17 @@ $(function () {
 
         // 회원가입 모달--------------
         $('.sign_up').click(()=>{
+            $("#sign_email").val("");
             $('.route_modal.signIn').fadeOut(200);
             $('.route_modal.signUp').fadeIn(200);
             scrollOff();
         });
 
-        $('.route_modal.signUp .continue_btn').click(function(){
-            // $('.route_modal.signUp').fadeOut(200);
-            // $('.signUp_modal').fadeIn(200);
-            location.href= "signinup/sign_up.html";
-        });
+        // $('.route_modal.signUp .continue_btn').click(function(){
+        //     // $('.route_modal.signUp').fadeOut(200);
+        //     // $('.signUp_modal').fadeIn(200);
+        //     location.href= "signinup/sign_up.html";
+        // });
 
         $('.signUp_modal .complete_btn').click(()=>{
             $('.signUp_modal').fadeOut(200);

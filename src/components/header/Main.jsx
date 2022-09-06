@@ -56,7 +56,7 @@ function Main() {
                 <div className="inner">
                     <div className="left_side">
                         <h1 className="logo">
-                            <a href="index.html" className="link"></a>
+                            <a href="/" className="link"></a>
                         </h1>
                         <ul className="gnb">
                             <li className="list hasSec">
