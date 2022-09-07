@@ -1,7 +1,25 @@
+import { useEffect, useState } from "react";
+import axios from 'axios';
+
 import BybeatsLogoUrl from "@/assets/images/icon/icon_bybeats_logotext.svg";
 import BeatsomeoneLogoUrl from "@/assets/images/icon/icon_beatsomeone_logotext.svg";
 
 function Main() {
+    const[lang, setLang] = useState();
+    useEffect(() => {
+        const apiCall = async () => {
+            const response = await axios.get('https://beats-admin.codeidea.io/api/v1/lang');
+            //console.log(response.data.response.data);
+            
+            for(let i=0;i<response.data.response.data.length;i++)
+            {
+                console.log(response.data.response.data[i].idx);
+                console.log(response.data.response.data[i].langValue);
+            }
+        };
+        apiCall();
+      }, [])
+
   return (
     <>
       {/* BEGIN: Header */}

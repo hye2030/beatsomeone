@@ -203,15 +203,15 @@ $(function () {
             scrollOff();
         });
 
-        $('.route_modal.signIn .continue_btn').click(function () {
-            $('.route_modal.signIn').fadeOut(200);
-            $('.signIn_modal').fadeIn(200);
-        });
+        // $('.route_modal.signIn .continue_btn').click(function () {
+        //     $('.route_modal.signIn').fadeOut(200);
+        //     $('.signIn_modal').fadeIn(200);
+        // });
 
-        $('.signIn_modal .signIn_btn').click(() => {
-            $('.signIn_modal').fadeOut(200);
-            scrollOn();
-        });
+        // $('.signIn_modal .signIn_btn').click(() => {
+        //     $('.signIn_modal').fadeOut(200);
+        //     scrollOn();
+        // });
 
         // 회원가입 모달--------------
         $('.sign_up').click(() => {

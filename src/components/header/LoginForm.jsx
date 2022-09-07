@@ -1,4 +1,30 @@
+import { useState } from "react";
+
 function Main() {
+    const [useremail, setUseremail] = useState("");
+    const [next_check, next_setCheck] =  useState(false);
+
+    const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
+    const emailCheck = (useremail) => {
+        if(emailRegEx.test(useremail) == true){
+            document.getElementById('login_email_validate').classList.remove('error');
+            document.getElementById("login_warning").textContent="";
+            next_setCheck(true);
+        }else{
+            document.getElementById('login_email_validate').classList.add('error');
+            document.getElementById("login_warning").textContent="이메일 형식에 맞춰 입력해주세요.";
+            next_setCheck(false);
+        }
+    }
+
+    //아이디가 존재하는지 확인하고 패스워드 모달띄우기
+    const NextButton = () => {
+        if(next_check == true){
+            $('.route_modal.signIn').fadeOut(200);
+            $('.signIn_modal').fadeIn(200);
+        }
+    }
+
     return (
         <div className="modal_wrap big_modal route_modal signIn">
             <div className="modal_box">
@@ -37,12 +63,12 @@ function Main() {
                         <form>
                             <fieldset>
                                 <legend hidden>이메일 로그인</legend>
-                                <div className="input_wrap">
-                                    <input type="text" className="emInput" placeholder="Email address" />
+                                <div className="input_wrap" id="login_email_validate">
+                                    <input type="text" className="emInput" placeholder="Email address" onChange={(e)=>{setUseremail(e.target.value); emailCheck(e.target.value)}} />
                                 </div>
-                                <p className="error_txt">올바른 이메일을 입력해 주세요.</p>
+                                <p className="error_txt" id="login_warning"></p>
                                 <p className="ex_txt">ex. beatsomeone@beatsomone.com</p>
-                                <button type="button" className="full_btn continue_btn">
+                                <button type="button" className="full_btn continue_btn" onClick={() => {NextButton()}}>
                                     로그인
                                 </button>
                             </fieldset>
@@ -58,6 +84,44 @@ function Main() {
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    );
+  }
+
+  function password_modal() {
+    return (
+        <div className="modal_wrap big_modal signIn_modal">
+            <div className="modal_box">
+                <button className="x_btn close_btn"></button>
+                <h3 className="title">
+                    비밀번호
+                </h3>
+                <form>
+                    <fieldset>
+                        <legend hidden>로그인</legend>
+                        <div className="input_wrap">
+                            <input type="password" placeholder="Password" />
+
+                            <div className="alert_box wrap_box">
+                                영문, 숫자, 특수문자( !@#$%^&* ‘) 중 2가지 이상 조합 6자이상 16자 이하 사용 가능
+                                <button type="button" className="close_button">삭제버튼</button>
+                            </div>
+                        </div>
+                        <p className="error_txt">
+                            비밀번호가 일치하지 않습니다. 다시 확인 후 입력해주세요.
+                        </p>
+                        <p className="error_txt">
+                            비밀번호를 입력해주세요.
+                        </p>
+                        <button type="button" className="full_btn signIn_btn">
+                            로그인
+                        </button>
+                    </fieldset>
+                </form>
+                <button type="button" className="link_btn reset_pw">
+                    비밀번호를 잊어버리셨나요?
+                </button>
             </div>
         </div>
     );

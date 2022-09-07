@@ -293,7 +293,7 @@ input[type=text]::placeholder{
 }
 
 /* 입력구간 */
-.signUp_page .input_box.password .error_txt {
+.signUp_page .error_txt {
     margin-bottom: 10px;
 }
 
@@ -339,6 +339,11 @@ input[type=text]::placeholder{
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 20px;
+}
+
+.signUp_page .num_wrap {
+    width: 100%;
+    display: flex;
 }
 
 .signUp_page .input_box.num .select_box_wrap:first-child {
@@ -417,6 +422,10 @@ input[type=text]::placeholder{
     align-items: center;
 }
 
+.signUp_page .check_list .list .red {
+    color: #DF0B17;
+}
+
 .signUp_page .check_list .list:not(:last-child) {
     margin-bottom: 13px;
 }
@@ -426,6 +435,12 @@ input[type=text]::placeholder{
     font-weight: 400;
     margin-left: 10px;
     color: #acacac;
+}
+
+.signUp_page .check_list p span {
+    margin-right: 3px;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .signUp_page .check_list .open_pop {
@@ -675,6 +690,7 @@ input[type=text]::placeholder{
 }
 
 .descrip_txt {
+    line-height: 1.2;
     text-align: center;
     margin-top: 50px;
     color: #888;
@@ -748,7 +764,7 @@ input[type=text]::placeholder{
 .integrated .check_box>label {
     display: inline-flex;
 }
-
+.integrated .check_box>input:checked+label .check_box_text,
 .integrated .check_box .check_box_text {
     font-size: 14px;
     color: #222222;
@@ -935,7 +951,7 @@ input[type=text]::placeholder{
     }
     
     /* 입력구간 */
-    .signUp_page .input_box.password .error_txt {
+    .signUp_page .error_txt {
         margin-bottom: calc(100vw * (10 / 1300));
     }
     
@@ -1011,6 +1027,11 @@ input[type=text]::placeholder{
     .signUp_page .check_list p {
         font-size: calc(100vw * (16 / 1300));
         margin-left: calc(100vw * (10 / 1300));
+    }
+
+    .signUp_page .check_list p span {
+        margin-right: calc(100vw * (3 / 1300));
+        font-size: calc(100vw * (16 / 1300));
     }
     
     .signUp_page .check_list .open_pop::after {
@@ -1127,6 +1148,10 @@ input[type=text]::placeholder{
     }
 
     .integrated .main_tit+p {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .integrated .logo_wrap+p {
         font-size: calc(100vw * (16 / 1300));
     }
 
