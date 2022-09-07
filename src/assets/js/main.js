@@ -18,6 +18,7 @@ $(document).ready(function(){
         const coverFlow = new Swiper( '.coverflow .swiper-container', {
             effect: 'coverflow',
             loop: true,
+            autoplay: true,
             loopedSlides: 3,
             centeredSlides: true,
             coverflowEffect:{
@@ -33,6 +34,7 @@ $(document).ready(function(){
             effect:'fade',
             loop:true,
             loopedSlides: 3,
+            allowTouchMove : false,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',

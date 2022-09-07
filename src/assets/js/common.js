@@ -24,6 +24,14 @@ $(function () {
     modalWrap.forEach((item, idx) => {
         const closeBtn = item.querySelectorAll('.close_btn');
 
+
+        item.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal_wrap')) {
+                $(item).fadeOut(200);
+                scrollOn();
+            };
+        });
+
         closeBtn.forEach((items, i) => {
             items.addEventListener('click', () => {
                 $(item).fadeOut(200);
@@ -95,24 +103,24 @@ $(function () {
     function gnbJs() {
 
         //피드 롤링----------------
+        var height = $('.rolling .list').height();
+        var num = $('.rolling .list').length;
+        var max = height * num;
+        var move = 0;
         function rolling() {
+            move += height;
 
-            $(".rolling .depth").animate({
-                top: "-100%"
-            }, {
-                duration: 500,
-                complete: function () {
-                    var $clone = $(".rolling .list").first().clone();
-                    $(".rolling .depth").append($clone);
-                    $(".rolling .list").first().remove();
-                    $(".rolling .depth").css({
-                        "top": "0"
-                    });
+            $(".rolling .depth").animate({"top": -move}, 600, function () {
+                if(move >= max){
+                    $(this).css({"top": "0"});
+                    move = 0;
                 }
             });
 
         };
+        
         setInterval(rolling, 3000);
+        $(".rolling .depth").append($(".rolling .list").first().clone());
 
         // gnb 호버-------------
         const gnbArea = $('header .gnb .hasSec');
@@ -160,13 +168,13 @@ $(function () {
         });
 
         // 모바일 햄버거---------------------
-        $('.hamburger').click(function(){
-            if($(this).hasClass('active')){
+        $('.hamburger').click(function () {
+            if ($(this).hasClass('active')) {
                 $(this).removeClass('active');
                 $(".header_mb .side_menu").removeClass('active');
                 $(".header_mb .side_bg").fadeOut(500);
                 scrollOn();
-            }else{
+            } else {
                 $(this).addClass('active');
                 $(".header_mb .side_menu").addClass('active');
                 $(".header_mb .side_bg").fadeIn(500);
@@ -174,12 +182,12 @@ $(function () {
             };
         });
 
-        $('.header_mb .accordion>.list .title').click(function(){
+        $('.header_mb .accordion>.list .title').click(function () {
             const title = $(this).closest('.list');
-            if(title.hasClass('active')){
+            if (title.hasClass('active')) {
                 title.removeClass('active');
                 title.find('.sec_depth').slideUp(300);
-            }else{
+            } else {
                 title.addClass('active');
                 title.find('.sec_depth').slideDown(300);
             }
@@ -187,105 +195,105 @@ $(function () {
     }
     gnbJs();
 
-    function signInUpModal(){
+    function signInUpModal() {
 
         // 로그인 모달---------------
-        $('.sign_in').click(()=>{
+        $('.sign_in').click(() => {
             $('.route_modal.signIn').fadeIn(200);
             scrollOff();
         });
 
-        $('.route_modal.signIn .continue_btn').click(function(){
+        $('.route_modal.signIn .continue_btn').click(function () {
             $('.route_modal.signIn').fadeOut(200);
             $('.signIn_modal').fadeIn(200);
         });
-        
-        $('.signIn_modal .signIn_btn').click(()=>{
+
+        $('.signIn_modal .signIn_btn').click(() => {
             $('.signIn_modal').fadeOut(200);
             scrollOn();
         });
 
         // 회원가입 모달--------------
-        $('.sign_up').click(()=>{
+        $('.sign_up').click(() => {
             $("#sign_email").val("");
             $('.route_modal.signIn').fadeOut(200);
             $('.route_modal.signUp').fadeIn(200);
             scrollOff();
         });
 
-        // $('.route_modal.signUp .continue_btn').click(function(){
+        // $('.route_modal.signUp .continue_btn').click(function () {
         //     // $('.route_modal.signUp').fadeOut(200);
         //     // $('.signUp_modal').fadeIn(200);
-        //     location.href= "signinup/sign_up.html";
+        //     location.href = "signinup/sign_up.html";
         // });
 
-        $('.signUp_modal .complete_btn').click(()=>{
+        $('.signUp_modal .complete_btn').click(() => {
             $('.signUp_modal').fadeOut(200);
             $('.signupC_modal').fadeIn(200);
         });
 
-        $('.signupC_modal .confirm_btn').click(()=>{
+        $('.signupC_modal .confirm_btn').click(() => {
             $('.signupC_modal').fadeOut(200);
             $('.route_modal.signIn').fadeIn(200);
         });
 
         // 휴면계정 안내 모달----------
-        $('.dormant_modal .cancel_btn').click(()=>{
+        $('.dormant_modal .cancel_btn').click(() => {
             $(".dormant_modal").fadeOut(200);
             $('.route_modal.signIn').fadeIn(200);
         });
 
-        $('.dormant_modal .clear_btn').click(()=>{
+        $('.dormant_modal .clear_btn').click(() => {
             $(".dormant_modal").fadeOut(200);
             $(".dormantClear_modal").fadeIn(200);
         });
 
         // 비밀번호 재설정 모달--------
-        $('.reset_pw').click(()=>{
+        $('.reset_pw').click(() => {
             $('.route_modal.signIn').fadeOut(200);
             $('.signIn_modal').fadeOut(200);
             $('.pwResetting_modal.stepOne').fadeIn(200);
         });
 
-        $('.pwResetting_modal.stepOne .next_btn').click(()=>{
+        $('.pwResetting_modal.stepOne .next_btn').click(() => {
             $('.pwResetting_modal.stepOne').fadeOut(200);
             $('.pwResetting_modal.stepTwo').fadeIn(200);
         });
 
-        $('.pwResetting_modal.stepTwo .next_btn').click(()=>{
+        $('.pwResetting_modal.stepTwo .next_btn').click(() => {
             $('.pwResetting_modal.stepTwo').fadeOut(200);
             $('.pwResettingC_modal').fadeIn(200);
         });
 
-        $('.pwResettingC_modal .confirm_btn').click(()=>{
+        $('.pwResettingC_modal .confirm_btn').click(() => {
             $('.pwResettingC_modal').fadeOut(200);
             $('.route_modal.signIn').fadeIn(200);
         });
 
         // 이용약관 모달
         const termBtn = {
-            one : $('.open_pop.unit'),
-            two : $('.open_pop.term'),
-            three : $('.open_pop.policy')
+            one: $('.open_pop.unit'),
+            two: $('.open_pop.term'),
+            three: $('.open_pop.policy')
         };
 
         const termModal = {
-            one : $('.unitTerms_modal'),
-            two : $('.terms_modal'),
-            three : $('.policy_modal')
+            one: $('.unitTerms_modal'),
+            two: $('.terms_modal'),
+            three: $('.policy_modal')
         };
 
-        termBtn.one.click(function(){
+        termBtn.one.click(function () {
             termModal.one.fadeIn(200);
             scrollOff();
         });
 
-        termBtn.two.click(function(){
+        termBtn.two.click(function () {
             termModal.two.fadeIn(200);
             scrollOff();
         });
 
-        termBtn.three.click(function(){
+        termBtn.three.click(function () {
             termModal.three.fadeIn(200);
             scrollOff();
         });
@@ -293,9 +301,9 @@ $(function () {
     }
     signInUpModal();
 
-    
+
     // 말풍선 닫기
-    $('.alert_box .close_button').click(function(){
+    $('.alert_box .close_button').click(function () {
         $(this).parents('.alert_box').hide();
     });
 });

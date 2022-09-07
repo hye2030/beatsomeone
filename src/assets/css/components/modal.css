@@ -409,23 +409,6 @@
     margin-top: 10px;
 }
 
-::-webkit-scrollbar {
-    width: 3px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #ccc;
-    /* background-clip: padding-box;
-    border-top: 20px solid transparent;
-    border-bottom: 35px solid transparent;
-    border-right: 3px solid transparent;
-    border-left: 5px solid transparent; */
-    border-radius: 100px;
-}
 
 .modal_wrap.big_modal .modal_box .error_txt span {
     color: #acacac;

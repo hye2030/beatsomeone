@@ -722,6 +722,10 @@
     align-items: flex-end;
 }
 
+.bottom_section .survey_box .title_box h3::after {
+    display: none;
+}
+
 .bottom_section .survey_box .arrow_wrap {
     position: relative;
     width: 100px;
