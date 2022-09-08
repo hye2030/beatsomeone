@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 function Main(menu) {
-    console.log(menu);
     return (
         <>
             <li className="list hasSec">
