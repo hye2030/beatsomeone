@@ -3,24 +3,96 @@ import axios from 'axios';
 
 import BybeatsLogoUrl from "@/assets/images/icon/icon_bybeats_logotext.svg";
 import BeatsomeoneLogoUrl from "@/assets/images/icon/icon_beatsomeone_logotext.svg";
+import LangComponent from "./Lang_header";
 
 function Main() {
-    const[lang, setLang] = useState();
+    /**언어 API용 변수*/
+    const _idx = [];
+    const _lang = [];
+    const _langstyle = [];
+    const _langcode =[];
+    const[lang, setLang] = useState([]);
+    const langValue = [];
+    const setLangValue = (i) => {
+        langValue.push({
+            idx : _idx[i],
+            language : _lang[i],
+            style : _langstyle[i],
+            langcode : _langcode[i]
+        })
+    }
+    const[click_lang, setClick_lang]  = useState("kr");
+    const select_lang = (select) => {
+        setClick_lang(select);
+    }
+    
+    /**메뉴 API용 변수*/
+    const[menu, setMenu] = useState([]);
+    const _menu = [];
+    
     useEffect(() => {
         const apiCall = async () => {
             const response = await axios.get('https://beats-admin.codeidea.io/api/v1/lang');
-            //console.log(response.data.response.data);
-            
             for(let i=0;i<response.data.response.data.length;i++)
             {
-                console.log(response.data.response.data[i].idx);
-                console.log(response.data.response.data[i].langValue);
+                let result = "";
+                let style_result = "";
+                if(response.data.response.data[i].langCode == "kr"){
+                    result = "한국어"
+                    if(click_lang == "kr"){
+                        style_result = "active";
+                    }
+                }else if(response.data.response.data[i].langCode == "en"){
+                    result = "English"
+                    if(click_lang == "en"){
+                        style_result = "active";
+                    }
+                }else if(response.data.response.data[i].langCode == "jp"){
+                    result = "日本"
+                    if(click_lang == "jp"){
+                        style_result = "active";
+                    }
+                }else if(response.data.response.data[i].langCode == "ch"){
+                    result = "中文"
+                    if(click_lang == "ch"){
+                        style_result = "active";
+                    }
+                }
+
+                _idx.push(response.data.response.data[i].idx);
+                _lang.push(result);
+                _langstyle.push(style_result);
+                _langcode.push(response.data.response.data[i].langCode);
+                setLangValue(i);
             }
+            setLang(langValue);
         };
         apiCall();
-      }, [])
 
-  return (
+        axios.get("https://beats-admin.codeidea.io/api/v1/menuList", {
+            params: {
+            site: "bs",
+            lang : click_lang
+            }
+        })
+        .then(function (response) {
+            console.log(response.data.response.data);
+            for(let i=0; i<response.data.response.data.length; i++){
+                _menu.push(response.data.response.data[i].menuValue);
+            }
+            setMenu(menu.concat(_menu));
+        }).catch(function (error) {
+            // 오류발생시 실행
+        }).then(function() {
+            // 항상 실행
+        });
+      }, [click_lang])
+
+    const langList = lang.map((langElement, i) => (
+        <li className={langElement.style} key={langElement.idx} onClick={()=>{select_lang(langElement.langcode)}}>{langElement.language}</li>
+    ));
+
+    return (
     <>
       {/* BEGIN: Header */}
         <header className="header_pc">
@@ -52,18 +124,7 @@ function Main() {
                                 language
                             </button>
                             <ul className="language_list">
-                                <li className="active">
-                                    한국어
-                                </li>
-                                <li>
-                                    English
-                                </li>
-                                <li>
-                                    日本
-                                </li>
-                                <li>
-                                    中文
-                                </li>
+                                {langList}
                             </ul>
                         </div>
                     </div>
@@ -77,102 +138,20 @@ function Main() {
                             <a href="/" className="link"></a>
                         </h1>
                         <ul className="gnb">
-                            <li className="list hasSec">
-                                <a href="#" onClick={() => { return false; }} className="link">
-                                    피드
-                                    <div className="bubble_box">
-                                        <div className="rolling">
-                                            <ul className="depth">
-                                                <li className="list">
-                                                    자작곡
-                                                </li>
-                                                <li className="list">
-                                                    커버곡
-                                                </li>
-                                                <li className="list">
-                                                    일상
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                                <ul className="sec_depth">
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                            전체
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                            자작곡
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                            커버곡
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                            일상
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="list">
-                                <a href="#" onClick={() => { return false; }} className="link">
-                                    음원제작 의뢰
-                                </a>
-                            </li>
-                            <li className="list">
-                                <a href="#" onClick={() => { return false; }} className="link">
-                                    질문/답변
-                                </a>
-                                <ul className="sec_depth">
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                        질문/답변
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                        명예의 전당
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="list">
-                                <a href="trend/trend_list.html" className="link">
-                                    트렌드
-                                </a>
-                            </li>
-                            <li className="list">
-                                <a href="../review/prd_list.html" className="link">
-                                    제품 리뷰
-                                </a>
-                            </li>
-                            <li className="list">
-                                <a href="../mypage/event.html" className="link">
-                                    이벤트
-                                </a>
-                            </li>
-                            <li className="list">
-                                <a href="./common/notice_list.html" className="link">
-                                    공지사항
-                                </a>
-                            </li>
+                            <LangComponent value={menu}></LangComponent>
+                            
                         </ul>
                     </div>
                     <div className="right_side">
                         <ul className="user">
                             <li className="list sign_in">
                                 <a href="#" onClick={() => { return false; }} className="link">
-                                    로그인
+                                {menu[7]}
                                 </a>
                             </li>
                             <li className="list sign_up">
                                 <a href="#" onClick={() => { return false; }} className="link">
-                                    회원가입
+                                {menu[8]}
                                 </a>
                             </li>
                         </ul>
@@ -204,7 +183,7 @@ function Main() {
         </header>
       {/* END: Header */}
     </>
-  );
+    );
 }
 
 export default Main;
