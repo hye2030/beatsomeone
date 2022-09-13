@@ -34,34 +34,38 @@
 }
 
 .message_modal .modal_box {
-    padding: 35px 30px 45px;
+    padding: 35px 16px 45px;
 }
 
 .message_modal .beat_some {
     width: 114px;
     height: 26px;
     margin: 0 auto 50px;
-    background: url(@/assets/images/icon/logo_black.png) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/logo_black.png) no-repeat center center / contain;
 }
 
-.modal_box .title {
+.modal_wrap .title {
     font-size: 22px;
     margin-bottom: 20px;
     font-weight: 600;
 }
 
-.message_modal .comment,
-.message_modal .comment span {
+.modal_wrap .comment {
+    word-break: keep-all;
+}
+
+.modal_wrap .comment,
+.modal_wrap .comment span {
     font-size: 16px;
     font-weight: 600;
     line-height: 160%;
 }
 
-.message_modal .comment span {
+.modal_wrap .comment span {
     color: #DF0B17;
 }
 
-.message_modal .small_comment {
+.modal_wrap .small_comment {
     word-break: keep-all;
     font-size: 14px;
     font-weight: 400;
@@ -69,22 +73,33 @@
     line-height: 160%;
 }
 
-.message_modal .button_wrap {
+.modal_wrap .button_wrap {
     width: 100%;
     margin-top: 28px;
     display: flex;
     justify-content: center;
 }
 
-.message_modal .button_wrap button {
+.modal_wrap .button_wrap button {
     width: 130px;
     height: 45px;
     font-size: 16px;
     font-weight: 600;
 }
 
-.message_modal .button_wrap button:nth-child(2) {
+.modal_wrap .button_wrap button:nth-child(2) {
     margin-left: 10px;
+}
+
+.modal_wrap .button_wrap.one button {
+    width: 295px;
+    height: 45px;
+}
+
+.modal_wrap .line_btn {
+    line-height: 1.5;
+    font-size: 16px;
+    text-decoration: underline;
 }
 
 .mb_br {
@@ -111,61 +126,61 @@
 
 .modal_box.alert::before {
     display: block;
-    background-image: url("@/assets/images/icon/icon_alert_modal.svg");
+    background-image: url("/src/assets/images/icon/icon_alert_modal.svg");
 }
 
 .modal_box.done::before {
     display: block;
     margin: 0 auto 16px;
-    background-image: url("@/assets/images/icon/icon_check_modal.svg");
+    background-image: url("/src/assets/images/icon/icon_check_modal.svg");
 }
 
 .modal_box.question::before {
     display: block;
-    background-image: url("@/assets/images/icon/icon_question_modal.svg");
+    background-image: url("/src/assets/images/icon/icon_question_modal.svg");
 }
 
 
 /* 휴면해제 완료 모달 */
-.message_modal.dormantClear_modal .modal_box {
+.dormantClear_modal .modal_box {
     text-align: center;
 }
 
-.message_modal.dormantClear_modal .comment {
+.dormantClear_modal .comment {
     text-align: center;
     font-weight: 500;
     color: #444;
 }
 
-.message_modal.dormantClear_modal .comment span {
+.dormantClear_modal .comment span {
     color: #000;
     font-weight: 700;
 }
 
-.message_modal.dormantClear_modal button {
+.dormantClear_modal .button_wrap button {
     width: 100%;
 }
 
 /* 회원가입 중복체크 완료 모달 */
-.message_modal.overlapC_modal .comment {
+.overlapC_modal .comment {
     margin-bottom: 10px;
 }
 
 /* 회원탈퇴 완료 모달 */
-.message_modal.withdrawalC_modal .comment {
+.withdrawalC_modal .comment {
     margin-bottom: 20px;
 }
 
-.message_modal.withdrawalC_modal .small_comment {
+.withdrawalC_modal .small_comment {
     line-height: 140%;
     font-size: 14px;
 }
 
-.message_modal.withdrawalC_modal .small_comment .red {
+.withdrawalC_modal .small_comment .red {
     color: #DF0B17;
 }
 
-.message_modal.withdrawalC_modal .small_comment .bold {
+.withdrawalC_modal .small_comment .bold {
     color: #000;
     font-weight: 700;
 }
@@ -178,7 +193,11 @@
 .autoOut_modal .modal_box::before {
     display: block;
     margin-bottom: 10px;
-    background-image: url("@/assets/images/icon/icon_power.svg");
+    background-image: url("/src/assets/images/icon/icon_power.svg");
+}
+
+.modal_wrap.newSignup b {
+    font-weight: 700;
 }
 
 
@@ -200,15 +219,14 @@
     position: relative;
 }
 
-.big_modal .modal_box .x_btn,
+.modal_wrap .modal_box .x_btn,
 .declaration_modal .modal_box .x_btn {
     position: absolute;
     width: 16px;
     height: 16px;
-    top: 24px;
-    right: 24px;
-    transform: translate(0, -50%);
-    background: url(@/assets/images/icon/icon_close.svg) no-repeat center center / contain;
+    top: 21px;
+    right: 21px;
+    background: url(/src/assets/images/icon/icon_close.svg) no-repeat center center / contain;
 }
 
 .big_modal .modal_box .top_area {
@@ -223,7 +241,7 @@
     top: 50%;
     right: 0;
     transform: translate(0, -50%);
-    background: url(@/assets/images/icon/icon_close.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_close.svg) no-repeat center center / contain;
 }
 
 .big_modal .text_area {
@@ -286,7 +304,7 @@
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    background: url(@/assets/images/icon/icon-siren-mono.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon-siren-mono.svg) no-repeat center center / contain;
 }
 
 .declaration_modal .content_box p {
@@ -409,6 +427,23 @@
     margin-top: 10px;
 }
 
+.modal_wrap .modal_box::-webkit-scrollbar {
+    width: 3px;
+}
+
+.modal_wrap .modal_box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal_wrap .modal_box::-webkit-scrollbar-thumb {
+    background: #ccc;
+    /* background-clip: padding-box;
+    border-top: 20px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-right: 3px solid transparent;
+    border-left: 5px solid transparent; */
+    border-radius: 100px;
+}
 
 .modal_wrap.big_modal .modal_box .error_txt span {
     color: #acacac;
@@ -478,34 +513,28 @@
 .big_modal .logo_wrap .beat_some {
     width: 114px;
     height: 26px;
-    background: url(@/assets/images/icon/logo_black.png) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/logo_black.png) no-repeat center center / contain;
 }
 
 .big_modal .logo_wrap .icon_x {
     width: 16px;
     height: 16px;
     margin: 0 8px;
-    background: url(@/assets/images/icon/icon_x.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_x.svg) no-repeat center center / contain;
 }
 
 .big_modal .logo_wrap .by_beats {
     width: 86px;
     height: 26px;
-    background: url(@/assets/images/icon/icon_logo_bybeats.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_logo_bybeats.svg) no-repeat center center / contain;
 }
 
 /* 로그인. 회원가입 */
 .big_modal.route_modal .modal_box,
 .big_modal.signUp_modal .modal_box {
     height: 90vh;
-    /* overflow: auto; */
-    padding: 70px 25px 40px;
-}
-
-.big_modal.route_modal .modal_box .wrap,
-.big_modal.signUp_modal .modal_box .wrap {
-    height: 100%;
     overflow: auto;
+    padding: 70px 25px 40px;
 }
 
 .route_modal .title {
@@ -560,40 +589,40 @@
     transform: translateY(-100%);
     font-size: 12px;
     color: #fff;
-    background: url("@/assets/images/icon/icon_new_bubble.svg") no-repeat center / contain;
+    background: url("/src/assets/images/icon/icon_new_bubble.svg") no-repeat center / contain;
     filter: drop-shadow(2px 3px 7px rgba(0, 0, 0, 0.11));
 }
 
 .route_modal .signIn_btn.facebook::before {
-    background: url(@/assets/images/icon/signUp_facebook.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_facebook.svg) no-repeat center center / contain;
 }
 
 .route_modal .signIn_btn.twitter::before {
-    background: url(@/assets/images/icon/signUp_twitter.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_twitter.svg) no-repeat center center / contain;
 }
 
 .route_modal .signIn_btn.google::before {
-    background: url(@/assets/images/icon/signUp_google.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_google.svg) no-repeat center center / contain;
 }
 
 .route_modal .signIn_btn.apple::before {
-    background: url(@/assets/images/icon/signUp_apple.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_apple.svg) no-repeat center center / contain;
 }
 
 .route_modal .signIn_btn.naver::before {
-    background: url(@/assets/images/icon/signUp_naver.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_naver.svg) no-repeat center center / contain;
 }
 
 .route_modal .signIn_btn.kakaotalk::before {
-    background: url(@/assets/images/icon/signUp_kakao.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_kakao.svg) no-repeat center center / contain;
 }
 
 .route_modal .signIn_btn.soundcloud::before {
-    background: url(@/assets/images/icon/signUp_soundcloud.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_soundcloud.svg) no-repeat center center / contain;
 }
 
 .route_modal .signIn_btn.email::before {
-    background: url(@/assets/images/icon/signUp_email.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_email.svg) no-repeat center center / contain;
 }
 
 .route_modal .btn_area .signIn_btn:not(:last-child) {
@@ -841,7 +870,7 @@
     top: 50%;
     right: -10px;
     transform: translate(0, -70%);
-    background: url(@/assets/images/icon/icon_arrow_right_gray.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_arrow_right_gray.svg) no-repeat center center / contain;
 }
 
 .signUp_modal .last_comment {
@@ -898,7 +927,7 @@
     width: 6px;
     height: 10px;
     margin-left: 5px;
-    background: url(@/assets/images/icon/icon_smallArrow_gray.svg) no-repeat center center / cover;
+    background: url(/src/assets/images/icon/icon_smallArrow_gray.svg) no-repeat center center / cover;
 }
 
 /* 휴면계정모달--------------------------------------*/
@@ -1093,8 +1122,121 @@
     color: #000;
 }
 
+/* 비밀번호 변경 모달 */
+.password_change .modal_box {
+    width: 743px;
+}
+
+.password_change .title {
+    margin-bottom: 30px;
+}
+
+.password_change fieldset {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.password_change li+li {
+    margin-top: 20px;
+}
+
+.password_change .sub_title {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.password_change .button_wrap {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.password_change .button_wrap button {
+    width: 295px;
+    height: 45px;
+}
+
+.password_change .button_wrap button:first-child {
+    margin-right: 10px;
+}
 
 
+/* 회원탈퇴 실패 모달 */
+.delete_account_modal .modal_box,
+.delete_account_fail .modal_box {
+    width: 743px;
+    text-align: center;
+}
+
+.delete_account_fail .title {
+    margin-bottom: 30px;
+}
+
+.delete_account_fail ul {
+    display: inline-block;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.delete_account_fail ul li {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.delete_account_fail .button_wrap {
+    margin-top: 81px;
+}
+
+/* 회원탈퇴 모달 */
+.delete_account_modal .modal_box {
+    padding-top: 61px;
+}
+
+.delete_account_modal ul {
+    display: inline-block;
+    margin: 42px 0 53px;
+    text-align: left;
+}
+
+.delete_account_modal ul li {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.delete_account_modal ul li+li {
+    margin-top: 30px;
+}
+
+.delete_account_modal ul li::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-right: 20px;
+    vertical-align: middle;
+    background: url("/src/assets/images/icon/icon_check_modal.svg") no-repeat center / 100%;
+}
+
+.delete_account_modal ul li span {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.delete_account_modal .small_comment {
+    font-size: 16px;
+}
+
+.delete_account_modal .line_btn {
+    margin-top: 20px;
+}
+
+
+/* 음원 등록하기 모달창 */
+.music_upload_modal {
+    
+}
 
 /* =========================== 테블릿 =========================== */
 @media screen and (max-width: 1300px) {
@@ -1105,7 +1247,7 @@
     }
 
     .message_modal .modal_box {
-        padding: calc(100vw * (35 /1300)) calc(100vw * (30 /1300)) calc(100vw * (45 /1300));
+        padding: calc(100vw * (35 /1300)) calc(100vw * (16 /1300)) calc(100vw * (45 /1300));
     }
 
     .message_modal .beat_some {
@@ -1119,27 +1261,36 @@
         margin-bottom: calc(100vw * (20 / 1300));
     }
 
-    .message_modal .comment,
-    .message_modal .comment span {
+    .modal_wrap .comment,
+    .modal_wrap .comment span {
         font-size: calc(100vw * (16 / 1300));
     }
 
-    .message_modal .small_comment {
+    .modal_wrap .small_comment {
         font-size: calc(100vw * (14 / 1300));
     }
 
-    .message_modal .button_wrap {
+    .modal_wrap .button_wrap {
         margin-top: calc(100vw * (28 / 1300));
     }
 
-    .message_modal .button_wrap button {
+    .modal_wrap .button_wrap button {
         width: calc(100vw * (130 / 1300));
         height: calc(100vw * (45 / 1300));
         font-size: calc(100vw * (16 / 1300));
     }
 
-    .message_modal .button_wrap button:nth-child(2) {
+    .modal_wrap .button_wrap button:nth-child(2) {
         margin-left: calc(100vw * (10 / 1300));
+    }
+
+    .modal_wrap .button_wrap.one button {
+        width: calc(100vw * (295 / 1300));
+        height: calc(100vw * (45 / 1300));
+    }
+
+    .modal_wrap .line_btn {
+        font-size: calc(100vw * (16 / 1300));
     }
 
     /* 모달창 아이콘 */
@@ -1160,16 +1311,16 @@
     }
 
     /* 회원가입 중복체크 완료 모달 */
-    .message_modal.overlapC_modal .comment {
+    .overlapC_modal .comment {
         margin-bottom: calc(100vw * (10 / 1300));
     }
 
     /* 회원탈퇴 완료 모달 */
-    .message_modal.withdrawalC_modal .comment {
+    .withdrawalC_modal .comment {
         margin-bottom: calc(100vw * (20 / 1300));
     }
 
-    .message_modal.withdrawalC_modal .small_comment {
+    .withdrawalC_modal .small_comment {
         line-height: 140%;
         font-size: calc(100vw * (14 / 1300));
     }
@@ -1195,12 +1346,12 @@
         padding: calc(100vw * (30 / 1300)) calc(100vw * (45 / 1300));
     }
 
-    .big_modal .modal_box .x_btn,
+    .modal_wrap .modal_box .x_btn,
     .declaration_modal .modal_box .x_btn {
         width: calc(100vw * (16 / 1300));
         height: calc(100vw * (16 / 1300));
-        top: calc(100vw * (24 / 1300));
-        right: calc(100vw * (24 / 1300));
+        top: calc(100vw * (21 / 1300));
+        right: calc(100vw * (21 / 1300));
     }
 
     .big_modal .modal_box .top_area .close_btn {
@@ -1691,6 +1842,102 @@
     .aleadyJoin_modal .email_info .text_box {
         font-size: calc(100vw * (16 / 1300));
     }
+
+    /* 비밀번호 변경 모달 */
+    .password_change .modal_box {
+        width: calc(100vw * (743 / 1300));
+    }
+
+    .password_change .title {
+        margin-bottom: calc(100vw * (30 / 1300));
+    }
+
+    .password_change fieldset {
+        max-width: calc(100vw * (600 / 1300));
+    }
+
+    .password_change li+li {
+        margin-top: calc(100vw * (20 / 1300));
+    }
+
+    .password_change .sub_title {
+        font-size: calc(100vw * (16 / 1300));
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+    .password_change .button_wrap {
+        margin-top: calc(100vw * (100 / 1300));
+    }
+
+    .password_change .button_wrap button {
+        width: calc(100vw * (295 / 1300));
+        height: calc(100vw * (45 / 1300));
+    }
+
+    .password_change .button_wrap button:first-child {
+        margin-right: calc(100vw * (10 / 1300));
+    }
+
+    /* 회원탈퇴 실패 모달 */
+    .delete_account_modal .modal_box,
+    .delete_account_fail .modal_box {
+        width: calc(100vw * (743 / 1300));
+        text-align: center;
+    }
+
+    .delete_account_fail .title {
+        margin-bottom: calc(100vw * (30 / 1300));
+    }
+
+    .delete_account_fail ul {
+        display: inline-block;
+        margin-top: calc(100vw * (30 / 1300));
+        text-align: left;
+    }
+
+    .delete_account_fail ul li {
+        font-size: calc(100vw * (16 / 1300));
+        line-height: 1.7;
+    }
+
+    .delete_account_fail .button_wrap {
+        margin-top: calc(100vw * (81 / 1300));
+    }
+
+    /* 회원탈퇴 모달 */
+    .delete_account_modal .modal_box {
+        padding-top: calc(100vw * (61 / 1300));
+    }
+
+    .delete_account_modal ul {
+        margin: calc(100vw * (42 / 1300)) 0 calc(100vw * (53 / 1300));
+    }
+
+    .delete_account_modal ul li {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .delete_account_modal ul li+li {
+        margin-top: calc(100vw * (30 / 1300));
+    }
+
+    .delete_account_modal ul li::before {
+        width: calc(100vw * (32 / 1300));
+        height: calc(100vw * (32 / 1300));
+        margin-right: calc(100vw * (20 / 1300));
+    }
+
+    .delete_account_modal ul li span {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .delete_account_modal .small_comment {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .delete_account_modal .line_btn {
+        margin-top: calc(100vw * (20 / 1300));
+    }
 }
 
 
@@ -1709,40 +1956,58 @@
         width: calc(100vw* (396/428));
     }
 
-    .message_modal .modal_box {
+    .modal_wrap .modal_box {
         padding: calc(100vw* (35/428)) calc(100vw* (20/428)) calc(100vw* (40/428));
     }
 
-    .message_modal .title {
+    .modal_box .title {
+        font-size: calc(100vw * (24 / 428));
+        margin-bottom: calc(100vw * (20 / 428));
+    }
+
+    .modal_wrap .title {
         font-size: calc(100vw* (22/428));
         margin-bottom: calc(100vw* (20/428));
     }
 
-    .message_modal .comment,
-    .message_modal .comment span {
+    .modal_wrap .comment,
+    .modal_wrap .comment span {
         font-size: calc(100vw* (16/428));
     }
 
-    .message_modal .small_comment {
+    .modal_wrap .small_comment {
         font-size: calc(100vw* (14/428));
     }
 
-    .message_modal .button_wrap {
+    .modal_wrap .button_wrap {
         margin-top: calc(100vw* (20/428));
     }
 
-    .message_modal .button_wrap button {
+    .modal_wrap .button_wrap button {
         width: calc(100vw* (130/428));
         height: calc(100vw* (45/428));
         font-size: calc(100vw* (16/428));
     }
 
-    .message_modal .button_wrap button:nth-child(2) {
+    .modal_wrap .button_wrap button:nth-child(2) {
         margin-left: calc(100vw* (10/428));
+    }
+
+    .modal_wrap .button_wrap.one button {
+        width: calc(100vw * (295 / 428));
+        height: calc(100vw * (45 / 428));
+    }
+
+    .modal_wrap .line_btn {
+        font-size: calc(100vw * (16 / 428));
     }
 
     .mb_br {
         display: block;
+    }
+
+    .pc_br {
+        display: none;
     }
 
     .modal_box::before {
@@ -1762,16 +2027,16 @@
     }
 
     /* 회원가입 중복체크 완료 모달 */
-    .message_modal.overlapC_modal .comment {
+    .overlapC_modal .comment {
         margin-bottom: calc(100vw* (10/428));
     }
 
     /* 회원탈퇴 완료 모달 */
-    .message_modal.withdrawalC_modal .comment {
+    .withdrawalC_modal .comment {
         margin-bottom: calc(100vw* (15/428));
     }
 
-    .message_modal.withdrawalC_modal .small_comment {
+    .withdrawalC_modal .small_comment {
         font-size: calc(100vw* (13/428));
     }
 
@@ -1781,7 +2046,7 @@
         padding: calc(100vw* (40/428)) calc(100vw* (10/428)) calc(100vw* (24/428));
     }
 
-    .big_modal .modal_box .x_btn,
+    .modal_wrap .modal_box .x_btn,
     .declaration_modal .modal_box .x_btn {
         width: calc(100vw* (16/428));
         height: calc(100vw* (16/428));
@@ -2320,4 +2585,95 @@
         font-weight: 600;
     }
 
+    /* 비밀번호 변경 모달 */
+    .password_change .modal_box {
+        width: calc(100vw * (396 / 428));
+    }
+
+    .password_change .title {
+        margin-bottom: calc(100vw * (30 / 428));
+    }
+
+    .password_change fieldset {
+        max-width: calc(100vw * (364 / 428));
+    }
+
+    .password_change li+li {
+        margin-top: calc(100vw * (20 / 428));
+    }
+
+    .password_change .sub_title {
+        font-size: calc(100vw * (16 / 428));
+        margin-bottom: calc(100vw * (10 / 428));
+    }
+
+    .password_change .button_wrap {
+        margin-top: calc(100vw * (59 / 428));
+    }
+
+    .password_change .button_wrap button {
+        width: calc(100vw * (177 / 428));
+        height: calc(100vw * (45 / 428));
+    }
+
+    .password_change .button_wrap button:first-child {
+        margin-right: calc(100vw * (10 / 428));
+    }
+
+    /* 회원탈퇴 실패 모달 */
+    .delete_account_modal .modal_box,
+    .delete_account_fail .modal_box {
+        width: calc(100vw * (396 / 428));
+    }
+
+    .delete_account_fail .title {
+        margin-bottom: calc(100vw * (30 / 428));
+    }
+
+    .delete_account_fail ul {
+        margin-top: calc(100vw * (26 / 428));
+    }
+
+    .delete_account_fail ul li {
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    .delete_account_fail .button_wrap {
+        margin-top: calc(100vw * (61 / 428));
+    }
+
+    /* 회원탈퇴 모달 */
+    .delete_account_modal .modal_box {
+        padding-top: calc(100vw * (61 / 428));
+    }
+
+    .delete_account_modal ul {
+        margin: calc(100vw * (42 / 428)) 0 calc(100vw * (39 / 428));
+    }
+
+    .delete_account_modal ul li {
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    .delete_account_modal ul li+li {
+        margin-top: calc(100vw * (30 / 428));
+    }
+
+    .delete_account_modal ul li::before {
+        width: calc(100vw * (32 / 428));
+        height: calc(100vw * (32 / 428));
+        margin-right: calc(100vw * (20 / 428));
+    }
+
+    .delete_account_modal ul li span {
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    .delete_account_modal .small_comment {
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    .delete_account_modal .line_btn {
+        margin-top: calc(100vw * (20 / 428));
+    }
 }

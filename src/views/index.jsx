@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 import MainVideoUrl from "@/assets/video/temporary.mp4";
+import "@/assets/css/components/main.css";
 
 function Main() {
     useEffect(() => {
@@ -8,7 +9,7 @@ function Main() {
         script.src = "/src/assets/js/main.js";
         script.async = true;
         document.body.appendChild(script);
-    });
+    }, []);
 
     return (
       <>

@@ -103,7 +103,8 @@ $(function () {
     function gnbJs() {
 
         //피드 롤링----------------
-        var height = $('.rolling .list').height();
+        //var height = $('.rolling .list').height();
+        var height = 30;
         var num = $('.rolling .list').length;
         var max = height * num;
         var move = 0;

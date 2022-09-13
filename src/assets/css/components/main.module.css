@@ -1141,9 +1141,9 @@
     }
 
     /* 메인컨텐츠----------------------------- */
-    /* .content_section{
+    .content_section{
         height: calc(100vw* (750/428));
-    } */
+    }
 
     .content_section .wrap_inner {
         padding-top: calc(100vw* (55/428));

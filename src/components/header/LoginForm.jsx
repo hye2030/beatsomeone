@@ -3,6 +3,7 @@ import { useState } from "react";
 function Main() {
     const [useremail, setUseremail] = useState("");
     const [next_check, next_setCheck] =  useState(false);
+    const [pwd, setPwd] = useState("");
 
     const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
     const emailCheck = (useremail) => {
@@ -25,7 +26,13 @@ function Main() {
         }
     }
 
+    const LoginPage = () => {
+        console.log(useremail);
+        console.log(pwd);
+    }
+
     return (
+        <>
         <div className="modal_wrap big_modal route_modal signIn">
             <div className="modal_box">
                 <button className="x_btn close_btn"></button>
@@ -86,11 +93,7 @@ function Main() {
                 </div>
             </div>
         </div>
-    );
-  }
 
-  function password_modal() {
-    return (
         <div className="modal_wrap big_modal signIn_modal">
             <div className="modal_box">
                 <button className="x_btn close_btn"></button>
@@ -101,7 +104,7 @@ function Main() {
                     <fieldset>
                         <legend hidden>로그인</legend>
                         <div className="input_wrap">
-                            <input type="password" placeholder="Password" />
+                            <input type="password" placeholder="Password" onChange={(e) => {setPwd(e.target.value);}}/>
 
                             <div className="alert_box wrap_box">
                                 영문, 숫자, 특수문자( !@#$%^&* ‘) 중 2가지 이상 조합 6자이상 16자 이하 사용 가능
@@ -114,7 +117,7 @@ function Main() {
                         <p className="error_txt">
                             비밀번호를 입력해주세요.
                         </p>
-                        <button type="button" className="full_btn signIn_btn">
+                        <button type="button" className="full_btn signIn_btn" onClick={() => {LoginPage()}}>
                             로그인
                         </button>
                     </fieldset>
@@ -124,6 +127,7 @@ function Main() {
                 </button>
             </div>
         </div>
+        </>
     );
   }
   

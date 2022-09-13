@@ -26,10 +26,6 @@ function Main() {
         setClick_lang(select);
     }
     
-    /**메뉴 API용 변수*/
-    const[menu, setMenu] = useState([]);
-    const _menu = [];
-    
     useEffect(() => {
         const apiCall = async () => {
             const response = await axios.get('https://beats-admin.codeidea.io/api/v1/lang');
@@ -68,24 +64,7 @@ function Main() {
             setLang(langValue);
         };
         apiCall();
-
-        axios.get("https://beats-admin.codeidea.io/api/v1/menuList", {
-            params: {
-            site: "bs",
-            lang : click_lang
-            }
-        })
-        .then(function (response) {
-            // console.log(response.data.response.data);
-            for(let i=0; i<response.data.response.data.length; i++){
-                _menu.push(response.data.response.data[i].menuValue);
-            }
-            setMenu(menu.concat(_menu));
-        }).catch(function (error) {
-            // 오류발생시 실행
-        }).then(function() {
-            // 항상 실행
-        });
+        // LangComponent(click_lang);
       }, [click_lang])
 
     const langList = lang.map((langElement, i) => (
@@ -133,132 +112,7 @@ function Main() {
 
             <div className="header_bottom">
                 <div className="inner">
-                    <div className="left_side">
-                        <h1 className="logo">
-                            <a href="/" className="link"></a>
-                        </h1>
-                        <ul className="gnb">
-                            <li className="list hasSec">
-                                <a href="#" onClick={() => { return false; }} className="link">
-                                    {menu[0]}
-                                    <div className="bubble_box">
-                                        <div className="rolling">
-                                            <ul className="depth">
-                                                <li className="list">
-                                                {menu[11]}
-                                                </li>
-                                                <li className="list">
-                                                {menu[12]}
-                                                </li>
-                                                <li className="list">
-                                                {menu[13]}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </a>
-                                <ul className="sec_depth">
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                        {menu[10]}
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                        {menu[11]}
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                        {menu[12]}
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                        {menu[13]}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="list">
-                                <a href="#" onClick={() => { return false; }} className="link">
-                                {menu[1]}
-                                </a>
-                            </li>
-                            <li className="list">
-                                <a href="#" onClick={() => { return false; }} className="link">
-                                {menu[2]}
-                                </a>
-                                <ul className="sec_depth">
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                        {menu[14]}
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                        {menu[15]}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="list">
-                                <a href="trend/trend_list.html" className="link">
-                                {menu[3]}
-                                </a>
-                            </li>
-                            <li className="list">
-                                <a href="../review/prd_list.html" className="link">
-                                {menu[4]}
-                                </a>
-                            </li>
-                            <li className="list">
-                                <a href="../mypage/event.html" className="link">
-                                {menu[16]}
-                                </a>
-                            </li>
-                            <li className="list">
-                                <a href="./common/notice_list.html" className="link">
-                                {menu[15]}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="right_side">
-                        <ul className="user">
-                            <li className="list sign_in">
-                                <a href="#" onClick={() => { return false; }} className="link">
-                                {menu[7]}
-                                </a>
-                            </li>
-                            <li className="list sign_up">
-                                <a href="#" onClick={() => { return false; }} className="link">
-                                {menu[8]}
-                                </a>
-                            </li>
-                        </ul>
-                        {/*<div className="user_nav">
-                            <div className="img_box"></div>
-                            <span className="user_name">NickName</span>
-                            <ul className="user_menu">
-                                <li className="list">
-                                    <a href="#" onClick={() => { return false; }} className="link">
-                                        마이페이지
-                                    </a>
-                                </li>
-                                <li className="list">
-                                    <a href="#" onClick={() => { return false; }} className="link">
-                                        개인정보 관리
-                                    </a>
-                                </li>
-                                <li className="list logout">
-                                    <a href="#" onClick={() => { return false; }} className="link">
-                                        로그아웃
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>*/}
-                    </div>
+                    <LangComponent value={click_lang}/>
                 </div>
             </div>
 
