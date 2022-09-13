@@ -1,9 +1,13 @@
 import { useState } from "react";
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import {loginUser} from '@/stores/userSlice';
 
 function Main() {
     const [useremail, setUseremail] = useState("");
     const [next_check, next_setCheck] =  useState(false);
     const [pwd, setPwd] = useState("");
+    const dispatch = useDispatch();
 
     const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
     const emailCheck = (useremail) => {
@@ -27,8 +31,22 @@ function Main() {
     }
 
     const LoginPage = () => {
-        console.log(useremail);
-        console.log(pwd);
+        axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+            sns: "email",
+            emailId: useremail,
+            password: pwd
+        })
+        .then(function (response) {
+            console.log(response.data);
+            if(response.data.code == "0"){
+                console.log("로그인.");
+                dispatch(loginUser(response.data));
+            }else if(response.data.code == "302"){
+                console.log("비밀번호가 일치하지 않습니다.");
+            }else if(response.data.code == "303"){
+                console.log("존재하지 않는 EMAIL 입니다.");
+            }
+        });
     }
 
     return (

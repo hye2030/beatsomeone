@@ -34,22 +34,22 @@ function Main() {
                 let result = "";
                 let style_result = "";
                 if(response.data.response.data[i].langCode == "kr"){
-                    result = "한국어"
+                    result = response.data.response.data[i].langValue
                     if(click_lang == "kr"){
                         style_result = "active";
                     }
                 }else if(response.data.response.data[i].langCode == "en"){
-                    result = "English"
+                    result = response.data.response.data[i].langValue
                     if(click_lang == "en"){
                         style_result = "active";
                     }
                 }else if(response.data.response.data[i].langCode == "jp"){
-                    result = "日本"
+                    result = response.data.response.data[i].langValue
                     if(click_lang == "jp"){
                         style_result = "active";
                     }
                 }else if(response.data.response.data[i].langCode == "ch"){
-                    result = "中文"
+                    result = response.data.response.data[i].langValue
                     if(click_lang == "ch"){
                         style_result = "active";
                     }
