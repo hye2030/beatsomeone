@@ -13,9 +13,6 @@ export const userSlice = createSlice({
         state.name = action.payload.response.name;
         state.id = action.payload.response.email;
         state.isLogin = true;
-        console.log(state.name);
-        console.log(state.id);
-        console.log(state.isLogin);
       },
   
       clearUser: (state) => {

@@ -5,6 +5,9 @@ import BybeatsLogoUrl from "@/assets/images/icon/icon_bybeats_logotext.svg";
 import BeatsomeoneLogoUrl from "@/assets/images/icon/icon_beatsomeone_logotext.svg";
 import LangComponent from "./Lang_header";
 
+import { useDispatch } from 'react-redux';
+import {loginUser} from '@/stores/userSlice';
+
 function Main() {
     /**언어 API용 변수*/
     const _idx = [];
@@ -70,6 +73,30 @@ function Main() {
     const langList = lang.map((langElement, i) => (
         <li className={langElement.style} key={langElement.idx} onClick={()=>{select_lang(langElement.langcode)}}>{langElement.language}</li>
     ));
+
+    /**로그인 유지 */
+    const dispatch = useDispatch();
+    useEffect(() => {
+        axios.put("https://beats-admin.codeidea.io/api/v1/member/loginCheck", {
+            sns: localStorage.getItem("sns"),
+            snsKey: localStorage.getItem("snsKey"),
+            emailId: localStorage.getItem("emailId"),
+            _token: localStorage.getItem("is_login")
+        })
+        .then(function (response) {
+            if(response.data.response == "1"){
+                console.log("로그인 확인");
+                dispatch(loginUser({
+                    "code": 0,
+                    "message": "로그인 유지 확인",
+                    "response": {
+                        "name": "길동",
+                        "email": "hong11@naver.com",
+                    }
+                }));
+            }
+        });
+    }, [])
 
     return (
     <>

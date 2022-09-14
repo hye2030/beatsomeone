@@ -37,10 +37,14 @@ function Main() {
             password: pwd
         })
         .then(function (response) {
-            console.log(response.data);
             if(response.data.code == "0"){
-                console.log("로그인.");
                 dispatch(loginUser(response.data));
+                localStorage.setItem("sns", "email");
+                localStorage.setItem("snsKey", "");
+                localStorage.setItem("emailId", response.data.response.email);
+                localStorage.setItem("is_login", response.data._token);
+            }else if(response.data.code == "301"){
+                console.log("아이디 또는 비밀번호가 누락되었습니다.");
             }else if(response.data.code == "302"){
                 console.log("비밀번호가 일치하지 않습니다.");
             }else if(response.data.code == "303"){

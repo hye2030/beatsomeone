@@ -1,8 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 function MenuComponenet({users}) {
     let _menu = [];
     users.map(user => {
         _menu.push(user.menuValue);
     })
+
+    const user = useSelector((state) => {return state.user});
+    console.log(user);
 
     return (
         <>
