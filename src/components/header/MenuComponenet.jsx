@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
+import LoginN from './LoginN';
+import LoginY from './LoginY';
 
 function MenuComponenet({users}) {
     let _menu = [];
@@ -6,8 +8,7 @@ function MenuComponenet({users}) {
         _menu.push(user.menuValue);
     })
 
-    const user = useSelector((state) => {return state.user});
-    console.log(user);
+    const user = useSelector((state) => {return state});
 
     return (
         <>
@@ -103,39 +104,7 @@ function MenuComponenet({users}) {
             </ul>
         </div>
         <div className="right_side">
-            <ul className="user">
-                <li className="list sign_in" id="sign_in">
-                    <a href="#" onClick={() => { return false; }} className="link">
-                    {_menu[7]}
-                    </a>
-                </li>
-                <li className="list sign_up">
-                    <a href="#" onClick={() => { return false; }} className="link">
-                    {_menu[8]}
-                    </a>
-                </li>
-            </ul>
-            {/*<div className="user_nav">
-                <div className="img_box"></div>
-                <span className="user_name">NickName</span>
-                <ul className="user_menu">
-                    <li className="list">
-                        <a href="#" onClick={() => { return false; }} className="link">
-                            마이페이지
-                        </a>
-                    </li>
-                    <li className="list">
-                        <a href="#" onClick={() => { return false; }} className="link">
-                            개인정보 관리
-                        </a>
-                    </li>
-                    <li className="list logout">
-                        <a href="#" onClick={() => { return false; }} className="link">
-                            로그아웃
-                        </a>
-                    </li>
-                </ul>
-            </div>*/}
+            {user.isLogin ? <LoginY value={_menu} /> : <LoginN value={_menu} />}
         </div>
         </>
     )
