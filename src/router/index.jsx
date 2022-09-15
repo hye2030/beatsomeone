@@ -7,6 +7,7 @@ import BeatLayout from "../layouts/beatsomeone/Main"
 import BeatIndex from "../views/index"
 import SignUp from "../views/signup/sign_up"
 import Kakao from "../views/auth/kakao"
+import Naver from "../views/auth/naver"
 
 function Router() {
   const routes = [
@@ -27,6 +28,10 @@ function Router() {
     {
       path: "/auth/kakao",
       element: <Kakao />
+    },
+    {
+      path: "/auth/naver",
+      element: <Naver />
     }
   ];
 

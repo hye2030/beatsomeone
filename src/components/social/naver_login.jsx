@@ -4,8 +4,8 @@ const NaverLogin = () => {
     
     const naverRef = useRef()
     const { naver } = window
-	const NAVER_CLIENT_ID = "kFIwy52wpxbG8D95tVEu"
-	const NAVER_CALLBACK_URL = "/social/naver_login"
+	const NAVER_CLIENT_ID = "7zMZQ1ATkf_uVtuhDMQO"
+	const NAVER_CALLBACK_URL = "/auth/naver"
 
 	const initializeNaverLogin = () => {
 		const naverLogin = new naver.LoginWithNaverId({
