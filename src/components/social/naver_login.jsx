@@ -5,7 +5,7 @@ const NaverLogin = () => {
     const naverRef = useRef()
     const { naver } = window
 	const NAVER_CLIENT_ID = "7zMZQ1ATkf_uVtuhDMQO"
-	const NAVER_CALLBACK_URL = "/auth/naver"
+	const NAVER_CALLBACK_URL = "http://localhost:3000/auth/naver"
 
 	const initializeNaverLogin = () => {
 		const naverLogin = new naver.LoginWithNaverId({
@@ -26,13 +26,13 @@ const NaverLogin = () => {
 		})
 	}
    
-	    const userAccessToken = () => {
-		    window.location.href.includes('access_token') && getToken()
+	const userAccessToken = () => {
+			window.location.href.includes('access_token') && getToken()
 	}
-        
-      	const getToken = () => {
+	
+	const getToken = () => {
 		const token = window.location.href.split('=')[1].split('&')[0]
-                // localStorage.setItem('access_token', token)
+		// localStorage.setItem('access_token', token)
 	}
 
 	useEffect(() => {

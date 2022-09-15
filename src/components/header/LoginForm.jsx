@@ -84,7 +84,7 @@ function Main() {
                                 Continue with Apple
                             </button>
                             <NaverLogin/>
-                            <a href={KAKAO_AUTH_URL}><button type="button" className="signIn_btn kakaotalk">
+                            <a href={KAKAO_AUTH_URL} style={{marginBottom:"calc(100vw * (10 / 1300))"}}><button type="button" className="signIn_btn kakaotalk">
                                 Continue with kakaotalk
                             </button></a>
                             <button type="button" className="signIn_btn soundcloud">
