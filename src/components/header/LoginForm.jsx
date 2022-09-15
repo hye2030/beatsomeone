@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import {loginUser} from '@/stores/userSlice';
+import NaverLogin from "../social/naver_login";
 
 function Main() {
     const [useremail, setUseremail] = useState("");
@@ -53,6 +54,10 @@ function Main() {
         });
     }
 
+    const REST_API_KEY = "b3235f231e956673855f84ed2cbc5cf2"
+    const REDIRECT_URI = "http://localhost:3000/auth/kakao"
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
     return (
         <>
         <div className="modal_wrap big_modal route_modal signIn">
@@ -78,12 +83,10 @@ function Main() {
                             <button type="button" className="signIn_btn apple">
                                 Continue with Apple
                             </button>
-                            <button type="button" className="signIn_btn naver">
-                                Continue with Naver
-                            </button>
-                            <button type="button" className="signIn_btn kakaotalk">
+                            <NaverLogin/>
+                            <a href={KAKAO_AUTH_URL}><button type="button" className="signIn_btn kakaotalk">
                                 Continue with kakaotalk
-                            </button>
+                            </button></a>
                             <button type="button" className="signIn_btn soundcloud">
                                 Continue with Soundcloud
                             </button>

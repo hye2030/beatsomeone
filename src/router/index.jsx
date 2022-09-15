@@ -6,6 +6,7 @@ import TopMenu from "../layouts/top-menu/Main";
 import BeatLayout from "../layouts/beatsomeone/Main"
 import BeatIndex from "../views/index"
 import SignUp from "../views/signup/sign_up"
+import Kakao from "../views/auth/kakao"
 
 function Router() {
   const routes = [
@@ -23,6 +24,10 @@ function Router() {
         }
       ],
     },
+    {
+      path: "/auth/kakao",
+      element: <Kakao />
+    }
   ];
 
   return useRoutes(routes);
