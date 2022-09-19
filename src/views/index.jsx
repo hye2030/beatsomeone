@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 
 import MainVideoUrl from "@/assets/video/temporary.mp4";
 import "@/assets/css/components/main.css";
+import TopBanner from "../components/body/topbanner";
 
 function Main() {
     useEffect(() => {
@@ -10,6 +12,19 @@ function Main() {
         script.async = true;
         document.body.appendChild(script);
     }, []);
+
+    const [banners, setbanners] = useState([]);
+    useEffect(() => {
+        axios.get("https://beats-admin.codeidea.io/api/v1/bannerList", {
+            params: {
+                bannerCode: "A001",
+                lang: localStorage.getItem("language")
+            }
+        })
+        .then(function (response) {
+            setbanners(response.data.response.data);
+        });
+    }, [localStorage.getItem("language")]);
 
     return (
       <>
@@ -38,29 +53,7 @@ function Main() {
                                 한 번의 음원등록으로 빠르고 정확한 판매와 정산을 경험하세요.
                             </p>
                         </div>
-                        <div className="main_slide">
-                            <div className="swiper-container">
-                                <div className="swiper-wrapper">
-                                    <div className="swiper-slide">
-                                        <img src="/src/assets/images/dummy/slide_img.jpg" alt="" />
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <img src="/src/assets/images/dummy/slide_img.jpg" alt="" />
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <img src="/src/assets/images/dummy/slide_img.jpg" alt="" />
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <img src="/src/assets/images/dummy/slide_img.jpg" alt="" />
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <img src="/src/assets/images/dummy/slide_img.jpg" alt="" />
-                                    </div>
-                                </div>
-                                <div className="deco"></div>
-                                <div className="swiper-pagination"></div>
-                            </div>
-                        </div>
+                        <TopBanner banners={banners} />
                     </div>
   
                     <div className="content_mb">

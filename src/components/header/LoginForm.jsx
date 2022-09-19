@@ -1,14 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import {loginUser} from '@/stores/userSlice';
 import NaverLogin from "../social/naver_login";
+import GoogleLogin from "../social/google_login";
+import KakaoLogin from "../social/kakao_login";
+import FbLogin from "../social/fb_login";
 
 function Main() {
     const [useremail, setUseremail] = useState("");
     const [next_check, next_setCheck] =  useState(false);
     const [pwd, setPwd] = useState("");
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
     const emailCheck = (useremail) => {
@@ -32,6 +38,11 @@ function Main() {
     }
 
     const LoginPage = () => {
+        if(pwd == ""){
+            document.getElementById("LoginPwErr").textContent="비밀번호를 입력해주세요.";
+            return false;
+        }
+
         axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
             sns: "email",
             emailId: useremail,
@@ -44,19 +55,26 @@ function Main() {
                 localStorage.setItem("snsKey", "");
                 localStorage.setItem("emailId", response.data.response.email);
                 localStorage.setItem("is_login", response.data._token);
+
+                $('.signIn_modal').fadeOut(200);
+                $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                navigate("/");
             }else if(response.data.code == "301"){
                 console.log("아이디 또는 비밀번호가 누락되었습니다.");
+                document.getElementById("LoginPwErr").textContent="비밀번호가 일치하지 않습니다. 다시 확인 후 입력해주세요.";
             }else if(response.data.code == "302"){
                 console.log("비밀번호가 일치하지 않습니다.");
+                document.getElementById("LoginPwErr").textContent="비밀번호가 일치하지 않습니다. 다시 확인 후 입력해주세요.";
             }else if(response.data.code == "303"){
                 console.log("존재하지 않는 EMAIL 입니다.");
+                document.getElementById("LoginPwErr").textContent="비밀번호가 일치하지 않습니다. 다시 확인 후 입력해주세요.";
             }
         });
     }
 
-    const REST_API_KEY = "b3235f231e956673855f84ed2cbc5cf2"
-    const REDIRECT_URI = "http://localhost:3000/auth/kakao"
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+    // const REST_API_KEY = "b3235f231e956673855f84ed2cbc5cf2"
+    // const REDIRECT_URI = "http://localhost:3000/auth/kakao"
+    // const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
     return (
         <>
@@ -71,22 +89,19 @@ function Main() {
                         <button type="button" className="signIn_btn newly google">Continue with Google</button>
                         <div className="dividing_line"></div>   
                         <div className="btn_area">
-                            <button type="button" className="signIn_btn facebook">
-                                Continue with Facebook
-                            </button>
+                            <FbLogin />
                             <button type="button" className="signIn_btn twitter">
                                 Continue with twitter
                             </button>
-                            <button type="button" className="signIn_btn google">
-                                Continue with Google
-                            </button>
+                            <GoogleLogin />
                             <button type="button" className="signIn_btn apple">
                                 Continue with Apple
                             </button>
                             <NaverLogin/>
-                            <a href={KAKAO_AUTH_URL} style={{marginBottom:"calc(100vw * (10 / 1300))"}}><button type="button" className="signIn_btn kakaotalk">
+                            <KakaoLogin />
+                            {/* <a href={KAKAO_AUTH_URL} style={{marginBottom:"calc(100vw * (10 / 1300))"}}><button type="button" className="signIn_btn kakaotalk">
                                 Continue with kakaotalk
-                            </button></a>
+                            </button></a> */}
                             <button type="button" className="signIn_btn soundcloud">
                                 Continue with Soundcloud
                             </button>
@@ -136,11 +151,7 @@ function Main() {
                                 <button type="button" className="close_button">삭제버튼</button>
                             </div>
                         </div>
-                        <p className="error_txt">
-                            비밀번호가 일치하지 않습니다. 다시 확인 후 입력해주세요.
-                        </p>
-                        <p className="error_txt">
-                            비밀번호를 입력해주세요.
+                        <p className="error_txt" id="LoginPwErr">
                         </p>
                         <button type="button" className="full_btn signIn_btn" onClick={() => {LoginPage()}}>
                             로그인

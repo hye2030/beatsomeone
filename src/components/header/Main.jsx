@@ -67,6 +67,7 @@ function Main() {
             setLang(langValue);
         };
         apiCall();
+        localStorage.setItem("language", click_lang);
         // LangComponent(click_lang);
       }, [click_lang])
 
@@ -91,7 +92,7 @@ function Main() {
                     "message": "로그인 유지 확인",
                     "response": {
                         "name": "길동",
-                        "email": "hong11@naver.com",
+                        "email": localStorage.getItem("emailId"),
                     }
                 }));
             }

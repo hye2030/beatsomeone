@@ -6,6 +6,19 @@ import TopMenu from "../layouts/top-menu/Main";
 import BeatLayout from "../layouts/beatsomeone/Main"
 import BeatIndex from "../views/index"
 import SignUp from "../views/signup/sign_up"
+import IntegratedSignUpTerms from "../views/signup/integrated_signup_terms"
+import IntegratedSignUpGuide from "../views/signup/integrated_signup_guide"
+import IntegratedSignUpComplete from "../views/signup/integrated_signup_complete"
+
+import FeedAdd from "../views/feed/feed_add"
+import FeedDetailCover from "../views/feed/feed_detail_cover"
+import FeedDetailDaily from "../views/feed/feed_detail_daily"
+import FeedDetailSelf from "../views/feed/feed_detail_self"
+import FeedList from "../views/feed/feed_list"
+
+import Event from "../views/mypage/event"
+import EventDetail from "../views/mypage/event_detail"
+
 import Kakao from "../views/auth/kakao"
 import Naver from "../views/auth/naver"
 
@@ -22,6 +35,46 @@ function Router() {
         {
           path: "/signinup/sign_up",
           element: <SignUp />,
+        },
+        {
+          path: "/signinup/integrated_signup_terms",
+          element: <IntegratedSignUpTerms />,
+        },
+        {
+          path: "/signinup/integrated_signup_guide",
+          element: <IntegratedSignUpGuide />,
+        },
+        {
+          path: "/signinup/integrated_signup_complete",
+          element: <IntegratedSignUpComplete />,
+        },
+        {
+          path: "/feed/feed_add",
+          element: <FeedAdd />,
+        },
+        {
+          path: "/feed/feed_detail_cover",
+          element: <FeedDetailCover />,
+        },
+        {
+          path: "/feed/feed_detail_daily",
+          element: <FeedDetailDaily />,
+        },
+        {
+          path: "/feed/feed_detail_self",
+          element: <FeedDetailSelf />,
+        },
+        {
+          path: "/feed/feed_list",
+          element: <FeedList />,
+        },
+        {
+          path: "/mypage/event",
+          element: <Event />,
+        },
+        {
+          path: "/mypage/event_detail",
+          element: <EventDetail />,
         }
       ],
     },

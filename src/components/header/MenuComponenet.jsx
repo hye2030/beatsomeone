@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import LoginN from './LoginN';
 import LoginY from './LoginY';
 
@@ -9,12 +10,13 @@ function MenuComponenet({users}) {
     })
 
     const user = useSelector((state) => {return state});
+    const navigate = useNavigate();
 
     return (
         <>
         <div className="left_side">
             <h1 className="logo">
-                <a href="/" className="link"></a>
+                <a href="#" onClick={() => {navigate('/')}} className="link"></a>
             </h1>
             <ul className="gnb">
                 <li className="list hasSec">
@@ -38,22 +40,22 @@ function MenuComponenet({users}) {
                     </a>
                     <ul className="sec_depth">
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link">
+                            <a href="/feed/feed_list" className="link">
                             {_menu[9]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link">
+                            <a href="/feed/feed_list" className="link">
                             {_menu[10]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link">
+                            <a href="/feed/feed_list" className="link">
                             {_menu[11]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link">
+                            <a href="/feed/feed_list" className="link">
                             {_menu[12]}
                             </a>
                         </li>
@@ -70,12 +72,12 @@ function MenuComponenet({users}) {
                     </a>
                     <ul className="sec_depth">
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link">
+                            <a href="/feed/feed_list" className="link">
                             {_menu[13]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link">
+                            <a href="/feed/feed_list" className="link">
                             {_menu[14]}
                             </a>
                         </li>
@@ -92,7 +94,7 @@ function MenuComponenet({users}) {
                     </a>
                 </li>
                 <li className="list">
-                    <a href="../mypage/event.html" className="link">
+                    <a href="/mypage/event" className="link">
                     {_menu[16]}
                     </a>
                 </li>

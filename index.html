@@ -4,10 +4,25 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/assets/images/icon/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2-nopolyfill.js"
     charset="utf-8"></script>
-    <script src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
-    <title>비트썸원</title>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>Kakao.init("51ba89262da32e08623b40983fb42c17")</script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '3211774595750677',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v14.0'
+        });
+      };
+    </script>
+    
+    <title>BEAT SOMEONE</title>
   </head>
   <body>
     <div id="root"></div>

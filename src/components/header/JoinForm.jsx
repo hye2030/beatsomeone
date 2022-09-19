@@ -1,6 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import NaverLogin from "../social/naver_login";
+import GoogleLogin from "../social/google_login";
+import KakaoLogin from "../social/kakao_login";
+import FbLogin from "../social/fb_login";
 
 function Main() {
+    const navigate = useNavigate();
     const [useremail, setUseremail] = useState("");
     const [next_check, next_setCheck] =  useState(false);
 
@@ -18,9 +24,17 @@ function Main() {
     }
 
     const joinButton = () => {
+        if(useremail == ""){
+            document.getElementById('email_validate').classList.add('error');
+            document.getElementById("warning").textContent="이메일 형식에 맞춰 입력해주세요.";
+        }
+
         if(next_check == true){
+            $('.route_modal.signUp').fadeOut(200);
+            $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+
             localStorage.setItem("sign_id", useremail);
-            location.href = '/signinup/sign_up';
+            navigate('/signinup/sign_up');
         }
     }
 
@@ -39,9 +53,7 @@ function Main() {
                     </div>
                     <div className="btn_wrap">
                         <div className="btn_area">
-                            <button type="button" className="signIn_btn facebook">
-                                Continue with Facebook
-                            </button>
+                            <FbLogin />
                             <button type="button" className="signIn_btn twitter">
                                 Continue with twitter
                             </button>
@@ -54,9 +66,7 @@ function Main() {
                             <button type="button" className="signIn_btn naver">
                                 Continue with Naver
                             </button>
-                            <button type="button" className="signIn_btn kakaotalk">
-                                Continue with kakaotalk
-                            </button>
+                            <KakaoLogin />
                             <button type="button" className="signIn_btn soundcloud">
                                 Continue with Soundcloud
                             </button>
@@ -66,7 +76,7 @@ function Main() {
                             <fieldset>
                                 <legend hidden>이메일 회원가입</legend>
                                 <div className="input_wrap" id="email_validate">
-                                    <input type="text" className="emInput" placeholder="Email address" id="sign_email" onChange={(e)=>{setUseremail(e.target.value); emailCheck(e.target.value)}} />
+                                    <input type="text" className="emInput" placeholder="Email address" id="sign_email" onChange={(e)=>{setUseremail(e.target.value);  emailCheck(e.target.value)}}/>
                                 </div>
                                 <p className="error_txt" id="warning"></p>
                                 {/* <p className="error_txt">이메일 형식에 맞춰 입력해주세요.</p>
