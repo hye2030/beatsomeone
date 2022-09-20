@@ -5,14 +5,14 @@ import Terms from "../../components/body/terms";
 
 function Main() {
     const [IdValue,setIdValue] = useState(null);
-    if (localStorage.getItem("sign_id") === null) {
-        alert("아이디 정보가 없습니다.");
-        location.href = "/";
-    }else{
-        useEffect( ()=>{
+    useEffect(() => {
+        if (localStorage.getItem("sign_id") === null) {
+            alert("아이디 정보가 없습니다.");
+            location.href = "/";
+        }else{
             setIdValue(localStorage.getItem("sign_id"));
-        }, []);
-    }
+        }
+    }, [localStorage.getItem("sign_id")]);
 
     const [usualEmail, setUsualEmail] = useState('');
     const [pwd, setPwd] = useState('');
@@ -149,23 +149,27 @@ function Main() {
             }
         });
 
-        $('.signupC_modal').fadeIn(200);
+        // $('.signupC_modal').fadeIn(200);
+        // console.log("sns: "+ localStorage.getItem("sns"));
+        // console.log("snsKey: "+ localStorage.getItem("snsKey"));
 
-        // axios.put("https://beats-admin.codeidea.io/api/v1/member/join", {
-        //     existing_yn: "N",
-        //     sns: "email",
-        //     emailId: IdValue,
-        //     password: pwd,
-        //     signSite: "beatsomeone",
-        //     email: usualEmail,
-        //     name: name,
-        //     memNickname: nickname,
-        //     nationality: UserNation,
-        //     phoneNumber: phone,
-        //     marketingConsent: marketingYN
-        // })
-        // .then(function (response) {
-        // });
+        axios.put("https://beats-admin.codeidea.io/api/v1/member/join", {
+            existing_yn: "N",
+            sns: localStorage.getItem("sns"),
+            snsKey: localStorage.getItem("snsKey"),
+            emailId: IdValue,
+            password: pwd,
+            signSite: "beatsomeone",
+            email: usualEmail,
+            name: name,
+            memNickname: nickname,
+            nationality: UserNation,
+            phoneNumber: phone,
+            marketingConsent: marketingYN
+        })
+        .then(function (response) {
+            $('.signupC_modal').fadeIn(200);
+        });
     }
 
     $('.signupC_modal .confirm_btn').click(() => {
@@ -309,7 +313,6 @@ function Main() {
                                         </div>
                                     </div>
                                     <p className="error_txt">
-                                        닉네임은 최소 2글자 이상 입력해주세요.
                                     </p>
                                     <div className="select_box_wrap">
                                         <button type="button" onClick={() => { return false; }} className="select_title">(필수)

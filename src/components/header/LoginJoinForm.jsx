@@ -99,10 +99,11 @@ const LoginJoin = () => {
         }
 
         if(join_next_check == true){
-            $('.route_modal.signUp').fadeOut(200);
+            $('.route_modal.signIn').fadeOut(200);
             $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
 
             localStorage.setItem("sign_id", join_useremail);
+            localStorage.setItem("sns", "email");
             navigate('/signinup/sign_up');
         }
     }
