@@ -3,6 +3,7 @@ import Header from "@/components/Header/Main";
 import Footer from "@/components/Footer/Main";
 import JoinForm from "@/components/Header/JoinForm";
 import LoginForm from "@/components/Header/LoginForm";
+import LoginJoin from "../../components/header/LoginJoinForm";
 
 function Main() {
     return (
@@ -18,8 +19,9 @@ function Main() {
         </div>
         
         {/* 모달 */}
-        <JoinForm />
-        <LoginForm />
+        {/* <JoinForm />
+        <LoginForm /> */}
+        <LoginJoin />
       </>
     );
   }

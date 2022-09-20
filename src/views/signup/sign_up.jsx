@@ -201,7 +201,19 @@ function Main() {
         })
         .then(function (response) {
             setTerms(response.data.response);
+            $('.terms_modal').fadeIn(200);
+            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function (e) {
+                e.stopPropagation();
+            });
         });
+    }
+
+    /**모바일 헤더용 */
+    if ($('.hamburger').hasClass('active')) {
+        $('.hamburger').removeClass('active');
+        $(".header_mb .side_menu").removeClass('active');
+        $(".header_mb .side_bg").fadeOut(500);
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
     }
 
     return (

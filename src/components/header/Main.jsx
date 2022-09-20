@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import BybeatsLogoUrl from "@/assets/images/icon/icon_bybeats_logotext.svg";
 import BeatsomeoneLogoUrl from "@/assets/images/icon/icon_beatsomeone_logotext.svg";
 import LangComponent from "./Lang_header";
+import LangComponentM from "./Lang_header_mobile";
 
 import { useDispatch } from 'react-redux';
 import {loginUser} from '@/stores/userSlice';
@@ -99,6 +101,8 @@ function Main() {
         });
     }, [])
 
+    const navigate = useNavigate();
+
     return (
     <>
       {/* BEGIN: Header */}
@@ -178,7 +182,7 @@ function Main() {
         <header className="header_mb">
             <div className="inner">
                 {/* <!-- <a href="javascript:history.back();" className="goBack_btn"></a> --> */}
-                <h1 className="logo">
+                <h1 className="logo" onClick={() => {navigate('/')}}>
                     <a href="index.html" className="link"></a>
                 </h1>
                 <div className="hamburger">
@@ -200,128 +204,12 @@ function Main() {
                                 Language
                             </button>
                             <ul className="language_list">
-                                <li className="active">
-                                    한국어
-                                </li>
-                                <li>
-                                    English
-                                </li>
-                                <li>
-                                    日本
-                                </li>
-                                <li>
-                                    中文
-                                </li>
+                                {langList}
                             </ul>
                         </div>
                         <a href="#" onClick={() => {return false;}} className="link search_btn"></a>
                     </div>
-                    <div className="link_wrap">
-                        <a href="#" onClick={() => {return false;}} className="link">
-                            BEAT SOMEONE
-                        </a>
-                        <a href="#" onClick={() => {return false;}} className="link">
-                            BYBEATS
-                        </a>
-                    </div>
-                    {/* <!-- 로그인전 --> */}
-                    <div className="sign_inup">
-                        <a href="#" onClick={() => {return false;}} className="link">
-                            로그인
-                        </a>
-                        <a href="#" onClick={() => {return false;}} className="link">
-                            회원가입
-                        </a>
-                    </div>
-                    {/* <!-- 로그인 후 -->
-                    <!-- <div className="profile_box">
-                        <div className="img_box">
-                            <img src="../images/icon/icon_user-circle.svg" alt="">
-                        </div>
-                        <div className="text_area">
-                            <p className="nickname">
-                                NICKNAME
-                            </p>
-                            <a href="mypage/my_request_song.html" claclassNamess="info_btn">
-                                김비트님
-                            </a>
-                        </div>
-                    </div> --> */}
-                    <ul className="accordion">
-                        <li className="list">
-                            <div>
-                                <div className="title main_link">
-                                    피드
-                                </div>
-                                <ul className="sec_depth">
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link active">
-                                             - 전체
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                            - 자작곡
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                            - 커버곡
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="feed/feed_list.html" className="link">
-                                            - 일상
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="list">
-                            <a href="#" onClick={() => {return false;}} className="link main_link">
-                                음원제작 의뢰
-                            </a>
-                        </li>
-                        <li className="list">
-                            <div>
-                                <div className="title main_link">
-                                    질문/답변
-                                </div>
-                                <ul className="sec_depth">
-                                    <li className="list">
-                                        <a href="#" className="link active">
-                                            - 질문/답변
-                                        </a>
-                                    </li>
-                                    <li className="list">
-                                        <a href="#" className="link">
-                                            - 명예의 전당
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="list">
-                            <a href="trend/trend_list.html" onClick={() => {return false;}} className="link main_link">
-                                트렌드
-                            </a>
-                        </li>
-                        <li className="list">
-                            <a href="review/prd_list.html" onClick={() => {return false;}} className="link main_link">
-                                제품 리뷰
-                            </a>
-                        </li>
-                        <li className="list">
-                            <a href="mypage/event.html" onClick={() => {return false;}} className="link main_link">
-                                이벤트
-                            </a>
-                        </li>
-                        <li className="list">
-                            <a href="./common/notice_list.html" className="link main_link">
-                                공지사항
-                            </a>
-                        </li>
-                    </ul>
+                    <LangComponentM value={click_lang}/>
                 </div>
             </div>
             <div className="side_bg"></div>

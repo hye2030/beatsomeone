@@ -1,3 +1,6 @@
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+import { isModal } from "../../components/header/recoil";
+
 function LoginN({value}) {
     $('.sign_in').click(() => {
         $('.route_modal.signIn').fadeIn(200);
@@ -13,17 +16,19 @@ function LoginN({value}) {
             e.stopPropagation();
         });
     });
+
+    const ModalHandler = useSetRecoilState(isModal);
     
     return (
         <>
         <ul className="user">
             <li className="list sign_in" id="sign_in">
-                <a href="#" onClick={() => { return false; }} className="link">
+                <a href="#!" onClick={() => { ModalHandler("login") }} className="link">
                 {value[7]}
                 </a>
             </li>
-            <li className="list sign_up">
-                <a href="#" onClick={() => { return false; }} className="link">
+            <li className="list sign_in">
+                <a href="#!" onClick={() => { ModalHandler("join") }} className="link">
                 {value[8]}
                 </a>
             </li>
