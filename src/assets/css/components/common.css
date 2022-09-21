@@ -341,7 +341,7 @@
   -ms-transform: scale3d(1, 1, 1);
   -o-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);
-  background-image: url("@/assets/images/icon/icon_radio.svg");
+  /* background-image: url("@/assets/images/icon/icon_radio.svg"); */
 }
 
 .radio_box>input:checked+label .radio_box_text {
@@ -371,7 +371,7 @@
   -ms-transform: scale3d(0.8, 0.8, 1);
   -o-transform: scale3d(0.8, 0.8, 1);
   transform: scale3d(0.8, 0.8, 1);
-  background: url("@/assets/images/icon/icon_unradio.svg") no-repeat center center / contain;
+  /* background: url("@/assets/images/icon/icon_unradio.svg") no-repeat center center / contain; */
   transition: all 0.3s ease-out;
 }
 

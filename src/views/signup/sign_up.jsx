@@ -19,6 +19,7 @@ function Main() {
     const [checkpwd, setCheckpwd] = useState('');
     const [name, setName] = useState('');
     const [nickname, setNickname] = useState('');
+    const [nicknameNext, setNicknameNext] = useState(false);
     const [phone, setPhone] = useState('');
     const [UserNation, setUserNation] = useState('');
     const [pwd_next, setPwd_next] = useState(false);
@@ -44,6 +45,20 @@ function Main() {
             document.getElementById("pwd_confirm_err").textContent="";
         }else{
             document.getElementById("pwd_confirm_err").textContent="비밀번호가 일치하지 않습니다.";
+        }
+    }
+
+    const nicknameConfirm = () => {
+        console.log(nickname);
+        if(nickname == ""){
+            return false;
+        }else{
+            axios.get("https://beats-admin.codeidea.io/api/v1/member/nickNameCheck", {
+                nickName: nickname
+            })
+            .then(function (response) {
+                console.log(response);
+            });
         }
     }
 
@@ -115,6 +130,10 @@ function Main() {
         }
         if(nickname == ""){
             alert("닉네임을 입력해주세요.");
+            return false;
+        }
+        if(nicknameNext == false){
+            alert("닉네임 확인을 해주세요");
             return false;
         }
         if(phone == ""){
@@ -284,7 +303,7 @@ function Main() {
                                             대소문자, 숫자, 한글, 특수문자, 이모지, 중국어, 일본어 허용 / 한글 기준 2~20자 / 영어 기준 2~40자
                                         </div>
                                     </div>
-                                    <button type="button" className="basic_btn_red_border nicknameChk_btn">
+                                    <button type="button" className="basic_btn_red_border nicknameChk_btn" onClick={()=>{nicknameConfirm()}}>
                                         확인
                                     </button>
                                     <p className="error_txt">

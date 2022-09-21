@@ -7,6 +7,7 @@ const {Kakao} = window;
 
 const KakaoLogin = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const kakaoLoginClickHandler = () => {
         Kakao.Auth.login({
@@ -41,7 +42,29 @@ const KakaoLogin = () => {
                             }else if(response.data.response == 3){
                                 $('.route_modal.signIn').fadeOut(200);
                                 $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                                console.log(data.data)
+                                console.log(data.data);
+
+                                axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+                                    sns: "kakao",
+                                    snsKey: data.data.id
+                                })
+                                .then(function (response) {
+                                    if(response.data.code == "0"){
+                                        localStorage.setItem("emailId", response.data.response.email);
+                                        localStorage.setItem("is_login", response.data._token);
+
+                                        dispatch(loginUser({
+                                            "response": {
+                                                "name": response.data.response.name,
+                                                "email": data.data.id
+                                            }
+                                        }));
+
+                                        $('.signIn_modal').fadeOut(200);
+                                        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                                        navigate("/");
+                                    }
+                                });
                             }
                         }else{
                             location.href = "/";
