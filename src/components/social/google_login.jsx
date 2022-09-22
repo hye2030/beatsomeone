@@ -66,9 +66,12 @@ const GoogleLogin = () => {
 
     }
 
+    //실 1057096607214-53sfrnp2rssjudd6pmb9ha3m8dildh2l.apps.googleusercontent.com
+    //테 22479064603-9fu0fm4ke7l12c6h2r5tdrl84a6ld91v.apps.googleusercontent.com
+    
     useEffect(() => {
         google.accounts.id.initialize({
-            client_id: "22479064603-9fu0fm4ke7l12c6h2r5tdrl84a6ld91v.apps.googleusercontent.com",
+            client_id: "1057096607214-53sfrnp2rssjudd6pmb9ha3m8dildh2l.apps.googleusercontent.com",
             callback: handleCallbackResponse
         });
 
@@ -81,7 +84,7 @@ const GoogleLogin = () => {
 
     const onGoogleLibraryLoad = () => {
         google.accounts.id.initialize({
-            client_id: "22479064603-9fu0fm4ke7l12c6h2r5tdrl84a6ld91v.apps.googleusercontent.com",
+            client_id: "1057096607214-53sfrnp2rssjudd6pmb9ha3m8dildh2l.apps.googleusercontent.com",
             callback: handleCallbackResponse
         });
 

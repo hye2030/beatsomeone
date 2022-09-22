@@ -49,15 +49,20 @@ function Main() {
     }
 
     const nicknameConfirm = () => {
-        console.log(nickname);
         if(nickname == ""){
             return false;
         }else{
             axios.get("https://beats-admin.codeidea.io/api/v1/member/nickNameCheck", {
-                nickName: nickname
+                params: {
+                    nickName: nickname
+                }
             })
             .then(function (response) {
-                console.log(response);
+                if(response.data.code == 1){
+                    setNicknameNext(true);
+                }else{
+                    setNicknameNext(false);
+                }
             });
         }
     }

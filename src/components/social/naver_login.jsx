@@ -4,8 +4,12 @@ const NaverLogin = () => {
     
     const naverRef = useRef()
     const { naver } = window
+	/**테스트 */
+	// const NAVER_CLIENT_ID = "M2HPrcC5GH0M80IoRpTw"
+	// const NAVER_CALLBACK_URL = "http://localhost:3000/auth/naver"
+	/**실서버 */
 	const NAVER_CLIENT_ID = "7zMZQ1ATkf_uVtuhDMQO"
-	const NAVER_CALLBACK_URL = "http://localhost:3000/auth/naver"
+	const NAVER_CALLBACK_URL = "https://beatsomeone.codeidea.io/auth/naver"
 
 	const initializeNaverLogin = () => {
 		const naverLogin = new naver.LoginWithNaverId({

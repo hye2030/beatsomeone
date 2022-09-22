@@ -30,6 +30,7 @@ function Main() {
     const select_lang = (select) => {
         setClick_lang(select);
     }
+    const[display_lang, setDisplay_lang] = useState("한국어");
     
     useEffect(() => {
         const apiCall = async () => {
@@ -42,21 +43,25 @@ function Main() {
                     result = response.data.response.data[i].langValue
                     if(click_lang == "kr"){
                         style_result = "active";
+                        setDisplay_lang(response.data.response.data[i].langValue);
                     }
                 }else if(response.data.response.data[i].langCode == "en"){
                     result = response.data.response.data[i].langValue
                     if(click_lang == "en"){
                         style_result = "active";
+                        setDisplay_lang(response.data.response.data[i].langValue);
                     }
                 }else if(response.data.response.data[i].langCode == "jp"){
                     result = response.data.response.data[i].langValue
                     if(click_lang == "jp"){
                         style_result = "active";
+                        setDisplay_lang(response.data.response.data[i].langValue);
                     }
                 }else if(response.data.response.data[i].langCode == "ch"){
                     result = response.data.response.data[i].langValue
                     if(click_lang == "ch"){
                         style_result = "active";
+                        setDisplay_lang(response.data.response.data[i].langValue);
                     }
                 }
 
@@ -110,7 +115,7 @@ function Main() {
             <div className="header_top">
                 <div className="inner">
                     <div className="tabs">
-                        <a href="" className="tab">
+                        <a href="https://bybeats.codeidea.io/" className="tab" target="_blank">
                             <img
                                 alt="바이비트 로고"
                                 className="w-6"
@@ -132,7 +137,7 @@ function Main() {
                         </div>
                         <div className="language_wrap">
                             <button className="language_btn">
-                                language
+                                {display_lang}
                             </button>
                             <ul className="language_list">
                                 {langList}

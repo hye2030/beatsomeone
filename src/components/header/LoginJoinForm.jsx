@@ -36,8 +36,22 @@ const LoginJoin = () => {
     //아이디가 존재하는지 확인하고 패스워드 모달띄우기
     const NextButton = () => {
         if(next_check == true){
-            $('.route_modal.signIn').fadeOut(200);
-            $('.signIn_modal').fadeIn(200);
+            axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
+                params: {
+                    sns: "email",
+                    emailId: useremail
+                }
+            })
+            .then(function (response) {
+                if(response.data.response == 3){
+                    $('.route_modal.signIn').fadeOut(200);
+                    $('.signIn_modal').fadeIn(200);
+                }else if(response.data.response == 0){
+                    document.getElementById('login_email_validate').classList.add('error');
+                    document.getElementById("login_warning").textContent="입력하신 아이디 정보를 찾을 수 없습니다.";
+                    return false;
+                }
+            });
         }
     }
 
@@ -99,12 +113,26 @@ const LoginJoin = () => {
         }
 
         if(join_next_check == true){
-            $('.route_modal.signIn').fadeOut(200);
-            $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+            axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
+                params: {
+                    sns: "email",
+                    emailId: join_useremail
+                }
+            })
+            .then(function (response) {
+                if(response.data.response == 3){
+                    document.getElementById('email_validate').classList.add('error');
+                    document.getElementById("warning").textContent="이미 가입된 계정입니다.";
+                    return false;
+                }else if(response.data.response == 0){
+                    $('.route_modal.signIn').fadeOut(200);
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
 
-            localStorage.setItem("sign_id", join_useremail);
-            localStorage.setItem("sns", "email");
-            navigate('/signinup/sign_up');
+                    localStorage.setItem("sign_id", join_useremail);
+                    localStorage.setItem("sns", "email");
+                    navigate('/signinup/sign_up');
+                }
+            });
         }
     }
 

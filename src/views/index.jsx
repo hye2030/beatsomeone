@@ -8,7 +8,7 @@ import TopBanner from "../components/body/topbanner";
 function Main() {
     useEffect(() => {
         const script = document.createElement("script");
-        script.src = "/src/assets/js/main.js";
+        script.src = "/assets/js/main.js";
         script.async = true;
         document.body.appendChild(script);
     }, []);
@@ -63,7 +63,7 @@ function Main() {
                                     <div className="list_item self">
                                         <div className="img_wrap">
                                             <div className="img">
-                                                <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                                <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                             </div>
                                             <div className="text_box">
                                                 <div className="text_wrap">
@@ -78,15 +78,15 @@ function Main() {
                                                             <div className="profile_wrap">
                                                                 <ul>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_01.jpg"
+                                                                        <img src="/assets/images/dummy/profile_01.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_02.jpg"
+                                                                        <img src="/assets/images/dummy/profile_02.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_03.jpg"
+                                                                        <img src="/assets/images/dummy/profile_03.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                 </ul>
@@ -95,7 +95,7 @@ function Main() {
                                                             </div>
                                                             <div className="nick_name">
                                                                 <div className="profile_img">
-                                                                    <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                                    <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                                 </div>
                                                                 <p>
                                                                     닉네임
@@ -117,7 +117,7 @@ function Main() {
                                     <div className="list_item cover">
                                         <div className="img_wrap">
                                             <div className="img">
-                                                <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                                <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                             </div>
                                             <div className="text_box">
                                                 <div className="text_wrap">
@@ -132,15 +132,15 @@ function Main() {
                                                             <div className="profile_wrap">
                                                                 <ul>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_01.jpg"
+                                                                        <img src="/assets/images/dummy/profile_01.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_02.jpg"
+                                                                        <img src="/assets/images/dummy/profile_02.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_03.jpg"
+                                                                        <img src="/assets/images/dummy/profile_03.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                 </ul>
@@ -149,7 +149,7 @@ function Main() {
                                                             </div>
                                                             <div className="nick_name">
                                                                 <div className="profile_img">
-                                                                    <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                                    <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                                 </div>
                                                                 <p>
                                                                     닉네임
@@ -171,7 +171,7 @@ function Main() {
                                     <div className="list_item daily">
                                         <div className="img_wrap">
                                             <div className="img">
-                                                <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                                <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                             </div>
                                             <div className="text_box">
                                                 <div className="text_wrap">
@@ -186,15 +186,15 @@ function Main() {
                                                             <div className="profile_wrap">
                                                                 <ul>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_01.jpg"
+                                                                        <img src="/assets/images/dummy/profile_01.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_02.jpg"
+                                                                        <img src="/assets/images/dummy/profile_02.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_03.jpg"
+                                                                        <img src="/assets/images/dummy/profile_03.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                 </ul>
@@ -203,7 +203,7 @@ function Main() {
                                                             </div>
                                                             <div className="nick_name">
                                                                 <div className="profile_img">
-                                                                    <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                                    <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                                 </div>
                                                                 <p>
                                                                     닉네임
@@ -225,7 +225,7 @@ function Main() {
                                     <div className="list_item self">
                                         <div className="img_wrap">
                                             <div className="img">
-                                                <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                                <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                             </div>
                                             <div className="text_box">
                                                 <div className="text_wrap">
@@ -240,15 +240,15 @@ function Main() {
                                                             <div className="profile_wrap">
                                                                 <ul>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_01.jpg"
+                                                                        <img src="/assets/images/dummy/profile_01.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_02.jpg"
+                                                                        <img src="/assets/images/dummy/profile_02.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                     <li>
-                                                                        <img src="/src/assets/images/dummy/profile_03.jpg"
+                                                                        <img src="/assets/images/dummy/profile_03.jpg"
                                                                             alt="프로필 이미지1" />
                                                                     </li>
                                                                 </ul>
@@ -257,7 +257,7 @@ function Main() {
                                                             </div>
                                                             <div className="nick_name">
                                                                 <div className="profile_img">
-                                                                    <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                                    <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                                 </div>
                                                                 <p>
                                                                     닉네임
@@ -283,7 +283,7 @@ function Main() {
                         <li className="list_item self">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -298,13 +298,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -312,7 +312,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -331,7 +331,7 @@ function Main() {
                         <li className="list_item cover">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -346,13 +346,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -360,7 +360,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -379,7 +379,7 @@ function Main() {
                         <li className="list_item daily">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -394,13 +394,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -408,7 +408,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -427,7 +427,7 @@ function Main() {
                         <li className="list_item self">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -442,13 +442,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -456,7 +456,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -475,7 +475,7 @@ function Main() {
                         <li className="list_item self">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -490,13 +490,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -504,7 +504,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -523,7 +523,7 @@ function Main() {
                         <li className="list_item cover">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -538,13 +538,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -552,7 +552,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -571,7 +571,7 @@ function Main() {
                         <li className="list_item daily">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -586,13 +586,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -600,7 +600,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -619,7 +619,7 @@ function Main() {
                         <li className="list_item self">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -634,13 +634,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -648,7 +648,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -667,7 +667,7 @@ function Main() {
                         <li className="list_item self">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -682,13 +682,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -696,7 +696,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -715,7 +715,7 @@ function Main() {
                         <li className="list_item cover">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -730,13 +730,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -744,7 +744,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -763,7 +763,7 @@ function Main() {
                         <li className="list_item daily">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -778,13 +778,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -792,7 +792,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -811,7 +811,7 @@ function Main() {
                         <li className="list_item self">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -826,13 +826,13 @@ function Main() {
                                                 <div className="profile_wrap">
                                                     <ul>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                         <li>
-                                                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
   
@@ -840,7 +840,7 @@ function Main() {
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -876,7 +876,7 @@ function Main() {
                             <ul className="small_box">
                                 <li className="list">
                                     <div className="img_box">
-                                        <img src="/src/assets/images/dummy/review_img_01.jpg" alt="" />
+                                        <img src="/assets/images/dummy/review_img_01.jpg" alt="" />
                                     </div>
                                     <p className="name">
                                         Product name
@@ -886,7 +886,7 @@ function Main() {
                                             50%
                                         </div>
                                         <div className="text_area">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/src/assets.
+                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/assets.
                                         </div>
                                         <button className="like_toggle_btn white">
                                             <span>9,999</span>
@@ -894,13 +894,13 @@ function Main() {
                                         <div className="profile_wrap">
                                             <ul>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                 </li>
                                             </ul>
                                             <span>99+</span>
@@ -912,7 +912,7 @@ function Main() {
                                 </li>
                                 <li className="list">
                                     <div className="img_box">
-                                        <img src="/src/assets/images/dummy/review_img_01.jpg" alt="" />
+                                        <img src="/assets/images/dummy/review_img_01.jpg" alt="" />
                                     </div>
                                     <p className="name">
                                         Product name
@@ -922,7 +922,7 @@ function Main() {
                                             50%
                                         </div>
                                         <div className="text_area">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/src/assets.
+                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/assets.
                                         </div>
                                         <button className="like_toggle_btn white">
                                             <span>9,999</span>
@@ -930,13 +930,13 @@ function Main() {
                                         <div className="profile_wrap">
                                             <ul>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                 </li>
                                             </ul>
                                             <span>99+</span>
@@ -948,7 +948,7 @@ function Main() {
                                 </li>
                                 <li className="list">
                                     <div className="img_box">
-                                        <img src="/src/assets/images/dummy/review_img_01.jpg" alt="" />
+                                        <img src="/assets/images/dummy/review_img_01.jpg" alt="" />
                                     </div>
                                     <p className="name">
                                         Product name
@@ -958,7 +958,7 @@ function Main() {
                                             50%
                                         </div>
                                         <div className="text_area">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/src/assets.
+                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/assets.
                                         </div>
                                         <button className="like_toggle_btn white">
                                             <span>9,999</span>
@@ -966,13 +966,13 @@ function Main() {
                                         <div className="profile_wrap">
                                             <ul>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                 </li>
                                             </ul>
                                             <span>99+</span>
@@ -984,7 +984,7 @@ function Main() {
                                 </li>
                                 <li className="list">
                                     <div className="img_box">
-                                        <img src="/src/assets/images/dummy/review_img_01.jpg" alt="" />
+                                        <img src="/assets/images/dummy/review_img_01.jpg" alt="" />
                                     </div>
                                     <p className="name">
                                         Product name
@@ -994,7 +994,7 @@ function Main() {
                                             50%
                                         </div>
                                         <div className="text_area">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/src/assets.
+                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/assets.
                                         </div>
                                         <button className="like_toggle_btn white">
                                             <span>9,999</span>
@@ -1002,13 +1002,13 @@ function Main() {
                                         <div className="profile_wrap">
                                             <ul>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                 </li>
                                             </ul>
                                             <span>99+</span>
@@ -1020,7 +1020,7 @@ function Main() {
                                 </li>
                                 <li className="list">
                                     <div className="img_box">
-                                        <img src="/src/assets/images/dummy/review_img_01.jpg" alt="" />
+                                        <img src="/assets/images/dummy/review_img_01.jpg" alt="" />
                                     </div>
                                     <p className="name">
                                         Product name
@@ -1030,7 +1030,7 @@ function Main() {
                                             50%
                                         </div>
                                         <div className="text_area">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/src/assets.
+                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/assets.
                                         </div>
                                         <button className="like_toggle_btn white">
                                             <span>9,999</span>
@@ -1038,13 +1038,13 @@ function Main() {
                                         <div className="profile_wrap">
                                             <ul>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                 </li>
                                             </ul>
                                             <span>99+</span>
@@ -1056,7 +1056,7 @@ function Main() {
                                 </li>
                                 <li className="list">
                                     <div className="img_box">
-                                        <img src="/src/assets/images/dummy/review_img_01.jpg" alt="" />
+                                        <img src="/assets/images/dummy/review_img_01.jpg" alt="" />
                                     </div>
                                     <p className="name">
                                         Product name
@@ -1066,7 +1066,7 @@ function Main() {
                                             50%
                                         </div>
                                         <div className="text_area">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/src/assets.
+                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요/assets.
                                         </div>
                                         <button className="like_toggle_btn white">
                                             <span>9,999</span>
@@ -1074,13 +1074,13 @@ function Main() {
                                         <div className="profile_wrap">
                                             <ul>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                                 </li>
                                                 <li>
-                                                    <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                    <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                 </li>
                                             </ul>
                                             <span>99+</span>
@@ -1093,7 +1093,7 @@ function Main() {
                             </ul>
                             <div className="big_box">
                                 <div className="img_box">
-                                    <img src="/src/assets/images/dummy/review_img_02.jpg" alt="" />
+                                    <img src="/assets/images/dummy/review_img_02.jpg" alt="" />
                                 </div>
                                 <div className="text_box">
                                     <button className="like_toggle_btn white">
@@ -1102,13 +1102,13 @@ function Main() {
                                     <div className="profile_wrap">
                                         <ul>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                             </li>
                                         </ul>
   
@@ -1152,35 +1152,13 @@ function Main() {
                                     <li className="list profile_wrap">
                                         <ul>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                        </ul>
-  
-                                        <span>999+</span>
-                                    </li>
-                                </ul>
-                                <ul className="depth">
-                                    <li className="list">
-                                        <span>
-                                            이 창치 이름 아시는분 있을까요? 이 장치이름 아시는
-                                        </span>
-                                    </li>
-                                    <li className="list profile_wrap">
-                                        <ul>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                             </li>
                                         </ul>
   
@@ -1196,35 +1174,13 @@ function Main() {
                                     <li className="list profile_wrap">
                                         <ul>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                        </ul>
-  
-                                        <span>999+</span>
-                                    </li>
-                                </ul>
-                                <ul className="depth">
-                                    <li className="list">
-                                        <span>
-                                            이 창치 이름 아시는분 있을까요? 이 장치이름 아시는
-                                        </span>
-                                    </li>
-                                    <li className="list profile_wrap">
-                                        <ul>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                             </li>
                                         </ul>
   
@@ -1240,13 +1196,57 @@ function Main() {
                                     <li className="list profile_wrap">
                                         <ul>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                        </ul>
+  
+                                        <span>999+</span>
+                                    </li>
+                                </ul>
+                                <ul className="depth">
+                                    <li className="list">
+                                        <span>
+                                            이 창치 이름 아시는분 있을까요? 이 장치이름 아시는
+                                        </span>
+                                    </li>
+                                    <li className="list profile_wrap">
+                                        <ul>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                        </ul>
+  
+                                        <span>999+</span>
+                                    </li>
+                                </ul>
+                                <ul className="depth">
+                                    <li className="list">
+                                        <span>
+                                            이 창치 이름 아시는분 있을까요? 이 장치이름 아시는
+                                        </span>
+                                    </li>
+                                    <li className="list profile_wrap">
+                                        <ul>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                             </li>
                                         </ul>
   
@@ -1264,35 +1264,13 @@ function Main() {
                                     <li className="list profile_wrap">
                                         <ul>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                        </ul>
-  
-                                        <span>999+</span>
-                                    </li>
-                                </ul>
-                                <ul className="depth">
-                                    <li className="list">
-                                        <span>
-                                            답변
-                                        </span>
-                                    </li>
-                                    <li className="list profile_wrap">
-                                        <ul>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                             </li>
                                         </ul>
   
@@ -1308,35 +1286,13 @@ function Main() {
                                     <li className="list profile_wrap">
                                         <ul>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                        </ul>
-  
-                                        <span>999+</span>
-                                    </li>
-                                </ul>
-                                <ul className="depth">
-                                    <li className="list">
-                                        <span>
-                                            답변
-                                        </span>
-                                    </li>
-                                    <li className="list profile_wrap">
-                                        <ul>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
-                                            </li>
-                                            <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                             </li>
                                         </ul>
   
@@ -1352,13 +1308,57 @@ function Main() {
                                     <li className="list profile_wrap">
                                         <ul>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                                             </li>
                                             <li>
-                                                <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                        </ul>
+  
+                                        <span>999+</span>
+                                    </li>
+                                </ul>
+                                <ul className="depth">
+                                    <li className="list">
+                                        <span>
+                                            답변
+                                        </span>
+                                    </li>
+                                    <li className="list profile_wrap">
+                                        <ul>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                        </ul>
+  
+                                        <span>999+</span>
+                                    </li>
+                                </ul>
+                                <ul className="depth">
+                                    <li className="list">
+                                        <span>
+                                            답변
+                                        </span>
+                                    </li>
+                                    <li className="list profile_wrap">
+                                        <ul>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                            </li>
+                                            <li>
+                                                <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                             </li>
                                         </ul>
   
@@ -1387,7 +1387,7 @@ function Main() {
                                 <ul className="review_list">
                                     <li className="list">
                                         <div className="img_box">
-                                            <img src="/src/assets/images/dummy/review_img_01.jpg" alt=""/>
+                                            <img src="/assets/images/dummy/review_img_01.jpg" alt=""/>
                                         </div>
                                         <div className="text_box">
                                             <div className="name_box">
@@ -1411,7 +1411,7 @@ function Main() {
                                     </li>
                                     <li className="list">
                                         <div className="img_box">
-                                            <img src="/src/assets/images/dummy/review_img_01.jpg" alt=""/>
+                                            <img src="/assets/images/dummy/review_img_01.jpg" alt=""/>
                                         </div>
                                         <div className="text_box">
                                             <div className="name_box">
@@ -1433,7 +1433,7 @@ function Main() {
                                     </li>
                                     <li className="list">
                                         <div className="img_box">
-                                            <img src="/src/assets/images/dummy/review_img_01.jpg" alt=""/>
+                                            <img src="/assets/images/dummy/review_img_01.jpg" alt=""/>
                                         </div>
                                         <div className="text_box">
                                             <div className="name_box">
@@ -1459,7 +1459,7 @@ function Main() {
                                 <ul className="review_list">
                                     <li className="list">
                                         <div className="img_box">
-                                            <img src="/src/assets/images/dummy/review_img_01.jpg" alt=""/>
+                                            <img src="/assets/images/dummy/review_img_01.jpg" alt=""/>
                                         </div>
                                         <div className="text_box">
                                             <div className="name_box">
@@ -1483,7 +1483,7 @@ function Main() {
                                     </li>
                                     <li className="list">
                                         <div className="img_box">
-                                            <img src="/src/assets/images/dummy/review_img_01.jpg" alt=""/>
+                                            <img src="/assets/images/dummy/review_img_01.jpg" alt=""/>
                                         </div>
                                         <div className="text_box">
                                             <div className="name_box">
@@ -1505,7 +1505,7 @@ function Main() {
                                     </li>
                                     <li className="list">
                                         <div className="img_box">
-                                            <img src="/src/assets/images/dummy/review_img_01.jpg" alt=""/>
+                                            <img src="/assets/images/dummy/review_img_01.jpg" alt=""/>
                                         </div>
                                         <div className="text_box">
                                             <div className="name_box">
@@ -1538,7 +1538,7 @@ function Main() {
                         <div className="swiper-wrapper">
                             <div className="swiper-slide">
                                 <div className="img_box">
-                                    <img src="/src/assets/images/main/big_slide_img.png" alt=""/>
+                                    <img src="/assets/images/main/big_slide_img.png" alt=""/>
                                 </div>
                                 <div className="text_box">
                                     <h3>
@@ -1555,7 +1555,7 @@ function Main() {
                             </div>
                             <div className="swiper-slide">
                                 <div className="img_box">
-                                    <img src="/src/assets/images/main/big_slide_img.png" alt=""/>
+                                    <img src="/assets/images/main/big_slide_img.png" alt=""/>
                                 </div>
                                 <div className="text_box">
                                     <h3>
@@ -1572,7 +1572,7 @@ function Main() {
                             </div>
                             <div className="swiper-slide">
                                 <div className="img_box">
-                                    <img src="/src/assets/images/main/big_slide_img.png" alt="" />
+                                    <img src="/assets/images/main/big_slide_img.png" alt="" />
                                 </div>
                                 <div className="text_box">
                                     <h3>
@@ -1599,17 +1599,17 @@ function Main() {
                         <div className="swiper-wrapper">
                             <div className="swiper-slide">
                                 <div className="img_box">
-                                    <img src="/src/assets/images/main/slide_img_1.png" alt="slide 1" />
+                                    <img src="/assets/images/main/slide_img_1.png" alt="slide 1" />
                                 </div>
                             </div>
                             <div className="swiper-slide">
                                 <div className="img_box">
-                                    <img src="/src/assets/images/main/slide_img_2.png" alt="slide 1" />
+                                    <img src="/assets/images/main/slide_img_2.png" alt="slide 1" />
                                 </div>
                             </div>
                             <div className="swiper-slide">
                                 <div className="img_box">
-                                    <img src="/src/assets/images/main/slide_img_3.png" alt="slide 1" />
+                                    <img src="/assets/images/main/slide_img_3.png" alt="slide 1" />
                                 </div>
                             </div>
                         </div>
@@ -1682,10 +1682,10 @@ function Main() {
                         <div className="swiper-container">
                             <div className="swiper-wrapper">
                                 <div className="swiper-slide">
-                                    <img src="/src/assets/images/main/survey_img_1.png" alt="" />
+                                    <img src="/assets/images/main/survey_img_1.png" alt="" />
                                 </div>
                                 <div className="swiper-slide">
-                                    <img src="/src/assets/images/main/survey_img_1.png" alt="" />
+                                    <img src="/assets/images/main/survey_img_1.png" alt="" />
                                 </div>
                             </div>
                         </div>
