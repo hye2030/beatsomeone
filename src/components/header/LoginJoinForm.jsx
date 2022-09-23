@@ -9,6 +9,8 @@ import NaverLogin from "../social/naver_login";
 import GoogleLogin from "../social/google_login";
 import KakaoLogin from "../social/kakao_login";
 import FbLogin from "../social/fb_login";
+import TwitLogin from "../social/twitter_login";
+import AppleLogin from "../social/apple_login";
 import { isModal } from "../../components/header/recoil";
 
 const LoginJoin = () => {
@@ -168,13 +170,9 @@ const LoginJoin = () => {
                         : null}
                         <div className="btn_area">
                             <FbLogin />
-                            <button type="button" className="signIn_btn twitter">
-                                Continue with twitter
-                            </button>
+                            <TwitLogin />
                             <GoogleLogin />
-                            <button type="button" className="signIn_btn apple">
-                                Continue with Apple
-                            </button>
+                            <AppleLogin />
                             <NaverLogin/>
                             <KakaoLogin />
                             {/* <a href={KAKAO_AUTH_URL} style={{marginBottom:"calc(100vw * (10 / 1300))"}}><button type="button" className="signIn_btn kakaotalk">

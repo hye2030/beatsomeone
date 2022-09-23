@@ -52,6 +52,11 @@ function Main() {
         if(nickname == ""){
             return false;
         }else{
+            if(nickname.length < 2){
+                document.getElementById("nickname_confirm_err").textContent="닉네임은 최소 2글자 이상 입력해주세요.";
+                document.getElementById("nickname_confirm_complete").textContent="";
+                return false;
+            }
             axios.get("https://beats-admin.codeidea.io/api/v1/member/nickNameCheck", {
                 params: {
                     nickName: nickname
@@ -60,8 +65,12 @@ function Main() {
             .then(function (response) {
                 if(response.data.code == 1){
                     setNicknameNext(true);
+                    document.getElementById("nickname_confirm_err").textContent="";
+                    document.getElementById("nickname_confirm_complete").textContent="사용 가능한 닉네임입니다.";
                 }else{
                     setNicknameNext(false);
+                    document.getElementById("nickname_confirm_err").textContent="이미 사용중인 닉네임입니다.";
+                    document.getElementById("nickname_confirm_complete").textContent="";
                 }
             });
         }
@@ -311,14 +320,9 @@ function Main() {
                                     <button type="button" className="basic_btn_red_border nicknameChk_btn" onClick={()=>{nicknameConfirm()}}>
                                         확인
                                     </button>
-                                    <p className="error_txt">
-                                        이미 사용중인 닉네임입니다.
+                                    <p className="error_txt" id="nickname_confirm_err">
                                     </p>
-                                    <p className="error_txt">
-                                        닉네임은 최소 2글자 이상 입력해주세요.
-                                    </p>
-                                    <p className="complete_txt">
-                                        사용 가능한 닉네임입니다.
+                                    <p className="complete_txt" id="nickname_confirm_complete">
                                     </p>
                                 </div>
                                 {/* <!-- 휴대폰번호 --> */}
@@ -327,9 +331,9 @@ function Main() {
                                         <div className="select_box_wrap">
                                             <button type="button" onClick={() => { return false; }} className="select_title">+82</button>
                                             <ul>
-                                                <li className="select_list">옵션1</li>
-                                                <li className="select_list">옵션1</li>
-                                                <li className="select_list">옵션1</li>
+                                                <li className="select_list">+82</li>
+                                                {/* <li className="select_list">옵션1</li>
+                                                <li className="select_list">옵션1</li> */}
                                             </ul>
                                         </div>
                                         <div className="input_wrap phone_num">
