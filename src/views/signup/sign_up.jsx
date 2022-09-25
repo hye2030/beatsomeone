@@ -23,6 +23,9 @@ function Main() {
     const [phone, setPhone] = useState('');
     const [UserNation, setUserNation] = useState('');
     const [pwd_next, setPwd_next] = useState(false);
+    const [certified, setCertified] = useState('');
+    const [random, setRandom] = useState("000000")
+    const [certifiedNext, setCertifiedNext] = useState(false);
     var marketingYN = "N";
 
     const pwRegEx = /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{6,16}$/;
@@ -84,8 +87,57 @@ function Main() {
         });
     }, []);
 
-    const emailAlert = () => {
-        
+    /**인증번호 받기 */
+    const phonehandlePress = (e) => {
+        const phoneregex = /^[0-9\b ]{0,13}$/;
+        if (phoneregex.test(e.target.value)) {
+          setPhone(e.target.value);
+        }
+    }
+
+    const sendSMS = () => {
+        if(phone == ""){
+            alert("휴대폰 번호를 입력해주세요.");
+            return false;
+        }
+
+        setRandom(String(Math.floor(Math.random()*1000000)).padStart(6, "0"));
+        axios.get("https://beats-admin.codeidea.io/api/v1/sms/send_one_message", {
+                params: {
+                    to: phone,
+                    smsNumber: random
+                }
+            })
+            .then(function (response) {
+                if(response.data.resultCode == "SUCCESS"){
+                    document.getElementById('phone_confirm_err').classList.add('complete_txt');
+                    document.getElementById('phone_confirm_err').classList.remove('error_txt');
+                    document.getElementById("phone_confirm_err").textContent="인증번호가 발송되었습니다.";
+                }else{
+                    document.getElementById('phone_confirm_err').classList.add('error_txt');
+                    document.getElementById('phone_confirm_err').classList.remove('complete_txt');
+                    document.getElementById("phone_confirm_err").textContent="인증번호가 미발송되었습니다. 다시 확인해주세요.";
+                }
+            });
+    }
+
+    const certifiedButton = () => {
+        if(random == "000000"){
+            alert("인증번호 받기를 눌러주세요");
+            return false;
+        }
+
+        if(random === certified){
+            document.getElementById('phone_confirm_err').classList.add('complete_txt');
+            document.getElementById('phone_confirm_err').classList.remove('error_txt');
+            document.getElementById("phone_confirm_err").textContent="인증이 완료되었습니다.";
+            setCertifiedNext(true);
+        }else{
+            document.getElementById('phone_confirm_err').classList.add('error_txt');
+            document.getElementById('phone_confirm_err').classList.remove('complete_txt');
+            document.getElementById("phone_confirm_err").textContent="인증번호가 일치하지 않습니다. 다시 시도해주세요.";
+            setCertifiedNext(false);
+        }
     }
 
     /**약관동의 */
@@ -156,6 +208,10 @@ function Main() {
         }
         if(UserNation == ""){
             alert("국가를 선택해주세요.");
+            return false;
+        }
+        if(certifiedNext == false){
+            alert("인증번호를 확인해주세요.");
             return false;
         }
 
@@ -337,7 +393,7 @@ function Main() {
                                             </ul>
                                         </div>
                                         <div className="input_wrap phone_num">
-                                            <input type="text" id="phone_num" placeholder="(필수) 휴대폰 번호 입력" onChange={(e)=>{setPhone(e.target.value);}} />
+                                            <input type="text" id="phone_num" placeholder="(필수) 휴대폰 번호 입력" onChange={phonehandlePress} value={phone} />
                                         </div>
                                     </div>
                                     <p className="error_txt">
@@ -356,19 +412,15 @@ function Main() {
                                             거주국가 기준으로 선택 권장
                                         </div>
                                     </div>
-                                    <button type="button" className="basic_btn_red_border getNum_btn">
+                                    <button type="button" className="basic_btn_red_border getNum_btn" onClick={() => {sendSMS();}}>
                                         인증번호 받기
                                     </button>
                                     <div className="input_wrap">
-                                        <input type="text" placeholder="인증번호 입력" />
+                                        <input type="text" placeholder="인증번호 입력" onChange={(e)=>{setCertified(e.target.value);}} />
                                     </div>
-                                    <p className="error_txt">
-                                        인증번호가 일치하지 않습니다. 다시 시도해주세요.
+                                    <p className="" id="phone_confirm_err">
                                     </p>
-                                    <p className="complete_txt">
-                                        인증이 완료되었습니다.
-                                    </p>
-                                    <button type="button" className="basic_btn_black chkNum_btn">
+                                    <button type="button" className="basic_btn_black chkNum_btn" onClick={() => {certifiedButton();}}>
                                         인증하기
                                     </button>
                                 </div>
