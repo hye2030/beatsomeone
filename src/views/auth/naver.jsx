@@ -60,7 +60,7 @@ function Main() {
                                           $('.route_modal.signIn').fadeOut(200);
                                           $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
                                           window.close();
-                                          window.opener.parent.location.href='/signinup/sign_up';
+                                          window.opener.parent.location.href='/signinup/sign_up?name='+nm;
                                     }else if(response.data.response == 1){
                                           $('.route_modal.signIn').fadeOut(200);
                                           $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
@@ -78,6 +78,7 @@ function Main() {
                                                 if(responseLogin.data.code == "0"){
                                                       localStorage.setItem("emailId", responseLogin.data.response.email);
                                                       localStorage.setItem("is_login", responseLogin.data._token);
+                                                      localStorage.setItem("last_login", "naver");
 
                                                       dispatch(loginUser({
                                                             "response": {

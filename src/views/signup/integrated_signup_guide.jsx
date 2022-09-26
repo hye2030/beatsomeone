@@ -1,6 +1,18 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from "react";
+
 import "@/assets/css/components/signinup.css";
 
 function Main() {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    let sign_id = "";
+    if(location.state != null){
+        sign_id = location.state.sign_id;
+    }
+    console.log(sign_id);
+    
     return (
         <>
         <div id="wrap_content" className="signUp_page integrated">

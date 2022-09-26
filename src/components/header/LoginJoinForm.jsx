@@ -6,7 +6,7 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
 import {loginUser} from '@/stores/userSlice';
 import NaverLogin from "../social/naver_login";
-import GoogleLogin from "../social/google_login";
+import GoogleLogins from "../social/google_login";
 import KakaoLogin from "../social/kakao_login";
 import FbLogin from "../social/fb_login";
 import TwitLogin from "../social/twitter_login";
@@ -52,6 +52,9 @@ const LoginJoin = () => {
                     document.getElementById('login_email_validate').classList.add('error');
                     document.getElementById("login_warning").textContent="입력하신 아이디 정보를 찾을 수 없습니다.";
                     return false;
+                }else if(response.data.response == 1){
+                    $('.route_modal.signIn').fadeOut(200);
+                    navigate("/signinup/integrated_signup_guide", {state : {sign_id : useremail} });
                 }
             });
         }
@@ -75,6 +78,7 @@ const LoginJoin = () => {
                 localStorage.setItem("snsKey", "");
                 localStorage.setItem("emailId", response.data.response.email);
                 localStorage.setItem("is_login", response.data._token);
+                localStorage.setItem("last_login", "email");
 
                 $('.signIn_modal').fadeOut(200);
                 $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
@@ -138,6 +142,17 @@ const LoginJoin = () => {
         }
     }
 
+    let last_login = "N"
+    if (localStorage.getItem("last_login") === null) {
+        last_login = "N";
+    }else{
+        if(localStorage.getItem("last_login") == "email"){
+            last_login = "N";
+        }else{
+            last_login = localStorage.getItem("last_login");
+        }
+    }
+
     return (
         <>
         <div className="modal_wrap big_modal route_modal signIn">
@@ -164,17 +179,37 @@ const LoginJoin = () => {
                     <div className="btn_wrap">
                         {currentType == "login" ?
                         <>
-                        <button type="button" className="signIn_btn newly google">Continue with Google</button>
-                        <div className="dividing_line"></div> 
+                        {
+                            { 
+                            N : "",
+                            twitter: <><TwitLogin value="new"/><div className="dividing_line"></div></>,
+                            google: <><GoogleLogins value="new"/><div className="dividing_line"></div></>,
+                            apple: <><AppleLogin value="new"/><div className="dividing_line"></div></>,
+                            naver: <><NaverLogin value="new"/><div className="dividing_line"></div></>,
+                            kakao : <><KakaoLogin value="new"/><div className="dividing_line"></div></>,
+                            }[last_login]
+                        }
+                        {/* <button type="button" className="signIn_btn newly google">Continue with Google</button>
+                        <div className="dividing_line"></div>  */}
                         </>  
                         : null}
                         <div className="btn_area">
                             <FbLogin />
+                            {currentType == "login" && last_login == "twitter" ? "" : 
                             <TwitLogin />
-                            <GoogleLogin />
+                            }
+                            {currentType == "login" && last_login == "google" ? "" : 
+                            <GoogleLogins />
+                            }
+                            {currentType == "login" && last_login == "apple" ? "" : 
                             <AppleLogin />
+                            }
+                            {currentType == "login" && last_login == "naver" ? "" : 
                             <NaverLogin/>
+                            }
+                            {currentType == "login" && last_login == "kakao" ? "" : 
                             <KakaoLogin />
+                            }
                             {/* <a href={KAKAO_AUTH_URL} style={{marginBottom:"calc(100vw * (10 / 1300))"}}><button type="button" className="signIn_btn kakaotalk">
                                 Continue with kakaotalk
                             </button></a> */}
@@ -189,7 +224,7 @@ const LoginJoin = () => {
                                 <>
                                 <legend hidden>이메일 로그인</legend>
                                 <div className="input_wrap" id="login_email_validate">
-                                    <input type="text" className="emInput" placeholder="Email address" onChange={(e)=>{setUseremail(e.target.value); emailCheck(e.target.value)}} />
+                                    <input type="text" className="emInput" placeholder="Email address" id="login_email" onChange={(e)=>{setUseremail(e.target.value); emailCheck(e.target.value)}} />
                                 </div>
                                 <p className="error_txt" id="login_warning"></p>
                                 <p className="ex_txt">ex. beatsomeone@beatsomone.com</p>

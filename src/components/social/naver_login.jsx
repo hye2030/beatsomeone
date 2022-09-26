@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-const NaverLogin = () => {
+const NaverLogin = (e) => {
     
     const naverRef = useRef()
     const { naver } = window
@@ -42,7 +42,8 @@ const NaverLogin = () => {
     return (
         <>
             <div ref={naverRef} id="naverIdLogin" style={{display:"none"}}></div>
-            <button type="button" className="signIn_btn naver" onClick={handleNaverLogin} >
+            {/* <button type="button" className="signIn_btn naver" onClick={handleNaverLogin} > */}
+			<button type="button" className={e.value == "new"? "signIn_btn naver newly" : "signIn_btn naver"} onClick={handleNaverLogin} >
                 Continue with Naver
             </button>
         </>

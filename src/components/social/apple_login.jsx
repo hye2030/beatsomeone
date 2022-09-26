@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {loginUser} from '@/stores/userSlice';
 
-const AppleLogin = () => {
+const AppleLogin = (e) => {
     const appleRef = useRef();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -56,6 +56,7 @@ const AppleLogin = () => {
                         if(responseLogin.data.code == "0"){
                             localStorage.setItem("emailId", responseLogin.data.response.email);
                             localStorage.setItem("is_login", responseLogin.data._token);
+                            localStorage.setItem("last_login", "apple");
 
                             dispatch(loginUser({
                                 "response": {
@@ -88,7 +89,8 @@ const AppleLogin = () => {
     return (
         <>
             <div ref={appleRef} id="appleid-signin" data-color="black" data-border="true" data-type="sign in" style={{display:"none"}}></div>
-            <button type="button" className="signIn_btn apple" onClick={handleAppleLogin}>
+            {/* <button type="button" className="signIn_btn apple" onClick={handleAppleLogin}> */}
+            <button type="button" className={e.value == "new"? "signIn_btn apple newly" : "signIn_btn apple"} onClick={handleAppleLogin}>
                 Continue with Apple
             </button>
         </>

@@ -1,21 +1,25 @@
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { isModal } from "../../components/header/recoil";
+import { useEffect } from 'react'
 
 function LoginN({value}) {
-    $('.sign_in').click(() => {
-        $('.route_modal.signIn').fadeIn(200);
-        $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function (e) {
-            e.stopPropagation();
+    useEffect(() => {
+		$('.sign_in').click(() => {
+            $('.route_modal.signIn').fadeIn(200);
+            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function (e) {
+                e.stopPropagation();
+            });
+            $("#login_email").val("");
         });
-    });
-    $('.sign_up').click(() => {
-        $("#sign_email").val("");
-        $('.route_modal.signIn').fadeOut(200);
-        $('.route_modal.signUp').fadeIn(200);
-        $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function (e) {
-            e.stopPropagation();
+        $('.sign_up').click(() => {
+            $("#sign_email").val("");
+            $('.route_modal.signIn').fadeOut(200);
+            $('.route_modal.signUp').fadeIn(200);
+            $('body').addClass('scrollOff').on('scroll touchmove mousewheel', function (e) {
+                e.stopPropagation();
+            });
         });
-    });
+	}, [])
 
     const ModalHandler = useSetRecoilState(isModal);
     

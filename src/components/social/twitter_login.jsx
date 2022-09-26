@@ -8,7 +8,7 @@ import {loginUser} from '@/stores/userSlice';
 import {authentication} from '../../stores/firebase-config'
 import { signInWithPopup, TwitterAuthProvider } from "firebase/auth";
 
-const TwitLogin = () => {
+const TwitLogin = (e) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
@@ -77,6 +77,7 @@ const TwitLogin = () => {
                             if(responseLogin.data.code == "0"){
                                 localStorage.setItem("emailId", responseLogin.data.response.email);
                                 localStorage.setItem("is_login", responseLogin.data._token);
+                                localStorage.setItem("last_login", "twitter");
 
                                 dispatch(loginUser({
                                     "response": {
@@ -113,7 +114,8 @@ const TwitLogin = () => {
                 Continue with twitter
             </button>
         </TwitterButton> */}
-        <button type="button" className="signIn_btn twitter" onClick={() => {login()}}>
+        {/* <button type="button" className="signIn_btn twitter" onClick={() => {login()}}> */}
+        <button type="button" className={e.value == "new"? "signIn_btn twitter newly" : "signIn_btn twitter"} onClick={() => {login()}}>
             Continue with twitter
         </button>
         </>

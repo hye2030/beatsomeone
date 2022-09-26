@@ -5,7 +5,7 @@ import {loginUser} from '@/stores/userSlice';
 
 const {Kakao} = window;
 
-const KakaoLogin = () => {
+const KakaoLogin = (e) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -52,6 +52,7 @@ const KakaoLogin = () => {
                                     if(response.data.code == "0"){
                                         localStorage.setItem("emailId", response.data.response.email);
                                         localStorage.setItem("is_login", response.data._token);
+                                        localStorage.setItem("last_login", "kakao");
 
                                         dispatch(loginUser({
                                             "response": {
@@ -81,7 +82,8 @@ const KakaoLogin = () => {
 
     return (
         <>
-            <button type="button" className="signIn_btn kakaotalk" onClick={kakaoLoginClickHandler}>
+            {/* <button type="button" className="signIn_btn kakaotalk" onClick={kakaoLoginClickHandler}> */}
+            <button type="button" className={e.value == "new"? "signIn_btn kakaotalk newly" : "signIn_btn kakaotalk"} onClick={kakaoLoginClickHandler}>
                 Continue with kakaotalk
             </button>
         </>

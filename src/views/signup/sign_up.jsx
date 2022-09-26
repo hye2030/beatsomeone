@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import "@/assets/css/components/signinup.css";
-import Terms from "../../components/body/terms";
+import Terms from "../../components/body/terms"
+import { isModal } from "../../components/header/recoil";;
 
 function Main() {
     const [IdValue,setIdValue] = useState(null);
@@ -31,13 +33,13 @@ function Main() {
     const pwRegEx = /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{6,16}$/;
     const pwCheck = (pwd) => {
         if(pwd.match(pwRegEx)===null) {
-            console.log('비밀번호 형식을 확인해주세요');
+            // console.log('비밀번호 형식을 확인해주세요');
             document.getElementById("pwd_err").textContent="6~16글자 사이의 비밀번호를 입력해주세요.";
             document.getElementById("pwd_complete").textContent="";
             setPwd_next(false);
             return;
         }else{ 
-            console.log('비밀번호 형식이 맞아요');
+            // console.log('비밀번호 형식이 맞아요');
             document.getElementById("pwd_complete").textContent="사용 가능한 비밀번호입니다.";
             document.getElementById("pwd_err").textContent="";
             setPwd_next(true);
@@ -101,11 +103,12 @@ function Main() {
             return false;
         }
 
-        setRandom(String(Math.floor(Math.random()*1000000)).padStart(6, "0"));
+        const rand = String(Math.floor(Math.random()*1000000)).padStart(6, "0");
+        setRandom(rand);
         axios.get("https://beats-admin.codeidea.io/api/v1/sms/send_one_message", {
                 params: {
                     to: phone,
-                    smsNumber: random
+                    smsNumber: rand
                 }
             })
             .then(function (response) {
@@ -177,18 +180,21 @@ function Main() {
     checkItems.sort();
 
     /**회원가입 버튼 */
+    const ModalHandler = useSetRecoilState(isModal);
     const confirm_btn= () => {
-        if(pwd == ""){
-            alert("비밀번호를 입력해주세요.");
-            return false;
-        }
-        if(pwd_next == false){
-            alert("비밀번호를 확인해주세요.");
-            return false;
-        }
-        if(pwd != checkpwd){
-            alert("비밀번호가 일치하지 않습니다");
-            return false;
+        if(localStorage.getItem("sns") == "email"){
+            if(pwd == ""){
+                alert("비밀번호를 입력해주세요.");
+                return false;
+            }
+            if(pwd_next == false){
+                alert("비밀번호를 확인해주세요.");
+                return false;
+            }
+            if(pwd != checkpwd){
+                alert("비밀번호가 일치하지 않습니다");
+                return false;
+            }
         }
         if(name == ""){
             alert("이름을 입력해주세요.");
@@ -241,7 +247,7 @@ function Main() {
         // $('.signupC_modal').fadeIn(200);
         // console.log("sns: "+ localStorage.getItem("sns"));
         // console.log("snsKey: "+ localStorage.getItem("snsKey"));
-
+        
         axios.put("https://beats-admin.codeidea.io/api/v1/member/join", {
             existing_yn: "N",
             sns: localStorage.getItem("sns"),
@@ -257,11 +263,13 @@ function Main() {
             marketingConsent: marketingYN
         })
         .then(function (response) {
+            ModalHandler("join");
             $('.signupC_modal').fadeIn(200);
         });
     }
 
     $('.signupC_modal .confirm_btn').click(() => {
+        ModalHandler("login");
         $('.signupC_modal').fadeOut(200);
         $('.route_modal.signIn').fadeIn(200);
     });
@@ -309,6 +317,14 @@ function Main() {
         $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
     }
 
+    useEffect(() => {
+        if(localStorage.getItem("sns") == "naver"){
+            const params = new URLSearchParams(location.search);
+            let name_param = (params.get("name"));
+            setName(name_param);
+        }
+    }, []);
+
     return (
         <>
         <div id="wrap_content" className="signUp_page">
@@ -342,6 +358,7 @@ function Main() {
                                     </div>
                                 </div>
                                 {/* <!-- 비밀번호 --> */}
+                                {localStorage.getItem("sns") == "email" ? 
                                 <div className="input_box password">
                                     <div className="input_wrap">
                                         <input type="password" id="pw_input" placeholder="비밀번호를 입력해 주세요" onChange={(e)=>{setPwd(e.target.value); pwCheck(e.target.value); document.getElementById('pw_input').parentNode.lastChild.style.display = 'none';}} onFocus={(e)=>{document.getElementById('pw_input').parentNode.lastChild.style.display = 'block'}} />
@@ -359,10 +376,11 @@ function Main() {
                                     <p className="error_txt" id="pwd_confirm_err">
                                     </p>
                                 </div>
+                                : ""}
                                 {/* <!-- 이름 및 별명 --> */}
                                 <div className="input_box name">
                                     <div className="input_wrap">
-                                        <input type="text" id="name" placeholder="(필수)이름 입력" onChange={(e)=>{setName(e.target.value); document.getElementById('name').parentNode.lastChild.style.display = 'none';}} onFocus={(e)=>{document.getElementById('name').parentNode.lastChild.style.display = 'block'}}/>
+                                        <input type="text" id="name" placeholder="(필수)이름 입력" value={name} onChange={(e)=>{setName(e.target.value); document.getElementById('name').parentNode.lastChild.style.display = 'none';}} onFocus={(e)=>{document.getElementById('name').parentNode.lastChild.style.display = 'block'}}/>
                                         <div className="alert_box" style={{display:'none'}}>
                                             본명 기재 권장 / 한글 기준 2자 이상
                                         </div>
