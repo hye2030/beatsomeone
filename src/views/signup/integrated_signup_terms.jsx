@@ -1,6 +1,133 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from "react";
+import axios from 'axios';
+
 import "@/assets/css/components/signinup.css";
+import Terms from "../../components/body/terms";
 
 function Main() {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    let sign_id = "";
+    if(location.state != null){
+        sign_id = location.state.sign_id;
+    }
+
+    /**약관동의 */
+    const data = [
+        {id: "default2", title: '선택 1'},
+        {id: "default3", title: '선택 2'},
+        {id: "default4", title: '선택 3'},
+        {id: "default5", title: '선택 4'},
+        {id: "default6", title: '선택 5'},
+        {id: "default7", title: '선택 6'}
+      ];
+    
+    const [checkItems, setCheckItems] = useState([]);
+
+    useEffect(() => {
+        const check_init = ["default2", "default3", "default4", "default5", "default6", "default7"];
+        setCheckItems(check_init);
+    }, []);
+
+    const handleSingleCheck = (checked, id) => {
+    if (checked) {
+        setCheckItems(prev => [...prev, id]);
+    } else {
+        setCheckItems(checkItems.filter((el) => el !== id));
+    }
+    };
+
+    const handleAllCheck = (checked) => {
+        if(checked) {
+            const idArray = [];
+            data.forEach((el) => idArray.push(el.id));
+            setCheckItems(idArray);
+        }
+        else {
+            setCheckItems([]);
+        }
+    }
+    checkItems.sort();
+
+    /**약관들 */
+    var marketingYN = "N";
+    const [terms, setTerms] = useState(["TE010100"]);
+    const termClick = (termcode) => {
+        axios.get("https://beats-admin.codeidea.io/api/v1/getTerms", {
+            params: {
+                termsType: [termcode]
+            }
+        })
+        .then(function (response) {
+            setTerms(response.data.response);
+            $('#termsModal').fadeIn(200);
+            $('.btn_modal').click(function () {
+                $(this).closest('.modal_bg').fadeOut(200);
+            })
+        });
+    }
+
+    const confirmLoginType = () => {
+        if(sign_id == ""){
+            alert("회원 아이디가 존재하지 않습니다. 다시 로그인해주세요.");
+            return false;
+        }
+
+        if(checkItems[0] != "default2"){
+            document.getElementById("term_error").textContent="이용약관(필수)에 모두 동의해 주세요.";
+            //alert("통합계정 가입에 동의해주세요");
+            return false;
+        }
+        if(checkItems[1] != "default3"){
+            document.getElementById("term_error").textContent="이용약관(필수)에 모두 동의해 주세요.";
+            //alert("만 14세 이상에 동의해주세요");
+            return false;
+        }
+        if(checkItems[2] != "default4"){
+            document.getElementById("term_error").textContent="이용약관(필수)에 모두 동의해 주세요.";
+            //alert("이용약관에 동의해주세요");
+            return false;
+        }
+        if(checkItems[3] != "default5"){
+            document.getElementById("term_error").textContent="이용약관(필수)에 모두 동의해 주세요.";
+            //alert("개인정보 수집 및 이용동의에 동의해주세요");
+            return false;
+        }
+        if(checkItems[4] != "default6"){
+            document.getElementById("term_error").textContent="이용약관(필수)에 모두 동의해 주세요.";
+            //alert("위치정보서비스 이용동의에 동의해주세요");
+            return false;
+        }
+        
+        checkItems.forEach((n) => {  
+            if(n == "default7"){
+                marketingYN = "Y"
+            }
+        });
+
+        document.getElementById("term_error").textContent="";
+        axios.put("https://beats-admin.codeidea.io/api/v1/member/join", {
+            existing_yn: "Y",
+            sns: "email",
+            marketingConsent: marketingYN,
+            emailId: sign_id
+        })
+        .then(function (response) {
+            if(response.data.response == 1){
+                navigate("/signinup/integrated_signup_complete");
+            }else{
+                alert("통합회원 전환이 완료되지 않았습니다. 다시 확인해주세요.");
+                location.href="/";
+            }
+        });
+    }
+
+    const cancelLoginType = () => {
+        $(".memberChangeCancel").fadeIn(200);
+    }
+
     return (
         <>
         <div id="wrap_content" className="signUp_page integrated integrated_terms">
@@ -21,7 +148,7 @@ function Main() {
                         <p>회원님께서 가입하신 계정이 통합회원으로 전환됩니다.</p>
                         <dl>
                             <dt>회원 ID :</dt>
-                            <dd>abc123@emial.com</dd>
+                            <dd>{sign_id}</dd>
                             {/* <!-- sns가입 이메일 일때 -->
                             <!-- <dd>
                                 <span className="sns_logo">
@@ -36,14 +163,14 @@ function Main() {
                         <div className="terms_box">
                             <ul>
                                 <li className="check_box all">
-                                    <input type="checkbox" id="default1" defaultChecked/>
+                                    <input type="checkbox" id="default1" onChange={(e) => handleAllCheck(e.target.checked)} checked={checkItems.length === data.length ? true : false}/>
                                     <label htmlFor="default1">
                                         <span className="check_box_img"></span>
                                         <span className="check_box_text">전체 동의</span>
                                     </label>
                                 </li>
                                 <li className="check_box">
-                                    <input type="checkbox" id="default2" defaultChecked/>
+                                    <input type="checkbox" id="default2" onChange={(e) => handleSingleCheck(e.target.checked, "default2")} checked={checkItems.includes("default2") ? true : false}/>
                                     <label htmlFor="default2">
                                         <span className="check_box_img"></span>
                                     </label>
@@ -53,7 +180,7 @@ function Main() {
                                     </span>
                                 </li>
                                 <li className="check_box">
-                                    <input type="checkbox" id="default3" defaultChecked/>
+                                    <input type="checkbox" id="default3" onChange={(e) => handleSingleCheck(e.target.checked, "default3")} checked={checkItems.includes("default3") ? true : false}/>
                                     <label htmlFor="default3">
                                         <span className="check_box_img"></span>
                                     </label>
@@ -63,27 +190,27 @@ function Main() {
                                     </span>
                                 </li>
                                 <li className="check_box arrow service">
-                                    <input type="checkbox" id="default4" defaultChecked/>
+                                    <input type="checkbox" id="default4" onChange={(e) => handleSingleCheck(e.target.checked, "default4")} checked={checkItems.includes("default4") ? true : false}/>
                                     <label htmlFor="default4">
                                         <span className="check_box_img"></span>
                                     </label>
-                                    <span className="check_box_text">
+                                    <span className="check_box_text" onClick={()=>{termClick("TE010100")}}>
                                         <span className="essential">(필수)</span>
                                         이용약관
                                     </span>
                                 </li>
                                 <li className="check_box arrow user">
-                                    <input type="checkbox" id="default5" defaultChecked/>
+                                    <input type="checkbox" id="default5" onChange={(e) => handleSingleCheck(e.target.checked, "default5")} checked={checkItems.includes("default5") ? true : false}/>
                                     <label htmlFor="default5">
                                         <span className="check_box_img"></span>
                                     </label>
-                                    <span className="check_box_text">
+                                    <span className="check_box_text" onClick={()=>{termClick("TE010200")}}>
                                         <span className="essential">(필수)</span>
                                         개인정보 수집 및 이용동의
                                     </span>
                                 </li>
                                 <li className="check_box arrow location">
-                                    <input type="checkbox" id="default6" defaultChecked/>
+                                    <input type="checkbox" id="default6" onChange={(e) => handleSingleCheck(e.target.checked, "default6")} checked={checkItems.includes("default6") ? true : false}/>
                                     <label htmlFor="default6">
                                         <span className="check_box_img"></span>
                                     </label>
@@ -93,11 +220,11 @@ function Main() {
                                     </span>
                                 </li>
                                 <li className="check_box arrow marketing">
-                                    <input type="checkbox" id="default7" defaultChecked/>
+                                    <input type="checkbox" id="default7" onChange={(e) => handleSingleCheck(e.target.checked, "default7")} checked={checkItems.includes("default7") ? true : false}/>
                                     <label htmlFor="default7">
                                         <span className="check_box_img"></span>
                                     </label>
-                                    <span className="check_box_text">
+                                    <span className="check_box_text" onClick={()=>{termClick("TE010300")}}>
                                         <span>(선택)</span>
                                         마케팅 정보 수신동의
                                     </span>
@@ -105,12 +232,30 @@ function Main() {
                             </ul>
                         </div>
                     </div>
-                    <p className="error_txt">이용약관(필수)에 모두 동의해 주세요.</p>
+                    <p className="error_txt" id='term_error'></p>
                 </div>
                 <div className="btn_group">
-                    <button type="button" className="btn_apply basic_btn_black_border">취소</button>
-                    <button type="button" className="btn_apply basic_btn_red"
-                        onClick={()=> location.href ='/signinup/integrated_signup_complete'}>확인</button>
+                    <button type="button" className="btn_apply basic_btn_black_border" >취소</button>
+                    <button type="button" className="btn_apply basic_btn_red" onClick={()=> confirmLoginType()}>확인</button>
+                </div>
+            </div>
+        </div>
+
+        <Terms terms={terms} />
+
+        <div className="modal_wrap message_modal memberChangeCancel">
+            <div className="modal_box question">
+            <button className="x_btn close_btn"></button>
+                <p className="comment">
+                통합회원 전환을 취소하겠습니까?.
+                </p>
+                <div className="button_wrap">
+                    <button type="button" className="basic_btn_red_border cancel_btn close_btn">
+                        아니오
+                    </button>
+                    <button type="button" className="basic_btn_red confirm_btn close_btn">
+                        네
+                    </button>
                 </div>
             </div>
         </div>

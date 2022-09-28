@@ -1,6 +1,21 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+import { useState, useEffect, useRef } from "react";
+import { isModal } from "../../components/header/recoil";
+
 import "@/assets/css/components/signinup.css";
 
 function Main() {
+    const navigate = useNavigate();
+    const ModalHandler = useSetRecoilState(isModal);
+    
+    useEffect(() => {
+        $('#combine_login').click(() => {
+            ModalHandler("login");
+            $('.route_modal.signIn').fadeIn(200);
+        });
+    }, []);
+
     return (
         <>
         <div id="wrap_content" className="signUp_page integrated integrated_complete">
@@ -30,8 +45,8 @@ function Main() {
 
                 <div className="btn_group">
                     <button type="button" className="btn_apply basic_btn_black_border"
-                        onClick={() => {location.href='/'}}>메인화면</button>
-                    <button type="button" className="btn_apply basic_btn_red">로그인</button>
+                        onClick={() => {navigate("/")}}>메인화면</button>
+                    <button type="button" className="btn_apply basic_btn_red" id='combine_login'>로그인</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from "react";
+import axios from 'axios';
 
 import "@/assets/css/components/signinup.css";
 
@@ -11,7 +12,40 @@ function Main() {
     if(location.state != null){
         sign_id = location.state.sign_id;
     }
-    console.log(sign_id);
+
+    let created_result = "";
+    let nick_result = "";
+    const [nickname, setNickname] = useState("");
+    const [createdAt, setCreatedAt] = useState("");
+
+    useEffect(() => {
+        axios.get("https://beats-admin.codeidea.io/api/v1/member/memberBriefData", {
+            params: {
+                emailId: sign_id
+            }
+        })
+        .then(function (response) {
+            nick_result = response.data.response.memNickname;
+            created_result = response.data.response.createdAt;
+
+            if(nick_result.length > 2){
+                nick_result = nick_result.replace(/(?<=.{2})./gi, "*");
+            }else{
+                nick_result = nick_result.replace(/(?<=.{1})./gi, "*");
+            }
+            setNickname(nick_result);
+            setCreatedAt(created_result);
+        });
+    }, []);
+
+    const changeType = () => {
+        if(sign_id == ""){
+            alert("회원 아이디가 존재하지 않습니다. 다시 로그인해주세요.");
+            return false;
+        }else{
+            navigate("/signinup/integrated_signup_terms", {state : {sign_id : sign_id} });
+        }
+    }    
     
     return (
         <>
@@ -35,23 +69,23 @@ function Main() {
                     <div className="dl_group">
                         <dl>
                             <dt>회원 ID :</dt>
-                            <dd>abc123@emial.com</dd>
+                            <dd>{sign_id}</dd>
                         </dl>
                         <dl>
                             <dt>닉네임 :</dt>
-                            <dd>비트썸*</dd>
+                            <dd>{nickname}</dd>
                         </dl>
                         <dl>
                             <dt>최초 가입일 :</dt>
-                            <dd>2000년 00월 00일</dd>
+                            <dd>{createdAt}</dd>
                         </dl>
                     </div>
                     <button type="button" className="btn_apply basic_btn_red"
-                        onClick={()=> location.href ='/signinup/integrated_signup_terms'}>가입된 ID로 통합회원 전환</button>
+                        onClick={()=> changeType()}>가입된 ID로 통합회원 전환</button>
                 </div>
 
                 <button type="button" className="btn_apply basic_btn_red_border"
-                    onClick={()=> location.href ='/signinup/sign_up'}>건너 뛰고 신규회원으로 가입</button>
+                    onClick={()=> navigate('/signinup/sign_up')}>건너 뛰고 신규회원으로 가입</button>
 
                 <p className="descrip_txt">*비트썸원의 기존 회원의 경우 별도 가입 절차 없이 회원통합 절차를 통해 서비스 이용이 가능합니다.</p>
             </div>
