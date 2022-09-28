@@ -16,6 +16,18 @@ function Main() {
         }
     }, [localStorage.getItem("sign_id")]);
 
+    const [existingEmailId, setExistingEmailId] = useState('');
+    useEffect(() => {
+        if (localStorage.getItem("existingEmailId") === null) {
+        }else{
+            if(localStorage.getItem("existingEmailId") == ""){
+                setExistingEmailId("");
+            }else{
+                setExistingEmailId(localStorage.getItem("existingEmailId"));
+            }
+        }
+    }, [localStorage.getItem("existingEmailId")]);
+
     const [usualEmail, setUsualEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [checkpwd, setCheckpwd] = useState('');
@@ -260,12 +272,16 @@ function Main() {
             memNickname: nickname,
             nationality: UserNation,
             phoneNumber: phone,
-            marketingConsent: marketingYN
+            marketingConsent: marketingYN,
+            existingEmailId: existingEmailId
         })
         .then(function (response) {
             ModalHandler("join");
             $('.signupC_modal').fadeIn(200);
-        });
+        }).catch(error => {
+            alert("에러가 발생했습니다. 관리자에게 문의해주세요.");
+            return false;
+        })
     }
 
     $('.signupC_modal .confirm_btn').click(() => {

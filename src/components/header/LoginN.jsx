@@ -32,7 +32,7 @@ function LoginN({value}) {
                 </a>
             </li>
             <li className="list sign_in">
-                <a href="#!" onClick={() => { ModalHandler("join") }} className="link">
+                <a href="#!" onClick={() => { ModalHandler("join"); localStorage.setItem("existingEmailId", ""); }} className="link">
                 {value[8]}
                 </a>
             </li>

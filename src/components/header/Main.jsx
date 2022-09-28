@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'
+import i18n from "i18next";
 
 import BybeatsLogoUrl from "@/assets/images/icon/icon_bybeats_logotext.svg";
 import BeatsomeoneLogoUrl from "@/assets/images/icon/icon_beatsomeone_logotext.svg";
@@ -108,6 +110,25 @@ function Main() {
 
     const navigate = useNavigate();
 
+    /**언어 번역 라이브러리 */
+    const { t }  = useTranslation(['page']);
+    
+    useEffect(() => {
+        if (localStorage.getItem("language") === null) {
+            i18n.changeLanguage('ko');
+        }else{
+            if(localStorage.getItem("language") == "kr"){
+                i18n.changeLanguage('ko');
+            }else if(localStorage.getItem("language") == "en"){
+                i18n.changeLanguage('en');
+            }else if(localStorage.getItem("language") == "jp"){
+                i18n.changeLanguage('jp');
+            }else if(localStorage.getItem("language") == "ch"){
+                i18n.changeLanguage('ch');
+            }
+        } 
+    }, [localStorage.getItem("language")])
+
     return (
     <>
       {/* BEGIN: Header */}
@@ -160,25 +181,25 @@ function Main() {
             <li className="list home active">
                 <a href="index.html" className="link">
                     <div className="icon_box"></div>
-                    <span>홈</span>
+                    <span>{t('page:홈')}</span>
                 </a>
             </li>
             <li className="list communication">
                 <a href="#" onClick={() => {return false;}} className="link">
                     <div className="icon_box"></div>
-                    <span>커뮤니티</span>
+                    <span>{t('page:커뮤니티')}</span>
                 </a>
             </li>
             <li className="list event">
                 <a href="mypage/event.html" className="link">
                     <div className="icon_box"></div>
-                    <span>이벤트</span>
+                    <span>{t('page:이벤트')}</span>
                 </a>
             </li>
             <li className="list mypage">
                 <a href="mypage/my_request_song.html" className="link">
                     <div className="icon_box"></div>
-                    <span>마이페이지</span>
+                    <span>{t('page:마이페이지')}</span>
                 </a>
             </li>
         </ul>

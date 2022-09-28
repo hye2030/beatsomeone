@@ -9,6 +9,7 @@ import "./assets/css/app.css";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import userSlice from "@/stores/userSlice"
+import "./i18n"
 
 const store = createStore(userSlice, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const container = document.getElementById("root");

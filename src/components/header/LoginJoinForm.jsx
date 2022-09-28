@@ -54,7 +54,12 @@ const LoginJoin = () => {
                     return false;
                 }else if(response.data.response == 1){
                     $('.route_modal.signIn').fadeOut(200);
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
                     navigate("/signinup/integrated_signup_guide", {state : {sign_id : useremail} });
+                }else if(response.data.response == 4){
+                    document.getElementById('login_email_validate').classList.add('error');
+                    document.getElementById("login_warning").textContent="입력하신 아이디 정보를 찾을 수 없습니다.";
+                    return false;
                 }
             });
         }
@@ -130,6 +135,9 @@ const LoginJoin = () => {
                     document.getElementById('email_validate').classList.add('error');
                     document.getElementById("warning").textContent="이미 가입된 계정입니다.";
                     return false;
+                }else if(response.data.response == 1){
+                    document.getElementById("warning").textContent="통합회원가입 대상입니다.";
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
                 }else if(response.data.response == 0){
                     $('.route_modal.signIn').fadeOut(200);
                     $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
@@ -137,6 +145,10 @@ const LoginJoin = () => {
                     localStorage.setItem("sign_id", join_useremail);
                     localStorage.setItem("sns", "email");
                     navigate('/signinup/sign_up');
+                }else if(response.data.response == 4){
+                    document.getElementById('email_validate').classList.add('error');
+                    document.getElementById("warning").textContent="입력하신 아이디 정보를 찾을 수 없습니다.";
+                    return false;
                 }
             });
         }
@@ -152,6 +164,11 @@ const LoginJoin = () => {
             last_login = localStorage.getItem("last_login");
         }
     }
+
+    useEffect(() => {
+        $("#login_email").val("");
+        $("#sign_email").val("");
+    }, [])
 
     return (
         <>
