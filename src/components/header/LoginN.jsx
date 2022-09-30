@@ -27,7 +27,7 @@ function LoginN({value}) {
         <>
         <ul className="user">
             <li className="list sign_in" id="sign_in">
-                <a href="#!" onClick={() => { ModalHandler("login") }} className="link">
+                <a href="#!" onClick={() => { ModalHandler("login"); localStorage.setItem("existingEmailId", ""); }} className="link">
                 {value[7]}
                 </a>
             </li>

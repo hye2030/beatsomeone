@@ -60,7 +60,8 @@ function Main() {
                                           $('.route_modal.signIn').fadeOut(200);
                                           $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
                                           window.close();
-                                          window.opener.parent.location.href='/signinup/sign_up?name='+nm;
+                                          window.opener.nonSNSNaver(nm);
+                                          //window.opener.parent.location.href='/signinup/sign_up?name='+nm;
                                     }else if(response.data.response == 1){
                                           $('.route_modal.signIn').fadeOut(200);
                                           $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
@@ -70,29 +71,33 @@ function Main() {
                                           $('.route_modal.signIn').fadeOut(200);
                                           $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
 
-                                          axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
-                                                sns: "naver",
-                                                snsKey: naverLogin.user.id
-                                          })
-                                          .then(function (responseLogin) {
-                                                if(responseLogin.data.code == "0"){
-                                                      localStorage.setItem("emailId", responseLogin.data.response.email);
-                                                      localStorage.setItem("is_login", responseLogin.data._token);
-                                                      localStorage.setItem("last_login", "naver");
+                                          window.close();
+                                          window.opener.alreadySNSNaver(naverLogin);
+                                          return false;
 
-                                                      dispatch(loginUser({
-                                                            "response": {
-                                                                  "name": responseLogin.data.response.name,
-                                                                  "email": naverLogin.user.id
-                                                            }
-                                                      }));
+                                          // axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+                                          //       sns: "naver",
+                                          //       snsKey: naverLogin.user.id
+                                          // })
+                                          // .then(function (responseLogin) {
+                                          //       if(responseLogin.data.code == "0"){
+                                          //             localStorage.setItem("emailId", responseLogin.data.response.email);
+                                          //             localStorage.setItem("is_login", responseLogin.data._token);
+                                          //             localStorage.setItem("last_login", "naver");
 
-                                                      $('.signIn_modal').fadeOut(200);
-                                                      $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                                                      window.close();
-                                                      window.opener.parent.location.href='/';
-                                                }
-                                          });
+                                          //             dispatch(loginUser({
+                                          //                   "response": {
+                                          //                         "name": responseLogin.data.response.name,
+                                          //                         "email": naverLogin.user.id
+                                          //                   }
+                                          //             }));
+
+                                          //             $('.signIn_modal').fadeOut(200);
+                                          //             $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                                          //             window.close();
+                                          //             window.opener.parent.location.href='/';
+                                          //       }
+                                          // });
                                     }
                               }else{
                               location.href = "/";

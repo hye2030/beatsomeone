@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {loginUser} from '@/stores/userSlice';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+import { isModal } from "../../components/header/recoil";
 
 import {authentication} from '../../stores/firebase-config'
 import { signInWithPopup, TwitterAuthProvider } from "firebase/auth";
@@ -11,6 +13,7 @@ import { signInWithPopup, TwitterAuthProvider } from "firebase/auth";
 const TwitLogin = (e) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const currentType = useRecoilValue(isModal);
     
     /*const twitterRef = useRef()
     const authHandler = (err, data) => {
@@ -58,9 +61,10 @@ const TwitLogin = (e) => {
             .then(function (response) {
                 if(response.data.code == 0){
                     if(response.data.response == 0){
-                        $('.route_modal.signIn').fadeOut(200);
-                        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                        navigate('/signinup/sign_up');
+                        // $('.route_modal.signIn').fadeOut(200);
+                        // $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                        $("#noSnsModal").fadeIn(200);
+                        // navigate('/signinup/sign_up');
                     }else if(response.data.response == 1){
                         $('.route_modal.signIn').fadeOut(200);
                         $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
@@ -68,6 +72,13 @@ const TwitLogin = (e) => {
                     }else if(response.data.response == 3){
                         $('.route_modal.signIn').fadeOut(200);
                         $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+
+                        if(currentType == "join"){
+                            $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_twitter.svg"alt="" /></div>');
+                            $("#localSNSId").text("SNS 가입 ("+result.user.reloadUserInfo.providerUserInfo[0].email+")");
+                            $("#alreadyJoinModal").fadeIn(200);
+                            return false;
+                        }
 
                         axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
                             sns: "twitter",

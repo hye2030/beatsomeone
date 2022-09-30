@@ -24,13 +24,16 @@ $(function () {
     modalWrap.forEach((item, idx) => {
         const closeBtn = item.querySelectorAll('.close_btn');
 
+        if(item.id == "integratedButton"){
 
-        item.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal_wrap')) {
-                $(item).fadeOut(200);
-                scrollOn();
-            };
-        });
+        }else{
+            item.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal_wrap')) {
+                    $(item).fadeOut(200);
+                    scrollOn();
+                };
+            });
+        }
 
         closeBtn.forEach((items, i) => {
             items.addEventListener('click', () => {

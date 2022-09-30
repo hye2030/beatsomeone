@@ -276,7 +276,7 @@ function Main() {
             existingEmailId: existingEmailId
         })
         .then(function (response) {
-            ModalHandler("join");
+            document.getElementById('signupC').disabled = true;
             $('.signupC_modal').fadeIn(200);
         }).catch(error => {
             alert("에러가 발생했습니다. 관리자에게 문의해주세요.");
@@ -285,8 +285,11 @@ function Main() {
     }
 
     $('.signupC_modal .confirm_btn').click(() => {
+        document.getElementById('signupC').disabled = true;
         ModalHandler("login");
         $('.signupC_modal').fadeOut(200);
+        
+        $("#login_email").val("");
         $('.route_modal.signIn').fadeIn(200);
     });
     const modalWrap = document.querySelectorAll('.modal_wrap');
@@ -528,7 +531,7 @@ function Main() {
                                 <p className="last_comment">
                                     회원가입 시, 통합 계정으로 비트썸원이 제공하는 서비스를 모두 이용하실 수 있습니다.
                                 </p>
-                                <button type="button" className="complete_btn full_btn" onClick={()=>{confirm_btn()}}>
+                                <button type="button" className="complete_btn full_btn" id="signupC" onClick={()=>{confirm_btn()}}>
                                     완료
                                 </button>
                             </fieldset>

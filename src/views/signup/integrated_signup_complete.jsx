@@ -12,6 +12,7 @@ function Main() {
     useEffect(() => {
         $('#combine_login').click(() => {
             ModalHandler("login");
+            $("#login_email").val("");
             $('.route_modal.signIn').fadeIn(200);
         });
     }, []);

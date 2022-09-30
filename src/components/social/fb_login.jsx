@@ -24,7 +24,8 @@ const FbLogin = () => {
 
     return (
         <>
-            <button type="button" className="signIn_btn facebook" onClick={FbLoginClickHandler}>
+            {/* <button type="button" className="signIn_btn facebook" onClick={FbLoginClickHandler}> */}
+            <button type="button" className="signIn_btn facebook" onClick={() => alert("준비중입니다.")}>
                 Continue with Facebook
             </button>
         </>

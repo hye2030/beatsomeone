@@ -30,11 +30,15 @@ function Main() {
         modalWrap.forEach((item, idx) => {
             const closeBtn = item.querySelectorAll('.close_btn');
 
-            item.addEventListener('click', (e) => {
-                if (e.target.classList.contains('modal_wrap')) {
-                    $(item).fadeOut(200);
-                };
-            });
+            if(item.id == "integratedButton"){
+
+            }else{
+                item.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('modal_wrap')) {
+                        $(item).fadeOut(200);
+                    };
+                });
+            }
 
             closeBtn.forEach((items, i) => {
                 items.addEventListener('click', () => {
@@ -148,6 +152,7 @@ function Main() {
         .then(function (response) {
             if(response.data.response == 1){
                 navigate("/signinup/integrated_signup_complete");
+                //("#integratedButton").fadeIn(200);
             }else{
                 alert("통합회원 전환이 완료되지 않았습니다. 다시 확인해주세요.");
                 location.href="/";
@@ -286,6 +291,19 @@ function Main() {
                     </button>
                     <button type="button" className="basic_btn_red confirm_btn "onClick={() => navigate("/")}>
                         네
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div className="modal_wrap message_modal memberChangeDone" id="integratedButton" >
+            <div className="modal_box done">
+                <p className="comment">
+                    통합회원으로 회원전환이 완료되었습니다.
+                </p>
+                <div className="button_wrap">
+                    <button type="button" className="basic_btn_red confirm_btn" onClick={() => navigate("/")}>
+                        확인
                     </button>
                 </div>
             </div>

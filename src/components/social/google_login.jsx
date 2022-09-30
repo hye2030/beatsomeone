@@ -5,11 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+import { isModal } from "../../components/header/recoil";
 
 const GoogleLogins = (e) => {
     const clientId = "1057096607214-53sfrnp2rssjudd6pmb9ha3m8dildh2l.apps.googleusercontent.com";
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const currentType = useRecoilValue(isModal);
 
     function handleCallbackResponse(data){
     }
@@ -70,9 +73,10 @@ const GoogleLogins = (e) => {
         .then(function (response) {
             if(response.data.code == 0){
                 if(response.data.response == 0){
-                    $('.route_modal.signIn').fadeOut(200);
-                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                    navigate('/signinup/sign_up');
+                    // $('.route_modal.signIn').fadeOut(200);
+                    // $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                    $("#noSnsModal").fadeIn(200);
+                    // navigate('/signinup/sign_up');
                 }else if(response.data.response == 1){
                     $('.route_modal.signIn').fadeOut(200);
                     $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
@@ -80,6 +84,13 @@ const GoogleLogins = (e) => {
                 }else if(response.data.response == 3){
                     $('.route_modal.signIn').fadeOut(200);
                     $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+
+                    if(currentType == "join"){
+                        $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_google.svg"alt="" /></div>');
+                        $("#localSNSId").text("SNS 가입 ("+res.profileObj.email+")");
+                        $("#alreadyJoinModal").fadeIn(200);
+                        return false;
+                    }
 
                     axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
                         sns: "google",

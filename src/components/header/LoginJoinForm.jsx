@@ -15,7 +15,9 @@ import { isModal } from "../../components/header/recoil";
 
 const LoginJoin = () => {
     const currentType = useRecoilValue(isModal);
+    const ModalHandler = useSetRecoilState(isModal);
     
+    //로그인 관련
     const [useremail, setUseremail] = useState("");
     const [next_check, next_setCheck] =  useState(false);
     const [pwd, setPwd] = useState("");
@@ -35,7 +37,6 @@ const LoginJoin = () => {
         }
     }
 
-    //아이디가 존재하는지 확인하고 패스워드 모달띄우기
     const NextButton = () => {
         if(next_check == true){
             axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
@@ -54,8 +55,10 @@ const LoginJoin = () => {
                     return false;
                 }else if(response.data.response == 1){
                     $('.route_modal.signIn').fadeOut(200);
-                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                    navigate("/signinup/integrated_signup_guide", {state : {sign_id : useremail} });
+                    $('.signIn_modal').fadeIn(200);
+                    // $('.route_modal.signIn').fadeOut(200);
+                    // $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                    // navigate("/signinup/integrated_signup_guide", {state : {sign_id : useremail} });
                 }else if(response.data.response == 4){
                     document.getElementById('login_email_validate').classList.add('error');
                     document.getElementById("login_warning").textContent="입력하신 아이디 정보를 찾을 수 없습니다.";
@@ -78,16 +81,22 @@ const LoginJoin = () => {
         })
         .then(function (response) {
             if(response.data.code == "0"){
-                dispatch(loginUser(response.data));
-                localStorage.setItem("sns", "email");
-                localStorage.setItem("snsKey", "");
-                localStorage.setItem("emailId", response.data.response.email);
-                localStorage.setItem("is_login", response.data._token);
-                localStorage.setItem("last_login", "email");
+                if(response.data.response.class == "1"){
+                    $('.signIn_modal').fadeOut(200);
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                    navigate("/signinup/integrated_signup_guide", {state : {sign_id : useremail} });
+                }else{
+                    dispatch(loginUser(response.data));
+                    localStorage.setItem("sns", "email");
+                    localStorage.setItem("snsKey", "");
+                    localStorage.setItem("emailId", response.data.response.email);
+                    localStorage.setItem("is_login", response.data._token);
+                    localStorage.setItem("last_login", "email");
 
-                $('.signIn_modal').fadeOut(200);
-                $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                navigate("/");
+                    $('.signIn_modal').fadeOut(200);
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                    navigate("/");
+                }
             }else if(response.data.code == "301"){
                 console.log("아이디 또는 비밀번호가 누락되었습니다.");
                 document.getElementById("LoginPwErr").textContent="비밀번호가 일치하지 않습니다. 다시 확인 후 입력해주세요.";
@@ -101,6 +110,7 @@ const LoginJoin = () => {
         });
     }
 
+    //회원가입 관련
     const [join_useremail, join_setUseremail] = useState("");
     const [join_next_check, join_next_setCheck] =  useState(false);
 
@@ -132,8 +142,14 @@ const LoginJoin = () => {
             })
             .then(function (response) {
                 if(response.data.response == 3){
-                    document.getElementById('email_validate').classList.add('error');
-                    document.getElementById("warning").textContent="이미 가입된 계정입니다.";
+                    $('.route_modal.signIn').fadeOut(200);
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                    
+                    $("#localSNSImg").html('');
+                    $("#localSNSId").text("이메일 가입 ("+join_useremail+")");
+                    $("#alreadyJoinModal").fadeIn(200);
+                    // document.getElementById('email_validate').classList.add('error');
+                    // document.getElementById("warning").textContent="이미 가입된 계정입니다.";
                     return false;
                 }else if(response.data.response == 1){
                     document.getElementById("warning").textContent="통합회원가입 대상입니다.";
@@ -154,6 +170,7 @@ const LoginJoin = () => {
         }
     }
 
+    //최근 로그인 정보
     let last_login = "N"
     if (localStorage.getItem("last_login") === null) {
         last_login = "N";
@@ -165,10 +182,91 @@ const LoginJoin = () => {
         }
     }
 
+    //input 값 리셋, 닫기창 로드
     useEffect(() => {
         $("#login_email").val("");
         $("#sign_email").val("");
+
+        const modalWrap = document.querySelectorAll('.modal_wrap');
+        modalWrap.forEach((item, idx) => {
+            const closeBtn = item.querySelectorAll('.close_btn');
+
+            if(item.id == "integratedButton"){
+
+            }else{
+                item.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('modal_wrap')) {
+                        $(item).fadeOut(200);
+                        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                    };
+                });
+            }
+
+            closeBtn.forEach((items, i) => {
+                items.addEventListener('click', () => {
+                    $(item).fadeOut(200);
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                });
+            });
+        });
     }, [])
+    
+    //로그인 시도했으나 가입정보 없을때_SNS회원
+    const [navernm, setNavernm] = useState("");
+    const nonSNS = () => {
+        if(localStorage.getItem("sns") == "naver"){
+            location.href='/signinup/sign_up?name='+navernm;
+        }else{
+            navigate('/signinup/sign_up');
+            $("#noSnsModal").fadeOut(200);
+            $('.route_modal.signIn').fadeOut(200);
+            $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+        }
+    }
+
+    window.nonSNSNaver = function (data){
+        $("#noSnsModal").fadeIn(200);
+        setNavernm(data);
+    }
+
+    //회원가입으로 시도했을시 이미 회원가입 계정으로 등록된 상태일 경우
+    const alreadySNS = () => {
+        ModalHandler("login");
+        $('.route_modal.signIn').fadeIn(200);
+        $("#alreadyJoinModal").fadeOut(200);
+    }
+
+    window.alreadySNSNaver = function (naverLogin){
+        if(currentType == "join"){
+            $('.route_modal.signIn').fadeOut(200);
+
+            $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_naver.svg"alt="" /></div>');
+            $("#localSNSId").text("SNS 가입 ("+naverLogin.user.email+")");
+            $("#alreadyJoinModal").fadeIn(200);
+        }else{
+            axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+                sns: "naver",
+                snsKey: naverLogin.user.id
+            })
+            .then(function (responseLogin) {
+                if(responseLogin.data.code == "0"){
+                    localStorage.setItem("emailId", responseLogin.data.response.email);
+                    localStorage.setItem("is_login", responseLogin.data._token);
+                    localStorage.setItem("last_login", "naver");
+
+                    dispatch(loginUser({
+                        "response": {
+                                "name": responseLogin.data.response.name,
+                                "email": naverLogin.user.id
+                        }
+                    }));
+
+                    $('.route_modal.signIn').fadeOut(200);
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                }
+            });
+        }
+    }
 
     return (
         <>
@@ -230,7 +328,7 @@ const LoginJoin = () => {
                             {/* <a href={KAKAO_AUTH_URL} style={{marginBottom:"calc(100vw * (10 / 1300))"}}><button type="button" className="signIn_btn kakaotalk">
                                 Continue with kakaotalk
                             </button></a> */}
-                            <button type="button" className="signIn_btn soundcloud">
+                            <button type="button" className="signIn_btn soundcloud" onClick={() => alert("준비중입니다.")}>
                                 Continue with Soundcloud
                             </button>
                         </div>
@@ -311,6 +409,57 @@ const LoginJoin = () => {
                 <button type="button" className="link_btn reset_pw">
                     비밀번호를 잊어버리셨나요?
                 </button>
+            </div>
+        </div>
+
+        <div className="modal_wrap message_modal noSnsModal" id="noSnsModal">
+            <div className="modal_box question">
+            <button className="x_btn close_btn"></button>
+                <p className="comment">
+                    해당 SNS 계정으로 가입된 정보가 없습니다. <br/>
+                    회원가입 하시겠습니까?
+                </p>
+                <div className="button_wrap">
+                    <button type="button" className="basic_btn_red_border cancel_btn close_btn">
+                        아니오
+                    </button>
+                    <button type="button" className="basic_btn_red confirm_btn" onClick={() => nonSNS()}>
+                        네
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div className="modal_wrap message_modal aleadyJoin_modal" id="alreadyJoinModal">
+            <div className="modal_box alert">
+            <button className="x_btn close_btn"></button>
+                <p className="comment">
+                    이미 가입된 계정입니다.
+                    <br/>
+                    로그인하여 이용해주세요.
+                </p>
+                {/* <!-- 이미 가입된 계정- sns 가입 계정인 경우--> */}
+                <div className="email_info">
+                    <div id="localSNSImg">
+                        <div className="icon_box">
+                            <img src="/assets/images/icon/signUp_twitter.svg" alt="" />
+                        </div>
+                    </div>
+                    <p className="text_box" id="localSNSId">
+                        SNS 가입 (sns@sns.com)
+                    </p>
+                </div>
+                {/* <!-- 이미 가입된 계정- 이메일 가입일 경우 --> */}
+                {/* <div class="email_info">
+                    <p class="text_box">
+                    이메일 가입 (email@email.com)
+                    </p>
+                </div> */}
+                <div className="button_wrap">
+                    <button type="button" className="basic_btn_red confirm_btn" onClick={() => {alreadySNS()}}>
+                        로그인
+                    </button>
+                </div>
             </div>
         </div>
         </>

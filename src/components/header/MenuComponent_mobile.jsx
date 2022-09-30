@@ -26,7 +26,7 @@ function MenuComponenet({users}) {
         {user.isLogin ? 
         <div className="profile_box">
             <div className="img_box">
-                <img src="/src/assets/images/icon/icon_user-circle.svg" alt="" />
+                <img src="/assets/images/icon/icon_user-circle.svg" alt="" />
             </div>
             <div className="text_area">
                 <p className="nickname">
