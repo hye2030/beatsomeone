@@ -263,9 +263,18 @@ const LoginJoin = () => {
 
                     $('.route_modal.signIn').fadeOut(200);
                     $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                    navigate("/");
                 }
             });
         }
+    }
+
+    //기존회원이었다가 신규회원으로 가입해서 기존 아이디가 N처리 된 경우
+    window.ignoreSNSNaver = function (){
+        $('.route_modal.signIn').fadeOut(200);
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+        alert("신규회원으로 가입한 아이디로 로그인해주세요.");
+        navigate("/");
     }
 
     return (

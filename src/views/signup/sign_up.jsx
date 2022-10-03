@@ -46,14 +46,16 @@ function Main() {
     const pwCheck = (pwd) => {
         if(pwd.match(pwRegEx)===null) {
             // console.log('비밀번호 형식을 확인해주세요');
-            document.getElementById("pwd_err").textContent="6~16글자 사이의 비밀번호를 입력해주세요.";
-            document.getElementById("pwd_complete").textContent="";
+            document.getElementById('pwd_err').classList.add('error_txt');
+            document.getElementById('pwd_err').classList.remove('complete_txt');
+            document.getElementById("pwd_err").textContent="비밀번호 입력조건에 맞지 않습니다.";
             setPwd_next(false);
             return;
         }else{ 
             // console.log('비밀번호 형식이 맞아요');
-            document.getElementById("pwd_complete").textContent="사용 가능한 비밀번호입니다.";
-            document.getElementById("pwd_err").textContent="";
+            document.getElementById('pwd_err').classList.add('complete_txt');
+            document.getElementById('pwd_err').classList.remove('error_txt');
+            document.getElementById("pwd_err").textContent="사용 가능한 비밀번호입니다.";
             setPwd_next(true);
         }
     }
@@ -61,16 +63,17 @@ function Main() {
         if(pwd === checkpwd){
             document.getElementById("pwd_confirm_err").textContent="";
         }else{
-            document.getElementById("pwd_confirm_err").textContent="비밀번호가 일치하지 않습니다.";
+            document.getElementById("pwd_confirm_err").textContent="입력한 비밀번호를 확인해주세요.";
         }
     }
 
     const nicknameConfirm = () => {
         if(nickname == ""){
+            document.getElementById("nickname_confirm_err").textContent="닉네임을 입력해주세요.";
             return false;
         }else{
             if(nickname.length < 2){
-                document.getElementById("nickname_confirm_err").textContent="닉네임은 최소 2글자 이상 입력해주세요.";
+                document.getElementById("nickname_confirm_err").textContent="닉네임은 최소 2자 이상 입력해주세요.";
                 document.getElementById("nickname_confirm_complete").textContent="";
                 return false;
             }
@@ -83,10 +86,10 @@ function Main() {
                 if(response.data.code == 1){
                     setNicknameNext(true);
                     document.getElementById("nickname_confirm_err").textContent="";
-                    document.getElementById("nickname_confirm_complete").textContent="사용 가능한 닉네임입니다.";
+                    document.getElementById("nickname_confirm_complete").textContent="사용 가능합니다.";
                 }else{
                     setNicknameNext(false);
-                    document.getElementById("nickname_confirm_err").textContent="이미 사용중인 닉네임입니다.";
+                    document.getElementById("nickname_confirm_err").textContent="이미 사용 중인 닉네임입니다.";
                     document.getElementById("nickname_confirm_complete").textContent="";
                 }
             });
@@ -146,11 +149,15 @@ function Main() {
             document.getElementById('phone_confirm_err').classList.add('complete_txt');
             document.getElementById('phone_confirm_err').classList.remove('error_txt');
             document.getElementById("phone_confirm_err").textContent="인증이 완료되었습니다.";
+            
+            document.getElementById('re_chkNum').disabled = true;
+            document.getElementById('chkNum_btn').disabled = true;
+            document.getElementById('certifiacte_input').disabled = true;
             setCertifiedNext(true);
         }else{
             document.getElementById('phone_confirm_err').classList.add('error_txt');
             document.getElementById('phone_confirm_err').classList.remove('complete_txt');
-            document.getElementById("phone_confirm_err").textContent="인증번호가 일치하지 않습니다. 다시 시도해주세요.";
+            document.getElementById("phone_confirm_err").textContent="인증번호를 다시 확인해주세요.";
             setCertifiedNext(false);
         }
     }
@@ -196,41 +203,68 @@ function Main() {
     const confirm_btn= () => {
         if(localStorage.getItem("sns") == "email"){
             if(pwd == ""){
-                alert("비밀번호를 입력해주세요.");
+                document.getElementById('pwd_err').classList.add('error_txt');
+                document.getElementById('pwd_err').classList.remove('complete_txt');
+                document.getElementById("pwd_err").textContent="비밀번호를 입력해주세요.";
+                $("#pw_input").focus();
                 return false;
             }
             if(pwd_next == false){
-                alert("비밀번호를 확인해주세요.");
+                document.getElementById('pwd_err').classList.add('error_txt');
+                document.getElementById('pwd_err').classList.remove('complete_txt');
+                document.getElementById("pwd_err").textContent="비밀번호 입력조건에 맞지 않습니다.";
+                $("#pw_input").focus();
                 return false;
             }
             if(pwd != checkpwd){
-                alert("비밀번호가 일치하지 않습니다");
+                document.getElementById("pwd_confirm_err").textContent="입력한 비밀번호를 확인해주세요.";
+                $("#pw_input_chk").focus();
                 return false;
             }
         }
         if(name == ""){
-            alert("이름을 입력해주세요.");
+            document.getElementById("name_confirm_err").textContent="이름을 입력해주세요.";
+            $("#name").focus();
             return false;
         }
+        if(name.length < 2){
+            document.getElementById("name_confirm_err").textContent="이름은 최소 2자 이상 입력해주세요.";
+            $("#name").focus();
+            return false;
+        }else{
+            document.getElementById("name_confirm_err").textContent="";
+        }
         if(nickname == ""){
-            alert("닉네임을 입력해주세요.");
+            document.getElementById("nickname_confirm_err").textContent="닉네임을 입력해주세요.";
+            $("#nickname").focus();
             return false;
         }
         if(nicknameNext == false){
-            alert("닉네임 확인을 해주세요");
+            document.getElementById("nickname_confirm_err").textContent="닉네임 확인을 해주세요.";
+            $("#nickname").focus();
             return false;
         }
-        if(phone == ""){
-            alert("휴대폰번호를 입력해주세요.");
-            return false;
+        if(UserNation == "kr"){
+            if(phone == ""){
+                document.getElementById("phonenum_confirm_err").textContent="휴대폰번호를 입력해주세요.";
+                $("#phone_num").focus();
+                return false;
+            }else{
+                document.getElementById("phonenum_confirm_err").textContent="";
+            }
         }
         if(UserNation == ""){
-            alert("국가를 선택해주세요.");
+            document.getElementById("nation_confirm_err").textContent="거주 국가를 선택해주세요.";
+            $("#nation_confirm_err").focus();
             return false;
+        }else{
+            document.getElementById("nation_confirm_err").textContent="";
         }
-        if(certifiedNext == false){
-            alert("인증번호를 확인해주세요.");
-            return false;
+        if(UserNation == "kr"){
+            if(certifiedNext == false){
+                alert("인증번호를 확인해주세요.");
+                return false;
+            }
         }
 
         if(checkItems[0] != "default2"){
@@ -385,12 +419,14 @@ function Main() {
                                             영문, 숫자, 특수문자( !@#$%^&* ‘) 중 2가지 이상 조합 6자이상 16자 이하 사용 가능
                                         </div>
                                     </div>
-                                    <p className="error_txt" id="pwd_err">
+                                    <p className="" id="pwd_err">
+                                    </p>
+                                    {/* <p className="error_txt" id="pwd_err">
                                     </p>
                                     <p className="complete_txt" id="pwd_complete">
-                                    </p>
+                                    </p> */}
                                     <div className="input_wrap">
-                                        <input type="password" id="pw_input" placeholder="비밀번호를 한번 더 입력해 주세요." onChange={(e)=>{setCheckpwd(e.target.value); pwConfirm(e.target.value)}} />
+                                        <input type="password" id="pw_input_chk" placeholder="비밀번호를 한번 더 입력해 주세요." onChange={(e)=>{setCheckpwd(e.target.value); pwConfirm(e.target.value)}} />
                                     </div>
                                     <p className="error_txt" id="pwd_confirm_err">
                                     </p>
@@ -404,6 +440,8 @@ function Main() {
                                             본명 기재 권장 / 한글 기준 2자 이상
                                         </div>
                                     </div>
+                                    <p className="error_txt" id="name_confirm_err">
+                                    </p>
                                     <div className="input_wrap nickname">
                                         <input type="text" id="nickname" placeholder="(필수)닉네임 입력" onChange={(e)=>{setNickname(e.target.value); document.getElementById('nickname').parentNode.lastChild.style.display = 'none';}} onFocus={(e)=>{document.getElementById('nickname').parentNode.lastChild.style.display = 'block'}}/>
                                         <div className="alert_box wrap_box down" style={{display:'none'}}>
@@ -433,7 +471,7 @@ function Main() {
                                             <input type="text" id="phone_num" placeholder="(필수) 휴대폰 번호 입력" onChange={phonehandlePress} value={phone} />
                                         </div>
                                     </div>
-                                    <p className="error_txt">
+                                    <p className="error_txt" id="phonenum_confirm_err">
                                     </p>
                                     <div className="select_box_wrap">
                                         <button type="button" onClick={() => { return false; }} className="select_title">(필수)
@@ -449,17 +487,36 @@ function Main() {
                                             거주국가 기준으로 선택 권장
                                         </div>
                                     </div>
-                                    <button type="button" className="basic_btn_red_border getNum_btn" onClick={() => {sendSMS();}}>
-                                        인증번호 받기
-                                    </button>
-                                    <div className="input_wrap">
-                                        <input type="text" placeholder="인증번호 입력" onChange={(e)=>{setCertified(e.target.value);}} />
-                                    </div>
-                                    <p className="" id="phone_confirm_err">
+                                    <p className="error_txt" id="nation_confirm_err">
                                     </p>
-                                    <button type="button" className="basic_btn_black chkNum_btn" onClick={() => {certifiedButton();}}>
-                                        인증하기
-                                    </button>
+                                    {
+                                        (function() {
+                                            if (UserNation == "kr"){
+                                                return (
+                                                    <>
+                                                    {random=="000000"? 
+                                                    <button type="button" className="basic_btn_red_border getNum_btn" onClick={() => {sendSMS();}}>
+                                                        인증번호 받기
+                                                    </button>
+                                                    :
+                                                    <button type="button" className="basic_btn_red_border getNum_btn" id="re_chkNum" onClick={() => {sendSMS();}}>
+                                                        재전송
+                                                    </button>
+                                                    }
+                                                    <div className="input_wrap" style={{width:"100%"}}>
+                                                        <input type="text" placeholder="인증번호 입력" id="certifiacte_input" onChange={(e)=>{setCertified(e.target.value);}} />
+                                                    </div>
+                                                    <p className="" id="phone_confirm_err">
+                                                    </p>
+                                                    <button type="button" className="basic_btn_black chkNum_btn" id="chkNum_btn" onClick={() => {certifiedButton();}}>
+                                                        인증하기
+                                                    </button>
+                                                    </>
+                                                )
+                                            }
+                                        })()
+                                    }
+                                    
                                 </div>
                                 {/* <!-- 동의 --> */}
                                 <div className="agree_box">

@@ -98,6 +98,12 @@ function Main() {
                                           //             window.opener.parent.location.href='/';
                                           //       }
                                           // });
+                                    }else if(response.data.response == 4){
+                                          $('.route_modal.signIn').fadeOut(200);
+                                          $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+
+                                          window.close();
+                                          window.opener.ignoreSNSNaver();
                                     }
                               }else{
                               location.href = "/";

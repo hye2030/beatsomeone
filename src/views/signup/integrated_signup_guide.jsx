@@ -18,8 +18,8 @@ function Main() {
         chkEmail = location.state.sign_id;
     }
 
-    if(localStorage.getItem("sns") == "naver"){
-        sign_id = localStorage.getItem("snsKey");
+    if(!(localStorage.getItem("sns") == "email")){
+        sign_id = localStorage.getItem("sign_id");
         chkEmail = localStorage.getItem("sign_id");
     }
 

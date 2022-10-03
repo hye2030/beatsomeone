@@ -102,6 +102,11 @@ const TwitLogin = (e) => {
                                 navigate("/");
                             }
                         });
+                    }else if(response.data.response == 4){
+                        $('.route_modal.signIn').fadeOut(200);
+                        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                        alert("신규회원으로 가입한 아이디로 로그인해주세요.");
+                        navigate("/");
                     }
                 }else{
                     navigate("/");
