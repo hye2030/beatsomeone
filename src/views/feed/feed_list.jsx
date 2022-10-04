@@ -1,6 +1,10 @@
-// import "@/assets/css/components/list.css";
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import "@/assets/css/components/list.css";
 
 function Main() {
+    const navigate = useNavigate();
+
     return (
         <>
         <div id="wrap_content" className="list_page feed_list">
@@ -24,7 +28,7 @@ function Main() {
 
                 <section className="tab_section">
                     <div className="section_inner">
-                        <h2 className="title_text">피드</h2>
+                        <h2 className="title_text" style={{margin:"60px 0 40px", textAlign: "center", fontSize: "24px", fontWeight: "700"}}>피드</h2>
 
                         <ul className="tab_area">
                             <li className="tab active">전체</li>
@@ -39,7 +43,7 @@ function Main() {
                     <div className="section_inner">
                         <div className="list_option">
                             <div className="btn_box">
-                                <button className="basic_btn_red" onclick="location.href='./feed_add.html'">
+                                <button className="basic_btn_red" onClick={() => {navigate("/feed/feed_add")}}>
                                     <span><img src="/src/assets/images/icon/icon_plus_red.svg" alt="플러스 아이콘" /></span>
                                     컨텐츠 등록</button>
                             </div>
@@ -74,7 +78,7 @@ function Main() {
                                     </p>
                                 </div>
                                 <div className="img_wrap">
-                                    <a href="./feed_detail_self.html">
+                                    <a href="" onClick={() => {navigate("/feed/feed_detail_cover")}}>
                                         <div className="img">
                                             <img src="/src/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                         </div>
