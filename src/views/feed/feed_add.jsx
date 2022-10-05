@@ -34,19 +34,25 @@ function Main() {
         setAddDaily(newList);
     };
 
+    const [myImage, setMyImage] = useState([]);
+    const [myImagePreview, setMyImagePreview] = useState([]);
     const handleImage = (e, index) => {
         let cur_file = e.target.files[0];
         const filesInArr = Array.from(e.target.files);
         const previewArr = [window.URL.createObjectURL(cur_file)];
         console.log(filesInArr);
         console.log(previewArr);
+
+        const nowImageURLList =[...myImage];
+        nowImageURLList.push(filesInArr);
+        setMyImage(nowImageURLList);
     }
 
     const submitClick = async (e) => {
         e.preventDefault();
         e.persist();
 
-        console.log($("input[name=daily_files]").length);
+        console.log(myImage);
     }
 
     const dailyList = addDaily.map((daily, index) => 
@@ -59,7 +65,7 @@ function Main() {
             <div className="textarea_wrap">
                 <textarea placeholder="내용 입력 (5,000 글자)" className="content_area"></textarea>
                 <span className="list_delete_icon" onClick={() => handleDelete(daily.id)}>
-                    <img src="/src/assets/images/icon/icon_delete_cover.svg" alt="" />
+                    <img src="/assets/images/icon/icon_delete_cover.svg" alt="" />
                 </span>
             </div>
         </div>
@@ -99,7 +105,7 @@ function Main() {
                             <img src={fileImage} alt="" />
                         </div>
                         <span className="close_icon" onClick={() => deleteFileImage()}>
-                            <img src="/src/assets/images/icon/icon_close_white.svg" alt="" />
+                            <img src="/assets/images/icon/icon_close_white.svg" alt="" />
                         </span>
                     </div>
                     )}
@@ -107,14 +113,14 @@ function Main() {
                     {/* <!-- 영상 추가 했을 때 --> */}
                     {/* <div className="add_file_box">
                         <div className="cover_img">
-                            <img src="/src/assets/images/dummy/video_img.jpg" alt="" />
+                            <img src="/assets/images/dummy/video_img.jpg" alt="" />
                         </div>
                         <span className="close_icon">
-                            <img src="/src/assets/images/icon/icon_close_white.svg" alt="" />
+                            <img src="/assets/images/icon/icon_close_white.svg" alt="" />
                         </span>
                         <div className="video_area">
                             <span className="play_icon">
-                            <img src="/src/assets/images/icon/icon_play_02.svg" alt="" />
+                            <img src="/assets/images/icon/icon_play_02.svg" alt="" />
                             </span>
                             <span className="time">4:16</span>
                         </div>
@@ -131,7 +137,7 @@ function Main() {
                     </p>
                     <button type="button" className="plus_btn" onClick={handleClick}>
                     <span>
-                        <img src="/src/assets/images/icon/icon_plus_gray.svg" alt="" />
+                        <img src="/assets/images/icon/icon_plus_gray.svg" alt="" />
                     </span>
                     </button>
                 </div>

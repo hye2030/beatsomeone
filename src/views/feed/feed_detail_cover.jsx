@@ -9,7 +9,7 @@ function Main() {
                     <div className="inner">
                         <div className="profile_box">
                         <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진" />
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진" />
                         </div>
                         <div>
                             <p className="nickname">사용자 닉네임 표시</p>
@@ -22,19 +22,19 @@ function Main() {
                             {/* <!-- 공유하기 버튼 클릭시 나오는 박스 --> */}
                             <div className="share_box">
                                 <button type="button">
-                                <img src="/src/assets/images/icon/signUp_facebook.svg" alt="페이스북 로고"/>
+                                <img src="/assets/images/icon/signUp_facebook.svg" alt="페이스북 로고"/>
                                 </button>
                                 <button type="button">
-                                <img src="/src/assets/images/icon/signUp_kakao.svg" alt="카카오톡 로고"/>
+                                <img src="/assets/images/icon/signUp_kakao.svg" alt="카카오톡 로고"/>
                                 </button>
                                 <button type="button">
-                                <img src="/src/assets/images/icon/signUp_naver.svg" alt="네이버 로고"/>
+                                <img src="/assets/images/icon/signUp_naver.svg" alt="네이버 로고"/>
                                 </button>
                                 <button type="button">
-                                <img src="/src/assets/images/icon/icon_insta_color.svg" alt="인스타그램 로고"/>
+                                <img src="/assets/images/icon/icon_insta_color.svg" alt="인스타그램 로고"/>
                                 </button>
                                 <button type="button">
-                                <img src="/src/assets/images/icon/icon_link_share.svg" alt="클립보드 복사 아이콘"/>
+                                <img src="/assets/images/icon/icon_link_share.svg" alt="클립보드 복사 아이콘"/>
                                 </button>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ function Main() {
                         </div>
                         <div className="play_box music">
                         <div className="wrapper">
-                            <div className="sound_img"><img src="/src/assets/images/dummy/sound_img.png" alt=""/></div>
+                            <div className="sound_img"><img src="/assets/images/dummy/sound_img.png" alt=""/></div>
                             <div className="play_btn_wrap">
                             <button type="button" className="play_btn"></button>
                             <p className="play_time">4:16</p>
@@ -80,13 +80,13 @@ function Main() {
                         <div className="profile_wrap mark">
                         <ul>
                             <li>
-                            <img src="/src/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
                             </li>
                             <li>
-                            <img src="/src/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
                             </li>
                             <li>
-                            <img src="/src/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                             </li>
                         </ul>
                         <span>99+</span>
@@ -106,7 +106,7 @@ function Main() {
                     </div>
                     <div className="comment_write">
                         <div className="profile_img">
-                        <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                        <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                         </div>
                         <div className="white_wrap">
                         <textarea name="" id="" cols="30" rows="10" placeholder="댓글을 입력해주세요."></textarea>
@@ -116,7 +116,7 @@ function Main() {
                     <div className="comment_item">
                         <div className="wrapper">
                         <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                         </div>
                         <div className="comment_right">
                             <div className="top">
@@ -150,7 +150,7 @@ function Main() {
                         {/* <!-- 답글 달기 --> */}
                         <div className="comment_write reply">
                         <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                         </div>
                         <div className="white_wrap">
                             <textarea name="" id="" cols="30" rows="10" placeholder="댓글을 입력해주세요."></textarea>
@@ -161,7 +161,7 @@ function Main() {
                     <div className="comment_item">
                         <div className="wrapper">
                         <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                         </div>
                         <div className="comment_right">
                             <div className="top">
@@ -184,7 +184,7 @@ function Main() {
                         {/* <!-- 답글 달기 --> */}
                         <div className="comment_write reply on">
                         <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                         </div>
                         <div className="white_wrap">
                             <textarea name="" id="" cols="30" rows="10" placeholder="댓글을 입력해주세요."></textarea>
@@ -195,7 +195,7 @@ function Main() {
                     <div className="comment_item">
                         <div className="wrapper">
                         <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                         </div>
                         <div className="comment_right">
                             <div className="top">
@@ -220,7 +220,7 @@ function Main() {
                         {/* <!-- 답글 달기 --> */}
                         <div className="comment_write reply">
                         <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                         </div>
                         <div className="white_wrap">
                             <textarea name="" id="" cols="30" rows="10" placeholder="댓글을 입력해주세요."></textarea>
@@ -231,7 +231,7 @@ function Main() {
                         <div className="comment_item">
                         <div className="wrapper">
                             <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                             </div>
                             <div className="comment_right">
                             <div className="top">
@@ -258,7 +258,7 @@ function Main() {
                         {/* <!-- 답글 달기 --> */}
                         <div className="comment_write reply on">
                             <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                             </div>
                             <div className="white_wrap">
                             <textarea name="" id="" cols="30" rows="10" placeholder="댓글을 입력해주세요."></textarea>
@@ -271,7 +271,7 @@ function Main() {
                         <div className="comment_item edit">
                         <div className="wrapper">
                             <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                             </div>
                             <div className="comment_right">
                             <div className="top">
@@ -313,7 +313,7 @@ function Main() {
                         {/* <!-- 답글 달기 --> */}
                         <div className="comment_write reply">
                             <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                             </div>
                             <div className="white_wrap">
                             <textarea name="" id="" cols="30" rows="10" placeholder="댓글을 입력해주세요."></textarea>
@@ -326,7 +326,7 @@ function Main() {
                     <div className="comment_item private">
                         <div className="wrapper">
                         <div className="profile_img">
-                            <img src="/src/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                         </div>
                         <div className="comment_right">
                             <div className="top">
@@ -344,7 +344,7 @@ function Main() {
                     {/* <!-- 페이지네이션 --> */}
                     <div className="pagination_wrap">
                     <button type="button" className="prev_next_btn prev">
-                        <img src="/src/assets/images/icon/icon_arrow_18px.svg" alt="화살표 아이콘" />
+                        <img src="/assets/images/icon/icon_arrow_18px.svg" alt="화살표 아이콘" />
                     </button>
                     <div className="pagination_list">
                         <button type="button" className="active">1</button>
@@ -355,7 +355,7 @@ function Main() {
                         <p>...</p>
                     </div>
                     <button type="button" className="prev_next_btn">
-                        <img src="/src/assets/images/icon/icon_arrow_18px.svg" alt="화살표 아이콘" />
+                        <img src="/assets/images/icon/icon_arrow_18px.svg" alt="화살표 아이콘" />
                     </button>
                     </div>
 
