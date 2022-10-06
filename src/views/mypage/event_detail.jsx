@@ -19,16 +19,16 @@ function Main() {
                         </p>
                     </div>
                     <div className="banner_image">
-                        <img src="/src/assets/images/dummy/banner_img_02.jpg" alt="banner" />
+                        <img src="/assets/images/dummy/banner_img_02.jpg" alt="banner" />
                     </div>
                     </div>
                 </section>
                 <section className="top_section">
                     <article className="nav">
                     <span>HOME</span>
-                    <span className="arrow_icon"><img src="/src/assets/images/icon/icon_arrow_right_black.svg" alt="화살표 아이콘" /></span>
+                    <span className="arrow_icon"><img src="/assets/images/icon/icon_arrow_right_black.svg" alt="화살표 아이콘" /></span>
                     <span>MY PAGE</span>
-                    <span className="arrow_icon"><img src="/src/assets/images/icon/icon_arrow_right_black.svg" alt="화살표 아이콘" /></span>
+                    <span className="arrow_icon"><img src="/assets/images/icon/icon_arrow_right_black.svg" alt="화살표 아이콘" /></span>
                     <div className="select_big_wrap">
                         {/* <!-- 버튼 클릭시 active 클래스 추가 -->
                         <!-- <div className="select_box_wrap_gray active"> --> */}
@@ -62,7 +62,7 @@ function Main() {
                     </p>
                     <div className="event_img_wrap">
                         <div className="event_img">
-                        <img src="/src/assets/images/dummy/cover_img_11.jpg" alt="" />
+                        <img src="/assets/images/dummy/cover_img_11.jpg" alt="" />
                         </div>
                         {/* <!-- 종료된 이벤트일 경우 -->
                         <!-- <div className="end_cover">

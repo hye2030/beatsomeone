@@ -22,7 +22,7 @@ function Main() {
 
     /**일상 추가용 */
     const [addDaily, setAddDaily] = useState([]);
-    const [nextId, setNextId] = useState(1);
+    const [nextId, setNextId] = useState(5);
 
     const handleClick = () => {
         const newList = addDaily.concat({
@@ -37,58 +37,34 @@ function Main() {
     };
 
     /**이미지 추가용 */
-    const [showImages, setShowImages] = useState([]);
+    const [myImage, setMyImage] = useState([]);
+    const [myImagePreview, setMyImagePreview] = useState([]);
+    const handleImage = (e, index) => {
+        let cur_file = e.target.files[0];
+        const filesInArr = Array.from(e.target.files);
+        const previewArr = [window.URL.createObjectURL(cur_file)];
+        console.log(index);
 
-    const [ img, setImg ] = useState([])
-    const [ previewImg, setPreviewImg ] = useState([])  
-    const handleAddImages = (e, index) => {
-        let reader = new FileReader()
+        const nowImageURLList =[...myImage];
+        nowImageURLList.push(filesInArr);
+        setMyImage(nowImageURLList);
+    }
 
-        if(e.target.files[0]) {
-            reader.readAsDataURL(e.target.files[0]);
+    const submitClick = async (e) => {
+        e.preventDefault();
+        e.persist();
 
-            let copiedItems = [...img];
-            copiedItems[index] = e.target.files[0];
+        // console.log(myImage);
+        console.log(e.target.main_img);
+    }
 
-            setImg(copiedItems);
-        }
-
-        reader.onloadend = () => {
-            const previewImgUrl = reader.result;
-
-            if(previewImgUrl) {
-                let copiedItems = [...previewImg];
-                copiedItems[index] = previewImgUrl;
-
-                setPreviewImg(copiedItems);
-            }
-        }
-    };
-
-    const handleDeleteImage = () => {
-        console.log(img);
-        console.log(previewImg);
-
-        //setImg(img.filter((img) => user.id !== id));
-    };
-    
     const dailyList = addDaily.map((daily, index) => 
         <div className="add_content" style={{display: "block"}} key={daily.id}>
-            <div className="img_add_line">
+            <div className="img_add_line" onClick={() => console.log(index)}>
                 <input type="text" placeholder="이미지 및 영상선택" className="add_input" readOnly />
-                <label htmlFor={`file_${index}`} className="add_btn"> 추가 </label>
-                <input type="file" id={`file_${index}`} accept="image/*" name="sub_file[]"  onChange={(e) => handleAddImages(e, index)} />
+                <label htmlFor="file" className="add_btn"> 추가 </label>
+                <input type="file" id="file" accept="image/*" name="sub_file[]" onChange={(e) => {handleImage(e, index);}} />
             </div>
-            {img.filter((el, id) => id == index).map((el, id) => (
-            <div className="add_file_box" key={id}>
-                <div className="cover_img">
-                    <img src={previewImg[index]}/>
-                </div>
-                <span className="close_icon" onClick={() => handleDeleteImage()}>
-                    <img src="/assets/images/icon/icon_close_white.svg" alt="" />
-                </span>
-            </div>
-            ))}
             <div className="textarea_wrap">
                 <textarea placeholder="내용 입력 (5,000 글자)" className="content_area"></textarea>
                 <span className="list_delete_icon" onClick={() => handleDelete(daily.id)}>
@@ -100,6 +76,7 @@ function Main() {
 
     return (
         <>
+        <form onSubmit={(e) => submitClick(e)} encType="multipart/form-data">
         <div id="wrap_content" className="content_add_wrap">
             <div className="wrap_inner">
                 <section className="feed_add_section">
@@ -175,6 +152,7 @@ function Main() {
                 </section>
             </div>
         </div>
+        </form>
         </>
     );
 }

@@ -42,6 +42,7 @@ function Main() {
     const [ img, setImg ] = useState([])
     const [ previewImg, setPreviewImg ] = useState([])  
     const handleAddImages = (e, index) => {
+        console.log(document.getElementById(`file_${index}`));
         let reader = new FileReader()
 
         if(e.target.files[0]) {

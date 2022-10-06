@@ -35,7 +35,6 @@ function Main() {
         })
         .then(function (response) {
             setbanners("https://beatsomeone.codeidea.io/storage/banner/" + response.data.response.data[0].bannerSource);
-            console.log(banners);
         });
     }, [localStorage.getItem("language")]);
 

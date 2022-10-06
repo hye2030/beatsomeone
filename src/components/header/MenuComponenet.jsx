@@ -40,22 +40,22 @@ function MenuComponenet({users}) {
                     </a>
                     <ul className="sec_depth">
                         <li className="list">
-                            <a href="/feed/feed_list" className="link">
+                            <a onClick={() => {navigate('/feed/feed_list')}} className="link">
                             {_menu[9]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="/feed/feed_list" className="link">
+                            <a onClick={() => {navigate('/feed/feed_list')}} className="link">
                             {_menu[10]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="/feed/feed_list" className="link">
+                            <a onClick={() => {navigate('/feed/feed_list')}} className="link">
                             {_menu[11]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="/feed/feed_list" className="link">
+                            <a onClick={() => {navigate('/feed/feed_list')}} className="link">
                             {_menu[12]}
                             </a>
                         </li>

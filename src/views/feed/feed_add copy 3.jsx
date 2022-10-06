@@ -22,7 +22,7 @@ function Main() {
 
     /**일상 추가용 */
     const [addDaily, setAddDaily] = useState([]);
-    const [nextId, setNextId] = useState(1);
+    const [nextId, setNextId] = useState(5);
 
     const handleClick = () => {
         const newList = addDaily.concat({
@@ -39,52 +39,42 @@ function Main() {
     /**이미지 추가용 */
     const [showImages, setShowImages] = useState([]);
 
-    const [ img, setImg ] = useState([])
-    const [ previewImg, setPreviewImg ] = useState([])  
-    const handleAddImages = (e, index) => {
-        let reader = new FileReader()
+    const handleAddImages = (event) => {
+        const imageLists = event.target.files;
+        let imageUrlLists = [...showImages];
 
-        if(e.target.files[0]) {
-            reader.readAsDataURL(e.target.files[0]);
-
-            let copiedItems = [...img];
-            copiedItems[index] = e.target.files[0];
-
-            setImg(copiedItems);
+        for (let i = 0; i < imageLists.length; i++) {
+            const currentImageUrl = URL.createObjectURL(imageLists[i]);
+            imageUrlLists.push(currentImageUrl);
         }
 
-        reader.onloadend = () => {
-            const previewImgUrl = reader.result;
-
-            if(previewImgUrl) {
-                let copiedItems = [...previewImg];
-                copiedItems[index] = previewImgUrl;
-
-                setPreviewImg(copiedItems);
-            }
+        if (imageUrlLists.length > 10) {
+            alert("고만");
+            imageUrlLists = imageUrlLists.slice(0, 10);
         }
+
+        setShowImages(imageUrlLists);
+        console.log(imageUrlLists);
     };
 
-    const handleDeleteImage = () => {
-        console.log(img);
-        console.log(previewImg);
-
-        //setImg(img.filter((img) => user.id !== id));
+    const handleDeleteImage = (id) => {
+        setShowImages(showImages.filter((_, index) => index !== id));
     };
     
     const dailyList = addDaily.map((daily, index) => 
         <div className="add_content" style={{display: "block"}} key={daily.id}>
             <div className="img_add_line">
                 <input type="text" placeholder="이미지 및 영상선택" className="add_input" readOnly />
-                <label htmlFor={`file_${index}`} className="add_btn"> 추가 </label>
-                <input type="file" id={`file_${index}`} accept="image/*" name="sub_file[]"  onChange={(e) => handleAddImages(e, index)} />
+                <label htmlFor="file" className="add_btn"> 추가 </label>
+                <input type="file" id="file" accept="image/*" name="sub_file"  onChange={handleAddImages} />
             </div>
-            {img.filter((el, id) => id == index).map((el, id) => (
-            <div className="add_file_box" key={id}>
+            {showImages.filter((image, id) => id == index).map((image, id) => (
+            <div className="add_file_box" >
+                <p>{id}</p>
                 <div className="cover_img">
-                    <img src={previewImg[index]}/>
+                    <img src={image}/>
                 </div>
-                <span className="close_icon" onClick={() => handleDeleteImage()}>
+                <span className="close_icon" onClick={() => console.log(index)}>
                     <img src="/assets/images/icon/icon_close_white.svg" alt="" />
                 </span>
             </div>
