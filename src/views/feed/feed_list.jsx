@@ -38,6 +38,28 @@ function Main() {
         });
     }, [localStorage.getItem("language")]);
 
+    //모달창 닫기 commonjs에서 갖고옴
+    useEffect(() => {
+        const modalWrap = document.querySelectorAll('.modal_wrap');
+        modalWrap.forEach((item, idx) => {
+            const closeBtn = item.querySelectorAll('.close_btn');
+
+            item.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal_wrap')) {
+                    $(item).fadeOut(200);
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                };
+            });
+
+            closeBtn.forEach((items, i) => {
+                items.addEventListener('click', () => {
+                    $(item).fadeOut(200);
+                    $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+                });
+            });
+        });
+    }, []);
+
     return (
         <>
         <div id="wrap_content" className="list_page feed_list">
@@ -112,7 +134,7 @@ function Main() {
                                     </p>
                                 </div>
                                 <div className="img_wrap">
-                                    <a href="" onClick={() => {navigate("/feed/feed_detail_cover")}}>
+                                    <a onClick={() => {navigate("/feed/feed_detail_daily")}}>
                                         <div className="img">
                                             <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
                                         </div>

@@ -20,7 +20,7 @@ function Main() {
                             <button type="button" className="share_btn"><span>공유하기</span></button>
 
                             {/* <!-- 공유하기 버튼 클릭시 나오는 박스 --> */}
-                            <div className="share_box">
+                            <div className="share_box" style={{display: "none"}}>
                                 <button type="button">
                                     <img src="/assets/images/icon/signUp_facebook.svg" alt="페이스북 로고"/>
                                 </button>

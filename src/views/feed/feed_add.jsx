@@ -20,11 +20,18 @@ function Main() {
         document.getElementById("main_file_txt").textContent="이미지 및 영상선택";
     };
 
+    /**최상단 컨텐츠 구분 및 내용 */
+    const [contentType, setContentType] = useState("일상");
+    const [contentTxt, setContentTxt] = useState("");
+
     /**일상 추가용 */
     const [addDaily, setAddDaily] = useState([]);
     const [nextId, setNextId] = useState(1);
 
     const handleClick = () => {
+        if(contentTxt == ""){
+            alert("")
+        }
         const newList = addDaily.concat({
             id: nextId
         });
@@ -71,6 +78,10 @@ function Main() {
 
         //setImg(img.filter((img) => user.id !== id));
     };
+
+    const aa = () => {
+        console.log(contentTxt);
+    }
     
     const dailyList = addDaily.map((daily, index) => 
         <div className="add_content" style={{display: "block"}} key={daily.id}>
@@ -103,7 +114,7 @@ function Main() {
         <div id="wrap_content" className="content_add_wrap">
             <div className="wrap_inner">
                 <section className="feed_add_section">
-                <h2>컨텐츠 등록</h2>
+                <h2 onClick={() => aa()}>컨텐츠 등록</h2>
                 <div className="content_select">
                     <div className="select_box_wrap">
                     {/* <!-- 0. 기본 --> */}
@@ -135,7 +146,7 @@ function Main() {
                         </span>
                     </div>
                     )}
-                    <textarea placeholder="내용 입력 (5,000 글자)" className="content_area"></textarea>
+                    <textarea placeholder="내용 입력 (5,000 글자)" className="content_area" onChange={(e) => setContentTxt(e.target.value)}></textarea>
                     {/* <!-- 영상 추가 했을 때 --> */}
                     {/* <div className="add_file_box">
                         <div className="cover_img">

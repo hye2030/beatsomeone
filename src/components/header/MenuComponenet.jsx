@@ -72,12 +72,12 @@ function MenuComponenet({users}) {
                     </a>
                     <ul className="sec_depth">
                         <li className="list">
-                            <a href="/feed/feed_list" className="link">
+                            <a href="#" className="link">
                             {_menu[13]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="/feed/feed_list" className="link">
+                            <a href="#" className="link">
                             {_menu[14]}
                             </a>
                         </li>
@@ -94,12 +94,12 @@ function MenuComponenet({users}) {
                     </a>
                 </li>
                 <li className="list">
-                    <a href="/mypage/event" className="link">
+                    <a onClick={() => {navigate('/mypage/event')}} className="link">
                     {_menu[16]}
                     </a>
                 </li>
                 <li className="list">
-                    <a href="./common/notice_list.html" className="link">
+                    <a onClick={() => {navigate('/common/notice_list')}} className="link">
                     {_menu[15]}
                     </a>
                 </li>

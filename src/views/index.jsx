@@ -1694,6 +1694,23 @@ function Main() {
             </section>
         </div>
         {/* END: Page Layout */}
+
+        {/* <!-- 파일등록 완료 모달창 --> */}
+        <div className="modal_wrap message_modal popup_modal" style={{display:"none"}}>
+            <div className="modal_box_wrap">
+                <div className="modal_box">
+                    <p className="comment"><img src="/assets/images/main/survey_img_1.png" alt="" /></p>
+                </div>
+                <button type="button" className="close_btn">닫기</button>
+                <div className="check_box check_area">
+                    <input type="checkbox" id="dontshow" />
+                    <label htmlFor="dontshow">
+                        <span className="check_box_img"></span>
+                        <span className="check_box_text">오늘 하루 그만보기</span>
+                    </label>
+                </div>
+            </div>
+        </div>
       </>
     );
   }

@@ -2677,3 +2677,75 @@
         margin-top: calc(100vw * (20 / 428));
     }
 }
+
+/* 팝업용 모달 */
+.popup_modal .modal_box_wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 450px;
+    transform: translate(-50%, -50%);
+}
+
+.popup_modal .modal_box {
+    position: initial;
+    transform: unset;
+}
+
+.popup_modal .check_area {
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transform: translateY(100%);
+    color: #fff;
+}
+
+.popup_modal .close_btn {
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    flex-shrink: 0;
+    font-weight: 700;
+    transform: translateY(100%);
+    color: #fff;
+}
+
+.popup_modal .check_box .check_box_text {
+    color: #fff;
+}
+
+.popup_modal .check_box>input:checked+label .check_box_text {
+    color: #fff;
+}
+
+@media screen and (max-width: 1300px) {
+
+    /* 팝업용 모달 */
+    .popup_modal .modal_box_wrap {
+        min-width: calc(100vw * (450 / 1300));
+    }
+
+    .popup_modal .check_area {
+        bottom: calc(100vw * (-10 / 1300));
+    }
+
+    .popup_modal .close_btn {
+        bottom: calc(100vw * (-10 / 1300));
+    }
+}
+
+@media all and (max-width: 768px) {
+
+    /* 팝업용 모달 */
+    .popup_modal .modal_box_wrap {
+        min-width: calc(100vw * (396 / 428));
+    }
+
+    .popup_modal .check_area {
+        bottom: calc(100vw * (-10 / 428));
+    }
+
+    .popup_modal .close_btn {
+        bottom: calc(100vw * (-10 / 428));
+    }
+}

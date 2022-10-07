@@ -102,6 +102,7 @@ function Main() {
                     "response": {
                         "name": "길동",
                         "email": localStorage.getItem("emailId"),
+                        "idx": localStorage.getItem("emailIdx")
                     }
                 }));
             }

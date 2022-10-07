@@ -90,6 +90,7 @@ const LoginJoin = () => {
                     localStorage.setItem("sns", "email");
                     localStorage.setItem("snsKey", "");
                     localStorage.setItem("emailId", response.data.response.email);
+                    localStorage.setItem("emailIdx", response.data.response.idx);
                     localStorage.setItem("is_login", response.data._token);
                     localStorage.setItem("last_login", "email");
 

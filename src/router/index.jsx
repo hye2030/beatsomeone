@@ -22,6 +22,9 @@ import EventDetail from "../views/mypage/event_detail"
 import Kakao from "../views/auth/kakao"
 import Naver from "../views/auth/naver"
 
+import NoticeList from "../views/common/notice_list"
+import NoticeDetail from "../views/common/notice_detail"
+
 function Router() {
   const routes = [
     {
@@ -75,6 +78,14 @@ function Router() {
         {
           path: "/mypage/event_detail",
           element: <EventDetail />,
+        },
+        {
+          path: "/common/notice_list",
+          element: <NoticeList />,
+        },
+        {
+          path: "/common/notice_detail/:idx",
+          element: <NoticeDetail />,
         }
       ],
     },
