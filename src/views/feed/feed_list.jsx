@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -60,6 +60,21 @@ function Main() {
         });
     }, []);
 
+    //최신순, 비트많은순, 댓글 많은순
+    const [feedsorting, setFeedsorting] = useState(1);
+    //리스트 불러오기
+    const [feedList, setFeedList] = useState([]);
+    useEffect(() => {
+        axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedList", {
+            params: {
+                sorting: feedsorting
+            }
+        })
+        .then(function (response) {
+            setFeedList(response.data.response);
+        });
+    }, [feedsorting]);
+
     return (
         <>
         <div id="wrap_content" className="list_page feed_list">
@@ -107,13 +122,13 @@ function Main() {
                             <div className="select_box_wrap">
                                 {/* <!-- 셀렉트 박스가 선택되었을때 button 에 active 클래스 넣어주세요 -->
                                 <!-- 0. 기본 --> */}
-                                <button className="select_title">최신순</button>
+                                <button className="select_title" id="feed_sort">최신순</button>
                                 {/* <!-- 1. 선택되었을때 button에 active 클래스 추가 -->
                                 <!-- <button className="active">선택</button> --> */}
                                 <ul>
-                                    <li className="select_list">최신순</li>
-                                    <li className="select_list">비트 많은 순</li>
-                                    <li className="select_list">댓글 많은 순</li>
+                                    <li className="select_list" onClick={() => {setFeedsorting(1)}}>최신순</li>
+                                    <li className="select_list" onClick={() => {setFeedsorting(2)}}>비트 많은 순</li>
+                                    <li className="select_list" onClick={() => {setFeedsorting(3)}}>댓글 많은 순</li>
                                 </ul>
                             </div>
 
@@ -124,82 +139,99 @@ function Main() {
 
                         <ul className="list_box">
                             {/* <!-- title addclassName '자작곡 - category_mark_self shadow' / '커버곡 - category_mark_cover shadow' /  '일상 - category_mark_daily shadow' 을 해주세요--> */}
-                            <li className="list_item">
-                                <div className="profile_box mobile">
-                                    <p>
-                                        <span className="profile_img">
-                                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 이미지"/>
-                                        </span>
-                                        <span>사용자 닉네임 표시</span>
-                                    </p>
-                                </div>
-                                <div className="img_wrap">
-                                    <a onClick={() => {navigate("/feed/feed_detail_daily")}}>
-                                        <div className="img">
-                                            <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
-                                        </div>
+                            {feedList.map((list) => {
+                                let feed_type = ""
+                                if(list.wr_type == "자작곡"){
+                                    feed_type = "title category_mark_self shadow";
+                                }else if(list.wr_type == "커버곡"){
+                                    feed_type = "title category_mark_cover shadow";
+                                }else if(list.wr_type == "일상"){
+                                    feed_type = "title category_mark_daily shadow";
+                                }
 
-                                        <p className="title category_mark_self shadow">
-                                            <span>사용자가 등록한 음원의 제목 표기</span>
+                                return (
+                                <li className="list_item" key={list.idx}>
+                                    <div className="profile_box mobile">
+                                        <p>
+                                            <span className="profile_img">
+                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 이미지"/>
+                                            </span>
+                                            <span>{list.mem_nickname}</span>
                                         </p>
+                                    </div>
+                                    <div className="img_wrap">
+                                        <Link to={`/feed/feed_detail_daily/${list.idx}`}>
+                                            {/* <a> */}
+                                                <div className="img">
+                                                    <img src={`https://beatsomeone.codeidea.io${list.file_url}${list.feed_source}`} alt="이미지" />
+                                                </div>
 
-                                        <div className="list_text mobile">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간
-                                            입니다.
+                                                <p className={feed_type}>
+                                                    <span>{list.wr_title}</span>
+                                                </p>
+
+                                                <div className="list_text mobile" style={{whiteSpace:"pre-wrap"}}>
+                                                    {list.wr_content}
+                                                </div>
+                                            {/* </a> */}
+                                        </Link>
+
+                                        <div className="text_box">
+                                            <div className="text_wrap">
+                                                <ul>
+                                                    <li className="comment">
+                                                        <div className="profile_wrap">
+                                                            <ul>
+                                                                <li>
+                                                                    <img src="/assets/images/dummy/profile_01.jpg"
+                                                                        alt="프로필 이미지1" />
+                                                                </li>
+                                                                <li>
+                                                                    <img src="/assets/images/dummy/profile_02.jpg"
+                                                                        alt="프로필 이미지1" />
+                                                                </li>
+                                                                <li>
+                                                                    <img src="/assets/images/dummy/profile_03.jpg"
+                                                                        alt="프로필 이미지1" />
+                                                                </li>
+                                                            </ul>
+
+                                                            <span>{list.wr_comment}</span>
+                                                        </div>
+                                                    </li>
+
+                                                    <li className="like">
+                                                        <button className="like_toggle_btn white">
+                                                            <span>{list.wr_bit}</span>
+                                                        </button>
+                                                    </li>
+
+                                                    <li className="music">
+                                                        <span>0개</span>
+                                                    </li>
+                                                </ul>
+
+                                                <p>
+                                                    <span className="profile_img">
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 이미지"/>
+                                                    </span>
+                                                    <span>{list.mem_nickname}</span>
+                                                </p>
+                                            </div>
                                         </div>
-                                    </a>
 
-                                    <div className="text_box">
-                                        <div className="text_wrap">
-                                            <ul>
-                                                <li className="comment">
-                                                    <div className="profile_wrap">
-                                                        <ul>
-                                                            <li>
-                                                                <img src="/assets/images/dummy/profile_01.jpg"
-                                                                    alt="프로필 이미지1" />
-                                                            </li>
-                                                            <li>
-                                                                <img src="/assets/images/dummy/profile_02.jpg"
-                                                                    alt="프로필 이미지1" />
-                                                            </li>
-                                                            <li>
-                                                                <img src="/assets/images/dummy/profile_03.jpg"
-                                                                    alt="프로필 이미지1" />
-                                                            </li>
-                                                        </ul>
-
-                                                        <span>99+</span>
-                                                    </div>
-                                                </li>
-
-                                                <li className="like">
-                                                    <button className="like_toggle_btn white">
-                                                        <span>9,999</span>
-                                                    </button>
-                                                </li>
-
-                                                <li className="music">
-                                                    <span>99개</span>
-                                                </li>
-                                            </ul>
-
-                                            <p>
-                                                <span className="profile_img">
-                                                    <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 이미지"/>
-                                                </span>
-                                                <span>닉네임</span>
-                                            </p>
-                                        </div>
+                                        {/* <span className="play">04:17</span> */}
                                     </div>
 
-                                    <span className="play">04:17</span>
-                                </div>
-
-                                <div className="list_text pc">
-                                    내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다.
-                                </div>
-                            </li>
+                                    <div className="list_text pc" style={{whiteSpace:"pre-wrap"}}>
+                                        {list.wr_content}
+                                    </div>
+                                </li>
+                                )}
+                            )}
+                            {feedList.length === 0 ? 
+                                <li className="list_item">등록된 피드가 없습니다.</li>
+                            : null}
                         </ul>
                         
                     </div>

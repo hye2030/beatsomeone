@@ -24,8 +24,7 @@ $(function () {
     modalWrap.forEach((item, idx) => {
         const closeBtn = item.querySelectorAll('.close_btn');
 
-        if(item.id == "integratedButton"){
-
+        if(item.id == "integratedButton" || item.id == "feed_add_login" || item.id == "feed_content_delete"){
         }else{
             item.addEventListener('click', (e) => {
                 if (e.target.classList.contains('modal_wrap')) {

@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import "@/assets/css/components/content_add.css";
 
 function Main() {
     const navigate = useNavigate();
+    const user = useSelector((state) => {return state.isLogin});
+    const user_idx = useSelector((state) => {return state.idx});
 
     /**최상단 이미지 처리 및 미리보기 */
     const [fileImage, setFileImage] = useState("");
@@ -21,31 +25,44 @@ function Main() {
     };
 
     /**최상단 컨텐츠 구분 및 내용 */
-    const [contentType, setContentType] = useState("일상");
-    const [contentTxt, setContentTxt] = useState("");
+    const [contentType, setContentType] = useState("daily");
+    const [contentTxt, setContentTxt] = useState([]);
 
     /**일상 추가용 */
     const [addDaily, setAddDaily] = useState([]);
     const [nextId, setNextId] = useState(1);
 
     const handleClick = () => {
-        if(contentTxt == ""){
-            alert("")
+        if(files == ""){
+            alert("이미지를 등록해주세요.");
+            return false;
         }
+        if(contentTxt == ""){
+            alert("내용을 입력해주세요.");
+            return false;
+        }
+        if(addDaily.length != img.length){
+            alert("이미지를 등록해주세요.");
+            return false;
+        }
+
         const newList = addDaily.concat({
             id: nextId
         });
         setNextId(nextId+1);
         setAddDaily(newList);
     }
-    const handleDelete = id => {
+    const handleDelete = (id, index) => {
         const newList = addDaily.filter(daily => daily.id !== id);
         setAddDaily(newList);
+
+        document.getElementById("file_"+index).value = "";
+        let copiedItems = [...img];
+        copiedItems.splice(index);
+        setImg(copiedItems);
     };
 
     /**이미지 추가용 */
-    const [showImages, setShowImages] = useState([]);
-
     const [ img, setImg ] = useState([])
     const [ previewImg, setPreviewImg ] = useState([])  
     const handleAddImages = (e, index) => {
@@ -72,56 +89,136 @@ function Main() {
         }
     };
 
-    const handleDeleteImage = () => {
-        console.log(img);
-        console.log(previewImg);
+    const handleDeleteImage = (index) => {
+        document.getElementById("file_"+index).value = "";
 
-        //setImg(img.filter((img) => user.id !== id));
+        let copiedItems = [...img];
+        copiedItems.splice(index);
+
+        setImg(copiedItems);
     };
 
-    const aa = () => {
-        console.log(contentTxt);
+    const submitBtn = () => {
+        const cntt = document.getElementsByName('content[]');
+        const sub = document.getElementsByName('sub_file[]');
+
+        let next = false;
+
+        if(user == true){
+            next = true;
+        }else{
+            next = false;
+        }
+        if(next == false){
+            $(".plzSignin_modal").fadeIn(200);
+            return false;
+        }
+
+        if(cntt.length !== 0) {
+            for(var i = 0; i < cntt.length; i++) {
+                if(cntt[i].value == "") {
+                    next = false;
+                }else{
+                    next = true;
+                }
+            }
+        }
+        if(next == false){
+            alert("내용을 입력해주세요");
+            return false;
+        }
+
+        if(sub.length !== 0) {
+            for(var i = 0; i < sub.length; i++) {
+                if(sub[i].value == "") {
+                    next = false;
+                }else{
+                    next = true;
+                }
+            }
+        }
+        if(next == false){
+            alert("이미지를 등록해주세요");
+            return false;
+        }
+
+        var frm = new FormData();
+        frm.append("content_cnt", (files.length + img.length));
+        frm.append("mem_id", user_idx);
+        frm.append("main_file", files[0]);
+        if(img.length == 0){
+            frm.append("sub_file[]", null);
+        }else{
+            img.map((value) =>{
+                frm.append("sub_file[]", value);
+            });
+        }
+        frm.append("wr_type", contentType);
+        for(var i = 0; i < cntt.length; i++) {
+            frm.append("feed_content[]", cntt[i].value);
+        }
+
+        axios.post("https://beats-admin.codeidea.io/api/v1/feed/feedFileUpdate", frm,
+            {
+                headers : {
+                    "Content-Type": "multipart/form-data"
+                }
+            }
+        )
+        .then(function (response) {
+            if(response.data.code == 0){
+                $(".conRegisterC_modal").fadeIn(200);                
+            }else{
+                alert("등록중 오류가 발생하였습니다.");
+                location.href="/feed/feed_list";
+            }
+        });
     }
     
     const dailyList = addDaily.map((daily, index) => 
         <div className="add_content" style={{display: "block"}} key={daily.id}>
-            <div className="img_add_line">
+            <div className="img_add_line" id={`daily_input_id${index}`}>
                 <input type="text" placeholder="이미지 및 영상선택" className="add_input" readOnly />
                 <label htmlFor={`file_${index}`} className="add_btn"> 추가 </label>
-                <input type="file" id={`file_${index}`} accept="image/*" name="sub_file[]"  onChange={(e) => handleAddImages(e, index)} />
+                <input type="file" id={`file_${index}`} accept="image/*" name="sub_file[]" onChange={(e) => handleAddImages(e, index)} />
             </div>
             {img.filter((el, id) => id == index).map((el, id) => (
             <div className="add_file_box" key={id}>
                 <div className="cover_img">
                     <img src={previewImg[index]}/>
                 </div>
-                <span className="close_icon" onClick={() => handleDeleteImage()}>
+                <span className="close_icon" onClick={() => handleDeleteImage(index)}>
                     <img src="/assets/images/icon/icon_close_white.svg" alt="" />
                 </span>
             </div>
             ))}
             <div className="textarea_wrap">
-                <textarea placeholder="내용 입력 (5,000 글자)" className="content_area"></textarea>
-                <span className="list_delete_icon" onClick={() => handleDelete(daily.id)}>
+                <textarea name="content[]" placeholder="내용 입력 (5,000 글자)" className="content_area"></textarea>
+                <span className="list_delete_icon" onClick={() => handleDelete(daily.id, index)}>
                     <img src="/assets/images/icon/icon_delete_cover.svg" alt="" />
                 </span>
             </div>
         </div>
     );
 
+    const backMain = () => {
+        $(".conRegisterC_modal").fadeOut(200);
+        navigate("/feed/feed_list");
+    }
+
     return (
         <>
         <div id="wrap_content" className="content_add_wrap">
             <div className="wrap_inner">
                 <section className="feed_add_section">
-                <h2 onClick={() => aa()}>컨텐츠 등록</h2>
+                <h2>컨텐츠 등록</h2>
                 <div className="content_select">
                     <div className="select_box_wrap">
                     {/* <!-- 0. 기본 --> */}
                     <button className="select_title">일상</button>
                     <ul>
-                        <li className="select_list song">자작곡</li>
-                        <li className="select_list song">커버곡</li>
+                        {/* <li className="select_list song">자작곡</li>
+                        <li className="select_list song">커버곡</li> */}
                         <li className="select_list daily">일상</li>
                     </ul>
                     </div>
@@ -133,7 +230,7 @@ function Main() {
                     {/* 이미지 선택됐을때 gray 클래스를 추가해주시면 됩니다! */}
                     {/* <input type="text" value="file.jpg" className="add_input gray" readonly /> */}
                     <label htmlFor="image" className="add_input" id="main_file_txt">이미지 및 영상선택</label>
-                    <input type="file" id="image" accept="image/*" name="main_file" onChange={saveFileImage}/>
+                    <input type="file" id="image" accept="image/*" name="sub_file[]" onChange={saveFileImage}/>
                     </div>
                     {/* <!-- 이미지 추가 했을 때 --> */}
                     {fileImage && (
@@ -146,7 +243,7 @@ function Main() {
                         </span>
                     </div>
                     )}
-                    <textarea placeholder="내용 입력 (5,000 글자)" className="content_area" onChange={(e) => setContentTxt(e.target.value)}></textarea>
+                    <textarea placeholder="내용 입력 (5,000 글자)" name="content[]" className="content_area" onChange={(e) => setContentTxt(e.target.value)}></textarea>
                     {/* <!-- 영상 추가 했을 때 --> */}
                     {/* <div className="add_file_box">
                         <div className="cover_img">
@@ -181,9 +278,37 @@ function Main() {
 
                 <div className="button_wrap">
                     <button className="basic_btn_red_border cancel_btn" onClick={() => {navigate("/feed/feed_list")}}>취소</button>
-                    <button className="basic_btn_red confirm_btn" type="submit">등록</button>
+                    <button className="basic_btn_red confirm_btn" type="submit" onClick={() => {submitBtn();}}>등록</button>
                 </div>
                 </section>
+            </div>
+        </div>
+
+        <div className="modal_wrap message_modal conRegisterC_modal" style={{display: "none"}}>
+            <div className="modal_box done">
+                <button className="x_btn" onClick={() => {backMain()}}></button>
+                <p className="comment">
+                    컨텐츠 등록이 완료되었습니다.
+                </p>
+                <div className="button_wrap">
+                    <button type="button" className="basic_btn_red confirm_btn close_btn" onClick={() => {backMain()}}>
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div className="modal_wrap message_modal plzSignin_modal" id="feed_add_login" style={{display: "none"}}>
+            <div className="modal_box alert">
+            <button className="x_btn" onClick={() => {backMain()}}></button>
+                <p className="comment">
+                    로그인이 필요한 서비스입니다.
+                </p>
+                <div className="button_wrap">
+                    <button type="button" className="basic_btn_red confirm_btn close_btn" onClick={() => {backMain()}}>
+                        확인
+                    </button>
+                </div>
             </div>
         </div>
         </>

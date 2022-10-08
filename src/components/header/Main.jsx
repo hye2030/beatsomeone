@@ -137,7 +137,7 @@ function Main() {
             <div className="header_top">
                 <div className="inner">
                     <div className="tabs">
-                        <a href="https://bybeats.codeidea.io/" className="tab" target="_blank">
+                        <a href="https://bybeats.codeidea.io?sns='email'&snsKey='snsKey'&emailId='fsdf'&token='fsdfsf'" className="tab" target="_blank">
                             <img
                                 alt="바이비트 로고"
                                 className="w-6"

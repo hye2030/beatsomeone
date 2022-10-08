@@ -7,7 +7,7 @@ import { useScript } from "@/utils/useScript";
 import { useEffect } from "react";
 
 function App() {
-  const status = useScript("/assets/js/common.js");
+  const status = useScript("/src/assets/js/common.js");
   useEffect(() => {
       if(status === "ready"){
         // sdk 초기화하기

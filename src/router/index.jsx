@@ -15,6 +15,7 @@ import FeedDetailCover from "../views/feed/feed_detail_cover"
 import FeedDetailDaily from "../views/feed/feed_detail_daily"
 import FeedDetailSelf from "../views/feed/feed_detail_self"
 import FeedList from "../views/feed/feed_list"
+import RandomDog from "../views/feed/Test"
 
 import Event from "../views/mypage/event"
 import EventDetail from "../views/mypage/event_detail"
@@ -60,7 +61,7 @@ function Router() {
           element: <FeedDetailCover />,
         },
         {
-          path: "/feed/feed_detail_daily",
+          path: "/feed/feed_detail_daily/:idx",
           element: <FeedDetailDaily />,
         },
         {
@@ -86,6 +87,10 @@ function Router() {
         {
           path: "/common/notice_detail/:idx",
           element: <NoticeDetail />,
+        },
+        {
+          path: "/feed/Test",
+          element: <RandomDog />,
         }
       ],
     },
