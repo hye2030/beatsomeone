@@ -1,6 +1,24 @@
-import "@/assets/css/components/event.css";
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import axios from 'axios';
 
 function Main() {
+    const navigate  = useNavigate();
+    const param = useParams();
+    const [event, setEvent] = useState([]);
+
+    useEffect(() => {
+        axios.get("https://beats-admin.codeidea.io/api/v1/eventView", {
+            params: {
+                "idx" : param.idx
+            }
+        })
+        .then(function (response) {
+            // console.log(response.data.response);
+            setEvent(response.data.response);
+        });
+    }, [])
+
     return (
         <>
         <div id="wrap_content" className="event_detail_wrap">
@@ -23,7 +41,7 @@ function Main() {
                     </div>
                     </div>
                 </section>
-                <section className="top_section">
+                <section className="top_section" style={{marginTop:"calc(100vw * (33 / 1300))"}}>
                     <article className="nav">
                     <span>HOME</span>
                     <span className="arrow_icon"><img src="/assets/images/icon/icon_arrow_right_black.svg" alt="화살표 아이콘" /></span>
@@ -45,41 +63,49 @@ function Main() {
                 </section>
 
                 {/* <!-- 이벤트 컨텐츠 --> */}
-                <section className="event_content_wrap">
-                    <h3 className="event_title">Event 상세</h3>
-                    <p className="event_name">
-                    <span className="category">[진행중]</span>이벤트 컨텐츠 제목 표기
-                    영역으로 사용
-                    </p>
+                {event.map((event) => { 
+                    return(
+                    <section className="event_content_wrap" key={event.idx}>
+                        <h3 className="event_title">Event 상세</h3>
+                        {event.gubun == 1 ?
+                        <p className="event_name">
+                            <span className="category">[진행중]</span>{event.title}
+                        </p>
+                        :
+                        <p className="event_name end"><span className="category">[종료]</span>{event.title}</p>
+                        }
 
-                    {/* <!-- 종료된 이벤트일 경우 -->
-                    <!-- <p className="event_name end"><span className="category">[종료]</span>이벤트 컨텐츠 제목 표기 영역으로 사용</p> --> */}
-
-                    <div className="content_inner">
-                    <p className="event_date">
-                        이벤트 기간 :
-                        <span className="date">2022.07.12 ~ 2022.07.18</span>
-                    </p>
-                    <div className="event_img_wrap">
-                        <div className="event_img">
-                        <img src="/assets/images/dummy/cover_img_11.jpg" alt="" />
+                        <div className="content_inner">
+                            <p className="event_date">
+                                이벤트 기간 :
+                                <span className="date">{event.fr_event_date} ~ {event.bk_event_date}</span>
+                            </p>
+                            <div className="event_img_wrap">
+                                <div className="event_img">
+                                    {/* <img src="/assets/images/dummy/cover_img_11.jpg" alt="" /> */}
+                                    <img src={`https://beatsomeone.codeidea.io/storage/event/${event.event_source}`} alt="" />
+                                </div>
+                                {event.gubun == 2 ?
+                                <div className="end_cover">
+                                    <p className="end_text">종료된 이벤트</p>
+                                </div>
+                                : "null"}
+                            </div>
+                            {event.gubun == 1 ?
+                            <p className="content" dangerouslySetInnerHTML={ {__html: event.content} }></p>
+                            :
+                            <p className="content end" dangerouslySetInnerHTML={ {__html: event.content} }></p>
+                            }
                         </div>
-                        {/* <!-- 종료된 이벤트일 경우 -->
-                        <!-- <div className="end_cover">
-                                            <p className="end_text">종료된 이벤트</p>
-                                        </div> --> */}
-                    </div>
-                    <p className="content">이벤트 내용이 출력됩니다.</p>
-                    {/* <!-- 종료된 이벤트일 경우 -->
-                    <!-- <p className="content end">이벤트 내용이 출력됩니다.</p> --> */}
-                    </div>
 
-                    <div className="event_btn">
-                    <button type="button" className="basic_btn_red" onClick={() => { location.href='/event'; }}>
-                        이벤트 목록으로
-                    </button>
-                    </div>
-                </section>
+                        <div className="event_btn">
+                        <button type="button" className="basic_btn_red" onClick={() => { navigate("/mypage/event") }}>
+                            이벤트 목록으로
+                        </button>
+                        </div>
+                    </section>
+                    )}
+                )}
                 </div>
             </div>
         </div>

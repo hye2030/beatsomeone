@@ -2,68 +2,53 @@ import axios from "axios";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const RandomDog = () => {
+    const [randomImageList, setRandomImageList] = useState([]);
+  const [page, setPage] = useState(1);
 
-    const [list, setList] = useState([]);
-    const [page, setPage] = useState(1);
-    const [load, setLoad] = useState(1);
-    const preventRef = useRef(true);
-    const obsRef = useRef(null);
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
 
-    useEffect(()=> {
-        getDog();
-        const observer = new IntersectionObserver(obsHandler, { threshold : 0.5 });
-        if(obsRef.current) observer.observe(obsRef.current);
-        return () => { observer.disconnect(); }
-    }, [])
-    
-    useEffect(()=> {
-        getDog();
-    }, [page])
+    console.log('스크롤 이벤트 발생');
 
-    const obsHandler = ((entries) => {
-        const target = entries[0];
-        if(target.isIntersecting && preventRef.current){ 
-            preventRef.current = false;
-            setPage(prev => prev+1 );
-        }
-    })
+    if (scrollTop + clientHeight >= scrollHeight) {
+      console.log('페이지 끝에 스크롤이 닿았음');
+      setPage((prev) => prev + 1);
+    }
+  };
 
-    const getDog = useCallback(async() => { //글 불러오기  
-        setLoad(true); //로딩 시작
-        const res = await axios({method : 'GET', url : `https://beats-admin.codeidea.io/api/v1/feed/feedList?sorting=1`});
-        if(res.data.response){
-            setList(prev=> [...prev, {...res.data.response[0]} ]); //리스트 추가
-            preventRef.current = true;
-        }else{
-          console.log(res); //에러
-        }
-        setLoad(false); //로딩 종료
-    }, [page]);
+  const getRandomImageThenSet = async () => {
+    console.log('fetching 함수 호출됨');
+    try {
+      const { data } = await axios.get(
+        `https://picsum.photos/v2/list?page=${page}&limit=7`
+      );
+      setRandomImageList(randomImageList.concat(data));
+    } catch {
+      console.error('fetching error');
+    }
+  };
 
-    return(
+  useEffect(() => {
+    console.log('page ? ', page);
+    getRandomImageThenSet();
+  }, [page]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return (
     <>
-        <div>
-            {
-                list &&
-                <>
-                    {
-                        list.map((li)=> 
-                            <img key={li.idx} className="opacity-100 mx-auto mb-6" src={`https://beatsomeone.codeidea.io${li.file_url}${li.feed_source}`} width={'500px'} height={'300px'} />
-                        )
-                    }
-                </>
-                
-            }
-            {
-                load ?
-                <div>로딩 중</div>
-                    :
-                <></>
-            }
-            <div ref={obsRef}>옵저버 Element</div>
-        </div>
+      {randomImageList?.map((randomImage) => (
+        <img key={randomImage.id} src={randomImage.download_url} alt="random" />
+      ))}
     </>
-    )
+  );
 }
 
 export default RandomDog

@@ -2,8 +2,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 
-import { useIntersectionObserver } from './observer';
-
 import "@/assets/css/components/event.css";
 
 function Main() {
@@ -11,28 +9,50 @@ function Main() {
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
+    let allowInfinite = false;
 
     const [type, setType] = useState("");
 
-    const eventList = (page, limit) => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/eventList", {
-            params: {
-                "page": page,
-                "limit": limit,
-                "gubun": type
-            }
-        })
-        .then(function (response) {
-            setPosts(response.data.response.data)
-            setPage(page + 1);
-        });
+    const eventList = async (page, limit) => {
+        try {
+            const { data } = await axios.get(
+                `https://beats-admin.codeidea.io/api/v1/eventList`, {
+                    params: {
+                        "page" : page,
+                        "limit" : limit,
+                        "gubun" : type
+                    }
+                }
+            );
+            setPosts(posts.concat(data.response.data));
+            allowInfinite = true;
+        } catch {
+          console.error('fetching error');
+        }
     };
 
-    const setObservationTarget = useIntersectionObserver(eventList(page, limit));
+    const onSroll = () => {
+        const scrollHeight = document.documentElement.scrollHeight;
+        const scrollTop = document.documentElement.scrollTop;
+        const clientHeight = document.documentElement.clientHeight;
+
+        if (scrollTop + clientHeight >= scrollHeight- 1) {
+            if (!allowInfinite) return;
+            allowInfinite = false;
+            setPage((prev) => prev + 1);
+        }
+    }
 
     useEffect(() => {
         eventList(page, limit)
-    }, [type])
+    }, [page])
+
+    useEffect(() => {
+        window.addEventListener('scroll', onSroll);
+        return () => {
+          window.removeEventListener('scroll', onSroll);
+        };
+    }, []);
 
     const typeChange = (gubun) => {
         if(gubun == "Y"){
@@ -105,7 +125,7 @@ function Main() {
                     </div>
 
                     {/* <!-- 리스트 --> */}
-                    <ul className="content" id='post_content' ref={setObservationTarget}>
+                    <ul className="content" id='post_content'>
                     {posts.map((event) => {
                             if(event.gubun == 1){
                                 return (

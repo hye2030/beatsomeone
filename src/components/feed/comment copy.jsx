@@ -3,16 +3,12 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Pagination from '../../components/body/pagination';
-import Replycomment from './Replycomment';
-
 function Comment(idx) {
     const navigate = useNavigate();
     const [feedContent, setFeedContent] = useState([]);
     const [writerIdx, setWriterIdx] = useState(0);
     const user = useSelector((state) => {return state.isLogin});
     const user_idx = useSelector((state) => {return state.idx});
-    const [commentUpdate, setCommentUpdate] = useState(false);
 
     //피드 상세
     useEffect(() => {
@@ -25,7 +21,7 @@ function Comment(idx) {
             setFeedContent(response.data.response.detail);
             setWriterIdx(response.data.response.detail[0].mem_id);
         });
-    }, [commentUpdate])
+    }, [])
 
     //피드 삭제
     const feed_delete = () => {
@@ -110,7 +106,6 @@ function Comment(idx) {
         .then(function (response) {
             if(response.data.code == 0){
                 setFeedComment("");      
-                setCommentUpdate(true);
             }else{
                 alert("등록중 오류가 발생하였습니다.");
                 console.log(response);
@@ -125,30 +120,6 @@ function Comment(idx) {
         }
     }
 
-    //페이징
-    const [limit, setLimit] = useState(10);
-    const [page, setPage] = useState(1);
-    const offset = (page - 1) * limit;
-    //댓글 목록
-    const [commentList, setCommentList] = useState([]);
-    const [commentTotal, setCommentTotal] = useState(1);
-    useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/comment/getCommentList", {
-            params: {
-                "wr_idx" : idx.idx,
-                "wr_type" : "feed",
-                "limit" : limit,
-                "page" : page
-            }
-        })
-        .then(function (response) {
-            console.log(response);
-            setCommentList(response.data.response);
-            setCommentUpdate(false);
-            setCommentTotal(response.data.total);
-        });
-    }, [commentUpdate, page])
-    
     return (
         <>
         <div className="comment_area">
@@ -209,91 +180,81 @@ function Comment(idx) {
                     
                     <div className="comment_item">
                         
-                        {commentList.map((comment) => {
-                            let singo_style = {};
-                            let singo_cntt = comment.cm_content;
-                            if(comment.cm_open == "secret"){
-                                singo_style = {color: "#ACACAC"};
-                                singo_cntt = "[관리자의 의해 비공개 처리된 댓글입니다.]";
-                            }
-
-                            if(comment.cm_depth == 1){
-                                return (
-                                    <div key={comment.idx}>
-                                        <div className="wrapper">
-                                            <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
-                                            </div>
-                                            <div className="comment_right">
-                                                <div className="top">
-                                                    <span className="nickname">{comment.mem_nickname}</span>
-                                                    <p className="time gray_text">{comment.created_at}</p>
-                                                    <button type="button" className="report">신고</button>
-                                                </div>
-                                                <div className="comment" style={singo_style}>
-                                                    {singo_cntt}
-                                                </div>
-                                                <div className="bottom">
-                                                    <button type="button" className="like_toggle_btn "><span>
-                                                            9,999
-                                                        </span></button>
-                                                    <button type="button" className="gray_text reply_btn">답글달기</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="comment_write reply">
-                                            <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
-                                            </div>
-                                            <div className="white_wrap">
-                                                <textarea name="" id="" cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요."></textarea>
-                                                <button type="button">작성</button>
-                                            </div>
-                                        </div>
+                        <div className="wrapper">
+                            <div className="profile_img">
+                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            </div>
+                            <div className="comment_right">
+                                <div className="top">
+                                    <span className="nickname">사용자 닉네임 표시</span>
+                                    <p className="time gray_text">13시간 전</p>
+                                    <button type="button" className="report">신고</button>
+                                </div>
+                                <div className="comment">
+                                    댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이
+                                    표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다.
+                                    댓글
+                                    내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다.
+                                </div>
+                                <div className="bottom">
+                                    <button type="button" className="like_toggle_btn active"><span>
+                                            9,999
+                                        </span></button>
+                                    <button type="button" className="gray_text reply_btn">답글달기</button>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <!-- 답글 달기 --> */}
+                        <div className="comment_write reply">
+                            <div className="profile_img">
+                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            </div>
+                            <div className="white_wrap">
+                                <textarea name="" id="" cols="30" rows="10"
+                                    placeholder="댓글을 입력해주세요."></textarea>
+                                <button type="button">작성</button>
+                            </div>
+                        </div>
+                        {/* <!-- 대댓글 --> */}
+                        <div className="comment_item">
+                            <div className="wrapper">
+                                <div className="profile_img">
+                                    <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                                </div>
+                                <div className="comment_right">
+                                    <div className="top">
+                                        <span className="nickname">사용자 닉네임 표시</span>
+                                        <p className="time gray_text">13시간 전</p>
+                                        <button type="button" className="report">신고</button>
                                     </div>
-                                )
-                            }else if(comment.cm_depth == 2){
-                                return (
-                                    <div className="comment_item" key={comment.idx}>
-                                        <div className="wrapper">
-                                            <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
-                                            </div>
-                                            <div className="comment_right">
-                                                <div className="top">
-                                                    <span className="nickname">{comment.mem_nickname}</span>
-                                                    <p className="time gray_text">{comment.created_at}</p>
-                                                    <button type="button" className="report">신고</button>
-                                                </div>
-                                                <div className="comment" style={singo_style}>
-                                                    {/* <p className="user_tag">사용자 닉네임</p> */}
-                                                    {singo_cntt}
-                                                </div>
-                                                <div className="bottom">
-                                                    <button type="button" className="like_toggle_btn"><span>
-                                                            9,999
-                                                        </span></button>
-                                                    <button type="button" className="gray_text reply_btn ">답글달기</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="comment_write reply ">
-                                            <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
-                                            </div>
-                                            <div className="white_wrap">
-                                                <textarea name="" id="" cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요."></textarea>
-                                                <button type="button">작성</button>
-                                            </div>
-                                        </div>
-                                        <Replycomment responseTo={comment.idx}/>
+                                    <div className="comment">
+                                        <p className="user_tag">사용자 닉네임</p>
+                                        댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글
+                                        내용이
+                                        표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이
+                                        표기됩니다.
+                                        댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다.
                                     </div>
-                                )
-                            }
-                        
-                        }) }
+                                    <div className="bottom">
+                                        <button type="button" className="like_toggle_btn"><span>
+                                                9,999
+                                            </span></button>
+                                        <button type="button" className="gray_text reply_btn cancel">답글취소</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* <!-- 답글 달기 --> */}
+                            <div className="comment_write reply on">
+                                <div className="profile_img">
+                                    <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                                </div>
+                                <div className="white_wrap">
+                                    <textarea name="" id="" cols="30" rows="10"
+                                        placeholder="댓글을 입력해주세요."></textarea>
+                                    <button type="button">작성</button>
+                                </div>
+                            </div>
+                        </div>
                         
                     </div>
                     {/* <!-- 비공개처리 글 private클래스 붙여주세요 --> */}
@@ -318,11 +279,20 @@ function Comment(idx) {
             </div>
             {/* <!-- 페이지네이션 --> */}
             <div className="pagination_wrap">
-                <Pagination 
-                    total={commentTotal}
-                    limit={limit}
-                    page={page}
-                    setPage={setPage}/>
+                <button type="button" className="prev_next_btn prev">
+                    <img src="/assets/images/icon/icon_arrow_18px.svg" alt="화살표 아이콘" />
+                </button>
+                <div className="pagination_list">
+                    <button type="button" className="active">1</button>
+                    <button type="button">2</button>
+                    <button type="button">3</button>
+                    <button type="button">4</button>
+                    <button type="button">5</button>
+                    <p>...</p>
+                </div>
+                <button type="button" className="prev_next_btn">
+                    <img src="/assets/images/icon/icon_arrow_18px.svg" alt="화살표 아이콘" />
+                </button>
             </div>
         </div>
 

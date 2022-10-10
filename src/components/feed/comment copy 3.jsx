@@ -133,7 +133,7 @@ function Comment(idx) {
     const [commentList, setCommentList] = useState([]);
     const [commentTotal, setCommentTotal] = useState(1);
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/comment/getCommentList", {
+        axios.get("https://beats-admin.codeidea.io/api/v1/comment/getCommentDataList", {
             params: {
                 "wr_idx" : idx.idx,
                 "wr_type" : "feed",
@@ -142,7 +142,7 @@ function Comment(idx) {
             }
         })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             setCommentList(response.data.response);
             setCommentUpdate(false);
             setCommentTotal(response.data.total);
@@ -217,84 +217,43 @@ function Comment(idx) {
                                 singo_cntt = "[관리자의 의해 비공개 처리된 댓글입니다.]";
                             }
 
-                            if(comment.cm_depth == 1){
-                                return (
-                                    <div key={comment.idx}>
-                                        <div className="wrapper">
-                                            <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
-                                            </div>
-                                            <div className="comment_right">
-                                                <div className="top">
-                                                    <span className="nickname">{comment.mem_nickname}</span>
-                                                    <p className="time gray_text">{comment.created_at}</p>
-                                                    <button type="button" className="report">신고</button>
-                                                </div>
-                                                <div className="comment" style={singo_style}>
-                                                    {singo_cntt}
-                                                </div>
-                                                <div className="bottom">
-                                                    <button type="button" className="like_toggle_btn "><span>
-                                                            9,999
-                                                        </span></button>
-                                                    <button type="button" className="gray_text reply_btn">답글달기</button>
-                                                </div>
-                                            </div>
+                            return (
+                                <div key={comment.idx}>
+                                    <div className="wrapper">
+                                        <div className="profile_img">
+                                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                                         </div>
-                                        <div className="comment_write reply">
-                                            <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                                        <div className="comment_right">
+                                            <div className="top">
+                                                <span className="nickname">{comment.mem_nickname}</span>
+                                                <p className="time gray_text">{comment.created_at}</p>
+                                                <button type="button" className="report">신고</button>
                                             </div>
-                                            <div className="white_wrap">
-                                                <textarea name="" id="" cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요."></textarea>
-                                                <button type="button">작성</button>
+                                            <div className="comment" style={singo_style}>
+                                                {singo_cntt}
+                                            </div>
+                                            <div className="bottom">
+                                                <button type="button" className="like_toggle_btn "><span>
+                                                        9,999
+                                                    </span></button>
+                                                <button type="button" className="gray_text reply_btn">답글달기</button>
                                             </div>
                                         </div>
                                     </div>
-                                )
-                            }else if(comment.cm_depth == 2){
-                                return (
-                                    <div className="comment_item" key={comment.idx}>
-                                        <div className="wrapper">
-                                            <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
-                                            </div>
-                                            <div className="comment_right">
-                                                <div className="top">
-                                                    <span className="nickname">{comment.mem_nickname}</span>
-                                                    <p className="time gray_text">{comment.created_at}</p>
-                                                    <button type="button" className="report">신고</button>
-                                                </div>
-                                                <div className="comment" style={singo_style}>
-                                                    {/* <p className="user_tag">사용자 닉네임</p> */}
-                                                    {singo_cntt}
-                                                </div>
-                                                <div className="bottom">
-                                                    <button type="button" className="like_toggle_btn"><span>
-                                                            9,999
-                                                        </span></button>
-                                                    <button type="button" className="gray_text reply_btn ">답글달기</button>
-                                                </div>
-                                            </div>
+                                    <div className="comment_write reply">
+                                        <div className="profile_img">
+                                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                                         </div>
-                                        <div className="comment_write reply ">
-                                            <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
-                                            </div>
-                                            <div className="white_wrap">
-                                                <textarea name="" id="" cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요."></textarea>
-                                                <button type="button">작성</button>
-                                            </div>
+                                        <div className="white_wrap">
+                                            <textarea name="" id="" cols="30" rows="10"
+                                                placeholder="댓글을 입력해주세요."></textarea>
+                                            <button type="button">작성</button>
                                         </div>
-                                        <Replycomment responseTo={comment.idx}/>
                                     </div>
-                                )
-                            }
-                        
+                                    <Replycomment responseTo={comment.idx}/>
+                                </div>
+                            )
                         }) }
-                        
                     </div>
                     {/* <!-- 비공개처리 글 private클래스 붙여주세요 --> */}
                     {/* <div className="comment_item private">

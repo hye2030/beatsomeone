@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Pagination from '../../components/body/pagination';
-import Replycomment from './Replycomment';
 
 function Comment(idx) {
     const navigate = useNavigate();
@@ -253,7 +252,7 @@ function Comment(idx) {
                                         </div>
                                     </div>
                                 )
-                            }else if(comment.cm_depth == 2){
+                            }else {
                                 return (
                                     <div className="comment_item" key={comment.idx}>
                                         <div className="wrapper">
@@ -267,7 +266,7 @@ function Comment(idx) {
                                                     <button type="button" className="report">신고</button>
                                                 </div>
                                                 <div className="comment" style={singo_style}>
-                                                    {/* <p className="user_tag">사용자 닉네임</p> */}
+                                                    <p className="user_tag">사용자 닉네임</p>
                                                     {singo_cntt}
                                                 </div>
                                                 <div className="bottom">
@@ -288,7 +287,6 @@ function Comment(idx) {
                                                 <button type="button">작성</button>
                                             </div>
                                         </div>
-                                        <Replycomment responseTo={comment.idx}/>
                                     </div>
                                 )
                             }

@@ -77,7 +77,7 @@ function Router() {
           element: <Event />,
         },
         {
-          path: "/mypage/event_detail",
+          path: "/mypage/event_detail/:idx",
           element: <EventDetail />,
         },
         {

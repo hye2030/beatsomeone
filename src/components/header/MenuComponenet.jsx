@@ -40,22 +40,22 @@ function MenuComponenet({users}) {
                     </a>
                     <ul className="sec_depth">
                         <li className="list">
-                            <a onClick={() => {navigate('/feed/feed_list')}} className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "all"} } )}} className="link">
                             {_menu[9]}
                             </a>
                         </li>
                         <li className="list">
-                            <a onClick={() => {navigate('/feed/feed_list')}} className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "own"} } )}} className="link">
                             {_menu[10]}
                             </a>
                         </li>
                         <li className="list">
-                            <a onClick={() => {navigate('/feed/feed_list')}} className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "cover"} } )}} className="link">
                             {_menu[11]}
                             </a>
                         </li>
                         <li className="list">
-                            <a onClick={() => {navigate('/feed/feed_list')}} className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "daily"} } )}} className="link">
                             {_menu[12]}
                             </a>
                         </li>

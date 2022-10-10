@@ -8,8 +8,38 @@ import "@/assets/css/components/list.css";
 function Main() {
     const navigate = useNavigate();
 
+    //피드 타입 받아오기(전체, 자작곡, 커버곡, 데일리)
+    const location = useLocation();
+    let type = "all";
+    if(location.state != null){
+        type = location.state.type;
+    }
+
     //피드 상단 메뉴 컨트롤
     const [menu, setMenu] = useState([true,false,false,false]);
+    useEffect(() => {
+        if(type == "all"){
+            setMenu([true,false,false,false]);
+        }else if(type == "own"){
+            setMenu([false,true,false,false]);
+        }else if(type == "cover"){
+            setMenu([false,false,true,false]);
+        }else if(type == "daily"){
+            setMenu([false,false,false,true]);
+        }
+    }, [type]);
+
+    useEffect(() => {
+        if(menu[0] === true){
+            type = "all";
+        }else if(menu[1] === true){
+            type = "own";
+        }else if(menu[2] === true){
+            type = "cover";
+        }else if(menu[3] === true){
+            type = "daily";
+        }
+    }, [menu]);
 
     //로그인 되어 있는지 확인 후 컨텐츠 등록
     const user = useSelector((state) => {return state});
@@ -74,6 +104,10 @@ function Main() {
             setFeedList(response.data.response);
         });
     }, [feedsorting]);
+    
+    const aa = () => {
+        console.log(type);
+    }
 
     return (
         <>
@@ -98,7 +132,7 @@ function Main() {
 
                 <section className="tab_section">
                     <div className="section_inner">
-                        <h2 className="title_text" style={{margin:"60px 0 40px", textAlign: "center", fontSize: "24px", fontWeight: "700"}}>피드</h2>
+                        <h2 onClick={() => {aa()}} className="title_text" style={{margin:"60px 0 40px", textAlign: "center", fontSize: "24px", fontWeight: "700"}}>피드</h2>
 
                         <ul className="tab_area">
                             {/* <li className="tab active">전체</li> */}
