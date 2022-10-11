@@ -16,6 +16,7 @@ import FeedDetailDaily from "../views/feed/feed_detail_daily"
 import FeedDetailSelf from "../views/feed/feed_detail_self"
 import FeedList from "../views/feed/feed_list"
 import RandomDog from "../views/feed/Test"
+import FeedEdit from "../views/feed/feed_edit"
 
 import Event from "../views/mypage/event"
 import EventDetail from "../views/mypage/event_detail"
@@ -91,6 +92,10 @@ function Router() {
         {
           path: "/feed/Test",
           element: <RandomDog />,
+        },
+        {
+          path: "/feed/feed_edit/:idx",
+          element: <FeedEdit />,
         }
       ],
     },

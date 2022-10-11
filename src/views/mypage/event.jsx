@@ -63,6 +63,7 @@ function Main() {
     }, []);
 
     const typeChange = (gubun) => {
+        window.scrollTo(0, 0);
         if(gubun == "Y"){
             setType("Y");
         }else if(gubun == "N"){

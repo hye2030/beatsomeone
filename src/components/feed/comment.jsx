@@ -149,21 +149,17 @@ function Comment(idx) {
     }, [commentUpdate, page])
     
     // 답글달기
-    const replayBtn = document.querySelectorAll('.reply_btn');
-    replayBtn.forEach((btn) => {
-        btn.addEventListener('click', function () {
-            var item = btn.closest('.wrapper');
-            item.nextElementSibling.classList.toggle('on');
-
-            btn.classList.toggle('cancel');
-
-            if (btn.classList.contains('cancel')) {
-                btn.innerText = '답글취소';
-            } else {
-                btn.innerText = '답글달기';
-            }
-        });
-    });
+    const childForm = (e, idx) => {
+        if (document.getElementById("child_reply_"+idx).classList.contains('on')) {
+            document.getElementById("child_reply_"+idx).classList.remove('on');
+            e.target.classList.remove("cancel");
+            e.target.innerText = "답글달기";
+        }else{
+            document.getElementById("child_reply_"+idx).classList.add('on');
+            e.target.classList.add("cancel");
+            e.target.innerText = "답글취소";
+        }
+    }
 
     //하위 댓글 달기
     const child_comment_write = (cm_idx, dir_cm_idx, cm_depth) => {
@@ -172,7 +168,7 @@ function Comment(idx) {
             return false;
         }
 
-        if(document.getElementById('child_comment_wr_'+cm_idx).value == ""){
+        if(document.getElementById('child_comment_wr_'+dir_cm_idx).value == ""){
             alert("댓글을 작성해주세요.");
             return false;
         }
@@ -183,13 +179,61 @@ function Comment(idx) {
             "cm_idx": cm_idx,
             "dir_cm_idx": dir_cm_idx,
             "cm_main": 2,
-            "cm_content": document.getElementById('child_comment_wr_'+cm_idx).value,
+            "cm_content": document.getElementById('child_comment_wr_'+dir_cm_idx).value,
             "wr_type": "feed",
-            "cm_depth": cm_depth
+            "cm_depth": cm_depth+1
         })
         .then(function (response) {
             if(response.data.code == 0){   
                 setCommentUpdate(true);
+            }else{
+                alert("등록중 오류가 발생하였습니다.");
+                console.log(response);
+            }
+        });
+    }
+
+    //댓글 수정
+    const commentEditDesign = (idx) => {
+        if (document.getElementById("edit_idx_"+idx).classList.contains('edit')) {
+            document.getElementById("edit_idx_"+idx).classList.remove('edit');
+        }else{
+            document.getElementById("edit_idx_"+idx).classList.add('edit');
+            document.getElementById('edit_comment_'+idx).defaultValue ="dadas";
+        }
+    }
+    const commentEdit = (idx) => {
+        if(user == null){
+            $(".plzSignin_modal").fadeIn(200);
+            return false;
+        }
+
+        if(document.getElementById('edit_comment_'+idx).value == ""){
+            alert("댓글을 작성해주세요.");
+            return false;
+        }
+    }
+
+    //댓글 삭제
+    const [commentDelIdx, setCommentDelIdx] = useState(0);
+    const commentDeletePop = (idx) => {
+        $(".commentDelete_modal").fadeIn(200);
+        setCommentDelIdx(idx);
+    }
+    const commentDelete = () => {
+        if(commentDelIdx == 0){
+            alert("댓글을 다시 선택해주세요.");
+            return false;
+        }
+
+        axios.put("https://beats-admin.codeidea.io/api/v1/comment/commentDelete", {
+            "cm_idx": commentDelIdx
+        })
+        .then(function (response) {
+            if(response.data.code == 0){   
+                setCommentUpdate(true);
+                $(".commentDelete_modal").fadeOut(200);
+                $(".commentDeleteC_modal").fadeIn(200);
             }else{
                 alert("등록중 오류가 발생하였습니다.");
                 console.log(response);
@@ -243,7 +287,9 @@ function Comment(idx) {
                         {writerIdx == user_idx ?
                         <div className="group">
                             <button type="button" className="btn basic_btn_gray delete" onClick={() => $(".conDelete_modal").fadeIn(200)}>삭제</button>
+                            <Link to={`/feed/feed_edit/${idx.idx}`}>
                             <button type="button" className="btn basic_btn_black edit">수정</button>
+                            </Link>
                         </div>
                         : null}
                     </div>
@@ -274,10 +320,14 @@ function Comment(idx) {
                                 singo_style = {color: "#ACACAC"};
                                 singo_cntt = "[관리자의 의해 비공개 처리된 댓글입니다.]";
                             }
+                            if(comment.del_status == "Y"){
+                                singo_style = {color: "#ACACAC"};
+                                singo_cntt = "[삭제된 댓글입니다.]";
+                            }
 
                             if(comment.cm_depth == 1){
                                 return (
-                                    <div key={comment.idx}>
+                                    <div id={`edit_idx_${comment.idx}`} className="" key={comment.idx}>
                                         <div className="wrapper">
                                             <div className="profile_img">
                                                 <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
@@ -291,33 +341,38 @@ function Comment(idx) {
                                                 <div className="comment" style={singo_style}>
                                                     {singo_cntt}
                                                 </div>
+                                                <div className="edit_comment">
+                                                    <textarea name="" id={`edit_comment_${comment.idx}`} defaultValue={comment.cm_content}></textarea>
+                                                </div>
                                                 <div className="bottom">
                                                     <button type="button" className="like_toggle_btn "><span>
                                                             {comment.cm_bit}
                                                         </span></button>
-                                                    <button type="button" className="gray_text reply_btn">답글달기</button>
+                                                    <button type="button" className="gray_text reply_btn" onClick={(e) => {childForm(e, comment.idx)}}>답글달기</button>
                                                 </div>
+                                                {user_idx == comment.mem_id ? 
                                                 <div className="edit_btn_group">
                                                     <div className="edit_group">
-                                                        <button type="button" className="edit_btn">수정</button>
-                                                        <button type="button" className="delete_btn">삭제</button>
+                                                        <button type="button" className="edit_btn" onClick={() => {commentEditDesign(comment.idx)}}>수정</button>
+                                                        <button type="button" className="delete_btn" onClick={() => {commentDeletePop(comment.idx)}}>삭제</button>
                                                     </div>
                                                     <div className="done_group">
-                                                        <button type="button" className="done_btn">완료</button>
-                                                        <button type="button" className="cancel_btn">취소</button>
+                                                        <button type="button" className="done_btn" onClick={() => {commentEdit(comment.idx)}}>완료</button>
+                                                        <button type="button" className="cancel_btn" onClick={() => {commentEditDesign(comment.idx)}}>취소</button>
                                                     </div>
                                                 </div>
+                                                : null}
                                             </div>
                                         </div>
 
-                                        <div className="comment_write reply">
+                                        <div className="comment_write reply" id={`child_reply_${comment.idx}`}>
                                             <div className="profile_img">
                                                 <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                                             </div>
                                             <div className="white_wrap">
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요."></textarea>
-                                                <button type="button" onClick={() => {child_comment_write(comment.idx, comment.idx, 2)}}>작성</button>
+                                                    placeholder="댓글을 입력해주세요." value={undefined}></textarea>
+                                                <button type="button" onClick={() => {child_comment_write(comment.idx, comment.idx, comment.cm_depth)}}>작성</button>
                                             </div>
                                         </div>
                                     </div>
@@ -336,35 +391,42 @@ function Comment(idx) {
                                                     {/* <button type="button" className="report">신고</button> */}
                                                 </div>
                                                 <div className="comment" style={singo_style}>
-                                                    {/* <p className="user_tag">사용자 닉네임</p> */}
+                                                    <p className="user_tag">{comment.dir_nickname}</p>
                                                     {singo_cntt}
+                                                </div>
+                                                <div className="edit_comment">
+                                                    <p className="user_tag">{comment.dir_nickname}</p>
+                                                    <textarea name=""
+                                                        id="" defaultValue="댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다.댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다."></textarea>
                                                 </div>
                                                 <div className="bottom">
                                                     <button type="button" className="like_toggle_btn"><span>
                                                         {comment.cm_bit}
                                                         </span></button>
-                                                    <button type="button" className="gray_text reply_btn ">답글달기</button>
+                                                    <button type="button" className="gray_text reply_btn " onClick={(e) => {childForm(e, comment.idx)}}>답글달기</button>
                                                 </div>
+                                                {user_idx == comment.mem_id ? 
                                                 <div className="edit_btn_group">
                                                     <div className="edit_group">
                                                         <button type="button" className="edit_btn">수정</button>
-                                                        <button type="button" className="delete_btn">삭제</button>
+                                                        <button type="button" className="delete_btn" onClick={() => {commentDeletePop(comment.idx)}}>삭제</button>
                                                     </div>
                                                     <div className="done_group">
                                                         <button type="button" className="done_btn">완료</button>
                                                         <button type="button" className="cancel_btn">취소</button>
                                                     </div>
                                                 </div>
+                                                : null}
                                             </div>
                                         </div>
-                                        <div className="comment_write reply ">
+                                        <div className="comment_write reply" id={`child_reply_${comment.idx}`}>
                                             <div className="profile_img">
                                                 <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                                             </div>
                                             <div className="white_wrap">
-                                                <textarea name="" id="" cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요."></textarea>
-                                                <button type="button">작성</button>
+                                                <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
+                                                    placeholder="댓글을 입력해주세요." value={undefined}></textarea>
+                                                <button type="button" onClick={() => {child_comment_write(comment.cm_idx, comment.idx, comment.cm_depth)}}>작성</button>
                                             </div>
                                         </div>
                                     </div>
@@ -443,6 +505,37 @@ function Comment(idx) {
                 </p>
                 <div className="button_wrap">
                     <button type="button" className="basic_btn_red confirm_btn close_btn" >
+                        확인
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div className="modal_wrap message_modal commentDelete_modal">
+            <div className="modal_box question">
+            <button className="x_btn close_btn"></button>
+                <p className="comment">
+                    댓글을 삭제하시겠습니까?
+                </p>
+                <div className="button_wrap">
+                    <button type="button" className="basic_btn_red_border cancel_btn close_btn">
+                        아니오
+                    </button>
+                    <button type="button" className="basic_btn_red confirm_btn" onClick={() => {commentDelete()}}>
+                        네
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div className="modal_wrap message_modal commentDeleteC_modal">
+            <div className="modal_box done">
+            <button className="x_btn close_btn"></button>
+                <p className="comment">
+                    댓글이 삭제되었습니다.
+                </p>
+                <div className="button_wrap">
+                    <button type="button" className="basic_btn_red confirm_btn close_btn">
                         확인
                     </button>
                 </div>
