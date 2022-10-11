@@ -322,7 +322,7 @@ function Comment(idx) {
                                         </div>
                                     </div>
                                 )
-                            }else if(comment.cm_depth >= 2){
+                            }else if(comment.cm_depth == 2){
                                 return (
                                     <div className="comment_item" key={comment.idx}>
                                         <div className="wrapper">
@@ -367,6 +367,7 @@ function Comment(idx) {
                                                 <button type="button">작성</button>
                                             </div>
                                         </div>
+                                        <Replycomment responseTo={comment.idx}/>
                                     </div>
                                 )
                             }

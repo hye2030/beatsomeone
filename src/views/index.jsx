@@ -6,11 +6,14 @@ import "@/assets/css/components/main.css";
 import TopBanner from "../components/body/topbanner";
 
 function Main() {
+
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "/assets/js/main.js";
         script.async = true;
         document.body.appendChild(script);
+
+        // jQuery("link[rel=stylesheet][href*='/src/assets/css/components/list.css']").remove();
     }, []);
 
     const [banners, setbanners] = useState([]);
