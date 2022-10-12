@@ -10,10 +10,20 @@ function Main() {
     const user = useSelector((state) => {return state.isLogin});
     const user_idx = useSelector((state) => {return state.idx});
 
+    /**파일 확장자 추출 */
+    function getExtension(fileName) {
+        var fileLength = fileName.length;
+        var lastDot = fileName.lastIndexOf('.');
+        var fileExtension = fileName.substring(lastDot+1, fileLength);
+        return fileExtension;
+    }
+
     /**최상단 이미지 처리 및 미리보기 */
     const [fileImage, setFileImage] = useState("");
     const [files, setFiles] = useState("")
+    const [mainExtension, setMainExtension] = useState("");
     const saveFileImage = (e) => {
+        setMainExtension(getExtension(e.target.files[0].name));
         setFileImage(URL.createObjectURL(e.target.files[0]));
         setFiles(e.target.files);
         document.getElementById("main_file_txt").textContent=""+e.target.files[0].name;
@@ -56,6 +66,7 @@ function Main() {
     /**이미지 추가용 */
     const [ img, setImg ] = useState([])
     const [ previewImg, setPreviewImg ] = useState([])  
+    const [ subExtension, setSubExtension ] = useState([]);  
     const handleAddImages = (e, index) => {
         let reader = new FileReader()
 
@@ -66,6 +77,10 @@ function Main() {
             copiedItems[index] = e.target.files[0];
 
             setImg(copiedItems);
+
+            let copiedItems2 = [...subExtension];
+            copiedItems2[index] = getExtension(e.target.files[0].name);
+            setSubExtension(copiedItems2);
         }
 
         reader.onloadend = () => {
@@ -90,7 +105,7 @@ function Main() {
     };
 
     /**피드 내용 불러오기 */
-    const [ editImg, setEditImg ] = useState([])  
+    const [ editImg, setEditImg ] = useState([])
     useEffect(() => {
         axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedView", {
             params: {
@@ -101,6 +116,7 @@ function Main() {
             const main_data = response.data.response.detail[0];
             setContentTxt(main_data.wr_content);
             setFileImage("https://beatsomeone.codeidea.io"+main_data.file_url+main_data.feed_source);
+            setMainExtension((prev) => getExtension(main_data.feed_source));
 
             const sub_data = response.data.response.file;
             setEditImg(sub_data);
@@ -177,8 +193,8 @@ function Main() {
         for(var i = 0; i < cntt.length; i++) {
             frm.append("feed_content[]", cntt[i].value);
         }
-        for(var i = 0; i < delete_file_idx.length; i++) {
-            frm.append("file_idx[]", delete_file_idx[i]);
+        for(var i = 0; i < delFileIdx.length; i++) {
+            frm.append("file_idx[]", delFileIdx[i]);
         }
 
         axios.post("https://beats-admin.codeidea.io/api/v1/feed/feedUpdate", frm,
@@ -204,13 +220,17 @@ function Main() {
             <div className="img_add_line" id={`daily_input_id${index}`}>
                 <input type="text" placeholder="이미지 및 영상선택" className="add_input" readOnly />
                 <label htmlFor={`file_${index}`} className="add_btn"> 추가</label>
-                <input type="file" id={`file_${index}`} accept="image/*" name="sub_file[]" onChange={(e) => handleAddImages(e, index)} />
+                <input type="file" id={`file_${index}`} accept="image/jpg, image/png, image/jpeg, image/svg, video/mp4" name="sub_file[]" onChange={(e) => handleAddImages(e, index)} />
             </div>
             {img.filter((el, id) => id == index).map((el, id) => (
             <div className="add_file_box" key={id}>
+                {subExtension[index] == "mp4" ?
+                <video preload="metadata" src={`${previewImg[index]}#t=0.5`}></video>
+                :
                 <div className="cover_img">
                     <img src={previewImg[index]}/>
                 </div>
+                }
                 <span className="close_icon" onClick={() => handleDeleteImage(index)}>
                     <img src="/assets/images/icon/icon_close_white.svg" alt="" />
                 </span>
@@ -231,9 +251,10 @@ function Main() {
     }
 
     let delete_file_idx = [];
+    const [delFileIdx, setDelFileIdx] = useState([]);
     const delete_sub = (source, idx) => {
         document.getElementById(source).style.display = "none";
-        delete_file_idx.push(idx);
+        setDelFileIdx(prev => [...prev, idx]);
     }
 
     return (
@@ -257,13 +278,17 @@ function Main() {
                 <div className="content">
                     <div className="img_add_line">
                     <label htmlFor="image" className="add_input" id="main_file_txt">이미지 및 영상선택</label>
-                    <input type="file" id="image" accept="image/*" onChange={saveFileImage}/>
+                    <input type="file" id="image" accept="image/jpg, image/png, image/jpeg, image/svg, video/mp4" onChange={saveFileImage}/>
                     </div>
                     {/* <!-- 이미지 추가 했을 때 --> */}
                     {fileImage && (
                     <div className="add_file_box">
                         <div className="cover_img">
+                            {mainExtension == "mp4" ?
+                            <video preload="metadata" src={`${fileImage}#t=0.5`}></video>
+                            :
                             <img src={fileImage} alt="" />
+                            }
                         </div>
                     </div>
                     )}
@@ -289,11 +314,16 @@ function Main() {
                 
                 {/*일상 선택했을 경우 추가되는 컨텐츠*/}
                 {editImg.map((edit) => {
+                    const extension = getExtension(edit.feed_source);
                     return (
                         <div className="add_content" style={{display: "block"}} key={edit.feed_source} id={edit.feed_source}>
                             <div className="add_file_box" >
                                 <div className="cover_img">
+                                    {extension == "mp4" ?
+                                    <video preload="metadata" src={`https://beatsomeone.codeidea.io${edit.file_url}${edit.feed_source}#t=0.5`}></video>
+                                    :
                                     <img src={`https://beatsomeone.codeidea.io${edit.file_url}${edit.feed_source}`}/>
+                                    }
                                 </div>
                             </div>
                             <div className="textarea_wrap">

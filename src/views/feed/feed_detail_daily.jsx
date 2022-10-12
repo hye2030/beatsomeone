@@ -1,7 +1,6 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
 
 import Comment from '../../components/feed/comment';
 import "@/assets/css/components/detail_page.css";
@@ -11,8 +10,6 @@ function Main() {
     const param = useParams();
     const [feedContent, setFeedContent] = useState([]);
     const [feedSub, setFeedSub] = useState([]);
-    const user = useSelector((state) => {return state.isLogin});
-
     
     //피드 상세
     useEffect(() => {
@@ -91,8 +88,8 @@ function Main() {
                                         </div>
                                         
                                         {extension == "mp4" ?
-                                        <div className="content content_img">
-                                            <video src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} controls></video>
+                                        <div className="content play_box vedio">
+                                            <video preload="auto" src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} controls controlsList="nodownload"></video>
                                         </div>
                                         :
                                         <div className="content content_img">
@@ -112,7 +109,7 @@ function Main() {
                                     <div key={cntt.file_no}>
                                         {extension == "mp4" ?
                                         <div className="content content_img">
-                                            <video preload="auto" src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} autoPlay="autoplay"></video>
+                                            <video preload="auto" src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} controls controlsList="nodownload"></video>
                                         </div>
                                         :
                                         <div className="content content_img">
@@ -151,9 +148,7 @@ function Main() {
                     </div>
                 </div>
                 {/* <!-- 페이지네이션 1페이지당 댓글 10개씩 출력 --> */}
-                {(user == true) ?
                 <Comment idx={param.idx}/>
-                : null}
             </div>
         </section>
         </>

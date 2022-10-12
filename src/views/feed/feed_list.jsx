@@ -7,6 +7,7 @@ import "@/assets/css/components/list.css";
 
 function Main() {
     const navigate = useNavigate();
+    const user_idx = useSelector((state) => {return state.idx});
 
     //피드 타입 받아오기(전체, 자작곡, 커버곡, 데일리)
     const location = useLocation();
@@ -92,22 +93,34 @@ function Main() {
 
     //최신순, 비트많은순, 댓글 많은순
     const [feedsorting, setFeedsorting] = useState(1);
+    //좋아요 상태
+    const [like, setLike] = useState(false);
     //리스트 불러오기
     const [feedList, setFeedList] = useState([]);
     useEffect(() => {
         axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedList", {
             params: {
-                sorting: feedsorting
+                sorting: feedsorting,
+                mem_id: user_idx
             }
         })
         .then(function (response) {
             setFeedList(response.data.response);
         });
     }, [feedsorting]);
+
+    /**파일 확장자 추출 */
+    function getExtension(fileName) {
+        var fileLength = fileName.length;
+        var lastDot = fileName.lastIndexOf('.');
+        var fileExtension = fileName.substring(lastDot+1, fileLength);
+        return fileExtension;
+    }
     
     const aa = () => {
         console.log(type);
     }
+    
 
     return (
         <>
@@ -183,6 +196,17 @@ function Main() {
                                     feed_type = "title category_mark_daily shadow";
                                 }
 
+                                const extension = getExtension(list.feed_source);
+                                
+                                let like_active = "";
+                                if(list.like_status >= 1){
+                                    like_active = "active";
+                                    setLike(true);
+                                }else{
+                                    like_active = "";
+                                    setLike(false);;
+                                }
+
                                 return (
                                 <li className="list_item" key={list.idx}>
                                     <div className="profile_box mobile">
@@ -196,9 +220,15 @@ function Main() {
                                     <div className="img_wrap">
                                         <Link to={`/feed/feed_detail_daily/${list.idx}`}>
                                             {/* <a> */}
+                                                {extension == "mp4" ?
+                                                <div className="img">
+                                                    <video preload="metadata" src={`https://beatsomeone.codeidea.io${list.file_url}${list.feed_source}#t=0.5`}></video>
+                                                </div>
+                                                :
                                                 <div className="img">
                                                     <img src={`https://beatsomeone.codeidea.io${list.file_url}${list.feed_source}`} alt="이미지" />
                                                 </div>
+                                                }
 
                                                 <p className={feed_type}>
                                                     <span>{list.wr_title}</span>
@@ -235,7 +265,7 @@ function Main() {
                                                     </li>
 
                                                     <li className="like">
-                                                        <button className="like_toggle_btn white">
+                                                        <button className={`like_toggle_btn white ${like_active}`}>
                                                             <span>{list.wr_bit}</span>
                                                         </button>
                                                     </li>

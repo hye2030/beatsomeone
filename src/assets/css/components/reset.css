@@ -89,7 +89,7 @@
     /* pointer-events: none; */
   }
   
-  video::-webkit-media-controls-play-button {
+  /* video::-webkit-media-controls-play-button {
     display: none !important;
   }
   video::-webkit-media-controls-fullscreen-button {
@@ -100,7 +100,7 @@
   }
   video::-webkit-media-controls-start-playback-button {
     display: none;
-}
+} */
 
   html,
   body,

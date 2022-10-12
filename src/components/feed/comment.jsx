@@ -309,6 +309,7 @@ function Comment(idx) {
                     </div>
                 </div>
                     
+                {(user == true) ?
                 <div className="comment_list">
                     {feedContent.map((cntt) => (
                     <div className="num_text" key={cntt.idx}>
@@ -468,8 +469,10 @@ function Comment(idx) {
                         </div>
                     </div> */}
                 </div>
+                : null}
             </div>
             {/* <!-- 페이지네이션 --> */}
+            {(user == true) ?
             <div className="pagination_wrap">
                 <Pagination 
                     total={commentTotal}
@@ -477,6 +480,7 @@ function Comment(idx) {
                     page={page}
                     setPage={setPage}/>
             </div>
+            : null}
         </div>
 
         <div className="modal_wrap message_modal conDelete_modal">
