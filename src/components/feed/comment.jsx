@@ -212,6 +212,20 @@ function Comment(idx) {
             alert("댓글을 작성해주세요.");
             return false;
         }
+
+        axios.put("https://beats-admin.codeidea.io/api/v1/comment/commentUpdate", {
+            "cm_idx": idx,
+            "cm_content": document.getElementById('edit_comment_'+idx).value
+        })
+        .then(function (response) {
+            if(response.data.code == 0){   
+                document.getElementById("edit_idx_"+idx).classList.remove('edit');
+                setCommentUpdate(true);
+            }else{
+                alert("수정중 오류가 발생하였습니다.");
+                console.log(response);
+            }
+        });
     }
 
     //댓글 삭제
@@ -379,7 +393,7 @@ function Comment(idx) {
                                 )
                             }else if(comment.cm_depth >= 2){
                                 return (
-                                    <div className="comment_item" key={comment.idx}>
+                                    <div id={`edit_idx_${comment.idx}`} className="comment_item" key={comment.idx}>
                                         <div className="wrapper">
                                             <div className="profile_img">
                                                 <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
@@ -396,8 +410,7 @@ function Comment(idx) {
                                                 </div>
                                                 <div className="edit_comment">
                                                     <p className="user_tag">{comment.dir_nickname}</p>
-                                                    <textarea name=""
-                                                        id="" defaultValue="댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다.댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다. 댓글 내용이 표기됩니다."></textarea>
+                                                    <textarea name="" id={`edit_comment_${comment.idx}`} defaultValue={comment.cm_content}></textarea>
                                                 </div>
                                                 <div className="bottom">
                                                     <button type="button" className="like_toggle_btn"><span>
@@ -408,12 +421,12 @@ function Comment(idx) {
                                                 {user_idx == comment.mem_id ? 
                                                 <div className="edit_btn_group">
                                                     <div className="edit_group">
-                                                        <button type="button" className="edit_btn">수정</button>
+                                                        <button type="button" className="edit_btn" onClick={() => {commentEditDesign(comment.idx)}}>수정</button>
                                                         <button type="button" className="delete_btn" onClick={() => {commentDeletePop(comment.idx)}}>삭제</button>
                                                     </div>
                                                     <div className="done_group">
-                                                        <button type="button" className="done_btn">완료</button>
-                                                        <button type="button" className="cancel_btn">취소</button>
+                                                        <button type="button" className="done_btn" onClick={() => {commentEdit(comment.idx)}}>완료</button>
+                                                        <button type="button" className="cancel_btn" onClick={() => {commentEditDesign(comment.idx)}}>취소</button>
                                                     </div>
                                                 </div>
                                                 : null}

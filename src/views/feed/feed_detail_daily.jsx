@@ -1,6 +1,7 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Comment from '../../components/feed/comment';
 import "@/assets/css/components/detail_page.css";
@@ -10,7 +11,9 @@ function Main() {
     const param = useParams();
     const [feedContent, setFeedContent] = useState([]);
     const [feedSub, setFeedSub] = useState([]);
+    const user = useSelector((state) => {return state.isLogin});
 
+    
     //피드 상세
     useEffect(() => {
         axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedView", {
@@ -24,8 +27,12 @@ function Main() {
         });
     }, [])
 
-    const aa = () => {
-        console.log(feedContent);
+    /**파일 확장자 추출 */
+    function getExtension(fileName) {
+        var fileLength = fileName.length;
+        var lastDot = fileName.lastIndexOf('.');
+        var fileExtension = fileName.substring(lastDot+1, fileLength);
+        return fileExtension;
     }
     
     return (
@@ -72,18 +79,26 @@ function Main() {
                         </div>
                     </div>
                 </div>
+ 
                 <div className="content_area">
                     <div className="inner">
                         {feedContent.map((cntt) => {
+                            const extension = getExtension(cntt.feed_source);
                                 return (
                                     <div key={cntt.idx}>
                                         <div className="title">
                                             <p className="mark_daily">일상</p>
                                         </div>
                                         
+                                        {extension == "mp4" ?
+                                        <div className="content content_img">
+                                            <video src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} controls></video>
+                                        </div>
+                                        :
                                         <div className="content content_img">
                                             <img src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} alt=""/>
                                         </div>
+                                        }
                                         <div className="text_box" style={{whiteSpace:"pre-wrap"}}>
                                             {cntt.wr_content}
                                         </div>
@@ -92,11 +107,18 @@ function Main() {
                             })
                         }
                         {feedSub.map((cntt) => {
+                            const extension = getExtension(cntt.feed_source);
                                 return (
                                     <div key={cntt.file_no}>
-                                        <div className="content content_img" key={cntt.file_no}>
+                                        {extension == "mp4" ?
+                                        <div className="content content_img">
+                                            <video preload="auto" src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} autoPlay="autoplay"></video>
+                                        </div>
+                                        :
+                                        <div className="content content_img">
                                             <img src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} alt=""/>
                                         </div>
+                                        }
                                         <div className="text_box" style={{whiteSpace:"pre-wrap"}}>
                                             {cntt.wr_content}
                                         </div>
@@ -129,7 +151,9 @@ function Main() {
                     </div>
                 </div>
                 {/* <!-- 페이지네이션 1페이지당 댓글 10개씩 출력 --> */}
+                {(user == true) ?
                 <Comment idx={param.idx}/>
+                : null}
             </div>
         </section>
         </>

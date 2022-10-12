@@ -1,3 +1,6 @@
+.mb_only {
+    display: none;
+}
 .main_page {
     position: relative;
 }
@@ -48,6 +51,7 @@
 /* 메인컨텐츠----------------------------- */
 .content_section {
     position: relative;
+    padding-bottom: 80px;
 }
 
 .content_section .wrap_inner {
@@ -88,6 +92,10 @@
     height: 100%;
     position: relative;
     overflow: hidden;
+}
+
+.content_section .main_slide .swiper-slide {
+    cursor: pointer;
 }
 
 .content_section .main_slide .deco {
@@ -139,6 +147,7 @@
     height: auto;
     margin-left: 30px;
     margin-bottom: 70px;
+    cursor: pointer;
 }
 
 .content_section .content .list_item:nth-child(1) .list_text,
@@ -147,6 +156,15 @@
 .content_section .content .list_item:nth-child(4) .list_text {
     color: #fff;
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+.content_section .content .list_item .img {
+    width: 100%;
+    height: 290px;
+}
+
+.content_section .content .list_item .img img {
+    object-fit: cover;
 }
 
 .content_section .content .list_item:nth-child(4n+1) {
@@ -230,7 +248,7 @@
 
 /* 장비정보----------------------------- */
 .equipment_info {
-    margin-top: 160px;
+    padding: 80px 0 150px;
 }
 
 .equipment_info .wrap_inner {
@@ -268,7 +286,7 @@
     width: 24px;
     height: 24px;
     display: inline-block;
-    background: url("@/assets/images/icon/icon_arrow_24px.svg") no-repeat center / 100%;
+    background: url("/assets/images/icon/icon_arrow_24px.svg") no-repeat center / 100%;
 }
 
 .main_page .title_box h3 span {
@@ -333,6 +351,10 @@
     z-index: 2;
     opacity: 1;
     transition: 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.5rem;
 }
 
 .equipment_info .hover_box {
@@ -399,7 +421,7 @@
 }
 
 .equipment_info .hover_box .profile_wrap {
-    margin-left: 10px;
+    margin-left: 8px;
 }
 
 .equipment_info .small_box .list.active p {
@@ -529,7 +551,6 @@
 
 /* 중간슬라이드--------------------------------- */
 .middle_slide {
-    margin-top: 150px;
     width: 100%;
     height: 500px;
     position: relative;
@@ -561,11 +582,11 @@
 }
 
 .middle_slide .fadeflow .text_box {
-    width: 400px;
+    max-width: 500px;
     height: auto;
     position: absolute;
-    top: 148px;
-    right: 50%;
+    bottom: 190px;
+    left: 56%;
     margin-right: -540px;
     color: #fff;
 }
@@ -580,15 +601,17 @@
 }
 
 .middle_slide .fadeflow p {
+    word-break: keep-all;
     font-size: 16px;
     line-height: 140%;
     font-weight: 500;
     font-family: "Gangwon";
+    transform: skew(-0.1deg);
 }
 
 .middle_slide .fadeflow .arrow_wrap {
     position: absolute;
-    right: 50%;
+    left: 56%;
     z-index: 1;
     bottom: 130px;
     width: 90px;
@@ -607,12 +630,12 @@
 
 .middle_slide .fadeflow .swiper-button-prev {
     left: 0;
-    background: url(@/assets/images/main/prev.svg) no-repeat center center / contain;
+    background: url(/assets/images/main/prev.svg) no-repeat center center / contain;
 }
 
 .middle_slide .fadeflow .swiper-button-next {
     right: 0;
-    background: url(@/assets/images/main/next.svg) no-repeat center center / contain;
+    background: url(/assets/images/main/next.svg) no-repeat center center / contain;
 }
 
 .middle_slide .fadeflow .swiper-button-next::after,
@@ -732,6 +755,10 @@
     height: 24px;
 }
 
+.bottom_section .survey_box .swiper-slide {
+    cursor: pointer;
+}
+
 .bottom_section .survey_box .swiper-button-next,
 .bottom_section .survey_box .swiper-button-prev {
     top: 0;
@@ -750,12 +777,12 @@
 
 .bottom_section .survey_box .swiper-button-prev {
     left: 0;
-    background: url(@/assets/images/main/small_prev.svg) no-repeat center center / contain;
+    background: url(/assets/images/main/small_prev.svg) no-repeat center center / contain;
 }
 
 .bottom_section .survey_box .swiper-button-next {
     right: 0;
-    background: url(@/assets/images/main/small_prev.svg) no-repeat center center / contain;
+    background: url(/assets/images/main/small_prev.svg) no-repeat center center / contain;
     transform: scaleX(-1);
 }
 
@@ -810,6 +837,9 @@
     }
     
     /* 메인컨텐츠----------------------------- */
+    .content_section {
+        padding-bottom: calc(100vw * (80 / 1300));
+    }
     .content_section .wrap_inner {
         padding-top: calc(100vw * (160 / 1300));
     }
@@ -857,7 +887,11 @@
         margin-left: calc(100vw * (30 / 1300));
         margin-bottom: calc(100vw * (70 / 1300));
     }
-    
+
+    .content_section .content .list_item .img {
+        height: calc(100vw * (290 / 1300));
+    }
+
     .content_section .list_item .nick_name p {
         font-size: calc(100vw * (16 / 1300));
     }
@@ -883,7 +917,7 @@
     
     /* 장비정보----------------------------- */
     .equipment_info {
-        margin-top: calc(100vw * (160 / 1300));
+        padding: calc(100vw * (80 / 1300)) 0 calc(100vw * (150 / 1300));
     }
     
     .equipment_info .best_review {
@@ -961,7 +995,7 @@
     }
     
     .equipment_info .hover_box .profile_wrap {
-        margin-left: calc(100vw * (10 / 1300));
+        margin-left: calc(100vw * (8 / 1300));
     }
     
     .equipment_info .big_box {
@@ -1020,14 +1054,13 @@
     
     /* 중간슬라이드--------------------------------- */
     .middle_slide {
-        margin-top: calc(100vw * (150 / 1300));
         height: calc(100vw * (500 / 1300));
     }
     
     /* 페이드 슬라이드 */
     .middle_slide .fadeflow .text_box {
-        width: calc(100vw * (400 / 1300));
-        top: calc(100vw * (148 / 1300));
+        max-width: calc(100vw * (500 / 1300));
+        bottom: calc(100vw * (190 / 1300));
         margin-right: calc(100vw * (-540 / 1300));
     }
     
@@ -1116,7 +1149,12 @@
 
 /* ========================== 모바일 ========================== */
 @media screen and (max-width: 768px) {
-
+    .mb_only {
+        display: block;
+    }
+    .pc_only {
+        display: none;
+    }
     .main_page .top_deco,
     .pc_layout {
         display: none;
@@ -1141,9 +1179,9 @@
     }
 
     /* 메인컨텐츠----------------------------- */
-    /* .content_section{
+    .content_section{
         height: calc(100vw* (750/428));
-    } */
+    }
 
     .content_section .wrap_inner {
         padding-top: calc(100vw* (55/428));
@@ -1227,6 +1265,15 @@
         margin-bottom: 0;
     }
 
+    .content_section .content_slide .list_item .img {
+        height: calc(100vw* (242/428));
+    }
+
+    .content_section .content_slide .list_item img {
+        height: 100%;
+        object-fit: cover;
+    }
+
     .content_section .list_item .text_wrap>ul {
         width: 100%;
     }
@@ -1280,7 +1327,7 @@
 
     /* 장비정보----------------------------- */
     .equipment_info {
-        margin-top: calc(100vw* (60/428));
+        padding: calc(100vw* (60/428)) 0 0;
     }
 
     .equipment_info .wrap_inner {
@@ -1433,12 +1480,12 @@
     
     .equipment_info .review_slide .swiper-button-prev {
         left: 0;
-        background: url(@/assets/images/main/small_prev.svg) no-repeat center center / contain;
+        background: url(/assets/images/main/small_prev.svg) no-repeat center center / contain;
     }
     
     .equipment_info .review_slide .swiper-button-next {
         right: 0;
-        background: url(@/assets/images/main/small_prev.svg) no-repeat center center / contain;
+        background: url(/assets/images/main/small_prev.svg) no-repeat center center / contain;
         transform: scaleX(-1);
     }
     
@@ -1525,10 +1572,10 @@
     }
 
     .middle_slide .fadeflow .text_box {
-        width: 100%;
+        max-width: 94%;
         top: calc(100vw* (50/428));
         left: calc(100vw* (16/428));
-        right: auto;
+        bottom: unset;
         margin-right: 0;
     }
 
@@ -1543,12 +1590,13 @@
     }
 
     .middle_slide .fadeflow .arrow_wrap {
+        left: 50%;
         bottom: calc(100vw* (179/428));
         z-index: 5;
         width: calc(100vw* (396/428));
         height: calc(100vw* (40/428));
         margin-right: 0;
-        transform: translateX(50%);
+        transform: translateX(-50%);
     }
 
     .middle_slide .fadeflow .swiper-button-next,

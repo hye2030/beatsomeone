@@ -9,10 +9,20 @@ function Main() {
     const user = useSelector((state) => {return state.isLogin});
     const user_idx = useSelector((state) => {return state.idx});
 
+    /**파일 확장자 추출 */
+    function getExtension(fileName) {
+        var fileLength = fileName.length;
+        var lastDot = fileName.lastIndexOf('.');
+        var fileExtension = fileName.substring(lastDot+1, fileLength);
+        return fileExtension;
+    }
+
     /**최상단 이미지 처리 및 미리보기 */
     const [fileImage, setFileImage] = useState("");
-    const [files, setFiles] = useState("")
+    const [files, setFiles] = useState("");
+    const [mainExtension, setMainExtension] = useState("");
     const saveFileImage = (e) => {
+        setMainExtension(getExtension(e.target.files[0].name));
         setFileImage(URL.createObjectURL(e.target.files[0]));
         setFiles(e.target.files);
         document.getElementById("main_file_txt").textContent=""+e.target.files[0].name;
@@ -64,7 +74,8 @@ function Main() {
 
     /**이미지 추가용 */
     const [ img, setImg ] = useState([])
-    const [ previewImg, setPreviewImg ] = useState([])  
+    const [ previewImg, setPreviewImg ] = useState([])
+    const [ subExtension, setSubExtension ] = useState([])  
     const handleAddImages = (e, index) => {
         let reader = new FileReader()
 
@@ -75,6 +86,10 @@ function Main() {
             copiedItems[index] = e.target.files[0];
 
             setImg(copiedItems);
+
+            let copiedItems2 = [...subExtension];
+            copiedItems2[index] = getExtension(e.target.files[0].name);
+            setSubExtension(copiedItems2);
         }
 
         reader.onloadend = () => {
@@ -180,13 +195,17 @@ function Main() {
             <div className="img_add_line" id={`daily_input_id${index}`}>
                 <input type="text" placeholder="이미지 및 영상선택" className="add_input" readOnly />
                 <label htmlFor={`file_${index}`} className="add_btn"> 추가 </label>
-                <input type="file" id={`file_${index}`} accept="image/*" name="sub_file[]" onChange={(e) => handleAddImages(e, index)} />
+                <input type="file" id={`file_${index}`} accept="image/jpg, image/png, image/jpeg, image/svg, video/mp4" name="sub_file[]" onChange={(e) => handleAddImages(e, index)} />
             </div>
             {img.filter((el, id) => id == index).map((el, id) => (
             <div className="add_file_box" key={id}>
+                {subExtension[index] == "mp4" ?
+                <video preload="metadata" src={`${previewImg[index]}#t=0.5`}></video>
+                :
                 <div className="cover_img">
                     <img src={previewImg[index]}/>
                 </div>
+                }
                 <span className="close_icon" onClick={() => handleDeleteImage(index)}>
                     <img src="/assets/images/icon/icon_close_white.svg" alt="" />
                 </span>
@@ -206,12 +225,16 @@ function Main() {
         navigate("/feed/feed_list");
     }
 
+    const aa = () => {
+        console.log(subExtension);
+    }
+
     return (
         <>
         <div id="wrap_content" className="content_add_wrap">
             <div className="wrap_inner">
                 <section className="feed_add_section">
-                <h2>컨텐츠 등록</h2>
+                <h2 onClick={() => {aa()}}>컨텐츠 등록</h2>
                 <div className="content_select">
                     <div className="select_box_wrap">
                     {/* <!-- 0. 기본 --> */}
@@ -230,13 +253,17 @@ function Main() {
                     {/* 이미지 선택됐을때 gray 클래스를 추가해주시면 됩니다! */}
                     {/* <input type="text" value="file.jpg" className="add_input gray" readonly /> */}
                     <label htmlFor="image" className="add_input" id="main_file_txt">이미지 및 영상선택</label>
-                    <input type="file" id="image" accept="image/*" name="sub_file[]" onChange={saveFileImage}/>
+                    <input type="file" id="image" accept="image/jpg, image/png, image/jpeg, image/svg, video/mp4" name="sub_file[]" onChange={saveFileImage}/>
                     </div>
                     {/* <!-- 이미지 추가 했을 때 --> */}
                     {fileImage && (
                     <div className="add_file_box">
                         <div className="cover_img">
+                            {mainExtension == "mp4" ?
+                            <video preload="metadata" src={`${fileImage}#t=0.5`}></video>
+                            :
                             <img src={fileImage} alt="" />
+                            }
                         </div>
                         <span className="close_icon" onClick={() => deleteFileImage()}>
                             <img src="/assets/images/icon/icon_close_white.svg" alt="" />
@@ -244,22 +271,6 @@ function Main() {
                     </div>
                     )}
                     <textarea placeholder="내용 입력 (5,000 글자)" name="content[]" className="content_area" onChange={(e) => setContentTxt(e.target.value)}></textarea>
-                    {/* <!-- 영상 추가 했을 때 --> */}
-                    {/* <div className="add_file_box">
-                        <div className="cover_img">
-                            <img src="/assets/images/dummy/video_img.jpg" alt="" />
-                        </div>
-                        <span className="close_icon">
-                            <img src="/assets/images/icon/icon_close_white.svg" alt="" />
-                        </span>
-                        <div className="video_area">
-                            <span className="play_icon">
-                            <img src="/assets/images/icon/icon_play_02.svg" alt="" />
-                            </span>
-                            <span className="time">4:16</span>
-                        </div>
-                    </div>
-                    <textarea placeholder="내용 입력 (5,000 글자)" className="content_area"></textarea> */}
                 </div>
                 
                 {/*일상 선택했을 경우 추가되는 컨텐츠*/}
