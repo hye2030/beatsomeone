@@ -13,17 +13,24 @@ function Comment(idx) {
     const user = useSelector((state) => {return state.isLogin});
     const user_idx = useSelector((state) => {return state.idx});
     const [commentUpdate, setCommentUpdate] = useState(false);
+    const [like, setLike] =useState(false);
 
     //피드 상세
     useEffect(() => {
         axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedView", {
             params: {
-                "idx" : idx.idx
+                "idx" : idx.idx,
+                "mem_id" : user_idx
             }
         })
         .then(function (response) {
             setFeedContent(response.data.response.detail);
             setWriterIdx(response.data.response.detail[0].mem_id);
+            if(response.data.response.detail[0].like_status >= 1){
+                setLike(true);
+            }else{
+                setLike(false);
+            }
         });
     }, [commentUpdate])
 
@@ -256,7 +263,6 @@ function Comment(idx) {
     }
 
     //피드에 대한 좋아요
-    const [like, setLike] =useState(false);
     const feedLike = () => {
         if(like){
             setLike(false)

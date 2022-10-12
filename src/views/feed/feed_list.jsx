@@ -43,9 +43,9 @@ function Main() {
     }, [menu]);
 
     //로그인 되어 있는지 확인 후 컨텐츠 등록
-    const user = useSelector((state) => {return state});
+    const user = useSelector((state) => {return state.isLogin});
     const contentAdd = () => {
-        if(user.isLogin === true){
+        if(user === true){
             navigate("/feed/feed_add");
         }else{
             $(".plzSignin_modal").fadeIn(200);
@@ -93,8 +93,6 @@ function Main() {
 
     //최신순, 비트많은순, 댓글 많은순
     const [feedsorting, setFeedsorting] = useState(1);
-    //좋아요 상태
-    const [like, setLike] = useState(false);
     //리스트 불러오기
     const [feedList, setFeedList] = useState([]);
     useEffect(() => {
@@ -107,7 +105,7 @@ function Main() {
         .then(function (response) {
             setFeedList(response.data.response);
         });
-    }, [feedsorting]);
+    }, [feedsorting, user]);
 
     /**파일 확장자 추출 */
     function getExtension(fileName) {
@@ -115,6 +113,38 @@ function Main() {
         var lastDot = fileName.lastIndexOf('.');
         var fileExtension = fileName.substring(lastDot+1, fileLength);
         return fileExtension;
+    }
+
+    //좋아요 기능
+    const toggleLike = (e, idx) => {
+        if(user === null || user === false){
+            return false;
+        }
+
+        let bit_cnt = parseInt(document.getElementById('bit_cnt_'+idx).textContent);
+        if(e.target.classList.contains("active")){
+            e.target.classList.remove("active");
+            document.getElementById('bit_cnt_'+idx).textContent = bit_cnt - 1;
+            axios.delete("https://beats-admin.codeidea.io/api/v1/beatDelete", {
+                params: {
+                    mem_id: user_idx,
+                    service_name: "feed",
+                    service_idx: idx
+                }
+            })
+            .then(function (response) {
+            });
+        }else{
+            e.target.classList.add("active");
+            document.getElementById('bit_cnt_'+idx).textContent = bit_cnt + 1;
+            axios.post("https://beats-admin.codeidea.io/api/v1/beatAdd", {
+                mem_id: user_idx,
+                service_name: "feed",
+                service_idx: idx
+            })
+            .then(function (response) {
+            });
+        }
     }
     
     const aa = () => {
@@ -201,10 +231,8 @@ function Main() {
                                 let like_active = "";
                                 if(list.like_status >= 1){
                                     like_active = "active";
-                                    setLike(true);
                                 }else{
                                     like_active = "";
-                                    setLike(false);;
                                 }
 
                                 return (
@@ -265,8 +293,8 @@ function Main() {
                                                     </li>
 
                                                     <li className="like">
-                                                        <button className={`like_toggle_btn white ${like_active}`}>
-                                                            <span>{list.wr_bit}</span>
+                                                        <button className={`like_toggle_btn white ${like_active}`} onClick={(e) => {toggleLike(e, list.idx, list.wr_bit)}}>
+                                                            <span id={`bit_cnt_${list.idx}`}>{list.wr_bit}</span>
                                                         </button>
                                                     </li>
 

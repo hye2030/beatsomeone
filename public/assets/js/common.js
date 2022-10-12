@@ -11,13 +11,13 @@ $(function () {
     };
 
     //좋아요 버튼
-    const likeBtn = document.querySelectorAll('.like_toggle_btn');
+    // const likeBtn = document.querySelectorAll('.like_toggle_btn');
 
-    likeBtn.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('active');
-        });
-    });
+    // likeBtn.forEach((btn) => {
+    //     btn.addEventListener('click', () => {
+    //         btn.classList.toggle('active');
+    //     });
+    // });
 
     // 모달 닫기 스크립트------
     const modalWrap = document.querySelectorAll('.modal_wrap');
