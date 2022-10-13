@@ -11,34 +11,43 @@ function Main() {
 
     //피드 타입 받아오기(전체, 자작곡, 커버곡, 데일리)
     const location = useLocation();
-    let type = "all";
+    let type = "";
     if(location.state != null){
         type = location.state.type;
     }
+    const [feedType, setFeedType] = useState(type);
 
     //피드 상단 메뉴 컨트롤
     const [menu, setMenu] = useState([true,false,false,false]);
     useEffect(() => {
-        if(type == "all"){
+        if(type == ""){
             setMenu([true,false,false,false]);
-        }else if(type == "own"){
+            setFeedType("");
+        }else if(type == "self"){
             setMenu([false,true,false,false]);
+            setFeedType("self");
         }else if(type == "cover"){
             setMenu([false,false,true,false]);
+            setFeedType("cover");
         }else if(type == "daily"){
             setMenu([false,false,false,true]);
+            setFeedType("daily");
         }
     }, [type]);
 
     useEffect(() => {
         if(menu[0] === true){
-            type = "all";
+            type = "";
+            setFeedType("");
         }else if(menu[1] === true){
-            type = "own";
+            type = "self";
+            setFeedType("self");
         }else if(menu[2] === true){
             type = "cover";
+            setFeedType("cover");
         }else if(menu[3] === true){
             type = "daily";
+            setFeedType("daily");
         }
     }, [menu]);
 
@@ -99,13 +108,14 @@ function Main() {
         axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedList", {
             params: {
                 sorting: feedsorting,
-                mem_id: user_idx
+                mem_id: user_idx,
+                wr_type: feedType
             }
         })
         .then(function (response) {
             setFeedList(response.data.response);
         });
-    }, [feedsorting, user]);
+    }, [feedsorting, user, feedType]);
 
     /**파일 확장자 추출 */
     function getExtension(fileName) {

@@ -93,6 +93,7 @@ const LoginJoin = () => {
                     localStorage.setItem("emailIdx", response.data.response.idx);
                     localStorage.setItem("is_login", response.data._token);
                     localStorage.setItem("last_login", "email");
+                    localStorage.setItem("nickname", response.data.response.nickName);
 
                     $('.signIn_modal').fadeOut(200);
                     $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');

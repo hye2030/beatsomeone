@@ -10,6 +10,7 @@ function MenuComponenet({users}) {
     })
 
     const user = useSelector((state) => {return state});
+    const user_nick = useSelector((state) => {return state.name});
     const navigate = useNavigate();
     const ModalHandler = useSetRecoilState(isModal);
 
@@ -33,7 +34,7 @@ function MenuComponenet({users}) {
                     NICKNAME
                 </p>
                 <a href="mypage/my_request_song.html" className="info_btn">
-                    김비트님
+                    {user_nick}님
                 </a>
             </div>
         </div> 
@@ -55,22 +56,22 @@ function MenuComponenet({users}) {
                     </div>
                     <ul className="sec_depth">
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link active">
-                                    - {_menu[9]}
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : ""} } )}} className="link active">
+                                - {_menu[9]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "self"} } )}} className="link">
                                 - {_menu[10]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "cover"} } )}} className="link">
                                 - {_menu[11]}
                             </a>
                         </li>
                         <li className="list">
-                            <a href="feed/feed_list.html" className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "daily"} } )}} className="link">
                                 - {_menu[12]}
                             </a>
                         </li>
@@ -112,12 +113,12 @@ function MenuComponenet({users}) {
                 </a>
             </li>
             <li className="list">
-                <a href="mypage/event.html" onClick={() => {return false;}} className="link main_link">
+                <a onClick={() => {navigate("/mypage/event");}} className="link main_link">
                     {_menu[16]}
                 </a>
             </li>
             <li className="list">
-                <a href="./common/notice_list.html" className="link main_link">
+                <a onClick={() => {navigate("/common/notice_list");}} className="link main_link">
                     {_menu[15]}
                 </a>
             </li>

@@ -100,7 +100,7 @@ function Main() {
                     "code": 0,
                     "message": "로그인 유지 확인",
                     "response": {
-                        "name": "길동",
+                        "name": localStorage.getItem("nickname"),
                         "email": localStorage.getItem("emailId"),
                         "idx": localStorage.getItem("emailIdx")
                     }
@@ -180,7 +180,7 @@ function Main() {
         {/* <!-- 하단 네비 --> */}
         <ul className="bottom_nav">
             <li className="list home active">
-                <a href="index.html" className="link">
+                <a onClick={() => {navigate("/")}} className="link">
                     <div className="icon_box"></div>
                     <span>{t('page:홈')}</span>
                 </a>
@@ -192,7 +192,7 @@ function Main() {
                 </a>
             </li>
             <li className="list event">
-                <a href="mypage/event.html" className="link">
+                <a onClick={() => {navigate("/mypage/event")}} className="link">
                     <div className="icon_box"></div>
                     <span>{t('page:이벤트')}</span>
                 </a>

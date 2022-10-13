@@ -285,10 +285,11 @@ function Main() {
                         </div>
                     </div>
                     <ul className="content">
+                        {/* <!-- 자작곡 - self, 커버곡 - cover, 일상 - daily --> */}
                         <li className="list_item self">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/main_feed_01.jpeg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -298,7 +299,7 @@ function Main() {
                                                     <span>9,999</span>
                                                 </button>
                                             </li>
-  
+
                                             <li className="comment">
                                                 <div className="profile_wrap">
                                                     <ul>
@@ -312,12 +313,12 @@ function Main() {
                                                             <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
-  
+
                                                     <span>99+</span>
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -328,15 +329,17 @@ function Main() {
                                     </div>
                                 </div>
                             </div>
-  
+
                             <div className="list_text">
-                                내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다.
+                                제가 1등인가요?
+                                저는 트랙과 탑라인을 함께 작업하고 있으며 서울 지역에서 활동하고있습니다.
+                                잘 부탁드려요.
                             </div>
                         </li>
                         <li className="list_item cover">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/main_feed_02.png" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -346,7 +349,7 @@ function Main() {
                                                     <span>9,999</span>
                                                 </button>
                                             </li>
-  
+
                                             <li className="comment">
                                                 <div className="profile_wrap">
                                                     <ul>
@@ -360,12 +363,12 @@ function Main() {
                                                             <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
-  
+
                                                     <span>99+</span>
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -376,15 +379,19 @@ function Main() {
                                     </div>
                                 </div>
                             </div>
-  
+
                             <div className="list_text">
-                                내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다.
+                                최근에 JBL 파티 박스가 도착하여 테스트해 봤습니다.
+                                사운드도 좋고
+                                마이크 성능도 기대 이상이라 놀러 가서 지인들이랑 놀기 정말 좋겠네요.
+                                마이크는 건전지로 사용하고 무선이라
+                                정말 걸어 다니는 노래방입니다ㅎㅎ
                             </div>
                         </li>
                         <li className="list_item daily">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/main_feed_03.jpeg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -394,7 +401,7 @@ function Main() {
                                                     <span>9,999</span>
                                                 </button>
                                             </li>
-  
+
                                             <li className="comment">
                                                 <div className="profile_wrap">
                                                     <ul>
@@ -408,12 +415,12 @@ function Main() {
                                                             <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
-  
+
                                                     <span>99+</span>
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -424,15 +431,20 @@ function Main() {
                                     </div>
                                 </div>
                             </div>
-  
+
                             <div className="list_text">
-                                내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다.
+                                특이한 마이크인 타운센드 L22로 녹음하고 왔습니다.
+                                일단 마이크 자체가 굉장히 이쁘고
+                                플러그인을 사용해 마이크 프리셋을 자유롭게 사용할 수 있습니다.
+                                실제로 설정을 바꿀 때마다 느낌이 많이 달라지더라고요
+                                성능도 준수하고
+                                굉장히 흥미로운 마이크였습니다.
                             </div>
                         </li>
                         <li className="list_item self">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/main_feed_04.jpeg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -442,7 +454,7 @@ function Main() {
                                                     <span>9,999</span>
                                                 </button>
                                             </li>
-  
+
                                             <li className="comment">
                                                 <div className="profile_wrap">
                                                     <ul>
@@ -456,12 +468,12 @@ function Main() {
                                                             <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
-  
+
                                                     <span>99+</span>
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
-                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="" />
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
                                                     </div>
                                                     <p>
                                                         닉네임
@@ -472,15 +484,17 @@ function Main() {
                                     </div>
                                 </div>
                             </div>
-  
+
                             <div className="list_text">
-                                내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다.
+                                매일 집에서 혼자 찍다가
+                                듀엣곡을 하게 되어 스튜디오 빌려서 커버 영상 찍고 왔어요
+                                완성되면 영상도 공유할게요
                             </div>
                         </li>
                         <li className="list_item self">
                             <div className="img_wrap">
                                 <div className="img">
-                                    <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                    <img src="/assets/images/dummy/main_feed_05.jpeg" alt="이미지" />
                                 </div>
                                 <div className="text_box">
                                     <div className="text_wrap">
@@ -490,7 +504,7 @@ function Main() {
                                                     <span>9,999</span>
                                                 </button>
                                             </li>
-  
+
                                             <li className="comment">
                                                 <div className="profile_wrap">
                                                     <ul>
@@ -504,7 +518,316 @@ function Main() {
                                                             <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
                                                         </li>
                                                     </ul>
-  
+
+                                                    <span>99+</span>
+                                                </div>
+                                                <div className="nick_name">
+                                                    <div className="profile_img">
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
+                                                    </div>
+                                                    <p>
+                                                        닉네임
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="list_text">
+                                트랙패드 당근으로 구입했는데
+                                설정만 하다가 다시 팔게 생겼어요
+                                트랙패드 잘 아시는 분 있나요?
+                            </div>
+                        </li>
+                        <li className="list_item cover">
+                            <div className="img_wrap">
+                                <div className="img">
+                                    <img src="/assets/images/dummy/main_feed_06.jpeg" alt="이미지" />
+                                </div>
+                                <div className="text_box">
+                                    <div className="text_wrap">
+                                        <ul>
+                                            <li className="like">
+                                                <button className="like_toggle_btn white">
+                                                    <span>9,999</span>
+                                                </button>
+                                            </li>
+
+                                            <li className="comment">
+                                                <div className="profile_wrap">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                    </ul>
+
+                                                    <span>99+</span>
+                                                </div>
+                                                <div className="nick_name">
+                                                    <div className="profile_img">
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
+                                                    </div>
+                                                    <p>
+                                                        닉네임
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="list_text">
+                                최근 작업한 OST 보컬 녹음 받고 왔어요
+                                일반 스튜디오는 아니고 제작사 내부에 있는 스튜디오인데
+                                굉장히 깔끔하게 잘되어 있었습니다.
+                                부스도 굉장히 넓어
+                                라이브 녹음도 가능해 보였습니다.
+                            </div>
+                        </li>
+                        <li className="list_item daily">
+                            <div className="img_wrap">
+                                <div className="img">
+                                    <img src="/assets/images/dummy/main_feed_07.png" alt="이미지" />
+                                </div>
+                                <div className="text_box">
+                                    <div className="text_wrap">
+                                        <ul>
+                                            <li className="like">
+                                                <button className="like_toggle_btn white">
+                                                    <span>9,999</span>
+                                                </button>
+                                            </li>
+
+                                            <li className="comment">
+                                                <div className="profile_wrap">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                    </ul>
+
+                                                    <span>99+</span>
+                                                </div>
+                                                <div className="nick_name">
+                                                    <div className="profile_img">
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
+                                                    </div>
+                                                    <p>
+                                                        닉네임
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="list_text">
+                                Lose Control – JJ Lin
+                                카페에서 샤잠 돌려서 찾음
+                                알고보니 샹치 OST ㅋㅋㅋㅋ
+                                샹치 봤는데 왜 처음 들었지?
+                            </div>
+                        </li>
+                        <li className="list_item self">
+                            <div className="img_wrap">
+                                <div className="img">
+                                    <img src="/assets/images/dummy/main_feed_08.jpeg" alt="이미지" />
+                                </div>
+                                <div className="text_box">
+                                    <div className="text_wrap">
+                                        <ul>
+                                            <li className="like">
+                                                <button className="like_toggle_btn white">
+                                                    <span>9,999</span>
+                                                </button>
+                                            </li>
+
+                                            <li className="comment">
+                                                <div className="profile_wrap">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                    </ul>
+
+                                                    <span>99+</span>
+                                                </div>
+                                                <div className="nick_name">
+                                                    <div className="profile_img">
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
+                                                    </div>
+                                                    <p>
+                                                        닉네임
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="list_text">
+                                톤 스튜디에서 보컬 녹음함
+                                깔끔하고 좋은거랑
+                                특히 기사님 손이 엄청 빠름
+                                다음에는 A룸에서 해봐야지
+                            </div>
+                        </li>
+                        <li className="list_item self">
+                            <div className="img_wrap">
+                                <div className="img">
+                                    <img src="/assets/images/dummy/main_feed_09.jpeg" alt="이미지" />
+                                </div>
+                                <div className="text_box">
+                                    <div className="text_wrap">
+                                        <ul>
+                                            <li className="like">
+                                                <button className="like_toggle_btn white">
+                                                    <span>9,999</span>
+                                                </button>
+                                            </li>
+
+                                            <li className="comment">
+                                                <div className="profile_wrap">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                    </ul>
+
+                                                    <span>99+</span>
+                                                </div>
+                                                <div className="nick_name">
+                                                    <div className="profile_img">
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
+                                                    </div>
+                                                    <p>
+                                                        닉네임
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="list_text">
+                                집에서 간단한 녹음 할려고
+                                오디언트 iD4구입했어요
+                                저가형 오인페 중에는
+                                오디언트 프리앰프가 좋다고해서 장만했습니다
+                                막귀라 차이는 잘 못느끼지만
+                                손쉽게 사용할 수 있어서 좋네요
+                            </div>
+                        </li>
+                        <li className="list_item cover">
+                            <div className="img_wrap">
+                                <div className="img">
+                                    <img src="/assets/images/dummy/main_feed_10_1.jpeg" alt="이미지" />
+                                </div>
+                                <div className="text_box">
+                                    <div className="text_wrap">
+                                        <ul>
+                                            <li className="like">
+                                                <button className="like_toggle_btn white">
+                                                    <span>9,999</span>
+                                                </button>
+                                            </li>
+
+                                            <li className="comment">
+                                                <div className="profile_wrap">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                    </ul>
+
+                                                    <span>99+</span>
+                                                </div>
+                                                <div className="nick_name">
+                                                    <div className="profile_img">
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
+                                                    </div>
+                                                    <p>
+                                                        닉네임
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="list_text">
+                                노이만 만들던 사람들이 만들었다는
+                                Microtech Gefell M940 구입했습니다.
+                                컴팩트하고 이쁘게 생겼는데
+                                갖출 건 다 갖췄습니다.
+                                굉장히 마음에 드네요
+                            </div>
+                        </li>
+                        <li className="list_item daily">
+                            <div className="img_wrap">
+                                <div className="img">
+                                    <img src="/assets/images/dummy/main_feed_11.jpeg" alt="이미지" />
+                                </div>
+                                <div className="text_box">
+                                    <div className="text_wrap">
+                                        <ul>
+                                            <li className="like">
+                                                <button className="like_toggle_btn white">
+                                                    <span>9,999</span>
+                                                </button>
+                                            </li>
+
+                                            <li className="comment">
+                                                <div className="profile_wrap">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                    </ul>
+
                                                     <span>99+</span>
                                                 </div>
                                                 <div className="nick_name">
@@ -520,9 +843,62 @@ function Main() {
                                     </div>
                                 </div>
                             </div>
-  
+
                             <div className="list_text">
-                                내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다.
+                                55:55 가져와야 되는데 케이블 잘못 챙겨서
+                                작업 못하고 이야기만 하다 왔네요
+                                다들 케이블 꼭 잘 챙기세요~
+                            </div>
+                        </li>
+                        <li className="list_item self">
+                            <div className="img_wrap">
+                                <div className="img">
+                                    <img src="/assets/images/dummy/main_feed_12.jpeg" alt="이미지" />
+                                </div>
+                                <div className="text_box">
+                                    <div className="text_wrap">
+                                        <ul>
+                                            <li className="like">
+                                                <button className="like_toggle_btn white">
+                                                    <span>9,999</span>
+                                                </button>
+                                            </li>
+
+                                            <li className="comment">
+                                                <div className="profile_wrap">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
+                                                        </li>
+                                                    </ul>
+
+                                                    <span>99+</span>
+                                                </div>
+                                                <div className="nick_name">
+                                                    <div className="profile_img">
+                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
+                                                    </div>
+                                                    <p>
+                                                        닉네임
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="list_text">
+                                VTG라고 장비 악세사리 구입하던 곳인데
+                                삼청동 쪽에 오프라인 스튜디오가 있더라고요
+                                이번에 기타랑 보컬 녹음하고 왔는데
+                                기사님이 굉장히 친절하게 잘해주시네요
                             </div>
                         </li>
                     </ul>

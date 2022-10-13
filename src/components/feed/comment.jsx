@@ -14,6 +14,7 @@ function Comment(idx) {
     const user_idx = useSelector((state) => {return state.idx});
     const [commentUpdate, setCommentUpdate] = useState(false);
     const [like, setLike] =useState(false);
+    const [likeCnt, setLikeCnt] =useState(0);
 
     //피드 상세
     useEffect(() => {
@@ -31,8 +32,9 @@ function Comment(idx) {
             }else{
                 setLike(false);
             }
+            setLikeCnt(response.data.response.detail[0].wr_bit);
         });
-    }, [commentUpdate])
+    }, [commentUpdate, user_idx])
 
     //피드 삭제
     const feed_delete = () => {
@@ -145,7 +147,8 @@ function Comment(idx) {
                 "wr_idx" : idx.idx,
                 "wr_type" : "feed",
                 "limit" : limit,
-                "page" : page
+                "page" : page,
+                "mem_id" : user_idx
             }
         })
         .then(function (response) {
@@ -153,7 +156,7 @@ function Comment(idx) {
             setCommentUpdate(false);
             setCommentTotal(response.data.total);
         });
-    }, [commentUpdate, page])
+    }, [commentUpdate, page, user_idx])
     
     // 답글달기
     const childForm = (e, idx) => {
@@ -264,10 +267,64 @@ function Comment(idx) {
 
     //피드에 대한 좋아요
     const feedLike = () => {
+        if(user === null || user === false){
+            return false;
+        }
+
         if(like){
-            setLike(false)
+            axios.delete("https://beats-admin.codeidea.io/api/v1/beatDelete", {
+                params: {
+                    mem_id: user_idx,
+                    service_name: "feed",
+                    service_idx: idx.idx
+                }
+            })
+            .then(function (response) {
+                setLike(false);
+                setLikeCnt((prev) => prev - 1);
+            });
         }else{
-            setLike(true)
+            axios.post("https://beats-admin.codeidea.io/api/v1/beatAdd", {
+                mem_id: user_idx,
+                service_name: "feed",
+                service_idx: idx.idx
+            })
+            .then(function (response) {
+                setLike(true);
+                setLikeCnt((prev) => prev + 1);
+            });
+        }
+    }
+
+    //댓글에 대한 좋아요 기능
+    const toggleLike = (e, idx) => {
+        if(user === null || user === false){
+            return false;
+        }
+
+        let bit_cnt = parseInt(document.getElementById('bit_cnt_'+idx).textContent);
+        if(e.target.classList.contains("active")){
+            e.target.classList.remove("active");
+            document.getElementById('bit_cnt_'+idx).textContent = bit_cnt - 1;
+            axios.delete("https://beats-admin.codeidea.io/api/v1/beatDelete", {
+                params: {
+                    mem_id: user_idx,
+                    service_name: "comment",
+                    service_idx: idx
+                }
+            })
+            .then(function (response) {
+            });
+        }else{
+            e.target.classList.add("active");
+            document.getElementById('bit_cnt_'+idx).textContent = bit_cnt + 1;
+            axios.post("https://beats-admin.codeidea.io/api/v1/beatAdd", {
+                mem_id: user_idx,
+                service_name: "comment",
+                service_idx: idx
+            })
+            .then(function (response) {
+            });
         }
     }
     
@@ -280,7 +337,7 @@ function Comment(idx) {
                     return (
                     <div className="mark_wrap" key={cntt.idx}>
                         <button type="button" className={like==false ? "like_toggle_btn mark" : "like_toggle_btn mark active"} onClick={() => {feedLike()}}>
-                            <span>{cntt.wr_bit}</span>
+                            <span>{likeCnt}</span>
                         </button>
                         {/* <div className="lesten_num mark"><span>99개</span></div> */}
                         <div className="profile_wrap mark">
@@ -346,6 +403,13 @@ function Comment(idx) {
                                 singo_cntt = "[삭제된 댓글입니다.]";
                             }
 
+                            let like_active = "";
+                            if(comment.like_status >= 1){
+                                like_active = "active";
+                            }else{
+                                like_active = "";
+                            }
+
                             if(comment.cm_depth == 1){
                                 return (
                                     <div id={`edit_idx_${comment.idx}`} className="" key={comment.idx}>
@@ -366,7 +430,8 @@ function Comment(idx) {
                                                     <textarea name="" id={`edit_comment_${comment.idx}`} defaultValue={comment.cm_content}></textarea>
                                                 </div>
                                                 <div className="bottom">
-                                                    <button type="button" className="like_toggle_btn "><span>
+                                                    <button type="button" className={`like_toggle_btn ${like_active}`} onClick={(e) => {toggleLike(e, comment.idx)}}>
+                                                        <span id={`bit_cnt_${comment.idx}`}>
                                                             {comment.cm_bit}
                                                         </span></button>
                                                     <button type="button" className="gray_text reply_btn" onClick={(e) => {childForm(e, comment.idx)}}>답글달기</button>
@@ -420,7 +485,8 @@ function Comment(idx) {
                                                     <textarea name="" id={`edit_comment_${comment.idx}`} defaultValue={comment.cm_content}></textarea>
                                                 </div>
                                                 <div className="bottom">
-                                                    <button type="button" className="like_toggle_btn"><span>
+                                                    <button type="button" className={`like_toggle_btn ${like_active}`} onClick={(e) => {toggleLike(e, comment.idx)}}>
+                                                        <span id={`bit_cnt_${comment.idx}`}>
                                                         {comment.cm_bit}
                                                         </span></button>
                                                     <button type="button" className="gray_text reply_btn " onClick={(e) => {childForm(e, comment.idx)}}>답글달기</button>

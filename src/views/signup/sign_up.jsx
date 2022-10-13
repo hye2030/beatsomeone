@@ -318,14 +318,22 @@ function Main() {
         })
     }
 
-    $('.signupC_modal .confirm_btn').click(() => {
+    const directLogin = () => {
         document.getElementById('signupC').disabled = true;
         ModalHandler("login");
         $('.signupC_modal').fadeOut(200);
         
-        $("#login_email").val("");
+        document.getElementById('login_email').value("");
         $('.route_modal.signIn').fadeIn(200);
-    });
+    }
+    // $('.signupC_modal .confirm_btn').click(() => {
+    //     document.getElementById('signupC').disabled = true;
+    //     ModalHandler("login");
+    //     $('.signupC_modal').fadeOut(200);
+        
+    //     $("#login_email").val("");
+    //     $('.route_modal.signIn').fadeIn(200);
+    // });
     const modalWrap = document.querySelectorAll('.modal_wrap');
     modalWrap.forEach((item, idx) => {
         const closeBtn = item.querySelectorAll('.close_btn');
@@ -608,7 +616,7 @@ function Main() {
                     로그인 후 서비스를 이용해주세요.
                 </p>
                 <div className="button_wrap">
-                    <button type="button" className="basic_btn_red confirm_btn close_btn">
+                    <button type="button" className="basic_btn_red confirm_btn" onClick={() => {directLogin()}}>
                         로그인
                     </button>
                 </div>
