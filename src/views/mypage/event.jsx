@@ -34,10 +34,11 @@ function Main() {
     };
 
     const onSroll = () => {
-        const scrollHeight = document.documentElement.scrollHeight;
-        const scrollTop = document.documentElement.scrollTop;
-        const clientHeight = document.documentElement.clientHeight;
-        if (scrollTop + clientHeight >= scrollHeight- 1) {
+        const { innerHeight } = window;
+        const { scrollHeight } = document.body;
+        const { scrollTop } = document.documentElement;
+
+        if (Math.round(scrollTop + innerHeight) >= scrollHeight) {
             setAllowInfinite((prev) => {
                 // console.log(total);
                 // console.log(posts.length);
@@ -60,7 +61,7 @@ function Main() {
         return () => {
           window.removeEventListener('scroll', onSroll);
         };
-    }, []);
+    }, [page]);
 
     const typeChange = (gubun) => {
         window.scrollTo(0, 0);

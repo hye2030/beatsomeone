@@ -23,15 +23,31 @@ function Main() {
         if(type == ""){
             setMenu([true,false,false,false]);
             setFeedType("");
+            $('.feedLink').each(function (index, item) {
+                $(".feedLink").eq(index).removeClass("active");
+                $(".feedLink").eq(0).addClass("active");
+            });
         }else if(type == "self"){
             setMenu([false,true,false,false]);
             setFeedType("self");
+            $('.feedLink').each(function (index, item) {
+                $(".feedLink").eq(index).removeClass("active");
+                $(".feedLink").eq(1).addClass("active");
+            });
         }else if(type == "cover"){
             setMenu([false,false,true,false]);
             setFeedType("cover");
+            $('.feedLink').each(function (index, item) {
+                $(".feedLink").eq(index).removeClass("active");
+                $(".feedLink").eq(2).addClass("active");
+            });
         }else if(type == "daily"){
             setMenu([false,false,false,true]);
             setFeedType("daily");
+            $('.feedLink').each(function (index, item) {
+                $(".feedLink").eq(index).removeClass("active");
+                $(".feedLink").eq(3).addClass("active");
+            });
         }
     }, [type]);
 
@@ -39,15 +55,31 @@ function Main() {
         if(menu[0] === true){
             type = "";
             setFeedType("");
+            $('.feedLink').each(function (index, item) {
+                $(".feedLink").eq(index).removeClass("active");
+                $(".feedLink").eq(0).addClass("active");
+            });
         }else if(menu[1] === true){
             type = "self";
             setFeedType("self");
+            $('.feedLink').each(function (index, item) {
+                $(".feedLink").eq(index).removeClass("active");
+                $(".feedLink").eq(1).addClass("active");
+            });
         }else if(menu[2] === true){
             type = "cover";
             setFeedType("cover");
+            $('.feedLink').each(function (index, item) {
+                $(".feedLink").eq(index).removeClass("active");
+                $(".feedLink").eq(2).addClass("active");
+            });
         }else if(menu[3] === true){
             type = "daily";
             setFeedType("daily");
+            $('.feedLink').each(function (index, item) {
+                $(".feedLink").eq(index).removeClass("active");
+                $(".feedLink").eq(3).addClass("active");
+            });
         }
     }, [menu]);
 
@@ -66,6 +98,7 @@ function Main() {
     
     //상단 배너 이미지
     const [banners, setbanners] = useState("/assets/images/dummy/banner_img_02.jpg");
+    const [bannersURL, setbannersURL] = useState("");
     useEffect(() => {
         axios.get("https://beats-admin.codeidea.io/api/v1/bannerList", {
             params: {
@@ -75,6 +108,7 @@ function Main() {
         })
         .then(function (response) {
             setbanners("https://beatsomeone.codeidea.io/storage/banner/" + response.data.response.data[0].bannerSource);
+            setbannersURL(response.data.response.data[0].contnetsUrl);
         });
     }, [localStorage.getItem("language")]);
 
@@ -167,7 +201,7 @@ function Main() {
         <div id="wrap_content" className="list_page feed_list">
             <div className="wrap_inner">
                 <section className="banner">
-                    <div className="inner">
+                    <div className="inner" onClick={() => {navigate(bannersURL)}}>
                         {/* <!-- 임시 이미지 입니다 -->
                         <!-- <div className="banner_text">
                             <h2>지금, 당장 글로벌 <br>

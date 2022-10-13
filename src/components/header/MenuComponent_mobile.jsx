@@ -20,7 +20,7 @@ function MenuComponenet({users}) {
             <a href="#" onClick={() => {navigate('/')}} className="link">
                 BEAT SOMEONE
             </a>
-            <a href="#" onClick={() => {return false;}} className="link">
+            <a href="https://bybeats.codeidea.io" className="link" target="_blank">
                 BYBEATS
             </a>
         </div>
@@ -56,22 +56,22 @@ function MenuComponenet({users}) {
                     </div>
                     <ul className="sec_depth">
                         <li className="list">
-                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : ""} } )}} className="link active">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : ""} } )}} className="link feedLink">
                                 - {_menu[9]}
                             </a>
                         </li>
                         <li className="list">
-                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "self"} } )}} className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "self"} } )}} className="link feedLink">
                                 - {_menu[10]}
                             </a>
                         </li>
                         <li className="list">
-                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "cover"} } )}} className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "cover"} } )}} className="link feedLink">
                                 - {_menu[11]}
                             </a>
                         </li>
                         <li className="list">
-                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "daily"} } )}} className="link">
+                            <a onClick={() => {navigate('/feed/feed_list', {state : {type : "daily"} } )}} className="link feedLink">
                                 - {_menu[12]}
                             </a>
                         </li>

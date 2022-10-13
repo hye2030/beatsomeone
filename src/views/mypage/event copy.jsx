@@ -9,9 +9,9 @@ function Main() {
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
-    let allowInfinite = false;
-
+    const [allowInfinite, setAllowInfinite] = useState(false);
     const [type, setType] = useState("");
+    let total = 0;
 
     const eventList = async (page, limit) => {
         try {
@@ -24,8 +24,10 @@ function Main() {
                     }
                 }
             );
+            // console.log(posts.length);
             setPosts(posts.concat(data.response.data));
-            allowInfinite = true;
+            total = data.response.total;
+            setAllowInfinite(true)
         } catch {
           console.error('fetching error');
         }
@@ -35,17 +37,23 @@ function Main() {
         const scrollHeight = document.documentElement.scrollHeight;
         const scrollTop = document.documentElement.scrollTop;
         const clientHeight = document.documentElement.clientHeight;
-
         if (scrollTop + clientHeight >= scrollHeight- 1) {
-            if (!allowInfinite) return;
-            allowInfinite = false;
-            setPage((prev) => prev + 1);
+            setAllowInfinite((prev) => {
+                // console.log(total);
+                // console.log(posts.length);
+                if(posts.length >= total){
+                    console.log("다부름");
+                    return false;
+                }else{
+                    setPage((prev) => prev + 1);
+                }
+            })        
         }
     }
 
     useEffect(() => {
         eventList(page, limit)
-    }, [page])
+    }, [page, type])
 
     useEffect(() => {
         window.addEventListener('scroll', onSroll);
@@ -55,6 +63,7 @@ function Main() {
     }, []);
 
     const typeChange = (gubun) => {
+        window.scrollTo(0, 0);
         if(gubun == "Y"){
             setType("Y");
         }else if(gubun == "N"){
@@ -62,6 +71,8 @@ function Main() {
         }else{
             setType("");
         }
+        setPosts([]);
+        setPage(1)
     }
 
     return (

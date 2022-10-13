@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
 import i18n from "i18next";
 
@@ -130,6 +130,21 @@ function Main() {
         } 
     }, [localStorage.getItem("language")])
 
+    //현재 url 받아오기
+    const location = useLocation();
+    const [nowLocation, setNowLocation] = useState("/");
+    const [mHeader, setMHeader] = useState("");
+    useEffect(() => {
+        setNowLocation(location.pathname);
+        if(location.pathname.includes("feed")){
+            setMHeader("피드 상세");
+        }else if(location.pathname.includes("event")){
+            setMHeader("EVENT");
+        }else if(location.pathname.includes("notice")){
+            setMHeader("공지사항");
+        }
+    }, [ location ])
+
     return (
     <>
       {/* BEGIN: Header */}
@@ -137,7 +152,7 @@ function Main() {
             <div className="header_top">
                 <div className="inner">
                     <div className="tabs">
-                        <a href="https://bybeats.codeidea.io?sns='email'&snsKey='snsKey'&emailId='fsdf'&token='fsdfsf'" className="tab" target="_blank">
+                        <a href="https://bybeats.codeidea.io" className="tab" target="_blank">
                             <img
                                 alt="바이비트 로고"
                                 className="w-6"
@@ -206,9 +221,9 @@ function Main() {
         </ul>
 
         {/* <!-- 모바일 헤더 --> */}
-        <header className="header_mb">
+        <header className={nowLocation == "/" ? "header_mb" : "header_mb detail_header"}>
             <div className="inner">
-                {/* <!-- <a href="javascript:history.back();" className="goBack_btn"></a> --> */}
+                <a onClick={() => navigate(-1)} className="goBack_btn"></a>
                 <h1 className="logo" onClick={() => {navigate('/')}}>
                     <a href="index.html" className="link"></a>
                 </h1>
@@ -219,9 +234,9 @@ function Main() {
                         <span></span>
                     </div>
                 </div>
-                {/* <!-- <div className="page_title">
-                    검색
-                </div> --> */}
+                <div className="page_title">
+                {mHeader}
+                </div>
             </div>
             <div className="side_menu">
                 <div className="opacity_effect">

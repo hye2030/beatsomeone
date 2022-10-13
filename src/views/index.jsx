@@ -48,7 +48,7 @@ function Main() {
                     <div className="top_area">
                         <div className="text_box">
                             <h3>
-                                지금, 당장 <br className="mobile_layout" />글로벌 뮤지션에
+                                지금, 당장 <br className="mobile_layout" />글로벌 뮤지션에{"\u00A0"}
                                 <br className="pc_layout" />
                                 도전하세요.
                             </h3>
@@ -60,7 +60,7 @@ function Main() {
                         </div>
                         <TopBanner banners={banners} />
                     </div>
-  
+                    {/* <!-- 모바일 리스트 슬라이드 --> */}
                     <div className="content_mb">
                         <div className="content_slide">
                             <div className="swiper-wrapper">
@@ -68,7 +68,7 @@ function Main() {
                                     <div className="list_item self">
                                         <div className="img_wrap">
                                             <div className="img">
-                                                <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                                <img src="/assets/images/dummy/main_feed_01.jpeg" alt="이미지" />
                                             </div>
                                             <div className="text_box">
                                                 <div className="text_wrap">
@@ -113,8 +113,9 @@ function Main() {
                                         </div>
   
                                         <div className="list_text">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간
-                                            입니다.
+                                            제가 1등인가요?
+                                            저는 트랙과 탑라인을 함께 작업하고 있으며 서울 지역에서 활동하고있습니다.
+                                            잘 부탁드려요.
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +123,7 @@ function Main() {
                                     <div className="list_item cover">
                                         <div className="img_wrap">
                                             <div className="img">
-                                                <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                                <img src="/assets/images/dummy/main_feed_02.png" alt="이미지" />
                                             </div>
                                             <div className="text_box">
                                                 <div className="text_wrap">
@@ -167,8 +168,11 @@ function Main() {
                                         </div>
   
                                         <div className="list_text">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간
-                                            입니다.
+                                            최근에 JBL 파티 박스가 도착하여 테스트해 봤습니다.
+                                            사운드도 좋고
+                                            마이크 성능도 기대 이상이라 놀러 가서 지인들이랑 놀기 정말 좋겠네요.
+                                            마이크는 건전지로 사용하고 무선이라
+                                            정말 걸어 다니는 노래방입니다ㅎㅎ
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +180,7 @@ function Main() {
                                     <div className="list_item daily">
                                         <div className="img_wrap">
                                             <div className="img">
-                                                <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                                <img src="/assets/images/dummy/main_feed_03.jpeg" alt="이미지" />
                                             </div>
                                             <div className="text_box">
                                                 <div className="text_wrap">
@@ -221,8 +225,10 @@ function Main() {
                                         </div>
   
                                         <div className="list_text">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간
-                                            입니다.
+                                            특이한 마이크인 타운센드 L22로 녹음하고 왔습니다.
+                                            일단 마이크 자체가 굉장히 이쁘고
+                                            플러그인을 사용해 마이크 프리셋을 자유롭게 사용할 수 있습니다.
+                                            실제로 설정을 바꿀 때마다 느낌이 많이 달라지더라고요
                                         </div>
                                     </div>
                                 </div>
@@ -230,7 +236,7 @@ function Main() {
                                     <div className="list_item self">
                                         <div className="img_wrap">
                                             <div className="img">
-                                                <img src="/assets/images/dummy/cover_img_01.jpg" alt="이미지" />
+                                                <img src="/assets/images/dummy/main_feed_04.jpeg" alt="이미지" />
                                             </div>
                                             <div className="text_box">
                                                 <div className="text_wrap">
@@ -275,8 +281,9 @@ function Main() {
                                         </div>
   
                                         <div className="list_text">
-                                            내용을 입력해주세요. 더미 텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간 입니다. 내용을 입력해주세요. 더미텍스트 구간
-                                            입니다.
+                                            매일 집에서 혼자 찍다가
+                                            듀엣곡을 하게 되어 스튜디오 빌려서 커버 영상 찍고 왔어요
+                                            완성되면 영상도 공유할게요
                                         </div>
                                     </div>
                                 </div>
@@ -284,6 +291,7 @@ function Main() {
                             <div className="swiper-pagination con"></div>
                         </div>
                     </div>
+                    {/* <!-- 피씨 및 테블릿 --> */}
                     <ul className="content">
                         {/* <!-- 자작곡 - self, 커버곡 - cover, 일상 - daily --> */}
                         <li className="list_item self">
