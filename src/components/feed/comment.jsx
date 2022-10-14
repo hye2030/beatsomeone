@@ -327,6 +327,17 @@ function Comment(idx) {
             });
         }
     }
+
+    // 유저 입력 값을 넣을 변수
+    const [checkItemContent, setCheckItemContent] = useState('');
+    // 줄 수를 계산해서 저장할 변수
+    const [textareaHeight, setTextareaHeight] = useState(0);
+    // 사용자 입력 값이 변경될 때마다 checkItemContent에 저장하고
+    // 엔터('\n') 개수를 세서 textareaHeight에 저장
+    const checkItemChangeHandler = (event) => {
+        setTextareaHeight(event.target.value.split('\n').length - 1);
+        setCheckItemContent(event.target.value);
+    }
     
     return (
         <>
@@ -434,7 +445,7 @@ function Comment(idx) {
                                                         <span id={`bit_cnt_${comment.idx}`}>
                                                             {comment.cm_bit}
                                                         </span></button>
-                                                    <button type="button" className="gray_text reply_btn" onClick={(e) => {childForm(e, comment.idx)}}>답글달기</button>
+                                                    <button type="button" className="gray_text reply_btn" onClick={(e) => {childForm(e, comment.idx); setTextareaHeight(0);}}>답글달기</button>
                                                 </div>
                                                 {user_idx == comment.mem_id ? 
                                                 <div className="edit_btn_group">
@@ -455,9 +466,9 @@ function Comment(idx) {
                                             <div className="profile_img">
                                                 <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                                             </div>
-                                            <div className="white_wrap">
+                                            <div className="white_wrap" style={{height: ((textareaHeight + 1) * 38) + 'px'}} >
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요." value={undefined}></textarea>
+                                                    placeholder="댓글을 입력해주세요." value={undefined} onChange={checkItemChangeHandler}></textarea>
                                                 <button type="button" onClick={() => {child_comment_write(comment.idx, comment.idx, comment.cm_depth)}}>작성</button>
                                             </div>
                                         </div>
@@ -489,7 +500,7 @@ function Comment(idx) {
                                                         <span id={`bit_cnt_${comment.idx}`}>
                                                         {comment.cm_bit}
                                                         </span></button>
-                                                    <button type="button" className="gray_text reply_btn " onClick={(e) => {childForm(e, comment.idx)}}>답글달기</button>
+                                                    <button type="button" className="gray_text reply_btn " onClick={(e) => {childForm(e, comment.idx); setTextareaHeight(0);setCheckItemContent("");}}>답글달기</button>
                                                 </div>
                                                 {user_idx == comment.mem_id ? 
                                                 <div className="edit_btn_group">
@@ -509,9 +520,9 @@ function Comment(idx) {
                                             <div className="profile_img">
                                                 <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
                                             </div>
-                                            <div className="white_wrap">
+                                            <div className="white_wrap" style={{height: ((textareaHeight + 1) * 38) + 'px'}}>
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요." value={undefined}></textarea>
+                                                    placeholder="댓글을 입력해주세요." value={checkItemContent} onChange={checkItemChangeHandler}></textarea>
                                                 <button type="button" onClick={() => {child_comment_write(comment.cm_idx, comment.idx, comment.cm_depth)}}>작성</button>
                                             </div>
                                         </div>

@@ -84,6 +84,9 @@ const LoginJoin = () => {
                 if(response.data.response.class == "1"){
                     $('.signIn_modal').fadeOut(200);
                     $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+
+                    localStorage.setItem("sign_id", useremail);
+                    localStorage.setItem("sns", "email");
                     navigate("/signinup/integrated_signup_guide", {state : {sign_id : useremail} });
                 }else{
                     dispatch(loginUser(response.data));

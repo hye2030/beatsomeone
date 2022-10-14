@@ -394,9 +394,11 @@ function Main() {
                                                         </button>
                                                     </li>
 
+                                                    { list.wr_type != "일상" ?
                                                     <li className="music">
                                                         <span>0개</span>
                                                     </li>
+                                                    : null }
                                                 </ul>
 
                                                 <p>

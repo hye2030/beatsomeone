@@ -183,15 +183,16 @@ function Main() {
                     <div className="descrip_box center">
                         <p>회원님께서 가입하신 계정이 통합회원으로 전환됩니다.</p>
                         <dl>
-                            <dt>회원 ID :</dt>
-                            <dd>{chkEmail}</dd>
-                            {/* <!-- sns가입 이메일 일때 -->
-                            <!-- <dd>
-                                <span className="sns_logo">
-                                    <img src="../../images/icon/signUp_facebook.svg" alt="페이스북 아이콘">
-                                </span> 
-                                abc123@emial.com
-                            </dd> --> */}
+                            {
+                                { 
+                                email : <><dt>회원 ID :</dt><dd>{chkEmail}</dd></>,
+                                twitter: <><dd><span className="sns_logo"><img src="/assets/images/icon/signUp_twitter.svg" alt="페이스북 아이콘" /></span>{chkEmail}</dd></>,
+                                google: <><dd><span className="sns_logo"><img src="/assets/images/icon/signUp_google.svg" alt="페이스북 아이콘" /></span>{chkEmail}</dd></>,
+                                apple: <><dd><span className="sns_logo"><img src="/assets/images/icon/signUp_apple.svg" alt="페이스북 아이콘" /></span>{chkEmail}</dd></>,
+                                naver: <><dd><span className="sns_logo"><img src="/assets/images/icon/signUp_naver.svg" alt="페이스북 아이콘" /></span>{chkEmail}</dd></>,
+                                kakao : <><dd><span className="sns_logo"><img src="/assets/images/icon/signUp_kakao.svg" alt="페이스북 아이콘" /></span>{chkEmail}</dd></>,
+                                }[localStorage.getItem("sns")]
+                            }
                         </dl>
                     </div>
                     <div className="terms_area">
