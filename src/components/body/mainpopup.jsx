@@ -70,7 +70,7 @@ function MainPopup() {
 
     return (
         <>
-        {showModal === true || popup != null ?
+        {showModal === true && popup != null ?
         <div className="modal_wrap message_modal popup_modal" style={{display:"block"}}>
             <div className="modal_box_wrap">
                 <div className="modal_box">
