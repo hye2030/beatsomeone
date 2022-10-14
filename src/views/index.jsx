@@ -5,6 +5,7 @@ import axios from 'axios';
 import MainVideoUrl from "@/assets/video/[BS_MA_01] main video.mp4";
 import "@/assets/css/components/main.css";
 import TopBanner from "../components/body/topbanner";
+import MainPopup from '../components/body/mainpopup';
 
 function Main() {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ function Main() {
         // jQuery("link[rel=stylesheet][href*='/src/assets/css/components/list.css']").remove();
     }, []);
 
+    //상단 배너
     const [banners, setbanners] = useState([]);
     useEffect(() => {
         axios.get("https://beats-admin.codeidea.io/api/v1/bannerList", {
@@ -1745,22 +1747,7 @@ function Main() {
         </div>
         {/* END: Page Layout */}
 
-        {/* <!-- 파일등록 완료 모달창 --> */}
-        <div className="modal_wrap message_modal popup_modal" style={{display:"none"}}>
-            <div className="modal_box_wrap">
-                <div className="modal_box">
-                    <p className="comment"><img src="/assets/images/main/survey_img_1.png" alt="" /></p>
-                </div>
-                <button type="button" className="close_btn">닫기</button>
-                <div className="check_box check_area">
-                    <input type="checkbox" id="dontshow" />
-                    <label htmlFor="dontshow">
-                        <span className="check_box_img"></span>
-                        <span className="check_box_text">오늘 하루 그만보기</span>
-                    </label>
-                </div>
-            </div>
-        </div>
+        <MainPopup />
       </>
     );
   }

@@ -5,6 +5,10 @@ import axios from 'axios';
 
 import "@/assets/css/components/list.css";
 
+/**
+ * 
+ * 스크롤링 붙기 전
+ */
 function Main() {
     const navigate = useNavigate();
     const user_idx = useSelector((state) => {return state.idx});
@@ -27,8 +31,6 @@ function Main() {
                 $(".feedLink").eq(index).removeClass("active");
                 $(".feedLink").eq(0).addClass("active");
             });
-            setFeedList([]);
-            setPage(1);
         }else if(type == "self"){
             setMenu([false,true,false,false]);
             setFeedType("self");
@@ -36,8 +38,6 @@ function Main() {
                 $(".feedLink").eq(index).removeClass("active");
                 $(".feedLink").eq(1).addClass("active");
             });
-            setFeedList([]);
-            setPage(1);
         }else if(type == "cover"){
             setMenu([false,false,true,false]);
             setFeedType("cover");
@@ -45,8 +45,6 @@ function Main() {
                 $(".feedLink").eq(index).removeClass("active");
                 $(".feedLink").eq(2).addClass("active");
             });
-            setFeedList([]);
-            setPage(1);
         }else if(type == "daily"){
             setMenu([false,false,false,true]);
             setFeedType("daily");
@@ -54,8 +52,6 @@ function Main() {
                 $(".feedLink").eq(index).removeClass("active");
                 $(".feedLink").eq(3).addClass("active");
             });
-            setFeedList([]);
-            setPage(1);
         }
     }, [type]);
 
@@ -67,8 +63,6 @@ function Main() {
                 $(".feedLink").eq(index).removeClass("active");
                 $(".feedLink").eq(0).addClass("active");
             });
-            setFeedList([]);
-            setPage(1);
         }else if(menu[1] === true){
             type = "self";
             setFeedType("self");
@@ -76,8 +70,6 @@ function Main() {
                 $(".feedLink").eq(index).removeClass("active");
                 $(".feedLink").eq(1).addClass("active");
             });
-            setFeedList([]);
-            setPage(1);
         }else if(menu[2] === true){
             type = "cover";
             setFeedType("cover");
@@ -85,8 +77,6 @@ function Main() {
                 $(".feedLink").eq(index).removeClass("active");
                 $(".feedLink").eq(2).addClass("active");
             });
-            setFeedList([]);
-            setPage(1);
         }else if(menu[3] === true){
             type = "daily";
             setFeedType("daily");
@@ -94,8 +84,6 @@ function Main() {
                 $(".feedLink").eq(index).removeClass("active");
                 $(".feedLink").eq(3).addClass("active");
             });
-            setFeedList([]);
-            setPage(1);
         }
     }, [menu]);
 
@@ -154,54 +142,18 @@ function Main() {
     const [feedsorting, setFeedsorting] = useState(1);
     //리스트 불러오기
     const [feedList, setFeedList] = useState([]);
-    const [page, setPage] = useState(1);
-    const [limit, setLimit] = useState(9);
-    const [displayTotal, setDisplayTotal] = useState(6);
-    let total = 0;
-    const updateList = (page, limit) => {
+    useEffect(() => {
         axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedList", {
             params: {
                 sorting: feedsorting,
                 mem_id: user_idx,
-                wr_type: feedType,
-                page: page,
-                limit: limit
+                wr_type: feedType
             }
         })
         .then(function (response) {
-            setFeedList(feedList.concat(response.data.response));
-            setDisplayTotal(response.data.total);
-            total = response.data.total;
+            setFeedList(response.data.response);
         });
-    };
-    useEffect(() => {
-        updateList(page, limit)
-    }, [page, feedsorting, user, feedType])
-    useEffect(() => {
-        setFeedList([]);
-        setPage(1);
-    }, [user])
-
-    const onSroll = () => {
-        const { innerHeight } = window;
-        const { scrollHeight } = document.body;
-        const { scrollTop } = document.documentElement;
-
-        if (Math.round(scrollTop + innerHeight) >= scrollHeight) {
-            if(feedList.length >= total){
-                return false;
-            }else{
-                setPage((prev) => prev + 1);
-            }      
-        }
-    }
-
-    useEffect(() => {
-        window.addEventListener('scroll', onSroll);
-        return () => {
-          window.removeEventListener('scroll', onSroll);
-        };
-    }, [page, feedType, feedsorting]);
+    }, [feedsorting, user, feedType]);
 
     /**파일 확장자 추출 */
     function getExtension(fileName) {
@@ -299,14 +251,14 @@ function Main() {
                                 {/* <!-- 1. 선택되었을때 button에 active 클래스 추가 -->
                                 <!-- <button className="active">선택</button> --> */}
                                 <ul>
-                                    <li className="select_list" onClick={() => {setFeedsorting(1);setFeedList([]);setPage(1)}}>최신순</li>
-                                    <li className="select_list" onClick={() => {setFeedsorting(2);setFeedList([]);setPage(1)}}>비트 많은 순</li>
-                                    <li className="select_list" onClick={() => {setFeedsorting(3);setFeedList([]);setPage(1)}}>댓글 많은 순</li>
+                                    <li className="select_list" onClick={() => {setFeedsorting(1)}}>최신순</li>
+                                    <li className="select_list" onClick={() => {setFeedsorting(2)}}>비트 많은 순</li>
+                                    <li className="select_list" onClick={() => {setFeedsorting(3)}}>댓글 많은 순</li>
                                 </ul>
                             </div>
 
                             <div className="total_count">
-                                TOTAL : <span>{displayTotal}</span>개
+                                TOTAL : <span>9999</span>개
                             </div>
                         </div>
 
