@@ -47,7 +47,7 @@ function Main() {
                         localStorage.setItem("sign_id", naverLogin.user.email);
                         localStorage.setItem("sns", "naver");
                         localStorage.setItem("snsKey", naverLogin.user.id);
-                        axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
+                        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
                               params: {
                               emailId: naverLogin.user.email,
                               sns : "naver",
@@ -75,7 +75,7 @@ function Main() {
                                           window.opener.alreadySNSNaver(naverLogin);
                                           return false;
 
-                                          // axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+                                          // axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/login", {
                                           //       sns: "naver",
                                           //       snsKey: naverLogin.user.id
                                           // })

@@ -18,7 +18,7 @@ function Comment(idx) {
 
     //피드 상세
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedView", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL + "/api/v1/feed/feedView", {
             params: {
                 "idx" : idx.idx,
                 "mem_id" : user_idx
@@ -50,7 +50,7 @@ function Comment(idx) {
             return false;
         }
 
-        axios.delete("https://beats-admin.codeidea.io/api/v1/feed/feedDelete", {
+        axios.delete(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/feed/feedDelete", {
             params: {
                 "idx" : idx.idx
             }
@@ -109,7 +109,7 @@ function Comment(idx) {
             return false;
         }
 
-        axios.post("https://beats-admin.codeidea.io/api/v1/comment/commentAdd", {
+        axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/comment/commentAdd", {
             "mem_id": user_idx,
             "wr_idx": idx.idx,
             "cm_main": 1,
@@ -142,7 +142,7 @@ function Comment(idx) {
     const [commentList, setCommentList] = useState([]);
     const [commentTotal, setCommentTotal] = useState(1);
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/comment/getCommentList", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/comment/getCommentList", {
             params: {
                 "wr_idx" : idx.idx,
                 "wr_type" : "feed",
@@ -183,7 +183,7 @@ function Comment(idx) {
             return false;
         }
 
-        axios.post("https://beats-admin.codeidea.io/api/v1/comment/commentAdd", {
+        axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/comment/commentAdd", {
             "mem_id": user_idx,
             "wr_idx": idx.idx,
             "cm_idx": cm_idx,
@@ -223,7 +223,7 @@ function Comment(idx) {
             return false;
         }
 
-        axios.put("https://beats-admin.codeidea.io/api/v1/comment/commentUpdate", {
+        axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/comment/commentUpdate", {
             "cm_idx": idx,
             "cm_content": document.getElementById('edit_comment_'+idx).value
         })
@@ -250,7 +250,7 @@ function Comment(idx) {
             return false;
         }
 
-        axios.put("https://beats-admin.codeidea.io/api/v1/comment/commentDelete", {
+        axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/comment/commentDelete", {
             "cm_idx": commentDelIdx
         })
         .then(function (response) {
@@ -272,7 +272,7 @@ function Comment(idx) {
         }
 
         if(like){
-            axios.delete("https://beats-admin.codeidea.io/api/v1/beatDelete", {
+            axios.delete(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/beatDelete", {
                 params: {
                     mem_id: user_idx,
                     service_name: "feed",
@@ -284,7 +284,7 @@ function Comment(idx) {
                 setLikeCnt((prev) => prev - 1);
             });
         }else{
-            axios.post("https://beats-admin.codeidea.io/api/v1/beatAdd", {
+            axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/beatAdd", {
                 mem_id: user_idx,
                 service_name: "feed",
                 service_idx: idx.idx
@@ -306,7 +306,7 @@ function Comment(idx) {
         if(e.target.classList.contains("active")){
             e.target.classList.remove("active");
             document.getElementById('bit_cnt_'+idx).textContent = bit_cnt - 1;
-            axios.delete("https://beats-admin.codeidea.io/api/v1/beatDelete", {
+            axios.delete(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/beatDelete", {
                 params: {
                     mem_id: user_idx,
                     service_name: "comment",
@@ -318,7 +318,7 @@ function Comment(idx) {
         }else{
             e.target.classList.add("active");
             document.getElementById('bit_cnt_'+idx).textContent = bit_cnt + 1;
-            axios.post("https://beats-admin.codeidea.io/api/v1/beatAdd", {
+            axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/beatAdd", {
                 mem_id: user_idx,
                 service_name: "comment",
                 service_idx: idx

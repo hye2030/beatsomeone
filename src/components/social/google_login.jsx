@@ -63,7 +63,7 @@ const GoogleLogins = (e) => {
         localStorage.setItem("sns", "google");
         localStorage.setItem("snsKey", res.profileObj.googleId);
         
-        axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
             params: {
                 emailId: res.profileObj.email,
                 sns : "google",
@@ -92,7 +92,7 @@ const GoogleLogins = (e) => {
                         return false;
                     }
 
-                    axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+                    axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/login", {
                         sns: "google",
                         snsKey: res.profileObj.googleId
                     })

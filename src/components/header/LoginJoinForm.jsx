@@ -39,7 +39,7 @@ const LoginJoin = () => {
 
     const NextButton = () => {
         if(next_check == true){
-            axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
+            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
                 params: {
                     sns: "email",
                     emailId: useremail
@@ -74,7 +74,7 @@ const LoginJoin = () => {
             return false;
         }
 
-        axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+        axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/login", {
             sns: "email",
             emailId: useremail,
             password: pwd
@@ -139,7 +139,7 @@ const LoginJoin = () => {
         }
 
         if(join_next_check == true){
-            axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
+            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
                 params: {
                     sns: "email",
                     emailId: join_useremail
@@ -249,7 +249,7 @@ const LoginJoin = () => {
             $("#localSNSId").text("SNS 가입 ("+naverLogin.user.email+")");
             $("#alreadyJoinModal").fadeIn(200);
         }else{
-            axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+            axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/login", {
                 sns: "naver",
                 snsKey: naverLogin.user.id
             })

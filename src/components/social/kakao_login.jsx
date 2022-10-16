@@ -25,7 +25,7 @@ const KakaoLogin = (e) => {
                     localStorage.setItem("sign_id", data.data.kakao_account.email);
                     localStorage.setItem("sns", "kakao");
                     localStorage.setItem("snsKey", data.data.id);
-                    axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
+                    axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
                         params: {
                             emailId: data.data.kakao_account.email,
                             sns : "kakao",
@@ -54,7 +54,7 @@ const KakaoLogin = (e) => {
                                     return false;
                                 }
 
-                                axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+                                axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/login", {
                                     sns: "kakao",
                                     snsKey: data.data.id
                                 })

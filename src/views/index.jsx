@@ -22,7 +22,7 @@ function Main() {
     //상단 배너
     const [banners, setbanners] = useState([]);
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/bannerList", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL + "/api/v1/bannerList", {
             params: {
                 bannerCode: "A001",
                 lang: localStorage.getItem("language")

@@ -51,7 +51,7 @@ const TwitLogin = (e) => {
             localStorage.setItem("sign_id", result.user.reloadUserInfo.providerUserInfo[0].email);
             localStorage.setItem("sns", "twitter");
             localStorage.setItem("snsKey", result.user.reloadUserInfo.providerUserInfo[0].rawId);
-            axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
+            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
                 params: {
                     emailId: result.user.reloadUserInfo.providerUserInfo[0].email,
                     sns : "twitter",
@@ -80,7 +80,7 @@ const TwitLogin = (e) => {
                             return false;
                         }
 
-                        axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+                        axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/login", {
                             sns: "twitter",
                             snsKey: result.user.reloadUserInfo.providerUserInfo[0].rawId
                         })

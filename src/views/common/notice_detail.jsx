@@ -8,7 +8,7 @@ function Main() {
     const [notice, setNotice] = useState([]);
 
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/noticeView", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/noticeView", {
             params: {
                 "idx" : param.idx
             }

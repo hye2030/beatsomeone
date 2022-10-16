@@ -116,7 +116,7 @@ function Main() {
     const [banners, setbanners] = useState("/assets/images/dummy/banner_img_02.jpg");
     const [bannersURL, setbannersURL] = useState("");
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/bannerList", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/bannerList", {
             params: {
                 bannerCode: "A003",
                 lang: localStorage.getItem("language")
@@ -159,7 +159,7 @@ function Main() {
     const [displayTotal, setDisplayTotal] = useState(6);
     let total = 0;
     const updateList = (page, limit) => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedList", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/feed/feedList", {
             params: {
                 sorting: feedsorting,
                 mem_id: user_idx,
@@ -221,7 +221,7 @@ function Main() {
         if(e.target.classList.contains("active")){
             e.target.classList.remove("active");
             document.getElementById('bit_cnt_'+idx).textContent = bit_cnt - 1;
-            axios.delete("https://beats-admin.codeidea.io/api/v1/beatDelete", {
+            axios.delete(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/beatDelete", {
                 params: {
                     mem_id: user_idx,
                     service_name: "feed",
@@ -233,7 +233,7 @@ function Main() {
         }else{
             e.target.classList.add("active");
             document.getElementById('bit_cnt_'+idx).textContent = bit_cnt + 1;
-            axios.post("https://beats-admin.codeidea.io/api/v1/beatAdd", {
+            axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/beatAdd", {
                 mem_id: user_idx,
                 service_name: "feed",
                 service_idx: idx

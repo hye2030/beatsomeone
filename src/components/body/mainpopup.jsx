@@ -58,7 +58,7 @@ function MainPopup() {
     //팝업 리스트
     const [popup, setPopup] = useState([]);
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/getPopup", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL + "/api/v1/getPopup", {
             params: {
                 site_type: "beatsomeone"
             }

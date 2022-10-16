@@ -107,7 +107,7 @@ function Main() {
     /**피드 내용 불러오기 */
     const [ editImg, setEditImg ] = useState([])
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedView", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/feed/feedView", {
             params: {
                 "idx" : param.idx
             }
@@ -197,7 +197,7 @@ function Main() {
             frm.append("file_idx[]", delFileIdx[i]);
         }
 
-        axios.post("https://beats-admin.codeidea.io/api/v1/feed/feedUpdate", frm,
+        axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/feed/feedUpdate", frm,
             {
                 headers : {
                     "Content-Type": "multipart/form-data"

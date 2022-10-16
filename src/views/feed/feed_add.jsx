@@ -173,7 +173,7 @@ function Main() {
             frm.append("feed_content[]", cntt[i].value);
         }
 
-        axios.post("https://beats-admin.codeidea.io/api/v1/feed/feedFileUpdate", frm,
+        axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/feed/feedFileUpdate", frm,
             {
                 headers : {
                     "Content-Type": "multipart/form-data"

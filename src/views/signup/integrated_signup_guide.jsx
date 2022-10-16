@@ -30,7 +30,7 @@ function Main() {
     const [createdAt, setCreatedAt] = useState("");
 
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/member/memberBriefData", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/memberBriefData", {
             params: {
                 emailId: chkEmail
             }

@@ -77,7 +77,7 @@ function Main() {
                 document.getElementById("nickname_confirm_complete").textContent="";
                 return false;
             }
-            axios.get("https://beats-admin.codeidea.io/api/v1/member/nickNameCheck", {
+            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/nickNameCheck", {
                 params: {
                     nickName: nickname
                 }
@@ -98,7 +98,7 @@ function Main() {
 
     const [nation, setNation] = useState([]);
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/member/nationality", )
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/nationality", )
         .then(function (response) {
             setNation(response.data.response);
         });
@@ -120,7 +120,7 @@ function Main() {
 
         const rand = String(Math.floor(Math.random()*1000000)).padStart(6, "0");
         setRandom(rand);
-        axios.get("https://beats-admin.codeidea.io/api/v1/sms/send_one_message", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/sms/send_one_message", {
                 params: {
                     to: phone,
                     smsNumber: rand
@@ -294,7 +294,7 @@ function Main() {
         // console.log("sns: "+ localStorage.getItem("sns"));
         // console.log("snsKey: "+ localStorage.getItem("snsKey"));
         
-        axios.put("https://beats-admin.codeidea.io/api/v1/member/join", {
+        axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/join", {
             existing_yn: "N",
             sns: localStorage.getItem("sns"),
             snsKey: localStorage.getItem("snsKey"),
@@ -356,7 +356,7 @@ function Main() {
     /**약관들 */
     const [terms, setTerms] = useState(["TE010100"]);
     const termClick = (termcode) => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/getTerms", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/getTerms", {
             params: {
                 termsType: [termcode]
             }

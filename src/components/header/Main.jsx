@@ -36,7 +36,7 @@ function Main() {
     
     useEffect(() => {
         const apiCall = async () => {
-            const response = await axios.get('https://beats-admin.codeidea.io/api/v1/lang');
+            const response = await axios.get(import.meta.env.VITE_REACT_APP_API_URL +'/api/v1/lang');
             for(let i=0;i<response.data.response.data.length;i++)
             {
                 let result = "";
@@ -87,7 +87,7 @@ function Main() {
     /**로그인 유지 */
     const dispatch = useDispatch();
     useEffect(() => {
-        axios.put("https://beats-admin.codeidea.io/api/v1/member/loginCheck", {
+        axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/loginCheck", {
             sns: localStorage.getItem("sns"),
             snsKey: localStorage.getItem("snsKey"),
             emailId: localStorage.getItem("emailId"),

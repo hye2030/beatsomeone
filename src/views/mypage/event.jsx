@@ -16,7 +16,7 @@ function Main() {
     const eventList = async (page, limit) => {
         try {
             const { data } = await axios.get(
-                `https://beats-admin.codeidea.io/api/v1/eventList`, {
+                import.meta.env.VITE_REACT_APP_API_URL +`/api/v1/eventList`, {
                     params: {
                         "page" : page,
                         "limit" : limit,

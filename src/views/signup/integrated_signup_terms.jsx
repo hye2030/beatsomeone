@@ -89,7 +89,7 @@ function Main() {
     var marketingYN = "N";
     const [terms, setTerms] = useState(["TE010100"]);
     const termClick = (termcode) => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/getTerms", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/getTerms", {
             params: {
                 termsType: [termcode]
             }
@@ -142,7 +142,7 @@ function Main() {
         });
 
         document.getElementById("term_error").textContent="";
-        axios.put("https://beats-admin.codeidea.io/api/v1/member/join", {
+        axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/join", {
             existing_yn: "Y",
             sns: localStorage.getItem("sns"),
             snsKey: snsKey,

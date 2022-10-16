@@ -13,7 +13,7 @@ function Main() {
     
     //피드 상세
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/feed/feedView", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/feed/feedView", {
             params: {
                 "idx" : param.idx
             }
@@ -113,7 +113,7 @@ function Main() {
                                         </div>
                                         :
                                         <div className="content content_img">
-                                            <img src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} alt="" onLoad={(e) => {resize(e.target)}} style={{maxWidth : '740px'}}/>
+                                            <img src={`https://beatsomeone.codeidea.io${cntt.file_url}${cntt.feed_source}`} alt="" style={{maxWidth : '740px'}}/>
                                         </div>
                                         }
                                         <div className="text_box" style={{whiteSpace:"pre-wrap"}}>

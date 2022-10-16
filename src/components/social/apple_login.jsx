@@ -30,7 +30,7 @@ const AppleLogin = (e) => {
         localStorage.setItem("sign_id", credential.email);
         localStorage.setItem("sns", "apple");
         localStorage.setItem("snsKey", credential.sub);
-        axios.get("https://beats-admin.codeidea.io/api/v1/member/joinCheck", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
             params: {
                 emailId: credential.email,
                 sns : "apple",
@@ -59,7 +59,7 @@ const AppleLogin = (e) => {
                         return false;
                     }
 
-                    axios.put("https://beats-admin.codeidea.io/api/v1/member/login", {
+                    axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/login", {
                         sns: "apple",
                         snsKey: credential.sub
                     })

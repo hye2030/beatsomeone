@@ -7,7 +7,7 @@ function Replycomment({responseTo}) {
     const [commentChild, setCommentChild] = useState([]);
     // console.log(responseTo);
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/comment/getCommentChildList", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/comment/getCommentChildList", {
             params: {
                 "cm_idx" : responseTo
             }

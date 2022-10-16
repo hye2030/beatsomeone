@@ -11,7 +11,7 @@ function Main() {
     const [Searchtxt,setSearchtxt] = useState("");
     const searchBtn = () => {
         setPage(1);
-        axios.get("https://beats-admin.codeidea.io/api/v1/noticeList", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/noticeList", {
             params: {
                 "searchText" :Searchtxt
             }
@@ -36,7 +36,7 @@ function Main() {
     const [page, setPage] = useState(maintain_page);
     const offset = (page - 1) * limit;
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/noticeList", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/noticeList", {
             params: {
                 "searchText" :Searchtxt
             }

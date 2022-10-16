@@ -6,7 +6,7 @@ function Main(prop){
     let _menu = [];
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        axios.get("https://beats-admin.codeidea.io/api/v1/menuList", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/menuList", {
             params: {
             site: "bs",
             lang : prop.value
