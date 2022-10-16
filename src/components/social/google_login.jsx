@@ -3,6 +3,7 @@ import jwt_decode from "jwt-decode";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import {loginUser} from '@/stores/userSlice';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';

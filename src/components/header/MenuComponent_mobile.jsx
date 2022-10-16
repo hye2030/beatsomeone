@@ -20,7 +20,7 @@ function MenuComponenet({users}) {
             <a href="#" onClick={() => {navigate('/')}} className="link">
                 BEAT SOMEONE
             </a>
-            <a href="https://bybeats.codeidea.io" className="link" target="_blank">
+            <a href="https://bybeats-aws.codeidea.io" className="link" target="_blank">
                 BYBEATS
             </a>
         </div>

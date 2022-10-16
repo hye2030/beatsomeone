@@ -282,6 +282,11 @@ const LoginJoin = () => {
         navigate("/");
     }
 
+    useEffect(() => {
+        setUseremail("");
+        join_setUseremail("");
+    }, [currentType]);
+
     return (
         <>
         <div className="modal_wrap big_modal route_modal signIn">
@@ -353,7 +358,7 @@ const LoginJoin = () => {
                                 <>
                                 <legend hidden>이메일 로그인</legend>
                                 <div className="input_wrap" id="login_email_validate">
-                                    <input type="text" className="emInput" placeholder="Email address" id="login_email" onChange={(e)=>{setUseremail(e.target.value); emailCheck(e.target.value)}} />
+                                    <input type="text" className="emInput" placeholder="Email address" id="login_email" onChange={(e)=>{setUseremail(e.target.value); emailCheck(e.target.value)}} value={useremail || ""}/>
                                 </div>
                                 <p className="error_txt" id="login_warning"></p>
                                 <p className="ex_txt">ex. beatsomeone@beatsomone.com</p>
@@ -365,7 +370,7 @@ const LoginJoin = () => {
                                 <>
                                 <legend hidden>이메일 회원가입</legend>
                                 <div className="input_wrap" id="email_validate">
-                                    <input type="text" className="emInput" placeholder="Email address" id="sign_email" onChange={(e)=>{join_setUseremail(e.target.value);  join_emailCheck(e.target.value)}}/>
+                                    <input type="text" className="emInput" placeholder="Email address" id="sign_email" onChange={(e)=>{join_setUseremail(e.target.value);  join_emailCheck(e.target.value)}} value={join_useremail || ""}/>
                                 </div>
                                 <p className="error_txt" id="warning"></p>
                                 {/* <p className="error_txt">이메일 형식에 맞춰 입력해주세요.</p>

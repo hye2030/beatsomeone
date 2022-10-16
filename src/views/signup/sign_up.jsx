@@ -323,7 +323,6 @@ function Main() {
         ModalHandler("login");
         $('.signupC_modal').fadeOut(200);
         
-        document.getElementById('login_email').value("");
         $('.route_modal.signIn').fadeIn(200);
     }
     // $('.signupC_modal .confirm_btn').click(() => {
