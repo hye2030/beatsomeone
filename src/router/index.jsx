@@ -27,6 +27,8 @@ import Naver from "../views/auth/naver"
 import NoticeList from "../views/common/notice_list"
 import NoticeDetail from "../views/common/notice_detail"
 
+import LoginCheck from "../views/signup/login"
+
 function Router() {
   const routes = [
     {
@@ -106,7 +108,11 @@ function Router() {
     {
       path: "/auth/naver",
       element: <Naver />
-    }
+    },
+    {
+			path: "/login",
+			element: <LoginCheck />,
+		}
   ];
 
   return useRoutes(routes);

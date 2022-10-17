@@ -9,7 +9,7 @@ import BeatsomeoneLogoUrl from "@/assets/images/icon/icon_beatsomeone_logotext.s
 import LangComponent from "./Lang_header";
 import LangComponentM from "./Lang_header_mobile";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {loginUser} from '@/stores/userSlice';
 
 function Main() {
@@ -145,6 +145,12 @@ function Main() {
         }
     }, [ location ])
 
+    const user_idx = useSelector((state) => {return state.idx});
+    let bybeat_url = "";
+    if(user_idx != 0){
+        bybeat_url = "https://bybeats-aws.codeidea.io/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("idx");
+    }
+
     return (
     <>
       {/* BEGIN: Header */}
@@ -152,6 +158,7 @@ function Main() {
             <div className="header_top">
                 <div className="inner">
                     <div className="tabs">
+                        {user_idx == 0 ? 
                         <a href="https://bybeats-aws.codeidea.io" className="tab" target="_blank">
                             <img
                                 alt="바이비트 로고"
@@ -159,6 +166,15 @@ function Main() {
                                 src={BybeatsLogoUrl}
                             />
                         </a>
+                        : 
+                        <a href={bybeat_url} className="tab" target="_blank">
+                            <img
+                                alt="바이비트 로고"
+                                className="w-6"
+                                src={BybeatsLogoUrl}
+                            />
+                        </a>
+                        }
                         <a href="" className="tab active">
                             <img
                                 alt="비트썸원 로고"
@@ -201,7 +217,7 @@ function Main() {
                 </a>
             </li>
             <li className="list communication">
-                <a href="#" onClick={() => {return false;}} className="link">
+                <a onClick={() => { alert("서비스 준비중입니다"); }} className="link">
                     <div className="icon_box"></div>
                     <span>{t('page:커뮤니티')}</span>
                 </a>
@@ -213,7 +229,7 @@ function Main() {
                 </a>
             </li>
             <li className="list mypage">
-                <a href="mypage/my_request_song.html" className="link">
+                <a onClick={() => { alert("서비스 준비중입니다"); }} className="link">
                     <div className="icon_box"></div>
                     <span>{t('page:마이페이지')}</span>
                 </a>

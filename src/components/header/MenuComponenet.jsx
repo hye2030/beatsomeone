@@ -20,7 +20,7 @@ function MenuComponenet({users}) {
             </h1>
             <ul className="gnb">
                 <li className="list hasSec">
-                    <a href="#" onClick={() => { return false; }} className="link">
+                    <a onClick={() => {navigate('/feed/feed_list', {state : {type : ""} } )}} className="link">
                         {_menu[0]}
                         <div className="bubble_box">
                             <div className="rolling">
@@ -62,12 +62,12 @@ function MenuComponenet({users}) {
                     </ul>
                 </li>
                 <li className="list">
-                    <a href="#" onClick={() => { return false; }} className="link">
+                    <a href="#" onClick={() => { alert("서비스 준비중입니다"); }} className="link">
                     {_menu[1]}
                     </a>
                 </li>
                 <li className="list hasSec">
-                    <a href="#" onClick={() => { return false; }} className="link">
+                    <a href="#" onClick={() => { alert("서비스 준비중입니다"); }} className="link">
                     {_menu[13]}
                     </a>
                     <ul className="sec_depth">
@@ -84,12 +84,12 @@ function MenuComponenet({users}) {
                     </ul>
                 </li>
                 <li className="list">
-                    <a href="trend/trend_list.html" className="link">
+                    <a onClick={() => { alert("서비스 준비중입니다"); }} className="link">
                     {_menu[3]}
                     </a>
                 </li>
                 <li className="list">
-                    <a href="../review/prd_list.html" className="link">
+                    <a onClick={() => { alert("서비스 준비중입니다"); }} className="link">
                     {_menu[4]}
                     </a>
                 </li>

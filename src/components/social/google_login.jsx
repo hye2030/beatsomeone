@@ -107,7 +107,7 @@ const GoogleLogins = (e) => {
 
                             dispatch(loginUser({
                                 "response": {
-                                    "name": response.data.response.name,
+                                    "name": response.data.response.nickName,
                                     "email": res.profileObj.googleId,
                                     "idx": response.data.response.idx
                                 }

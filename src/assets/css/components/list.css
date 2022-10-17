@@ -1099,7 +1099,7 @@
     }
 
     .list_box .list_item .list_text {
-        width: fit-content;
+        /* width: fit-content; */
         margin: calc(100vw * (20/428)) calc(100vw * (16/428));
     }
 

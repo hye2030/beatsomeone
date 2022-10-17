@@ -14,15 +14,27 @@ function MenuComponenet({users}) {
     const navigate = useNavigate();
     const ModalHandler = useSetRecoilState(isModal);
 
+    const user_idx = useSelector((state) => {return state.idx});
+    let bybeat_url = "";
+    if(user_idx != 0){
+        bybeat_url = "https://bybeats-aws.codeidea.io/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("idx");
+    }
+
     return (
         <>
         <div className="link_wrap">
             <a href="#" onClick={() => {navigate('/')}} className="link">
                 BEAT SOMEONE
             </a>
+            {user_idx == 0 ? 
             <a href="https://bybeats-aws.codeidea.io" className="link" target="_blank">
                 BYBEATS
             </a>
+            :
+            <a href={bybeat_url} className="link" target="_blank">
+                BYBEATS
+            </a>
+            }
         </div>
         {user.isLogin ? 
         <div className="profile_box">
@@ -79,13 +91,13 @@ function MenuComponenet({users}) {
                 </div>
             </li>
             <li className="list">
-                <a href="#" onClick={() => {return false;}} className="link main_link">
+                <a href="#" onClick={() => { alert("서비스 준비중입니다"); }} className="link main_link">
                     {_menu[1]}
                 </a>
             </li>
             <li className="list">
                 <div>
-                    <div className="title main_link">
+                    <div className="title main_link" onClick={() => { alert("서비스 준비중입니다"); }}>
                         {_menu[13]}
                     </div>
                     <ul className="sec_depth">
@@ -103,12 +115,12 @@ function MenuComponenet({users}) {
                 </div>
             </li>
             <li className="list">
-                <a href="trend/trend_list.html" onClick={() => {return false;}} className="link main_link">
+                <a onClick={() => { alert("서비스 준비중입니다"); }} className="link main_link">
                     {_menu[3]}
                 </a>
             </li>
             <li className="list">
-                <a href="review/prd_list.html" onClick={() => {return false;}} className="link main_link">
+                <a onClick={() => { alert("서비스 준비중입니다"); }} className="link main_link">
                     {_menu[4]}
                 </a>
             </li>
