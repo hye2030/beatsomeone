@@ -102,11 +102,14 @@ const GoogleLogins = (e) => {
                             localStorage.setItem("emailId", response.data.response.email);
                             localStorage.setItem("is_login", response.data._token);
                             localStorage.setItem("last_login", "google");
+                            localStorage.setItem("emailIdx", response.data.response.idx);
+                            localStorage.setItem("nickname", response.data.response.nickName);
 
                             dispatch(loginUser({
                                 "response": {
                                     "name": response.data.response.name,
-                                    "email": res.profileObj.googleId
+                                    "email": res.profileObj.googleId,
+                                    "idx": response.data.response.idx
                                 }
                             }));
 

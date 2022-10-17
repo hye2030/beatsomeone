@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +9,7 @@ import { isModal } from "../../components/header/recoil";
 const {Kakao} = window;
 
 const KakaoLogin = (e) => {
+  
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const currentType = useRecoilValue(isModal);
@@ -63,11 +65,14 @@ const KakaoLogin = (e) => {
                                         localStorage.setItem("emailId", response.data.response.email);
                                         localStorage.setItem("is_login", response.data._token);
                                         localStorage.setItem("last_login", "kakao");
+                                        localStorage.setItem("emailIdx", response.data.response.idx);
+                                        localStorage.setItem("nickname", response.data.response.nickName);
 
                                         dispatch(loginUser({
                                             "response": {
                                                 "name": response.data.response.name,
-                                                "email": data.data.id
+                                                "email": data.data.id,
+                                                "idx": response.data.response.idx
                                             }
                                         }));
 

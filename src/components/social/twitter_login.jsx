@@ -89,11 +89,14 @@ const TwitLogin = (e) => {
                                 localStorage.setItem("emailId", responseLogin.data.response.email);
                                 localStorage.setItem("is_login", responseLogin.data._token);
                                 localStorage.setItem("last_login", "twitter");
+                                localStorage.setItem("emailIdx", responseLogin.data.response.idx);
+                                localStorage.setItem("nickname", responseLogin.data.response.nickName);
 
                                 dispatch(loginUser({
                                     "response": {
                                         "name": responseLogin.data.response.name,
-                                        "email": result.user.reloadUserInfo.providerUserInfo[0].rawId
+                                        "email": result.user.reloadUserInfo.providerUserInfo[0].rawId,
+                                        "idx": responseLogin.data.response.idx
                                     }
                                 }));
 
