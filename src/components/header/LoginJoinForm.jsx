@@ -319,6 +319,7 @@ const LoginJoin = () => {
                         {
                             { 
                             N : "",
+                            facebook: <><FbLogin value="new"/><div className="dividing_line"></div></>,
                             twitter: <><TwitLogin value="new"/><div className="dividing_line"></div></>,
                             google: <><GoogleLogins value="new"/><div className="dividing_line"></div></>,
                             apple: <><AppleLogin value="new"/><div className="dividing_line"></div></>,
@@ -331,7 +332,9 @@ const LoginJoin = () => {
                         </>  
                         : null}
                         <div className="btn_area">
+                            {currentType == "login" && last_login == "facebook" ? "" : 
                             <FbLogin />
+                            }
                             {currentType == "login" && last_login == "twitter" ? "" : 
                             <TwitLogin />
                             }
