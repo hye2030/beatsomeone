@@ -11,7 +11,7 @@ export const userSlice = createSlice({
     },
     reducers: {
       loginUser: (state, action) => {
-        state.name = action.payload.response.name;
+        state.name = action.payload.response.nickName;
         state.id = action.payload.response.email;
         state.idx = action.payload.response.idx;
         state.isLogin = true;

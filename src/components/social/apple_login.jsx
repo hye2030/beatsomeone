@@ -24,6 +24,7 @@ const AppleLogin = (e) => {
         usePopup: true
     });
 
+    useEffect(() => {
     document.addEventListener('AppleIDSignInOnSuccess', (data) => {
         const credential = jwt_decode(data.detail.authorization.id_token);
 
@@ -52,12 +53,12 @@ const AppleLogin = (e) => {
                     $('.route_modal.signIn').fadeOut(200);
                     $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
 
-                    if(currentType == "join"){
-                        $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_apple.svg"alt="" /></div>');
-                        $("#localSNSId").text("SNS 가입 ("+credential.email+")");
-                        $("#alreadyJoinModal").fadeIn(200);
-                        return false;
-                    }
+                    // if(currentType == "join"){
+                    //     $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_apple.svg"alt="" /></div>');
+                    //     $("#localSNSId").text("SNS 가입 ("+credential.email+")");
+                    //     $("#alreadyJoinModal").fadeIn(200);
+                    //     return false;
+                    // }
 
                     axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/login", {
                         sns: "apple",
@@ -73,7 +74,7 @@ const AppleLogin = (e) => {
 
                             dispatch(loginUser({
                                 "response": {
-                                    "name": responseLogin.data.response.nickName,
+                                    "name": responseLogin.data.response.name,
                                     "email": credential.sub,
                                     "idx": responseLogin.data.response.idx
                                 }
@@ -95,6 +96,7 @@ const AppleLogin = (e) => {
             }
         })
     });
+    }, [])
 
     //애플로 로그인 실패 시.
     document.addEventListener('AppleIDSignInOnFailure', (error) => {

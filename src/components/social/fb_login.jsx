@@ -14,12 +14,11 @@ const FbLogin = () => {
             } else {
               // The person is not logged into your webpage or we are unable to tell. 
             }
-        });
+        }, {scope: 'email'});
     }
 
     function afterlogin() {
-        FB.api('/me', {fields: 'email,name'} ,function(data) {
-            // console.log(data);
+        FB.api('/me', 'get', {fields: 'name,email'}, function(data) {
             localStorage.setItem("sign_id", data.email);
             localStorage.setItem("sns", "facebook");
             localStorage.setItem("snsKey", data.id);
