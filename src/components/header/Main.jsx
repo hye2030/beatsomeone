@@ -148,7 +148,7 @@ function Main() {
     const user_idx = useSelector((state) => {return state.idx});
     let bybeat_url = "";
     if(user_idx != 0){
-        bybeat_url = "https://bybeats-aws.codeidea.io/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("idx");
+        bybeat_url = "https://bybeats-aws.prefinc.kr/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("idx");
     }
 
     return (
@@ -159,7 +159,7 @@ function Main() {
                 <div className="inner">
                     <div className="tabs">
                         {user_idx == 0 ? 
-                        <a href="https://bybeats-aws.codeidea.io" className="tab" target="_blank">
+                        <a href="https://bybeats-aws.prefinc.kr" className="tab" target="_blank">
                             <img
                                 alt="바이비트 로고"
                                 className="w-6"

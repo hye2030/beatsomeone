@@ -97,6 +97,7 @@ function Main() {
     }
 
     const [nation, setNation] = useState([]);
+    const [nationTel, setNationTel] = useState("국번");
     useEffect(() => {
         axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/nationality", )
         .then(function (response) {
@@ -393,7 +394,7 @@ function Main() {
             {/* <!-- 메인컨텐츠 --> */}
             <section className="content_section">
                 <div className="wrap_inner">
-                    <h3 className="title">
+                    <h3 className="title" onClick={() => {aa()}}>
                         통합회원가입
                     </h3>
                     <div className="logo_wrap">
@@ -467,9 +468,9 @@ function Main() {
                                 <div className="input_box num">
                                     <div className="num_wrap">
                                         <div className="select_box_wrap">
-                                            <button type="button" onClick={() => { return false; }} className="select_title">+82</button>
+                                            <button type="button" onClick={() => { return false; }} className="select_title">{nationTel}</button>
                                             <ul>
-                                                <li className="select_list">+82</li>
+                                                <li className="select_list">{nationTel}</li>
                                                 {/* <li className="select_list">옵션1</li>
                                                 <li className="select_list">옵션1</li> */}
                                             </ul>
@@ -486,7 +487,7 @@ function Main() {
                                         <ul>
                                             {nation.map(nations => {
                                                 return (
-                                                    <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(e.target.dataset.codename)}}>{nations.codeValue}</li>
+                                                    <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(nations.codeValue); setNationTel(nations.telNo)}}>{nations.codeName}</li>
                                                 )
                                             })}
                                         </ul>
