@@ -63,8 +63,13 @@ const GoogleLogins = (e) => {
         localStorage.setItem("sign_id", res.profileObj.email);
         localStorage.setItem("sns", "google");
         localStorage.setItem("snsKey", res.profileObj.googleId);
+
+        let apiUrl = "/api/v1/member/joinCheck";
+        if(currentType == "join"){
+            apiUrl = "/api/v1/member/joinEmailCheck";
+        }
         
-        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL + apiUrl, {
             params: {
                 emailId: res.profileObj.email,
                 sns : "google",

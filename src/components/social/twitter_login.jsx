@@ -51,7 +51,13 @@ const TwitLogin = (e) => {
             localStorage.setItem("sign_id", result.user.reloadUserInfo.providerUserInfo[0].email);
             localStorage.setItem("sns", "twitter");
             localStorage.setItem("snsKey", result.user.reloadUserInfo.providerUserInfo[0].rawId);
-            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
+
+            let apiUrl = "/api/v1/member/joinCheck";
+            if(currentType == "join"){
+                apiUrl = "/api/v1/member/joinEmailCheck";
+            }
+
+            axios.get(import.meta.env.VITE_REACT_APP_API_URL + apiUrl, {
                 params: {
                     emailId: result.user.reloadUserInfo.providerUserInfo[0].email,
                     sns : "twitter",

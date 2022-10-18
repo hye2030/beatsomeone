@@ -74,7 +74,7 @@ const AppleLogin = (e) => {
 
                             dispatch(loginUser({
                                 "response": {
-                                    "nickName": responseLogin.data.response.name,
+                                    "nickName": responseLogin.data.response.nickName,
                                     "email": credential.sub,
                                     "idx": responseLogin.data.response.idx
                                 }

@@ -31,7 +31,13 @@ const FbLogin = (e) => {
             localStorage.setItem("sign_id", data.email);
             localStorage.setItem("sns", "facebook");
             localStorage.setItem("snsKey", data.id);
-            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
+
+            let apiUrl = "/api/v1/member/joinCheck";
+            if(currentType == "join"){
+                apiUrl = "/api/v1/member/joinEmailCheck";
+            }
+
+            axios.get(import.meta.env.VITE_REACT_APP_API_URL + apiUrl, {
                 params: {
                     emailId: data.email,
                     sns : "facebook",
