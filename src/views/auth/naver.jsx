@@ -9,7 +9,7 @@ function Main() {
 
       const { naver } = window
 	const NAVER_CLIENT_ID = "7zMZQ1ATkf_uVtuhDMQO"
-	const NAVER_CALLBACK_URL = "https://beatsomeone-aws.codeidea.io/auth/naver"
+	const NAVER_CALLBACK_URL = "https://beatsomeone-aws.prefinc.kr/auth/naver"
 
 	const naverLogin = new naver.LoginWithNaverId({
             clientId: NAVER_CLIENT_ID,

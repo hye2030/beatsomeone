@@ -1,5 +1,4 @@
 .event_section .banner+.top_section {
-  width: 1300px;
   margin-top: 22px;
 }
 
@@ -8,7 +7,7 @@
 }
 
 .event_section .event_content_wrap {
-  width: 1300px;
+  width: 1260px;
   margin: 0 auto 150px;
 }
 
@@ -67,7 +66,7 @@
 }
 
 .event_section .event_img {
-  width: 635px;
+  width: 615px;
   height: 291px;
 }
 
@@ -269,7 +268,7 @@
   }
 
   .event_section .event_img {
-    width: calc(100vw * (585 / 1300));
+    width: calc(100vw * (615 / 1300));
     height: calc(100vw * (291 / 1300));
   }
 
@@ -459,6 +458,7 @@
   }
 
   .event_detail_section .event_name {
+    padding-top: calc(100vw * (20 / 428));
     font-size: calc(100vw * (16 / 428));
   }
 

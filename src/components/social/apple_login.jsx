@@ -19,7 +19,7 @@ const AppleLogin = (e) => {
     AppleID.auth.init({
         clientId : 'com.beatsomeone.codeidea.io.beatsomeone',
         scope : 'email',
-        redirectURI: 'https://beatsomeone-aws.codeidea.io',
+        redirectURI: 'https://beatsomeone-aws.prefinc.kr',
         state : toString(array[0]),
         usePopup: true
     });

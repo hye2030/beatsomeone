@@ -395,7 +395,7 @@ function Comment(idx) {
                             <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 사진"/>
                         </div>
                         <div className="white_wrap">
-                            <textarea name="" id="first_comment_wr" cols="30" rows="10" value={feedComment} placeholder="댓글을 입력해주세요." onChange={(e) => setFeedComment(e.target.value)} onKeyDown={(e) => {onEnterPress(e)}}></textarea>
+                            <textarea name="" id="first_comment_wr" cols="30" rows="10" value={feedComment} placeholder="댓글을 입력해주세요." onChange={(e) => setFeedComment(e.target.value)} onKeyDown={(e) => {onEnterPress(e)}} style={{overflow:"hidden"}}></textarea>
                             <button type="button" onClick={() => {first_comment_write()}}>작성</button>
                         </div>
                     </div>
@@ -466,7 +466,7 @@ function Comment(idx) {
 
                                         <div className="comment_write reply" id={`child_reply_${comment.idx}`}>
                                             <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                                                <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 사진"/>
                                             </div>
                                             <div className="white_wrap" style={{height: ((textareaHeight + 1) * 38) + 'px'}} >
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
@@ -520,7 +520,7 @@ function Comment(idx) {
                                         </div>
                                         <div className="comment_write reply" id={`child_reply_${comment.idx}`}>
                                             <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                                                <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 사진"/>
                                             </div>
                                             <div className="white_wrap" style={{height: ((textareaHeight + 1) * 38) + 'px'}}>
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"

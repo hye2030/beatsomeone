@@ -9,7 +9,7 @@ const NaverLogin = (e) => {
 	// const NAVER_CALLBACK_URL = "http://localhost:3000/auth/naver"
 	/**실서버 */
 	const NAVER_CLIENT_ID = "7zMZQ1ATkf_uVtuhDMQO"
-	const NAVER_CALLBACK_URL = "https://beatsomeone-aws.codeidea.io/auth/naver"
+	const NAVER_CALLBACK_URL = "https://beatsomeone-aws.prefinc.kr/auth/naver"
 
 	const initializeNaverLogin = () => {
 		const naverLogin = new naver.LoginWithNaverId({

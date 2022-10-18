@@ -83,7 +83,7 @@ function Main() {
                             <div className="event_img_wrap">
                                 <div className="event_img">
                                     {/* <img src="/assets/images/dummy/cover_img_11.jpg" alt="" /> */}
-                                    <img src={`https://beatsomeone-aws.codeidea.io/storage/event/${event.event_source}`} alt="" />
+                                    <img src={`https://beatsomeone-aws.prefinc.kr/storage/event/${event.event_source}`} alt="" />
                                 </div>
                                 {event.gubun == 2 ?
                                 <div className="end_cover">

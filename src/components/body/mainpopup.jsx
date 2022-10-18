@@ -74,7 +74,7 @@ function MainPopup() {
         <div className="modal_wrap message_modal popup_modal" style={{display:"block"}}>
             <div className="modal_box_wrap">
                 <div className="modal_box">
-                    <p className="comment"><img src={`https://beatsomeone-aws.codeidea.io/storage/popup/${popup.popup_source}`} alt="" /></p>
+                    <p className="comment"><img src={`https://beatsomeone-aws.prefinc.kr/storage/popup/${popup.popup_source}`} alt="" /></p>
                 </div>
                 <button type="button" className="close_btn" onClick={() => {closePopup()}}>닫기</button>
                 <div className="check_box check_area">

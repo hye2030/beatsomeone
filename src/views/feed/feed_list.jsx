@@ -346,11 +346,11 @@ function Main() {
                                             {/* <a> */}
                                                 {extension == "mp4" ?
                                                 <div className="img">
-                                                    <video preload="metadata" src={`https://beatsomeone-aws.codeidea.io${list.file_url}${list.feed_source}#t=0.5`}></video>
+                                                    <video preload="metadata" src={`https://beatsomeone-aws.prefinc.kr${list.file_url}${list.feed_source}#t=0.5`}></video>
                                                 </div>
                                                 :
                                                 <div className="img">
-                                                    <img src={`https://beatsomeone-aws.codeidea.io${list.file_url}${list.feed_source}`} alt="이미지" />
+                                                    <img src={`https://beatsomeone-aws.prefinc.kr${list.file_url}${list.feed_source}`} alt="이미지" />
                                                 </div>
                                                 }
 
