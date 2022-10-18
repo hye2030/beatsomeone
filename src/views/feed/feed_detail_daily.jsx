@@ -42,7 +42,7 @@ function Main() {
                             return (
                         <div className="profile_box" key={cntt.idx}>
                             <div className="profile_img">
-                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                                <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 사진"/>
                             </div>
                             <div>
                                 <p className="nickname">{cntt.mem_nickname}</p>
@@ -96,7 +96,7 @@ function Main() {
                                             <img src={`https://beatsomeone-aws.codeidea.io${cntt.file_url}${cntt.feed_source}`} alt="" style={{maxWidth : '740px'}}/>
                                         </div>
                                         }
-                                        <div className="text_box" style={{whiteSpace:"pre-wrap"}}>
+                                        <div className="text_box" style={{whiteSpace:"pre-wrap", wordBreak: "break-all"}}>
                                             {cntt.wr_content}
                                         </div>
                                     </div>
@@ -116,7 +116,7 @@ function Main() {
                                             <img src={`https://beatsomeone-aws.codeidea.io${cntt.file_url}${cntt.feed_source}`} alt="" style={{maxWidth : '740px'}}/>
                                         </div>
                                         }
-                                        <div className="text_box" style={{whiteSpace:"pre-wrap"}}>
+                                        <div className="text_box" style={{whiteSpace:"pre-wrap", wordBreak: "break-all"}}>
                                             {cntt.wr_content}
                                         </div>
                                     </div>

@@ -403,7 +403,7 @@ function Main() {
 
                                                 <p>
                                                     <span className="profile_img">
-                                                        <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 이미지"/>
+                                                        <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 이미지"/>
                                                     </span>
                                                     <span>{list.mem_nickname}</span>
                                                 </p>

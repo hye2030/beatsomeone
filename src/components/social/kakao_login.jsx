@@ -70,7 +70,7 @@ const KakaoLogin = (e) => {
 
                                         dispatch(loginUser({
                                             "response": {
-                                                "name": response.data.response.nickName,
+                                                "nickName": response.data.response.nickName,
                                                 "email": data.data.id,
                                                 "idx": response.data.response.idx
                                             }

@@ -263,7 +263,7 @@ const LoginJoin = () => {
 
                     dispatch(loginUser({
                         "response": {
-                                "name": responseLogin.data.response.nickName,
+                                "nickName": responseLogin.data.response.nickName,
                                 "email": naverLogin.user.id,
                                 "idx": responseLogin.data.response.idx
                         }

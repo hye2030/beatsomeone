@@ -392,7 +392,7 @@ function Comment(idx) {
                     ))}
                     <div className="comment_write">
                         <div className="profile_img">
-                            <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                            <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 사진"/>
                         </div>
                         <div className="white_wrap">
                             <textarea name="" id="first_comment_wr" cols="30" rows="10" value={feedComment} placeholder="댓글을 입력해주세요." onChange={(e) => setFeedComment(e.target.value)} onKeyDown={(e) => {onEnterPress(e)}}></textarea>
@@ -404,6 +404,7 @@ function Comment(idx) {
                         
                         {commentList.map((comment) => {
                             let singo_style = {};
+                            let comment_del_style = {};
                             let singo_cntt = comment.cm_content;
                             if(comment.cm_open == "secret"){
                                 singo_style = {color: "#ACACAC"};
@@ -411,6 +412,7 @@ function Comment(idx) {
                             }
                             if(comment.del_status == "Y"){
                                 singo_style = {color: "#ACACAC"};
+                                comment_del_style = {display: "none"};
                                 singo_cntt = "[삭제된 댓글입니다.]";
                             }
 
@@ -426,7 +428,7 @@ function Comment(idx) {
                                     <div id={`edit_idx_${comment.idx}`} className="" key={comment.idx}>
                                         <div className="wrapper">
                                             <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                                                <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 사진"/>
                                             </div>
                                             <div className="comment_right">
                                                 <div className="top">
@@ -448,7 +450,7 @@ function Comment(idx) {
                                                     <button type="button" className="gray_text reply_btn" onClick={(e) => {childForm(e, comment.idx); setTextareaHeight(0);}}>답글달기</button>
                                                 </div>
                                                 {user_idx == comment.mem_id ? 
-                                                <div className="edit_btn_group">
+                                                <div className="edit_btn_group" style={comment_del_style}>
                                                     <div className="edit_group">
                                                         <button type="button" className="edit_btn" onClick={() => {commentEditDesign(comment.idx)}}>수정</button>
                                                         <button type="button" className="delete_btn" onClick={() => {commentDeletePop(comment.idx)}}>삭제</button>
@@ -479,7 +481,7 @@ function Comment(idx) {
                                     <div id={`edit_idx_${comment.idx}`} className="comment_item" key={comment.idx}>
                                         <div className="wrapper">
                                             <div className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 사진"/>
+                                                <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 사진"/>
                                             </div>
                                             <div className="comment_right">
                                                 <div className="top">
@@ -500,10 +502,10 @@ function Comment(idx) {
                                                         <span id={`bit_cnt_${comment.idx}`}>
                                                         {comment.cm_bit}
                                                         </span></button>
-                                                    <button type="button" className="gray_text reply_btn " onClick={(e) => {childForm(e, comment.idx); setTextareaHeight(0);setCheckItemContent("");}}>답글달기</button>
+                                                    {/* <button type="button" className="gray_text reply_btn " onClick={(e) => {childForm(e, comment.idx); setTextareaHeight(0);setCheckItemContent("");}}>답글달기</button> */}
                                                 </div>
                                                 {user_idx == comment.mem_id ? 
-                                                <div className="edit_btn_group">
+                                                <div className="edit_btn_group" style={comment_del_style}>
                                                     <div className="edit_group">
                                                         <button type="button" className="edit_btn" onClick={() => {commentEditDesign(comment.idx)}}>수정</button>
                                                         <button type="button" className="delete_btn" onClick={() => {commentDeletePop(comment.idx)}}>삭제</button>

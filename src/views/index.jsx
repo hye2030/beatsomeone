@@ -17,6 +17,22 @@ function Main() {
         document.body.appendChild(script);
 
         // jQuery("link[rel=stylesheet][href*='/src/assets/css/components/list.css']").remove();
+
+    }, []);
+
+    //진행중인 의뢰
+    const [reqing, setReqing] = useState(1);
+    let cnt = 1;
+    useEffect(() => {
+        setInterval(() => {
+            if(cnt == 1){
+                setReqing(2);
+                cnt = 2;
+            }else{
+                setReqing(1);
+                cnt = 1;
+            }
+        }, 3000);
     }, []);
 
     //상단 배너
@@ -1675,8 +1691,10 @@ function Main() {
                                 <a href="#" onClick={() => { return false; }}>진행 중 의뢰</a>
                             </h3>
                         </div>
-                        <ul className="depth">
-                        <li className="list">
+
+                        {reqing == 1 ?
+                        <ul className="depth" id='request_list1'>
+                            <li className="list">
                                 <span className="text">
                                     MR 제작 부탁드립니다
                                 </span>
@@ -1717,7 +1735,52 @@ function Main() {
                                 </span>
                             </li>
                         </ul>
+                        :
+                        <ul className="depth" id='request_list2'>
+                            <li className="list">
+                                <span className="text">
+                                    저작권 프리 BGM 제작 의뢰합니다.
+                                </span>
+                                <span className="num">
+                                    50,000원
+                                </span>
+                            </li>
+                            <li className="list">
+                                <span className="text">
+                                    광고용 트랩 비트 구합니다
+                                </span>
+                                <span className="num">
+                                    300,000원
+                                </span>
+                            </li>
+                            <li className="list">
+                                <span className="text">
+                                    커버용 MR 제작 요청
+                                </span>
+                                <span className="num">
+                                    40,000원
+                                </span>
+                            </li>
+                            <li className="list">
+                                <span className="text">
+                                    피아노 연주곡 제작
+                                </span>
+                                <span className="num">
+                                    70,000원
+                                </span>
+                            </li>
+                            <li className="list">
+                                <span className="text">
+                                    교육용 연주곡 제작 의뢰
+                                </span>
+                                <span className="num">
+                                    50,000원
+                                </span>
+                            </li>
+                        </ul>
+                        }
                     </div>
+
                     <div className="survey_box">
                         <div className="title_box">
                             <h3>

@@ -100,7 +100,7 @@ function Main() {
                     "code": 0,
                     "message": "로그인 유지 확인",
                     "response": {
-                        "name": localStorage.getItem("nickname"),
+                        "nickName": localStorage.getItem("nickname"),
                         "email": localStorage.getItem("emailId"),
                         "idx": localStorage.getItem("emailIdx")
                     }

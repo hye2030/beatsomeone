@@ -65,7 +65,7 @@ const FbLogin = () => {
 
                                 dispatch(loginUser({
                                     "response": {
-                                        "name": response.data.response.nickName,
+                                        "nickName": response.data.response.nickName,
                                         "email": data.id,
                                         "idx": response.data.response.idx
                                     }

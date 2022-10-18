@@ -94,7 +94,7 @@ const TwitLogin = (e) => {
 
                                 dispatch(loginUser({
                                     "response": {
-                                        "name": responseLogin.data.response.nickName,
+                                        "nickName": responseLogin.data.response.nickName,
                                         "email": result.user.reloadUserInfo.providerUserInfo[0].rawId,
                                         "idx": responseLogin.data.response.idx
                                     }

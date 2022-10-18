@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {clearUser} from '@/stores/userSlice';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 function LoginY({value}) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const user_nick = useSelector((state) => {return state.name});
     const logoutButton = () => {
         dispatch(clearUser());
@@ -11,6 +13,7 @@ function LoginY({value}) {
         localStorage.setItem("emailId", "");
         localStorage.setItem("is_login", "");
         localStorage.setItem("nickname", "");
+        navigate("/");
     }
 
     return (
