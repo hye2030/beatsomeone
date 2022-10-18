@@ -245,7 +245,7 @@ function Main() {
             $("#nickname").focus();
             return false;
         }
-        if(UserNation == "kr"){
+        if(UserNation == "KR"){
             if(phone == ""){
                 document.getElementById("phonenum_confirm_err").textContent="휴대폰번호를 입력해주세요.";
                 $("#phone_num").focus();
@@ -261,7 +261,7 @@ function Main() {
         }else{
             document.getElementById("nation_confirm_err").textContent="";
         }
-        if(UserNation == "kr"){
+        if(UserNation == "KR"){
             if(certifiedNext == false){
                 alert("인증번호를 확인해주세요.");
                 return false;
@@ -499,7 +499,7 @@ function Main() {
                                     </p>
                                     {
                                         (function() {
-                                            if (UserNation == "kr"){
+                                            if (UserNation == "KR"){
                                                 return (
                                                     <>
                                                     {random=="000000"? 

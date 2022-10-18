@@ -17,7 +17,7 @@ function MenuComponenet({users}) {
     const user_idx = useSelector((state) => {return state.idx});
     let bybeat_url = "";
     if(user_idx != 0){
-        bybeat_url = "https://bybeats-aws.codeidea.io/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("idx");
+        bybeat_url = "https://bybeats-aws.prefinc.kr/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("emailIdx");
     }
 
     return (
@@ -27,7 +27,7 @@ function MenuComponenet({users}) {
                 BEAT SOMEONE
             </a>
             {user_idx == 0 ? 
-            <a href="https://bybeats-aws.codeidea.io" className="link" target="_blank">
+            <a href="https://bybeats-aws.prefinc.kr" className="link" target="_blank">
                 BYBEATS
             </a>
             :

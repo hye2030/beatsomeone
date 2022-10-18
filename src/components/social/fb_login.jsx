@@ -60,7 +60,7 @@ const FbLogin = (e) => {
                         $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
 
                         if(currentType == "join"){
-                            $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_facebook.svg"alt="" /></div>');
+                            $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_'+response.data.channel+'.svg"alt="" /></div>');
                             $("#localSNSId").text("SNS 가입 ("+data.email+")");
                             $("#alreadyJoinModal").fadeIn(200);
                             return false;

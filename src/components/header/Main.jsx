@@ -148,7 +148,7 @@ function Main() {
     const user_idx = useSelector((state) => {return state.idx});
     let bybeat_url = "";
     if(user_idx != 0){
-        bybeat_url = "https://bybeats-aws.prefinc.kr/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("idx");
+        bybeat_url = "https://bybeats-aws.prefinc.kr/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("emailIdx");
     }
 
     return (
