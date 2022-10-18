@@ -16,17 +16,17 @@ function Main() {
                             <div className="cover">
                                 <ul className="foot_gnb">
                                     <li className="list">
-                                        <a href="#" onClick={() => { return false; }} className="link">
+                                        <a onClick={() => { alert("서비스 준비중입니다") }} className="link">
                                             About Beat Someone
                                         </a>
                                     </li>
                                     <li className="list">
-                                        <a href="#" onClick={() => { return false; }} className="link">
+                                        <a onClick={() => { alert("서비스 준비중입니다"); }} className="link">
                                             이용약관
                                         </a>
                                     </li>
                                     <li className="list">
-                                        <a href="#" onClick={() => { return false; }} className="link">
+                                        <a  onClick={() => { alert("서비스 준비중입니다"); }} className="link">
                                             개인정보 취급방침
                                         </a>
                                     </li>
@@ -36,7 +36,7 @@ function Main() {
                                         </a>
                                     </li>
                                     <li className="list">
-                                        <a href="#" onClick={() => { return false; }} className="link">
+                                        <a onClick={() => { alert("서비스 준비중입니다"); }} className="link">
                                             제휴 문의
                                         </a>
                                     </li>

@@ -6,9 +6,9 @@ import {loginUser} from '@/stores/userSlice';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { isModal } from "../../components/header/recoil";
 
-const {FB} = window;
+// const {FB} = window;
 
-const FbLogin = () => {
+const FbLogin = (e) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -100,7 +100,7 @@ const FbLogin = () => {
 
     return (
         <>
-            <button type="button" className="signIn_btn facebook" onClick={FbLoginClickHandler}>
+            <button type="button" className={e.value == "new"? "signIn_btn facebook newly" : "signIn_btn facebook"} onClick={FbLoginClickHandler}>
             {/* <button type="button" className="signIn_btn facebook" onClick={() => alert("준비중입니다.")}> */}
                 Continue with Facebook
             </button>
