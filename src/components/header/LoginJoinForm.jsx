@@ -353,9 +353,9 @@ const LoginJoin = () => {
                             {/* <a href={KAKAO_AUTH_URL} style={{marginBottom:"calc(100vw * (10 / 1300))"}}><button type="button" className="signIn_btn kakaotalk">
                                 Continue with kakaotalk
                             </button></a> */}
-                            <button type="button" className="signIn_btn soundcloud" onClick={() => alert("준비중입니다.")}>
+                            {/* <button type="button" className="signIn_btn soundcloud" onClick={() => alert("준비중입니다.")}>
                                 Continue with Soundcloud
-                            </button>
+                            </button> */}
                         </div>
                         <div className="dividing_line"></div>
                         <form>

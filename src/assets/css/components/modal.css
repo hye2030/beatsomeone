@@ -532,7 +532,7 @@
 /* 로그인. 회원가입 */
 .big_modal.route_modal .modal_box,
 .big_modal.signUp_modal .modal_box {
-    height: 90vh;
+    max-height: 90vh;
     overflow: auto;
     padding: 70px 25px 40px;
 }

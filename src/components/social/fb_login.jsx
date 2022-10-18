@@ -1,9 +1,18 @@
+import { useEffect } from "react";
 import axios from 'axios';
-import jwt_decode from "jwt-decode";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {loginUser} from '@/stores/userSlice';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+import { isModal } from "../../components/header/recoil";
 
 const {FB} = window;
 
 const FbLogin = () => {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const currentType = useRecoilValue(isModal);
 
     const FbLoginClickHandler = () => {
         FB.login(function(response) {
@@ -91,8 +100,8 @@ const FbLogin = () => {
 
     return (
         <>
-            {/* <button type="button" className="signIn_btn facebook" onClick={FbLoginClickHandler}> */}
-            <button type="button" className="signIn_btn facebook" onClick={() => alert("준비중입니다.")}>
+            <button type="button" className="signIn_btn facebook" onClick={FbLoginClickHandler}>
+            {/* <button type="button" className="signIn_btn facebook" onClick={() => alert("준비중입니다.")}> */}
                 Continue with Facebook
             </button>
         </>
