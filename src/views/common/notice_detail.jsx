@@ -22,7 +22,7 @@ function Main() {
         <>
         <div id="wrap_content" className="notice">
             <section className="banner">
-                <div className="inner">
+                {/* <div className="inner"> */}
                     {/* <!-- 임시 이미지 입니다 --> */}
                     {/* <!-- <div className="banner_text">
                         <h2>지금, 당장 글로벌 <br>
@@ -34,8 +34,8 @@ function Main() {
                     <div className="banner_image">
                         <img src="/assets/images/dummy/banner_img_02.jpg" alt="banner" />
                     </div> --> */}
-                    <img src="/assets/images/dummy/banner_img_02.jpg" alt="banner" />
-                </div>
+                    <img src="/assets/images/dummy/notice_banner.png" alt="banner" />
+                {/* </div> */}
             </section>
             <div className="wrap_inner">
 

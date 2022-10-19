@@ -123,7 +123,7 @@ function Main() {
             }
         })
         .then(function (response) {
-            setbanners("https://beatsomeone.codeidea.io/storage/banner/" + response.data.response.data[0].bannerSource);
+            setbanners("https://beatsomeone-aws.prefinc.kr/storage/banner/" + response.data.response.data[0].bannerSource);
             setbannersURL(response.data.response.data[0].contnetsUrl);
         });
     }, [localStorage.getItem("language")]);
@@ -253,7 +253,7 @@ function Main() {
         <div id="wrap_content" className="list_page feed_list">
             <div className="wrap_inner">
                 <section className="banner">
-                    <div className="inner" onClick={() => {navigate(bannersURL)}}>
+                    {/* <div className="inner" onClick={() => {navigate(bannersURL)}}> */}
                         {/* <!-- 임시 이미지 입니다 -->
                         <!-- <div className="banner_text">
                             <h2>지금, 당장 글로벌 <br>
@@ -265,8 +265,8 @@ function Main() {
                         <div className="banner_image">
                             <img src="/assets/images/dummy/banner_img_02.jpg" alt="banner" />
                         </div> --> */}
-                        <img src={banners} alt="banner" />
-                    </div>
+                        <img src="/assets/images/dummy/notice_banner.png" alt="banner" onClick={() => {navigate(bannersURL)}}/>
+                    {/* </div> */}
                 </section>
 
                 <section className="tab_section">

@@ -288,6 +288,15 @@ const LoginJoin = () => {
     useEffect(() => {
         setUseremail("");
         join_setUseremail("");
+
+        if(document.getElementById('email_validate') != null){
+            document.getElementById('email_validate').classList.remove('error');
+            document.getElementById("warning").textContent="";
+        }
+        if(document.getElementById('login_email_validate') != null){
+            document.getElementById('login_email_validate').classList.remove('error');
+            document.getElementById("login_warning").textContent="";
+        }
     }, [currentType]);
 
     return (

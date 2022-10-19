@@ -70,6 +70,7 @@ function Main() {
     const nicknameConfirm = () => {
         if(nickname == ""){
             document.getElementById("nickname_confirm_err").textContent="닉네임을 입력해주세요.";
+            document.getElementById("nickname_confirm_complete").textContent="";
             return false;
         }else{
             if(nickname.length < 2){
@@ -427,7 +428,7 @@ function Main() {
                                             영문, 숫자, 특수문자( !@#$%^&* ‘) 중 2가지 이상 조합 6자이상 16자 이하 사용 가능
                                         </div>
                                     </div>
-                                    <p className="" id="pwd_err">
+                                    <p className="" id="pwd_err" style={{marginBottom: "10px"}}>
                                     </p>
                                     {/* <p className="error_txt" id="pwd_err">
                                     </p>

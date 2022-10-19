@@ -25,7 +25,7 @@ function Main() {
             <div className="wrap_inner">
                 <div className="event_detail_section">
                 <section className="banner">
-                    <div className="inner">
+                    {/* <div className="inner">
                     <div className="banner_text">
                         <h2>
                         지금, 당장 글로벌 <br />
@@ -39,7 +39,8 @@ function Main() {
                     <div className="banner_image">
                         <img src="/assets/images/dummy/banner_img_02.jpg" alt="banner" />
                     </div>
-                    </div>
+                    </div> */}
+                    <img src="/assets/images/dummy/notice_banner.png" alt="banner" />
                 </section>
                 <section className="top_section" style={{marginTop:"calc(100vw * (33 / 1300))"}}>
                     <article className="nav">
