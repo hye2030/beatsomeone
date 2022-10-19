@@ -10,6 +10,11 @@ function Main() {
       const { naver } = window
 	const NAVER_CLIENT_ID = "7zMZQ1ATkf_uVtuhDMQO"
 	const NAVER_CALLBACK_URL = "https://beatsomeone-aws.prefinc.kr/auth/naver"
+      
+      const url = decodeURIComponent(location.href);
+      let param = url.substring(url.indexOf('?')+1, url.length);
+      param = param.split("#");
+      let currentType = param[0].split("=")[1];
 
 	const naverLogin = new naver.LoginWithNaverId({
             clientId: NAVER_CLIENT_ID,
@@ -41,13 +46,17 @@ function Main() {
                               naverLogin.reprompt(); // 필수정보를 얻지 못 했을 때 다시 정보제공 동의 화면으로 이동
                               return;	
                         }
-                        
-                        console.log(naverLogin.user);
 
                         localStorage.setItem("sign_id", naverLogin.user.email);
                         localStorage.setItem("sns", "naver");
                         localStorage.setItem("snsKey", naverLogin.user.id);
-                        axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
+
+                        let apiUrl = "/api/v1/member/joinCheck";
+                        if(currentType == "join"){
+                              apiUrl = "/api/v1/member/joinEmailCheck";
+                        }
+
+                        axios.get(import.meta.env.VITE_REACT_APP_API_URL + apiUrl, {
                               params: {
                               emailId: naverLogin.user.email,
                               sns : "naver",
@@ -72,7 +81,7 @@ function Main() {
                                           $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
 
                                           window.close();
-                                          window.opener.alreadySNSNaver(naverLogin);
+                                          window.opener.alreadySNSNaver(naverLogin, response);
                                           return false;
 
                                           // axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/login", {

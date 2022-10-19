@@ -241,7 +241,9 @@ const LoginJoin = () => {
         $("#alreadyJoinModal").fadeOut(200);
     }
 
-    window.alreadySNSNaver = function (naverLogin){
+    window.alreadySNSNaver = function (naverLogin, response){
+        console.log(naverLogin);
+        console.log(response);
         if(currentType == "join"){
             $('.route_modal.signIn').fadeOut(200);
 
