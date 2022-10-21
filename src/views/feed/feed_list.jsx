@@ -123,7 +123,7 @@ function Main() {
             }
         })
         .then(function (response) {
-            setbanners("https://beatsomeone-aws.prefinc.kr/storage/banner/" + response.data.response.data[0].bannerSource);
+            setbanners(import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL+"/storage/banner/" + response.data.response.data[0].bannerSource);
             setbannersURL(response.data.response.data[0].contnetsUrl);
         });
     }, [localStorage.getItem("language")]);
@@ -336,7 +336,7 @@ function Main() {
                                     <div className="profile_box mobile">
                                         <p>
                                             <span className="profile_img">
-                                                <img src="/assets/images/dummy/profile_04.jpg" alt="프로필 이미지"/>
+                                                <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 이미지"/>
                                             </span>
                                             <span>{list.mem_nickname}</span>
                                         </p>
@@ -346,11 +346,11 @@ function Main() {
                                             {/* <a> */}
                                                 {extension == "mp4" ?
                                                 <div className="img">
-                                                    <video preload="metadata" src={`https://beatsomeone-aws.prefinc.kr${list.file_url}${list.feed_source}#t=0.5`}></video>
+                                                    <video preload="metadata" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${list.file_url}${list.feed_source}#t=0.5`}></video>
                                                 </div>
                                                 :
                                                 <div className="img">
-                                                    <img src={`https://beatsomeone-aws.prefinc.kr${list.file_url}${list.feed_source}`} alt="이미지" />
+                                                    <img src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${list.file_url}${list.feed_source}`} alt="이미지" />
                                                 </div>
                                                 }
 
@@ -420,7 +420,7 @@ function Main() {
                                 )}
                             )}
                             {feedList.length === 0 ? 
-                                <li className="list_item">등록된 피드가 없습니다.</li>
+                                <li className="list_item" style={{textAlign:"center"}}>등록된 피드가 없습니다.</li>
                             : null}
                         </ul>
                         

@@ -16,7 +16,6 @@ function MainFeed() {
             }
         })
         .then(function (response) {
-            console.log(response.data.response);
             setFeedList(response.data.response);
         });
     }, [user_idx])

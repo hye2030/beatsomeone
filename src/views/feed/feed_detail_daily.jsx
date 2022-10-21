@@ -89,11 +89,11 @@ function Main() {
                                         
                                         {extension == "mp4" ?
                                         <div className="content play_box vedio">
-                                            <video preload="auto" src={`https://beatsomeone-aws.prefinc.kr${cntt.file_url}${cntt.feed_source}`} controls controlsList="nodownload" style={{maxWidth : '740px'}}></video>
+                                            <video preload="auto" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${cntt.file_url}${cntt.feed_source}`} controls controlsList="nodownload" style={{maxWidth : '740px'}}></video>
                                         </div>
                                         :
                                         <div className="content content_img">
-                                            <img src={`https://beatsomeone-aws.prefinc.kr${cntt.file_url}${cntt.feed_source}`} alt="" style={{maxWidth : '740px'}}/>
+                                            <img src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${cntt.file_url}${cntt.feed_source}`} alt="" style={{maxWidth : '740px'}}/>
                                         </div>
                                         }
                                         <div className="text_box" style={{whiteSpace:"pre-wrap", wordBreak: "break-all"}}>
@@ -109,11 +109,11 @@ function Main() {
                                     <div key={cntt.file_no}>
                                         {extension == "mp4" ?
                                         <div className="content content_img">
-                                            <video preload="auto" src={`https://beatsomeone-aws.prefinc.kr${cntt.file_url}${cntt.feed_source}`} controls controlsList="nodownload" style={{maxWidth : '740px'}}></video>
+                                            <video preload="auto" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${cntt.file_url}${cntt.feed_source}`} controls controlsList="nodownload" style={{maxWidth : '740px'}}></video>
                                         </div>
                                         :
                                         <div className="content content_img">
-                                            <img src={`https://beatsomeone-aws.prefinc.kr${cntt.file_url}${cntt.feed_source}`} alt="" style={{maxWidth : '740px'}}/>
+                                            <img src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${cntt.file_url}${cntt.feed_source}`} alt="" style={{maxWidth : '740px'}}/>
                                         </div>
                                         }
                                         <div className="text_box" style={{whiteSpace:"pre-wrap", wordBreak: "break-all"}}>

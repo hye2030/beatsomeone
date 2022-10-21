@@ -115,7 +115,7 @@ function Main() {
         .then(function (response) {
             const main_data = response.data.response.detail[0];
             setContentTxt(main_data.wr_content);
-            setFileImage("https://beatsomeone.codeidea.io"+main_data.file_url+main_data.feed_source);
+            setFileImage(import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL+main_data.file_url+main_data.feed_source);
             setMainExtension((prev) => getExtension(main_data.feed_source));
 
             const sub_data = response.data.response.file;
@@ -253,7 +253,8 @@ function Main() {
     let delete_file_idx = [];
     const [delFileIdx, setDelFileIdx] = useState([]);
     const delete_sub = (source, idx) => {
-        document.getElementById(source).style.display = "none";
+        // document.getElementById(source).style.display = "none";
+        document.getElementById(source).remove();
         setDelFileIdx(prev => [...prev, idx]);
     }
 
@@ -320,9 +321,9 @@ function Main() {
                             <div className="add_file_box" >
                                 <div className="cover_img">
                                     {extension == "mp4" ?
-                                    <video preload="metadata" src={`https://beatsomeone.codeidea.io${edit.file_url}${edit.feed_source}#t=0.5`}></video>
+                                    <video preload="metadata" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${edit.file_url}${edit.feed_source}#t=0.5`}></video>
                                     :
-                                    <img src={`https://beatsomeone.codeidea.io${edit.file_url}${edit.feed_source}`}/>
+                                    <img src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${edit.file_url}${edit.feed_source}`}/>
                                     }
                                 </div>
                             </div>

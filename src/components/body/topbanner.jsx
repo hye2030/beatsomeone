@@ -4,7 +4,7 @@ function TopBanner({banners}) {
             <div className="swiper-container">
                 <div className="swiper-wrapper">
                     {banners.map(banner => {
-                        const imgsrc = "https://beats-admin.codeidea.io/storage/banner/"+banner.bannerSource
+                        const imgsrc = import.meta.env.VITE_REACT_APP_API_URL+"/storage/banner/"+banner.bannerSource
                         if(banner.bannerType == "beatsomeone"){
                             return (
                                 <div className="swiper-slide" key={banner.bannerSource}>
