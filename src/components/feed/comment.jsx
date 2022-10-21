@@ -345,6 +345,23 @@ function Comment(idx) {
             <div className="inner">
                 <div className="top_box">
                     {feedContent.map((cntt) => {
+
+                        let comment_cnt = cntt.wr_comment;
+                        let comment_profile = "";
+                        if(cntt.wr_comment == 0){
+                            comment_profile = "<li><img src='/assets/images/icon/Message_circle.svg' alt='프로필 이미지1' /></li>";
+                        }else if(cntt.wr_comment == 1){
+                            comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                        }else if(cntt.wr_comment == 2){
+                            comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                        }else if(cntt.wr_comment == 3){
+                            comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                        }else if(cntt.wr_comment > 3){
+                            comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                        }else if(cntt.wr_comment >= 100){
+                            comment_cnt = "99+"
+                            comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                        }
                     return (
                     <div className="mark_wrap" key={cntt.idx}>
                         <button type="button" className={like==false ? "like_toggle_btn mark" : "like_toggle_btn mark active"} onClick={() => {feedLike()}}>
@@ -352,18 +369,9 @@ function Comment(idx) {
                         </button>
                         {/* <div className="lesten_num mark"><span>99개</span></div> */}
                         <div className="profile_wrap mark">
-                            <ul>
-                                <li>
-                                    <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
-                                </li>
-                                <li>
-                                    <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
-                                </li>
-                                <li>
-                                    <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
-                                </li>
+                            <ul dangerouslySetInnerHTML={ {__html: comment_profile} }>
                             </ul>
-                            <span>{cntt.wr_comment}</span>
+                            <span>{comment_cnt}</span>
                         </div>
                     </div>
                     )

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
@@ -130,6 +130,26 @@ function Main() {
         } 
     }, [localStorage.getItem("language")])
 
+    /**외부영역 클릭 */
+    const searchInputRef = useRef();
+    useEffect(() => {
+        function handleClickOutside(e){
+            if (
+                searchInputRef.current &&
+                !searchInputRef.current.contains(e.target)
+            ) {
+                //$('.hamburger').removeClass('active');
+                $(".header_mb .side_menu").removeClass('active');
+                $(".header_mb .side_bg").fadeOut(500);
+                $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [searchInputRef]);
+
     //현재 url 받아오기
     const location = useLocation();
     const [nowLocation, setNowLocation] = useState("/");
@@ -253,7 +273,7 @@ function Main() {
                 {mHeader}
                 </div>
             </div>
-            <div className="side_menu">
+            <div className="side_menu" ref={searchInputRef}>
                 <div className="opacity_effect">
                     <div className="top_area">
                         <div className="language_wrap">

@@ -535,7 +535,7 @@ footer .inner {
 }
 
 /* 푸터-------------------------------------------------------- */
-footer {
+#footer {
     width: 100%;
     padding: 30px 0 20px;
     background: #fff;
@@ -845,7 +845,7 @@ footer .sns_wrap .icon_box a {
     }
     
     /* 푸터-------------------------------------------------------- */
-    footer {
+    #footer {
         padding: calc(100vw * (30 / 1300)) 0 calc(100vw * (20 / 1300));
         box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.03);
     }
@@ -1386,7 +1386,7 @@ footer .sns_wrap .icon_box a {
     }
 
     /* 푸터-------------------------------------------------------- */
-    footer {
+    #footer {
         width: 100%;
         padding: calc(100vw* (30/428)) 0 calc(100vw* (105/428));
         background: #fff;

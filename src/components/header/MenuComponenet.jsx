@@ -44,7 +44,7 @@ function MenuComponenet({users}) {
                             {_menu[9]}
                             </a>
                         </li>
-                        <li className="list">
+                        {/* <li className="list">
                             <a onClick={() => {navigate('/feed/feed_list', {state : {type : "self"} } )}} className="link">
                             {_menu[10]}
                             </a>
@@ -53,7 +53,7 @@ function MenuComponenet({users}) {
                             <a onClick={() => {navigate('/feed/feed_list', {state : {type : "cover"} } )}} className="link">
                             {_menu[11]}
                             </a>
-                        </li>
+                        </li> */}
                         <li className="list">
                             <a onClick={() => {navigate('/feed/feed_list', {state : {type : "daily"} } )}} className="link">
                             {_menu[12]}

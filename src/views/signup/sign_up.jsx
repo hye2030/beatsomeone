@@ -413,8 +413,8 @@ function Main() {
                                         <input type="text" id="emInput" value={IdValue || ''} readOnly />
                                     </div>
                                     <div className="input_wrap">
-                                        <input type="text" id="offen_em" placeholder="(선택)자주 사용하는 이메일 주소" onChange={(e)=>{setUsualEmail(e.target.value);document.getElementById('offen_em').parentNode.lastChild.style.display = 'none';}} onFocus={(e)=>{document.getElementById('offen_em').parentNode.lastChild.style.display = 'block'}} />
-                                        <div className="alert_box wrap_box" style={{display:'none'}}>
+                                        <input type="text" id="offen_em" placeholder="(선택)자주 사용하는 이메일 주소" onChange={(e)=>{setUsualEmail(e.target.value);}} onFocus={(e)=>{document.getElementById('offen_em').parentNode.lastChild.style.display = 'none'}} />
+                                        <div className="alert_box wrap_box">
                                             ID(email)가 아닌 다른 Email로 정보 수신을 원하실 경우 입력해 주세요.
                                         </div>
                                     </div>
@@ -423,8 +423,8 @@ function Main() {
                                 {localStorage.getItem("sns") == "email" ? 
                                 <div className="input_box password">
                                     <div className="input_wrap">
-                                        <input type="password" id="pw_input" placeholder="비밀번호를 입력해 주세요" onChange={(e)=>{setPwd(e.target.value); pwCheck(e.target.value); document.getElementById('pw_input').parentNode.lastChild.style.display = 'none';}} onFocus={(e)=>{document.getElementById('pw_input').parentNode.lastChild.style.display = 'block'}} />
-                                        <div className="alert_box wrap_box" style={{display:'none'}}>
+                                        <input type="password" id="pw_input" placeholder="비밀번호를 입력해 주세요" onChange={(e)=>{setPwd(e.target.value); pwCheck(e.target.value); }} onFocus={(e)=>{document.getElementById('pw_input').parentNode.lastChild.style.display = 'none'}} />
+                                        <div className="alert_box wrap_box">
                                             영문, 숫자, 특수문자( !@#$%^&* ‘) 중 2가지 이상 조합 6자이상 16자 이하 사용 가능
                                         </div>
                                     </div>
@@ -444,16 +444,16 @@ function Main() {
                                 {/* <!-- 이름 및 별명 --> */}
                                 <div className="input_box name">
                                     <div className="input_wrap">
-                                        <input type="text" id="name" placeholder="(필수)이름 입력" value={name} onChange={(e)=>{setName(e.target.value); document.getElementById('name').parentNode.lastChild.style.display = 'none';}} onFocus={(e)=>{document.getElementById('name').parentNode.lastChild.style.display = 'block'}}/>
-                                        <div className="alert_box" style={{display:'none'}}>
+                                        <input type="text" id="name" placeholder="(필수)이름 입력" value={name} onChange={(e)=>{setName(e.target.value); }} onFocus={(e)=>{document.getElementById('name').parentNode.lastChild.style.display = 'none'}}/>
+                                        <div className="alert_box">
                                             본명 기재 권장 / 한글 기준 2자 이상
                                         </div>
                                     </div>
                                     <p className="error_txt" id="name_confirm_err">
                                     </p>
                                     <div className="input_wrap nickname">
-                                        <input type="text" id="nickname" placeholder="(필수)닉네임 입력" onChange={(e)=>{setNickname(e.target.value); document.getElementById('nickname').parentNode.lastChild.style.display = 'none';}} onFocus={(e)=>{document.getElementById('nickname').parentNode.lastChild.style.display = 'block'}}/>
-                                        <div className="alert_box wrap_box down" style={{display:'none'}}>
+                                        <input type="text" id="nickname" placeholder="(필수)닉네임 입력" onChange={(e)=>{setNickname(e.target.value); }} onFocus={(e)=>{document.getElementById('nickname').parentNode.lastChild.style.display = 'none'}}/>
+                                        <div className="alert_box wrap_box down">
                                             대소문자, 숫자, 한글, 특수문자, 이모지, 중국어, 일본어 허용 / 한글 기준 2~20자 / 영어 기준 2~40자
                                         </div>
                                     </div>
@@ -477,22 +477,23 @@ function Main() {
                                             </ul>
                                         </div>
                                         <div className="input_wrap phone_num">
-                                            <input type="text" id="phone_num" placeholder="(필수) 휴대폰 번호 입력" onChange={phonehandlePress} value={phone} />
+                                            <input type="text" id="phone_num" placeholder={UserNation == "KR" ? "(필수) 휴대폰 번호 입력" : "(선택) 휴대폰 번호 입력"} onChange={phonehandlePress} value={phone} />
                                         </div>
                                     </div>
                                     <p className="error_txt" id="phonenum_confirm_err">
                                     </p>
                                     <div className="select_box_wrap">
-                                        <button type="button" onClick={() => { return false; }} className="select_title">(필수)
+                                        <button type="button" onClick={() => { document.getElementById("nation_alert").style.display = "none"; }} className="select_title">(필수)
                                             국가선택</button>
                                         <ul>
+                                            <li className="select_list" onClick={(e) => { setUserNation(""); setNationTel("국번"); }}>(필수) 국가선택</li>
                                             {nation.map(nations => {
                                                 return (
-                                                    <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(nations.codeValue); setNationTel(nations.telNo)}}>{nations.codeName}</li>
+                                                    <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(nations.codeValue); setNationTel(nations.telNo); }}>{nations.codeName}</li>
                                                 )
                                             })}
                                         </ul>
-                                        <div className="alert_box" style={{display:'none'}}>
+                                        <div className="alert_box" id="nation_alert">
                                             거주국가 기준으로 선택 권장
                                         </div>
                                     </div>

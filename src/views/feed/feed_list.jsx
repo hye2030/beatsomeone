@@ -265,7 +265,7 @@ function Main() {
                         <div className="banner_image">
                             <img src="/assets/images/dummy/banner_img_02.jpg" alt="banner" />
                         </div> --> */}
-                        <img src="/assets/images/dummy/notice_banner.png" alt="banner" onClick={() => {navigate(bannersURL)}}/>
+                        {/* <img src="/assets/images/dummy/notice_banner.png" alt="banner" onClick={() => {navigate(bannersURL)}}/> */}
                     {/* </div> */}
                 </section>
 
@@ -276,8 +276,8 @@ function Main() {
                         <ul className="tab_area">
                             {/* <li className="tab active">전체</li> */}
                             <li className={menu[0]?"tab active" : "tab"} onClick={() => {setMenu([true,false,false,false]);}}>전체</li>
-                            <li className={menu[1]?"tab active" : "tab"} onClick={() => {setMenu([false,true,false,false]);}}>자작곡</li>
-                            <li className={menu[2]?"tab active" : "tab"} onClick={() => {setMenu([false,false,true,false]);}}>커버곡</li>
+                            {/* <li className={menu[1]?"tab active" : "tab"} onClick={() => {setMenu([false,true,false,false]);}}>자작곡</li>
+                            <li className={menu[2]?"tab active" : "tab"} onClick={() => {setMenu([false,false,true,false]);}}>커버곡</li> */}
                             <li className={menu[3]?"tab active" : "tab"} onClick={() => {setMenu([false,false,false,true]);}}>일상</li>
                         </ul>
                     </div>
@@ -331,6 +331,23 @@ function Main() {
                                     like_active = "";
                                 }
 
+                                let comment_cnt = list.wr_comment;
+                                let comment_profile = "";
+                                if(list.wr_comment == 0){
+                                    comment_profile = "<li><img src='/assets/images/icon/Message_circle.svg' alt='프로필 이미지1' /></li>";
+                                }else if(list.wr_comment == 1){
+                                    comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                                }else if(list.wr_comment == 2){
+                                    comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                                }else if(list.wr_comment == 3){
+                                    comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                                }else if(list.wr_comment > 3){
+                                    comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                                }else if(list.wr_comment >= 100){
+                                    comment_cnt = "99+"
+                                    comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                                }
+
                                 return (
                                 <li className="list_item" key={list.idx}>
                                     <div className="profile_box mobile">
@@ -347,6 +364,7 @@ function Main() {
                                                 {extension == "mp4" ?
                                                 <div className="img">
                                                     <video preload="metadata" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${list.file_url}${list.feed_source}#t=0.5`}></video>
+                                                    <span className="play"></span>
                                                 </div>
                                                 :
                                                 <div className="img">
@@ -369,22 +387,10 @@ function Main() {
                                                 <ul>
                                                     <li className="comment">
                                                         <div className="profile_wrap">
-                                                            <ul>
-                                                                <li>
-                                                                    <img src="/assets/images/dummy/profile_01.jpg"
-                                                                        alt="프로필 이미지1" />
-                                                                </li>
-                                                                <li>
-                                                                    <img src="/assets/images/dummy/profile_02.jpg"
-                                                                        alt="프로필 이미지1" />
-                                                                </li>
-                                                                <li>
-                                                                    <img src="/assets/images/dummy/profile_03.jpg"
-                                                                        alt="프로필 이미지1" />
-                                                                </li>
+                                                            <ul dangerouslySetInnerHTML={ {__html: comment_profile} }>
                                                             </ul>
 
-                                                            <span>{list.wr_comment}</span>
+                                                            <span>{comment_cnt}</span>
                                                         </div>
                                                     </li>
 

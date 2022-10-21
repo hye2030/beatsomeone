@@ -17,7 +17,7 @@ function Main() {
                                 <ul className="foot_gnb">
                                     <li className="list">
                                         <a onClick={() => { alert("서비스 준비중입니다") }} className="link">
-                                            About Beat Someone
+                                            About BEAT SOMEONE
                                         </a>
                                     </li>
                                     <li className="list">
@@ -54,7 +54,7 @@ function Main() {
                                         className="mobile_layout"/>통신판매신고번호: 제2019-서울마포-2779호
                                 </p>
                                 <p>
-                                    TEL : 070-4323-0000&ensp;&ensp;<br className="mobile_layout"/>EMAIL : support@beatsomeone.com
+                                    <br className="mobile_layout"/>EMAIL : support@beatsomeone.com
                                 </p>
                             </address>
                             <p className="copyright">

@@ -52,6 +52,23 @@ function MainFeed() {
                         like_active = "";
                     }
 
+                    let comment_cnt = list.wr_comment;
+                    let comment_profile = "";
+                    if(list.wr_comment == 0){
+                        comment_profile = "<li><img src='/assets/images/icon/Message_circle.svg' alt='프로필 이미지1' /></li>";
+                    }else if(list.wr_comment == 1){
+                        comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                    }else if(list.wr_comment == 2){
+                        comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                    }else if(list.wr_comment == 3){
+                        comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                    }else if(list.wr_comment > 3){
+                        comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                    }else if(list.wr_comment >= 100){
+                        comment_cnt = "99+"
+                        comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li><li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
+                    }
+
                     return (
                     <div className="swiper-slide" key={list.idx}>
                         <div className="list_item daily" style={{marginRight:"20px"}}>
@@ -59,6 +76,7 @@ function MainFeed() {
                                 {extension == "mp4" ?
                                 <div className="img">
                                     <video preload="metadata" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${list.file_url}${list.feed_source}#t=0.5`}></video>
+                                    <span className="play"></span>
                                 </div>
                                 :
                                 <div className="img">
@@ -76,22 +94,10 @@ function MainFeed() {
 
                                             <li className="comment">
                                                 <div className="profile_wrap">
-                                                    <ul>
-                                                        <li>
-                                                            <img src="/assets/images/dummy/profile_01.jpg"
-                                                                alt="프로필 이미지1" />
-                                                        </li>
-                                                        <li>
-                                                            <img src="/assets/images/dummy/profile_02.jpg"
-                                                                alt="프로필 이미지1" />
-                                                        </li>
-                                                        <li>
-                                                            <img src="/assets/images/dummy/profile_03.jpg"
-                                                                alt="프로필 이미지1" />
-                                                        </li>
+                                                    <ul dangerouslySetInnerHTML={ {__html: comment_profile} }>
                                                     </ul>
 
-                                                    <span>{list.wr_comment}</span>
+                                                    <span>{comment_cnt}</span>
                                                 </div>
                                                 <div className="nick_name">
                                                     <div className="profile_img">
@@ -115,7 +121,7 @@ function MainFeed() {
                     )}
                 )}
                 </div>
-                <div className="swiper-pagination con"></div>
+                <div className="swiper-pagination con" style={{left:"50%"}}></div>
             </div>
         </div>
         </>

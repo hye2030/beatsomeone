@@ -66,7 +66,7 @@ function Main() {
                     <div className="banner_image">
                         <img src="/assets/images/dummy/banner_img_02.jpg" alt="banner" />
                     </div> --> */}
-                    <img src="/assets/images/dummy/notice_banner.png" alt="banner" />
+                    {/* <img src="/assets/images/dummy/notice_banner.png" alt="banner" /> */}
             </section>
             <div className="wrap_inner">
 

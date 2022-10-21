@@ -97,7 +97,7 @@ function Main() {
                         <img src="/assets/images/dummy/banner_img_02.jpg" alt="banner" />
                     </div>
                     </div> */}
-                    <img src="/assets/images/dummy/notice_banner.png" alt="banner" />
+                    {/* <img src="/assets/images/dummy/notice_banner.png" alt="banner" /> */}
                 </section>
                 <section className="top_section">
                     <article className="nav">
