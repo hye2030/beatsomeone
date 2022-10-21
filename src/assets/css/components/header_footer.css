@@ -155,53 +155,36 @@ footer .inner {
 }
 
 .header_pc .header_top .language_wrap .language_btn {
-    width: 100px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     font-size: 16px;
     font-weight: 500;
     color: #fff;
     position: relative;
     text-align: left;
     transition: 0.3s ease-in-out;
+    background: url("/src/assets/images/icon/icon_lang.svg") no-repeat center / 100%;
+    filter: invert(99%) sepia(1%) saturate(67%) hue-rotate(42deg) brightness(116%) contrast(100%);
 }
 
 .header_pc.white .header_top .language_wrap .language_btn,
 .header_pc.active .header_top .language_wrap .language_btn {
     color: #222;
-}
-
-.header_pc .header_top .language_wrap .language_btn::after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    top: 0;
-    right: 0;
-    background: url(/src/assets/images/icon/icon_white_arrow.svg) no-repeat center center / contain;
-    transition: 0.3s;
-}
-
-.header_pc.white .header_top .language_wrap .language_btn::after,
-.header_pc.active .header_top .language_wrap .language_btn::after {
-    filter: invert(100%);
-}
-
-.header_pc .header_top .language_wrap.open .language_btn::after {
-    transform: rotate(180deg);
+    filter: none;
 }
 
 .header_pc .language_list {
     position: absolute;
     display: none;
     font-size: 16px;
-    top: 29px;
-    left: 0;
+    top: 39px;
+    left: 50%;
     width: 100px;
     padding: 20px 0;
     background: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 5%);
     z-index: 2;
+    transform: translateX(-50%);
 }
 
 .header_pc .language_list li {
@@ -243,13 +226,13 @@ footer .inner {
     height: 32px;
     margin-right: 70px;
     cursor: pointer;
-    background: url(/src/assets/images/icon/logo_fff.png) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/logo_fff.svg) no-repeat center center / contain;
     transition: 0.3s ease-in-out;
 }
 
 .header_pc.white .logo,
 .header_pc.active .logo {
-    background: url(/src/assets/images/icon/logo_222.png) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/logo_222.svg) no-repeat center center / contain;
 }
 
 .header_pc .logo a {
@@ -552,7 +535,7 @@ footer .inner {
 }
 
 /* 푸터-------------------------------------------------------- */
-#footer {
+footer {
     width: 100%;
     padding: 30px 0 20px;
     background: #fff;
@@ -719,19 +702,15 @@ footer .sns_wrap .icon_box a {
     }
     
     .header_pc .header_top .language_wrap .language_btn {
-        width: calc(100vw * (100 / 1300));
-        height: calc(100vw * (24 / 1300));
+        width: calc(100vw * (30 / 1300));
+        height: calc(100vw * (30 / 1300));
         font-size: calc(100vw * (16 / 1300));
-    }
-    
-    .header_pc .header_top .language_wrap .language_btn::after {
-        width: calc(100vw * (24 / 1300));
-        height: calc(100vw * (24 / 1300));
     }
     
     .header_pc .language_list {
         font-size: calc(100vw * (16 / 1300));
-        top: calc(100vw * (29 / 1300));
+        top: calc(100vw * (39 / 1300));
+        left: -4%;
         width: calc(100vw * (100 / 1300));
         padding: calc(100vw * (20 / 1300)) 0;
     }
@@ -866,7 +845,7 @@ footer .sns_wrap .icon_box a {
     }
     
     /* 푸터-------------------------------------------------------- */
-    #footer {
+    footer {
         padding: calc(100vw * (30 / 1300)) 0 calc(100vw * (20 / 1300));
         box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.03);
     }
@@ -1107,8 +1086,8 @@ footer .sns_wrap .icon_box a {
     }
 
     .header_mb .language_wrap .language_btn {
-        width: calc(100vw* (100/428));
-        height: calc(100vw* (24/428));
+        width: calc(100vw* (30/428));
+        height: calc(100vw* (30/428));
         font-size: calc(100vw* (15/428));
         font-weight: 500;
         color: #444;
@@ -1116,23 +1095,7 @@ footer .sns_wrap .icon_box a {
         text-align: left;
         transition: 0.3s ease-in-out;
         user-select: none;
-    }
-
-    .header_mb .language_wrap .language_btn::after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: calc(100vw* (24/428));
-        height: calc(100vw* (24/428));
-        top: 0;
-        right: 0;
-        background: url(/src/assets/images/icon/icon_arrow_down_small.svg) no-repeat center center / contain;
-        transition: 0.3s;
-        user-select: none;
-    }
-
-    .header_mb .language_wrap.open .language_btn::after {
-        transform: rotate(180deg);
+        background: url("/src/assets/images/icon/icon_lang.svg") no-repeat center / 100%;
     }
 
     .header_mb .language_list {
@@ -1423,7 +1386,7 @@ footer .sns_wrap .icon_box a {
     }
 
     /* 푸터-------------------------------------------------------- */
-    #footer {
+    footer {
         width: 100%;
         padding: calc(100vw* (30/428)) 0 calc(100vw* (105/428));
         background: #fff;

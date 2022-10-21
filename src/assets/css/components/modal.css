@@ -1,4 +1,9 @@
 /* 모달 css-------------------------------------------------- */
+.modal_wrap .modal_box .error_txt {
+    text-align: left;
+    color: #DF0B17;
+}
+
 .modal_wrap {
     display: none;
     position: fixed;
@@ -15,6 +20,8 @@
     top: 50%;
     left: 50%;
     width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
     transform: translate(-50%, -50%);
     background: #fff;
 }
@@ -65,6 +72,11 @@
     color: #DF0B17;
 }
 
+.modal_wrap .comment .bold {
+    color: #222;
+    font-weight: 700;
+}
+
 .modal_wrap .small_comment {
     word-break: keep-all;
     font-size: 14px;
@@ -75,7 +87,7 @@
 
 .modal_wrap .button_wrap {
     width: 100%;
-    margin-top: 28px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
@@ -94,6 +106,10 @@
 .modal_wrap .button_wrap.one button {
     width: 295px;
     height: 45px;
+}
+
+.modal_wrap .button_wrap.full button {
+    width: 100%;
 }
 
 .modal_wrap .line_btn {
@@ -190,12 +206,6 @@
     padding: 30px 30px 40px;
 }
 
-.autoOut_modal .modal_box::before {
-    display: block;
-    margin-bottom: 10px;
-    background-image: url("/src/assets/images/icon/icon_power.svg");
-}
-
 .modal_wrap.newSignup b {
     font-weight: 700;
 }
@@ -257,6 +267,33 @@
     overflow: auto;
 }
 
+.big_modal .text_area p {
+    text-align: left;
+}
+
+.big_modal .text_area table,
+.big_modal .text_area td,
+.big_modal .text_area th {
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #ddd;
+    word-break: keep-all;
+    vertical-align: middle;
+}
+
+.big_modal .text_area table *{
+    font-size: 12px;
+}
+
+.big_modal .text_area table tr:first-child {
+    background: #ddd;
+}
+
+.big_modal .text_area td {
+    padding: 0.5rem;
+    line-height: 1.3;
+}
+
 .big_modal .text_area::-webkit-scrollbar,
 .declaration_modal .content_box.target .user_text::-webkit-scrollbar,
 .modal_box::-webkit-scrollbar {
@@ -283,7 +320,7 @@
 /* 신고하기 모달 */
 .declaration_modal .modal_box {
     width: 650px;
-    height: 86vh;
+    max-height: 86vh;
     overflow: auto;
     padding: 50px 40px 65px;
 }
@@ -314,6 +351,7 @@
 .declaration_modal .content_box .title {
     font-size: 16px;
     padding-bottom: 10px;
+    margin-bottom: 0;
     font-weight: 600;
     border-bottom: 1px solid #222;
     color: #444;
@@ -352,7 +390,7 @@
 }
 
 .declaration_modal .content_box.target .user_text {
-    height: 150px;
+    min-height: 110px;
     padding-bottom: 10px;
     font-size: 16px;
     margin-top: 10px;
@@ -526,13 +564,12 @@
 .big_modal .logo_wrap .by_beats {
     width: 86px;
     height: 26px;
-    background: url(/src/assets/images/icon/icon_logo_bybeats2.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_logo_bybeats.svg) no-repeat center center / contain;
 }
 
 /* 로그인. 회원가입 */
 .big_modal.route_modal .modal_box,
 .big_modal.signUp_modal .modal_box {
-    max-height: 90vh;
     overflow: auto;
     padding: 70px 25px 40px;
 }
@@ -1069,6 +1106,10 @@
 }
 
 /* 비밀번호 재설정 페이지--------------------------------------*/
+.pwResetting_modal .modal_box {
+    overflow: unset;
+}
+
 .pwResetting_modal .title {
     font-size: 20px;
     margin-bottom: 40px;
@@ -1125,6 +1166,7 @@
 /* 비밀번호 변경 모달 */
 .password_change .modal_box {
     width: 743px;
+    overflow: unset;
 }
 
 .password_change .title {
@@ -1163,6 +1205,7 @@
 }
 
 
+
 /* 회원탈퇴 실패 모달 */
 .delete_account_modal .modal_box,
 .delete_account_fail .modal_box {
@@ -1186,14 +1229,10 @@
 }
 
 .delete_account_fail .button_wrap {
-    margin-top: 81px;
+    margin-top: 30px;
 }
 
 /* 회원탈퇴 모달 */
-.delete_account_modal .modal_box {
-    padding-top: 61px;
-}
-
 .delete_account_modal ul {
     display: inline-block;
     margin: 42px 0 53px;
@@ -1233,9 +1272,391 @@
 }
 
 
+/* ======================= 4차 개발 추가 작업 ======================== */
+.form_modal .modal_box {
+    width: 650px;
+    padding: 40px;
+}
+
+.form_modal .title {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+    font-weight: 700;
+    color: #444;
+}
+
+.form_modal .content_wrap {
+    border-bottom: 1px solid #000;
+}
+
+.form_modal .guide_list {
+    margin-top: 10px;
+}
+
+.form_modal .modal_box .guide_list .guide_txt {
+    margin-top: 0;
+    line-height: 1.7;
+    text-align: left;
+    color: #ACACAC;
+}
+
+.form_modal .modal_box .guide_txt {
+    margin-top: 10px;
+    line-height: 1.7;
+    text-align: left;
+    color: #ACACAC;
+}
+
+.form_modal [class*="select_box_wrap"]>button {
+    color: #acacac;
+}
+
 /* 음원 등록하기 모달창 */
-.music_upload_modal {
-    
+.music_upload_modal .content_wrap {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/* 업로드전 */
+.music_upload_modal .upload_box {
+    height: 150px;
+    padding: 13px 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ACACAC;
+    overflow-y: auto;
+}
+
+.music_upload_modal .upload_box::-webkit-scrollbar {
+    width: 10px;
+}
+
+.music_upload_modal .upload_box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.music_upload_modal .upload_box::-webkit-scrollbar-thumb {
+    background: #acacac;
+    background-clip: padding-box;
+    border-top: 20px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-right: 3px solid transparent;
+    border-left: 5px solid transparent;
+    border-radius: 100px;
+}
+
+.music_upload_modal .upload_box.error {
+    border-color: #DF0B17;
+}
+
+.music_upload_modal .upload_btn {
+    margin: 17px auto 37px;
+}
+
+.music_upload_modal .upload_btn label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 230px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.music_upload_modal .upload_btn input {
+    display: none;
+}
+
+/* 업로드 후 */
+.music_upload_modal .file_list li {
+    display: flex;
+    align-items: baseline;
+    font-size: 16px;
+    word-break: break-all;
+}
+
+.music_upload_modal .file_list li+li {
+    margin-top: 6px;
+}
+
+.music_upload_modal .file_list .delete_btn {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-left: 12px;
+    vertical-align: middle;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url("/src/assets/images/icon/icon_delete.svg") no-repeat center / 100%;
+}
+
+.music_upload_modal .error_txt+.guide_list {
+    margin-top: 20px;
+}
+
+.music_upload_modal .guide_list {
+    margin-bottom: 20px;
+}
+
+.music_upload_modal [class*="basic_btn_"] {
+    height: 40px;
+}
+
+
+/* 판매금액결정 모달 */
+.price_setting_modal .content_wrap {
+    padding-bottom: 20px;
+}
+
+.price_setting_modal .file_list {
+    margin-bottom: 20px;
+}
+
+.price_setting_modal .file_list>li {
+    padding-bottom: 20px;
+}
+
+.price_setting_modal .file_list>li+li {
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+}
+
+.price_setting_modal .file_list .input_area {
+    display: flex;
+}
+
+.price_setting_modal .input_wrap {
+    flex: 1;
+    border-color: #ddd;
+}
+
+.price_setting_modal .select_box_wrap {
+    width: 81px;
+    margin-left: 10px;
+}
+
+.price_setting_modal .select_box_wrap li {
+    padding: 10px 16px;
+}
+
+.price_setting_modal .select_box_wrap>button:after {
+    right: 10px;
+}
+
+.price_setting_modal .modal_box .file_name {
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 16px;
+    color: #666;
+}
+
+.price_setting_modal .modal_box .file_name span {
+    text-decoration: underline;
+    font-size: 16px;
+    word-break: break-all;
+}
+
+/* 정산 계좌정보 수정 모달 */
+.account_info_modal .content_wrap {
+    padding-bottom: 40px;
+}
+
+.account_info_modal .input_wrap {
+    border-color: #ddd;
+}
+
+.account_info_modal .input_area>li+li {
+    margin-top: 10px;
+}
+
+.account_info_modal .input_area .list {
+    display: flex;
+}
+
+.account_info_modal .input_area .list .input_wrap {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.account_info_modal .bank_select {
+    width: 144px;
+}
+
+.account_info_modal .tell_select {
+    width: 105px;
+}
+
+
+/* 정산계좌정보 수정 해외 */
+.account_info_modal {}
+
+.account_info_modal .paypal_icon {
+    width: 137px;
+    margin-bottom: 30px;
+}
+
+.account_info_modal .paypal_icon img {
+    height: auto;
+}
+
+.account_info_modal.paypal .input_area>li+li {
+    margin-top: 20px;
+}
+
+.account_info_modal .radio_wrap {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.account_info_modal .radio_box+.radio_box {
+    margin-left: 20px;
+}
+
+.account_info_modal p.sub_title {
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+.account_info_modal .name_info {
+    padding: 16px;
+    margin-top: 35px;
+    background: rgba(19, 154, 214, 0.09);
+}
+
+.account_info_modal .name_info .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.account_info_modal .name_info .top p {
+    font-weight: 500;
+}
+
+.account_info_modal .name_info p {
+    text-align: left;
+    color: #000;
+}
+
+.account_info_modal .name_info .user_name,
+.account_info_modal .name_info input {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.account_info_modal .name_info input {
+    width: 100%;
+    background: transparent;
+}
+
+.account_info_modal .edit_btn {
+    font-weight: 500;
+    color: #139AD6;
+}
+
+
+/* 쿠폰 선택 모달 */
+.coupon_select_modal .title {
+    margin-bottom: 0;
+}
+
+.coupon_select_modal .content_wrap li {
+    display: flex;
+    align-items: center;
+    padding: 15.5px 10px;
+}
+
+.coupon_select_modal .content_wrap li+li {
+    border-top: 1px solid #acacac;
+}
+
+.coupon_select_modal .content_wrap li:nth-child(even) {
+    background: #F2F2F2;
+}
+
+.coupon_select_modal .list div {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.coupon_select_modal .name {
+    width: 30%;
+    padding-right: 5px;
+}
+
+.coupon_select_modal .type {
+    width: 17%;
+}
+
+.coupon_select_modal .sale_num {
+    width: 30%;
+    font-weight: 600;
+}
+
+.coupon_select_modal .sale_num span {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #858585;
+}
+
+.coupon_select_modal .list .date {
+    width: 23%;
+    text-align: right;
+    font-size: 13px;
+    color: #ACACAC;
+}
+
+.coupon_select_modal .no_content {
+    padding: 60px 0;
+    border-bottom: 1px solid #222222;
+}
+
+.coupon_select_modal .button_wrap {
+    margin-top: 60px;
+}
+
+/* 팝업용 모달 */
+.popup_modal .modal_box_wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 450px;
+    transform: translate(-50%, -50%);
+}
+
+.popup_modal.modal_wrap .modal_box {
+    width: unset;
+    position: initial;
+    transform: unset;
+}
+
+.popup_modal .check_area {
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transform: translateY(100%);
+    color: #fff;
+}
+
+.popup_modal .close_btn {
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    flex-shrink: 0;
+    font-weight: 700;
+    transform: translateY(100%);
+    color: #fff;
+}
+
+.popup_modal .check_box .check_box_text {
+    color: #fff;
+}
+
+.popup_modal .check_box>input:checked+label .check_box_text {
+    color: #fff;
 }
 
 /* =========================== 테블릿 =========================== */
@@ -1366,6 +1787,9 @@
         font-size: calc(100vw * (14 / 1300));
     }
 
+    .big_modal .text_area table *{
+        font-size: calc(100vw * (12 / 1300));
+    }
     .big_modal .text_area::-webkit-scrollbar,
     .declaration_modal .content_box.target .user_text::-webkit-scrollbar,
     .modal_box::-webkit-scrollbar {
@@ -1421,7 +1845,7 @@
     }
 
     .declaration_modal .content_box.target .user_text {
-        height: calc(100vw * (150 / 1300));
+        min-height: calc(100vw * (110 / 1300));
         padding-bottom: calc(100vw * (10 / 1300));
         font-size: calc(100vw * (16 / 1300));
         margin-top: calc(100vw * (10 / 1300));
@@ -1901,14 +2325,10 @@
     }
 
     .delete_account_fail .button_wrap {
-        margin-top: calc(100vw * (81 / 1300));
+        margin-top: calc(100vw * (30 / 1300));
     }
 
     /* 회원탈퇴 모달 */
-    .delete_account_modal .modal_box {
-        padding-top: calc(100vw * (61 / 1300));
-    }
-
     .delete_account_modal ul {
         margin: calc(100vw * (42 / 1300)) 0 calc(100vw * (53 / 1300));
     }
@@ -1938,6 +2358,216 @@
     .delete_account_modal .line_btn {
         margin-top: calc(100vw * (20 / 1300));
     }
+
+    /* ======================= 4차 개발 추가 작업 ======================== */
+    .form_modal .modal_box {
+        width: calc(100vw * (650 / 1300));
+        padding: calc(100vw * (40 / 1300));
+    }
+
+    .form_modal .title {
+        padding-bottom: calc(100vw * (20 / 1300));
+    }
+
+    .form_modal .guide_list {
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    .form_modal .modal_box .guide_txt {
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    /* 음원 등록하기 모달창 */
+    .music_upload_modal .content_wrap {
+        padding-bottom: calc(100vw * (20 / 1300));
+        margin-bottom: calc(100vw * (20 / 1300));
+    }
+
+    /* 업로드전 */
+    .music_upload_modal .upload_box {
+        height: calc(100vw * (150 / 1300));
+        padding: calc(100vw * (13 / 1300)) calc(100vw * (20 / 1300));
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+    .music_upload_modal .upload_btn {
+        margin: calc(100vw * (17 / 1300)) auto calc(100vw * (37 / 1300));
+    }
+
+    .music_upload_modal .upload_btn label {
+        width: calc(100vw * (230 / 1300));
+        height: calc(100vw * (40 / 1300));
+    }
+
+    /* 업로드 후 */
+    .music_upload_modal .file_list li {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .music_upload_modal .file_list li+li {
+        margin-top: calc(100vw * (6 / 1300));
+    }
+
+    .music_upload_modal .file_list .delete_btn {
+        width: calc(100vw * (20 / 1300));
+        height: calc(100vw * (20 / 1300));
+        margin-left: calc(100vw * (12 / 1300));
+    }
+
+    .music_upload_modal .error_txt+.guide_list {
+        margin-top: calc(100vw * (20 / 1300));
+    }
+
+    .music_upload_modal .guide_list {
+        margin-bottom: calc(100vw * (20 / 1300));
+    }
+
+    .music_upload_modal [class*="basic_btn_"] {
+        height: calc(100vw * (40 / 1300));
+    }
+
+
+    /* 판매금액결정 모달 */
+    .price_setting_modal .content_wrap {
+        padding-bottom: calc(100vw * (20 / 1300));
+    }
+
+    .price_setting_modal .file_list {
+        margin-bottom: calc(100vw * (20 / 1300));
+    }
+
+    .price_setting_modal .file_list>li {
+        padding-bottom: calc(100vw * (20 / 1300));
+    }
+
+    .price_setting_modal .file_list>li+li {
+        padding-top: calc(100vw * (20 / 1300));
+    }
+
+    .price_setting_modal .select_box_wrap {
+        width: calc(100vw * (81 / 1300));
+        margin-left: calc(100vw * (10 / 1300));
+    }
+
+    .price_setting_modal .select_box_wrap li {
+        padding: calc(100vw * (10 / 1300)) calc(100vw * (16 / 1300));
+    }
+
+    .price_setting_modal .select_box_wrap>button:after {
+        right: calc(100vw * (10 / 1300));
+    }
+
+    .price_setting_modal .modal_box .file_name {
+        margin-bottom: calc(100vw * (10 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .price_setting_modal .modal_box .file_name span {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    /* 정산 계좌정보 수정 모달 */
+    .account_info_modal .content_wrap {
+        padding-bottom: calc(100vw * (40 / 1300));
+    }
+
+    .account_info_modal .input_area>li+li {
+        margin-top: calc(100vw * (10 / 1300));
+    }
+
+    .account_info_modal .input_area .list .input_wrap {
+        margin-left: calc(100vw * (10 / 1300));
+    }
+
+    .account_info_modal .bank_select {
+        width: calc(100vw * (144 / 1300));
+    }
+
+    .account_info_modal .tell_select {
+        width: calc(100vw * (105 / 1300));
+    }
+
+
+    /* 정산계좌정보 수정 해외 */
+    .account_info_modal .paypal_icon {
+        width: calc(100vw * (137 / 1300));
+        margin-bottom: calc(100vw * (30 / 1300));
+    }
+
+    .account_info_modal.paypal .input_area>li+li {
+        margin-top: calc(100vw * (20 / 1300));
+    }
+
+    .account_info_modal .radio_wrap {
+        margin-bottom: calc(100vw * (10 / 1300));
+    }
+
+    .account_info_modal .radio_box+.radio_box {
+        margin-left: calc(100vw * (20 / 1300));
+    }
+
+    .account_info_modal p.sub_title {
+        margin-bottom: calc(100vw * (10 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .account_info_modal .name_info {
+        padding: calc(100vw * (16 / 1300));
+        margin-top: calc(100vw * (35 / 1300));
+    }
+
+    .account_info_modal .name_info .top {
+        margin-bottom: calc(100vw * (20 / 1300));
+    }
+
+    .account_info_modal .name_info .user_name,
+    .account_info_modal .name_info input {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    /* 쿠폰 선택 모달 */
+    .coupon_select_modal .content_wrap li {
+        padding: calc(100vw * (15.5 / 1300)) calc(100vw * (10 / 1300));
+    }
+
+    .coupon_select_modal .list div {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
+    .coupon_select_modal .name {
+        padding-right: calc(100vw * (5 / 1300));
+    }
+
+    .coupon_select_modal .sale_num span {
+        margin-top: calc(100vw * (4 / 1300));
+        font-size: calc(100vw * (13 / 1300));
+    }
+
+    .coupon_select_modal .list .date {
+        font-size: calc(100vw * (13 / 1300));
+    }
+
+    .coupon_select_modal .no_content {
+        padding: calc(100vw * (60 / 1300)) 0;
+    }
+
+    .coupon_select_modal .button_wrap {
+        margin-top: calc(100vw * (60 / 1300));
+    }
+
+    /* 팝업용 모달 */
+    .popup_modal .modal_box_wrap {
+        min-width: calc(100vw * (450 / 1300));
+    }
+
+    .popup_modal .check_area {
+        bottom: calc(100vw * (-10 / 1300));
+    }
+
+    .popup_modal .close_btn {
+        bottom: calc(100vw * (-10 / 1300));
+    }
+
 }
 
 
@@ -1946,7 +2576,6 @@
 
 /* =============================== 모바일 =============================== */
 @media screen and (max-width: 768px) {
-
     .pc_layout {
         display: none;
     }
@@ -1954,10 +2583,15 @@
     /* 모달 css-------------------------------------------------- */
     .modal_wrap .modal_box {
         width: calc(100vw* (396/428));
+        max-height: 76vh;
+        padding: calc(100vw* (35/428)) calc(100vw* (20/428)) calc(100vw* (40/428));
     }
 
-    .modal_wrap .modal_box {
-        padding: calc(100vw* (35/428)) calc(100vw* (20/428)) calc(100vw* (40/428));
+
+    @supports (-webkit-touch-callout: none) {
+        .modal_wrap .modal_box {
+            top: 47%;
+        }
     }
 
     .modal_box .title {
@@ -2078,6 +2712,10 @@
         font-size: calc(100vw* (14/428));
     }
 
+    .big_modal .text_area table *{
+        font-size: calc(100vw * (12 / 428));
+    }
+
     .big_modal .text_area::-webkit-scrollbar,
     .declaration_modal .content_box.target .user_text::-webkit-scrollbar {
         width: calc(100vw* (10/428));
@@ -2134,7 +2772,7 @@
     }
 
     .declaration_modal .content_box.target .user_text {
-        height: calc(100vw* (140/428));
+        min-height: calc(100vw* (100/428));
         padding-bottom: calc(100vw* (10/428));
         font-size: calc(100vw* (16/428));
         margin-top: calc(100vw* (10/428));
@@ -2152,10 +2790,10 @@
         height: calc(100vw* (200/428));
         margin-top: calc(100vw* (20/428));
         font-size: calc(100vw* (13/428));
-        padding: calc(100vw* (20/428));
+        padding: calc(100vw* (20/428)) calc(100vw* (16/428));
     }
 
-    .declaration_modal .close_btn {
+    .declaration_modal .confirm_btn {
         height: calc(100vw* (45/428));
         margin-top: calc(100vw* (40/428));
     }
@@ -2639,14 +3277,10 @@
     }
 
     .delete_account_fail .button_wrap {
-        margin-top: calc(100vw * (61 / 428));
+        margin-top: calc(100vw * (32 / 428));
     }
 
     /* 회원탈퇴 모달 */
-    .delete_account_modal .modal_box {
-        padding-top: calc(100vw * (61 / 428));
-    }
-
     .delete_account_modal ul {
         margin: calc(100vw * (42 / 428)) 0 calc(100vw * (39 / 428));
     }
@@ -2676,65 +3310,252 @@
     .delete_account_modal .line_btn {
         margin-top: calc(100vw * (20 / 428));
     }
-}
 
-/* 팝업용 모달 */
-.popup_modal .modal_box_wrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 450px;
-    transform: translate(-50%, -50%);
-}
 
-.popup_modal .modal_box {
-    position: initial;
-    transform: unset;
-}
 
-.popup_modal .check_area {
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    transform: translateY(100%);
-    color: #fff;
-}
+    /* ======================= 4차 개발 추가 작업 ======================== */
 
-.popup_modal .close_btn {
-    position: absolute;
-    bottom: -10px;
-    right: 0;
-    flex-shrink: 0;
-    font-weight: 700;
-    transform: translateY(100%);
-    color: #fff;
-}
-
-.popup_modal .check_box .check_box_text {
-    color: #fff;
-}
-
-.popup_modal .check_box>input:checked+label .check_box_text {
-    color: #fff;
-}
-
-@media screen and (max-width: 1300px) {
-
-    /* 팝업용 모달 */
-    .popup_modal .modal_box_wrap {
-        min-width: calc(100vw * (450 / 1300));
+    .form_modal .modal_box {
+        width: calc(100vw * (396 / 428));
+        padding: calc(100vw * (62 / 428)) calc(100vw * (16 / 428));
     }
 
-    .popup_modal .check_area {
-        bottom: calc(100vw * (-10 / 1300));
+    .form_modal .title {
+        padding-bottom: calc(100vw * (20 / 428));
     }
 
-    .popup_modal .close_btn {
-        bottom: calc(100vw * (-10 / 1300));
+    .form_modal .guide_list {
+        margin-top: calc(100vw * (10 / 428));
     }
-}
 
-@media all and (max-width: 768px) {
+    .form_modal .modal_box .guide_txt {
+        margin-top: calc(100vw * (10 / 428));
+    }
+
+    /* 음원 등록하기 모달창 */
+    .music_upload_modal .content_wrap {
+        padding-bottom: calc(100vw * (20 / 428));
+        margin-bottom: calc(100vw * (20 / 428));
+    }
+
+    /* 업로드전 */
+    .music_upload_modal .upload_box {
+        height: calc(100vw * (150 / 428));
+        padding: calc(100vw * (15 / 428)) calc(100vw * (20 / 428));
+        margin-bottom: calc(100vw * (10 / 428));
+    }
+
+    .music_upload_modal .upload_btn {
+        margin: calc(100vw * (17 / 428)) auto calc(100vw * (37 / 428));
+    }
+
+    .music_upload_modal .upload_btn label {
+        width: calc(100vw * (230 / 428));
+        height: calc(100vw * (40 / 428));
+    }
+
+    /* 업로드 후 */
+    .music_upload_modal .file_list li {
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    .music_upload_modal .file_list li+li {
+        margin-top: calc(100vw * (6 / 428));
+    }
+
+    .music_upload_modal .file_list .delete_btn {
+        width: calc(100vw * (20 / 428));
+        height: calc(100vw * (20 / 428));
+        margin-left: calc(100vw * (12 / 428));
+    }
+
+    .music_upload_modal .error_txt+.guide_list {
+        margin-top: calc(100vw * (20 / 428));
+    }
+
+    .music_upload_modal .guide_list {
+        margin-bottom: calc(100vw * (20 / 428));
+    }
+
+    .music_upload_modal [class*="basic_btn_"] {
+        height: calc(100vw * (40 / 428));
+    }
+
+
+    /* 판매금액결정 모달 */
+    .price_setting_modal .content_wrap {
+        padding-bottom: calc(100vw * (20 / 428));
+    }
+
+    .price_setting_modal .file_list {
+        margin-bottom: calc(100vw * (20 / 428));
+    }
+
+    .price_setting_modal .file_list>li {
+        padding-bottom: calc(100vw * (20 / 428));
+    }
+
+    .price_setting_modal .file_list>li+li {
+        padding-top: calc(100vw * (20 / 428));
+    }
+
+    .price_setting_modal .select_box_wrap {
+        width: calc(100vw * (81 / 428));
+        margin-left: calc(100vw * (10 / 428));
+    }
+
+    .price_setting_modal .select_box_wrap li {
+        padding: calc(100vw * (10 / 428)) calc(100vw * (16 / 428));
+    }
+
+    .price_setting_modal .select_box_wrap>button:after {
+        right: calc(100vw * (10 / 428));
+    }
+
+    .price_setting_modal .modal_box .file_name {
+        margin-bottom: calc(100vw * (10 / 428));
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    .price_setting_modal .modal_box .file_name span {
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    /* 정산 계좌정보 수정 모달 */
+    .account_info_modal .content_wrap {
+        padding-bottom: calc(100vw * (20 / 428));
+    }
+
+    .account_info_modal .input_area .list {
+        flex-wrap: wrap;
+    }
+
+    .account_info_modal .input_area .list:nth-child(3) {
+        flex-wrap: nowrap;
+    }
+
+    .account_info_modal .input_area>li+li {
+        margin-top: calc(100vw * (10 / 428));
+    }
+
+    .account_info_modal .input_area .list .bank_select+.input_wrap {
+        margin-top: calc(100vw * (10 / 428));
+        margin-left: 0;
+    }
+
+    .account_info_modal .input_area .list .tell_select+.input_wrap {
+        margin-top: 0;
+        margin-left: calc(100vw * (10 / 428));
+    }
+
+    .radio_box .radio_box_text {
+        font-weight: 500;
+        color: #000
+    }
+
+    .account_info_modal .bank_select {
+        width: 100%
+    }
+
+    .account_info_modal .tell_select {
+        width: calc(100vw * (105 / 428));
+    }
+
+
+    /* 정산계좌정보 수정 해외 */
+    .account_info_modal .paypal_icon {
+        width: calc(100vw * (137 / 428));
+        margin-bottom: calc(100vw * (30 / 428));
+    }
+
+    .account_info_modal.paypal .input_area>li+li {
+        margin-top: calc(100vw * (20 / 428));
+    }
+
+    .account_info_modal .radio_wrap {
+        margin-bottom: calc(100vw * (10 / 428));
+    }
+
+    .account_info_modal .radio_box+.radio_box {
+        margin-left: calc(100vw * (20 / 428));
+    }
+
+    .account_info_modal p.sub_title {
+        margin-bottom: calc(100vw * (10 / 428));
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    .account_info_modal .name_info {
+        padding: calc(100vw * (16 / 428));
+        margin-top: calc(100vw * (35 / 428));
+    }
+
+    .account_info_modal .name_info .top {
+        margin-bottom: calc(100vw * (20 / 428));
+    }
+
+    .account_info_modal .name_info .user_name,
+    .account_info_modal .name_info input {
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    /* 쿠폰 선택 모달 */
+    .coupon_select_modal .title {
+        margin-bottom: 0;
+        padding-bottom: calc(100vw * (10 / 428));
+    }
+
+    .coupon_select_modal .content_wrap li {
+        position: relative;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: calc(100vw * (37 / 428)) calc(100vw * (10 / 428)) calc(100vw * (20 / 428));
+    }
+
+    .coupon_select_modal .list div {
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    .coupon_select_modal .type {
+        position: absolute;
+        top: calc(100vw * (20 / 428));
+        width: auto;
+    }
+
+    .coupon_select_modal .name {
+        width: 60%;
+        line-height: 1.2;
+        padding: calc(100vw * (5 / 428)) calc(100vw * (5 / 428)) calc(100vw * (5 / 428)) 0;
+    }
+
+    .coupon_select_modal .sale_num {
+        width: 38%;
+    }
+
+    .coupon_select_modal .sale_num span {
+        margin-top: calc(100vw * (10 / 428));
+        line-height: 1.2;
+        word-break: break-all;
+        font-size: calc(100vw * (13 / 428));
+    }
+
+    .coupon_select_modal .list .date {
+        width: 100%;
+        font-size: calc(100vw * (13 / 428));
+        text-align: left;
+    }
+
+    .coupon_select_modal .no_content {
+        padding: calc(100vw * (103 / 428)) 0;
+    }
+
+    .coupon_select_modal .no_content p {
+        color: #ACACAC;
+    }
+
+    .coupon_select_modal .button_wrap {
+        margin-top: calc(100vw * (40 / 428));
+    }
 
     /* 팝업용 모달 */
     .popup_modal .modal_box_wrap {
