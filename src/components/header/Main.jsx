@@ -190,7 +190,6 @@ function Main() {
                         </div>
                         <div className="language_wrap">
                             <button className="language_btn">
-                                {display_lang}
                             </button>
                             <ul className="language_list">
                                 {langList}
@@ -259,7 +258,6 @@ function Main() {
                     <div className="top_area">
                         <div className="language_wrap">
                             <button className="language_btn">
-                                Language
                             </button>
                             <ul className="language_list">
                                 {langList}

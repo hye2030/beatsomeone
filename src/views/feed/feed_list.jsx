@@ -420,7 +420,7 @@ function Main() {
                                 )}
                             )}
                             {feedList.length === 0 ? 
-                                <li className="list_item" style={{textAlign:"center"}}>등록된 피드가 없습니다.</li>
+                                <li className="list_item empty_con">등록된 피드가 없습니다.</li>
                             : null}
                         </ul>
                         
