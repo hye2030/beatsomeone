@@ -6,6 +6,7 @@ import MainVideoUrl from "@/assets/video/[BS_MA_01] main video.mp4";
 import "@/assets/css/components/main.css";
 import TopBanner from "../components/body/topbanner";
 import MainPopup from '../components/body/mainpopup';
+import MainFeed from "../components/body/mainfeed"
 
 function Main() {
     const navigate = useNavigate();
@@ -312,57 +313,8 @@ function Main() {
                     {/* <!-- 피씨 및 테블릿 --> */}
                     <ul className="content">
                         {/* <!-- 자작곡 - self, 커버곡 - cover, 일상 - daily --> */}
-                        <li className="list_item self">
-                            <div className="img_wrap">
-                                <div className="img">
-                                    <img src="/assets/images/dummy/main_feed_01.jpeg" alt="이미지" />
-                                </div>
-                                <div className="text_box">
-                                    <div className="text_wrap">
-                                        <ul>
-                                            <li className="like">
-                                                <button className="like_toggle_btn white">
-                                                    <span>9,999</span>
-                                                </button>
-                                            </li>
-
-                                            <li className="comment">
-                                                <div className="profile_wrap">
-                                                    <ul>
-                                                        <li>
-                                                            <img src="/assets/images/dummy/profile_01.jpg" alt="프로필 이미지1" />
-                                                        </li>
-                                                        <li>
-                                                            <img src="/assets/images/dummy/profile_02.jpg" alt="프로필 이미지1" />
-                                                        </li>
-                                                        <li>
-                                                            <img src="/assets/images/dummy/profile_03.jpg" alt="프로필 이미지1" />
-                                                        </li>
-                                                    </ul>
-
-                                                    <span>99+</span>
-                                                </div>
-                                                <div className="nick_name">
-                                                    <div className="profile_img">
-                                                        <img src="/assets/images/dummy/profile_04.jpg" alt=""/>
-                                                    </div>
-                                                    <p>
-                                                        닉네임
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="list_text">
-                                제가 1등인가요?
-                                저는 트랙과 탑라인을 함께 작업하고 있으며 서울 지역에서 활동하고있습니다.
-                                잘 부탁드려요.
-                            </div>
-                        </li>
-                        <li className="list_item cover">
+                        <MainFeed />
+                        {/* <li className="list_item cover">
                             <div className="img_wrap">
                                 <div className="img">
                                     <img src="/assets/images/dummy/main_feed_02.png" alt="이미지" />
@@ -926,7 +878,7 @@ function Main() {
                                 이번에 기타랑 보컬 녹음하고 왔는데
                                 기사님이 굉장히 친절하게 잘해주시네요
                             </div>
-                        </li>
+                        </li> */}
                     </ul>
                     <button type="button" className="more_btn" onClick={() =>{navigate("/feed/feed_list")}}>
                         MORE
