@@ -242,9 +242,63 @@ function Main() {
             });
         }
     }
+
+    /**피드 탭, 피드 소팅 현상 유지 */
+    let store_feed = "";
+    if(sessionStorage.getItem("sorting") != null){
+        store_feed += "sort";
+    }
+    if(sessionStorage.getItem("feedType") != null){
+        store_feed += "type";
+    }
+
+    if(store_feed == "sort"){
+        useEffect(() => {
+            setFeedsorting(sessionStorage.getItem("sorting"));
+            if(sessionStorage.getItem("sorting") == 1){
+                document.getElementById("feed_sort").textContent = "최신순";
+            }else if(sessionStorage.getItem("sorting") == 2){
+                document.getElementById("feed_sort").textContent = "비트 많은 순";
+            }else if(sessionStorage.getItem("sorting") == 3){
+                document.getElementById("feed_sort").textContent = "댓글 많은 순";
+            }
+        }, []);   
+    }else if(store_feed == "type"){
+        useEffect(() => {
+            setFeedType(sessionStorage.getItem("feedType"));
+            if(sessionStorage.getItem("feedType") == ""){
+                setMenu([true,false,false,false]);
+            }else if(sessionStorage.getItem("feedType") == "daily"){
+                setMenu([false,false,false,true]);
+            }
+        }, []); 
+    }else{
+        useEffect(() => {
+            setFeedsorting(sessionStorage.getItem("sorting"));
+            setFeedType(sessionStorage.getItem("feedType"));
+
+            if(sessionStorage.getItem("sorting") == 1){
+                document.getElementById("feed_sort").textContent = "최신순";
+            }else if(sessionStorage.getItem("sorting") == 2){
+                document.getElementById("feed_sort").textContent = "비트 많은 순";
+            }else if(sessionStorage.getItem("sorting") == 3){
+                document.getElementById("feed_sort").textContent = "댓글 많은 순";
+            }
+
+            if(sessionStorage.getItem("feedType") == ""){
+                setMenu([true,false,false,false]);
+            }else if(sessionStorage.getItem("feedType") == "daily"){
+                setMenu([false,false,false,true]);
+            }
+        }, []); 
+    }
     
+    /**테스트값 확인용 */
     const aa = () => {
-        console.log(type);
+        console.log(document.getElementById('aa').duration);
+        const videoTime = parseInt(document.getElementById('aa').duration);
+        const m = Math.floor(videoTime / 60) + ":" + (videoTime % 60);  // 남은 시간 계산
+        console.log(m);
     }
     
 
@@ -275,10 +329,10 @@ function Main() {
 
                         <ul className="tab_area">
                             {/* <li className="tab active">전체</li> */}
-                            <li className={menu[0]?"tab active" : "tab"} onClick={() => {setMenu([true,false,false,false]);}}>전체</li>
+                            <li className={menu[0]?"tab active" : "tab"} onClick={() => {setMenu([true,false,false,false]);sessionStorage.setItem("feedType", "")}}>전체</li>
                             {/* <li className={menu[1]?"tab active" : "tab"} onClick={() => {setMenu([false,true,false,false]);}}>자작곡</li>
                             <li className={menu[2]?"tab active" : "tab"} onClick={() => {setMenu([false,false,true,false]);}}>커버곡</li> */}
-                            <li className={menu[3]?"tab active" : "tab"} onClick={() => {setMenu([false,false,false,true]);}}>일상</li>
+                            <li className={menu[3]?"tab active" : "tab"} onClick={() => {setMenu([false,false,false,true]);sessionStorage.setItem("feedType", "daily")}}>일상</li>
                         </ul>
                     </div>
                 </section>
@@ -299,9 +353,9 @@ function Main() {
                                 {/* <!-- 1. 선택되었을때 button에 active 클래스 추가 -->
                                 <!-- <button className="active">선택</button> --> */}
                                 <ul>
-                                    <li className="select_list" onClick={() => {setFeedsorting(1);setFeedList([]);setPage(1)}}>최신순</li>
-                                    <li className="select_list" onClick={() => {setFeedsorting(2);setFeedList([]);setPage(1)}}>비트 많은 순</li>
-                                    <li className="select_list" onClick={() => {setFeedsorting(3);setFeedList([]);setPage(1)}}>댓글 많은 순</li>
+                                    <li className="select_list" onClick={() => {setFeedsorting(1);setFeedList([]);setPage(1);sessionStorage.setItem("sorting", 1);}}>최신순</li>
+                                    <li className="select_list" onClick={() => {setFeedsorting(2);setFeedList([]);setPage(1);sessionStorage.setItem("sorting", 2);}}>비트 많은 순</li>
+                                    <li className="select_list" onClick={() => {setFeedsorting(3);setFeedList([]);setPage(1);sessionStorage.setItem("sorting", 3);}}>댓글 많은 순</li>
                                 </ul>
                             </div>
 

@@ -1,5 +1,5 @@
 import { useNavigate, Link } from 'react-router-dom';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from 'axios';
 
 import MainVideoUrl from "@/assets/video/[BS_MA_01] main video.mp4";
@@ -23,19 +23,80 @@ function Main() {
     }, []);
 
     //진행중인 의뢰
-    // const [reqing, setReqing] = useState(1);
-    // let cnt = 1;
-    // useEffect(() => {
-    //     setInterval(() => {
-    //         if(cnt == 1){
-    //             setReqing(2);
-    //             cnt = 2;
-    //         }else{
-    //             setReqing(1);
-    //             cnt = 1;
-    //         }
-    //     }, 3000);
-    // }, []);
+    const [reqing, setReqing] = useState(1);
+    let cnt = 1;
+
+    const notice = [
+        {
+            no: 1,
+            title: 'MR 제작 부탁드립니다',
+            price: '50,000원'
+        },
+        {
+            no: 2,
+            title: '남자 발라드 보컬 가이드 작업',
+            price: '150,000원'
+        },
+        {
+            no: 3,
+            title: '유튜브에 사용할 BGM 제작 요청',
+            price: '30,000원'
+        },
+        {
+            no: 4,
+            title: 'K-POP 걸그룹 보컬 가이드',
+            price: '200,000원'
+        },
+        {
+            no: 5,
+            title: '커버용 MR 제작',
+            price: '30,000원'
+        },
+        {
+            no: 6,
+            title: '저작권 프리 BGM 제작 의뢰합니다.',
+            price: '50,000원'
+        },
+        {
+            no: 7,
+            title: '광고용 트랩 비트 구합니다',
+            price: '300,000원'
+        },
+        {
+            no: 8,
+            title: '커버용 MR 제작 요청',
+            price: '40,000원'
+        },
+        {
+            no: 9,
+            title: '피아노 연주곡 제작',
+            price: '70,000원'
+        },
+        {
+            no: 10,
+            title: '교육용 연주곡 제작 의뢰',
+            price: '50,000원'
+        }
+    ]
+
+    const [idx, setIdx] = useState(0)
+    const idxRef = useRef(0)
+    useEffect(() => {
+        // setInterval(() => {
+        //     if(cnt == 1){
+        //         setReqing(2);
+        //         cnt = 2;
+        //     }else{
+        //         setReqing(1);
+        //         cnt = 1;
+        //     }
+        // }, 3000);
+        setInterval(() => {
+            idxRef.current = (idxRef.current + 5) % notice.length 
+            setIdx(idxRef.current)
+            console.log(idxRef)
+        }, 2000)
+    }, [notice.length]);
 
     //상단 배너
     const [banners, setbanners] = useState([]);
@@ -1416,98 +1477,23 @@ function Main() {
                                 <a href="#" onClick={() => { return false; }}>진행 중 의뢰</a>
                             </h3>
                         </div>
-                        <div className="swiper-container" style={{height : '280px', overflow : 'hidden'}}>
-                            <div className="swiper-wrapper">
-                                <div className='swiper-slide'>
-                                    <ul className="depth">
-                                        <li className="list">
-                                            <span className="text">
-                                                MR 제작 부탁드립니다
-                                            </span>
-                                            <span className="num">
-                                                50,000원
-                                            </span>
-                                        </li>
-                                        <li className="list">
-                                            <span className="text">
-                                                남자 발라드 보컬 가이드 작업
-                                            </span>
-                                            <span className="num">
-                                                150,000원
-                                            </span>
-                                        </li>
-                                        <li className="list">
-                                            <span className="text">
-                                                유튜브에 사용할 BGM 제작 요청
-                                            </span>
-                                            <span className="num">
-                                                30,000원
-                                            </span>
-                                        </li>
-                                        <li className="list">
-                                            <span className="text">
-                                                K-POP 걸그룹 보컬 가이드
-                                            </span>
-                                            <span className="num">
-                                                200,000원
-                                            </span>
-                                        </li>
-                                        <li className="list">
-                                            <span className="text">
-                                                커버용 MR 제작
-                                            </span>
-                                            <span className="num">
-                                                30,000원
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className='swiper-slide'>
-                                    <ul className="depth swiper-slide">
-                                        <li className="list">
-                                            <span className="text">
-                                                저작권 프리 BGM 제작 의뢰합니다.
-                                            </span>
-                                            <span className="num">
-                                                50,000원
-                                            </span>
-                                        </li>
-                                        <li className="list">
-                                            <span className="text">
-                                                광고용 트랩 비트 구합니다
-                                            </span>
-                                            <span className="num">
-                                                300,000원
-                                            </span>
-                                        </li>
-                                        <li className="list">
-                                            <span className="text">
-                                                커버용 MR 제작 요청
-                                            </span>
-                                            <span className="num">
-                                                40,000원
-                                            </span>
-                                        </li>
-                                        <li className="list">
-                                            <span className="text">
-                                                피아노 연주곡 제작
-                                            </span>
-                                            <span className="num">
-                                                70,000원
-                                            </span>
-                                        </li>
-                                        <li className="list">
-                                            <span className="text">
-                                                교육용 연주곡 제작 의뢰
-                                            </span>
-                                            <span className="num">
-                                                50,000원
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
+
+                        <ul className="depth slide_item" id='request_list1' style={{height:"280px", overflow:"hidden"}}>
+                            <div style={{ transform: `translateY(-${70 * idx}px)` }}>
+                            {notice.map((item, idx) => {
+                            return (
+                                <li className="list" key={idx}>
+                                    <span className="text">
+                                        {item['title']}
+                                    </span>
+                                    <span className="num">
+                                        {item['price']}
+                                    </span>
+                                </li>
+                                )
+                            })}
                             </div>
-                        </div>
+                        </ul>
                     </div>
 
                     <div className="survey_box">

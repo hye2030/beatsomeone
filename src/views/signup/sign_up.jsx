@@ -200,6 +200,9 @@ function Main() {
     }
     checkItems.sort();
 
+    /**국가선택 텍스트용 변수 */
+    const [nationTxt, setNationTxt] = useState("(필수) 국가선택");
+
     /**회원가입 버튼 */
     const ModalHandler = useSetRecoilState(isModal);
     const confirm_btn= () => {
@@ -229,13 +232,22 @@ function Main() {
             $("#name").focus();
             return false;
         }
-        if(name.length < 2){
-            document.getElementById("name_confirm_err").textContent="이름은 최소 2자 이상 입력해주세요.";
+        const regExp = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g; //한글
+        let name_length = 2;
+        if(regExp.test(name)){
+            name_length = 2;
+        }else{
+            name_length = 4;
+        }
+        
+        if(name.length < name_length){
+            document.getElementById("name_confirm_err").textContent="이름은 최소 "+name_length+"자 이상 입력해주세요.";
             $("#name").focus();
             return false;
         }else{
             document.getElementById("name_confirm_err").textContent="";
         }
+
         if(nickname == ""){
             document.getElementById("nickname_confirm_err").textContent="닉네임을 입력해주세요.";
             $("#nickname").focus();
@@ -483,13 +495,13 @@ function Main() {
                                     <p className="error_txt" id="phonenum_confirm_err">
                                     </p>
                                     <div className="select_box_wrap">
-                                        <button type="button" onClick={() => { document.getElementById("nation_alert").style.display = "none"; }} className="select_title">(필수)
-                                            국가선택</button>
+                                        <button type="button" onClick={() => { document.getElementById("nation_alert").style.display = "none"; }} className="select_title">{nationTxt}</button>
                                         <ul>
-                                            <li className="select_list" onClick={(e) => { setUserNation(""); setNationTel("국번"); }}>(필수) 국가선택</li>
+                                            <li className="select_list" onClick={(e) => { setUserNation(""); setNationTel("국번"); }}>(필수)
+                                            국가선택</li>
                                             {nation.map(nations => {
                                                 return (
-                                                    <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(nations.codeValue); setNationTel(nations.telNo); }}>{nations.codeName}</li>
+                                                    <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(nations.codeValue); setNationTel(nations.telNo); setNationTxt(nations.codeName) }}>{nations.codeName}</li>
                                                 )
                                             })}
                                         </ul>

@@ -13,6 +13,20 @@ $(document).ready(function(){
                 el: '.swiper-pagination',
             },
         });
+
+        // 진행중 의뢰
+        const requestMain = new Swiper('.request_box .swiper-container', {
+            loop:true,
+            direction: 'vertical',
+            effect: 'slide',
+            slidesPerView: 1,
+            autoHeight: true, //enable auto height
+            autoplay:{
+                delay: 3000,
+                reverseDirection: true,
+                disableOnInteraction: false,
+            }
+        });
         
         // 커버플로우 슬라이드
         const coverFlow = new Swiper( '.coverflow .swiper-container', {
