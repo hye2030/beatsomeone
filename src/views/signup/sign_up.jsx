@@ -479,21 +479,6 @@ function Main() {
                                 </div>
                                 {/* <!-- 휴대폰번호 --> */}
                                 <div className="input_box num">
-                                    <div className="num_wrap">
-                                        <div className="select_box_wrap">
-                                            <button type="button" onClick={() => { return false; }} className="select_title">{nationTel}</button>
-                                            <ul>
-                                                <li className="select_list">{nationTel}</li>
-                                                {/* <li className="select_list">옵션1</li>
-                                                <li className="select_list">옵션1</li> */}
-                                            </ul>
-                                        </div>
-                                        <div className="input_wrap phone_num">
-                                            <input type="text" id="phone_num" placeholder={UserNation == "KR" ? "(필수) 휴대폰 번호 입력" : "(선택) 휴대폰 번호 입력"} onChange={phonehandlePress} value={phone} />
-                                        </div>
-                                    </div>
-                                    <p className="error_txt" id="phonenum_confirm_err">
-                                    </p>
                                     <div className="select_box_wrap">
                                         <button type="button" onClick={() => { document.getElementById("nation_alert").style.display = "none"; }} className="select_title">{nationTxt}</button>
                                         <ul>
@@ -510,6 +495,22 @@ function Main() {
                                         </div>
                                     </div>
                                     <p className="error_txt" id="nation_confirm_err">
+                                    </p>
+
+                                    <div className="num_wrap">
+                                        <div className="select_box_wrap disabled">
+                                            <button type="button" onClick={() => { return false; }} className="select_title">{nationTel}</button>
+                                            <ul>
+                                                <li className="select_list">{nationTel}</li>
+                                                {/* <li className="select_list">옵션1</li>
+                                                <li className="select_list">옵션1</li> */}
+                                            </ul>
+                                        </div>
+                                        <div className="input_wrap phone_num">
+                                            <input type="text" id="phone_num" placeholder={UserNation == "KR" ? "(필수) 휴대폰 번호 입력" : "(선택) 휴대폰 번호 입력"} onChange={phonehandlePress} value={phone} />
+                                        </div>
+                                    </div>
+                                    <p className="error_txt" id="phonenum_confirm_err">
                                     </p>
                                     {
                                         (function() {

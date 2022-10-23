@@ -356,7 +356,7 @@ function Comment(idx) {
                         let comment_cnt = cntt.wr_comment;
                         let comment_profile = "";
                         if(cntt.wr_comment == 0){
-                            comment_profile = "<li><img src='/assets/images/icon/Message_circle.svg' alt='프로필 이미지1' /></li>";
+                            comment_profile = "<li><img src='/assets/images/icon/Message_circle.svg' alt='프로필 이미지1' style='filter: invert(22%);' /></li>";
                         }else if(cntt.wr_comment == 1){
                             comment_profile = "<li><img src='/assets/images/icon/icon_profile_default.svg' alt='프로필 이미지1' /></li>";
                         }else if(cntt.wr_comment == 2){

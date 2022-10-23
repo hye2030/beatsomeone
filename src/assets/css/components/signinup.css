@@ -344,16 +344,25 @@ input[type=text]::placeholder{
 .signUp_page .num_wrap {
     width: 100%;
     display: flex;
+    margin-top: 10px;
 }
 
-.signUp_page .input_box.num .select_box_wrap:first-child {
+.signUp_page .select_box_wrap.disabled button:after {
+    display: none;
+}
+
+.signUp_page .select_box_wrap.disabled button {
+    color: #ddd;
+}
+
+.signUp_page .num_wrap .select_box_wrap:first-child {
     width: 100px;
     height: 43px;
     margin-right: 10px;
 }
 
-.signUp_page .input_box.num .select_box_wrap:first-child button {
-    color: #111;
+.signUp_page .num_wrap .select_box_wrap:first-child button {
+    /* color: #111; */
     font-weight: 500;
 }
 
@@ -386,6 +395,10 @@ input[type=text]::placeholder{
 
 .signUp_page .input_box.num .chkNum_btn {
     margin-top: 10px;
+}
+
+.signUp_page .input_box.num .select_box_wrap {
+    width: 100%;
 }
 
 /* 동의 */
@@ -976,8 +989,12 @@ input[type=text]::placeholder{
     .signUp_page .input_box.num {
         margin-top: calc(100vw * (20 / 1300));
     }
+
+    .signUp_page .num_wrap {
+        margin-top: calc(100vw * (10 / 1300));
+    }
     
-    .signUp_page .input_box.num .select_box_wrap:first-child {
+    .signUp_page .num_wrap .select_box_wrap:first-child {
         width: calc(100vw * (100 / 1300));
         height: calc(100vw * (43 / 1300));
         margin-right: calc(100vw * (10 / 1300));
@@ -1371,8 +1388,12 @@ input[type=text]::placeholder{
     .signUp_page .input_box.num {
         margin-top: calc(100vw * (20 / 428));
     }
+
+    .signUp_page .num_wrap {
+        margin-top: calc(100vw * (10 / 428));
+    }
     
-    .signUp_page .input_box.num .select_box_wrap:first-child {
+    .signUp_page .num_wrap .select_box_wrap:first-child {
         width: calc(100vw * (100 / 428));
         height: calc(100vw * (43 / 428));
         margin-right: calc(100vw * (10 / 428));

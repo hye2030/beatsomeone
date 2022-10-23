@@ -585,6 +585,10 @@
     margin-bottom: 40px;
 }
 
+.password_modal .modal_box {
+    overflow: unset;
+}
+
 /* 버튼 */
 .route_modal .btn_wrap {
     width: 100%;

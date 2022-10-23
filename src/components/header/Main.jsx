@@ -162,6 +162,8 @@ function Main() {
             setMHeader("EVENT");
         }else if(location.pathname.includes("notice")){
             setMHeader("공지사항");
+        }else if(location.pathname.includes("signinup")){
+            setMHeader("회원가입");
         }
     }, [ location ])
 
