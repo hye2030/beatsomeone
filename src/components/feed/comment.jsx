@@ -134,6 +134,13 @@ function Comment(idx) {
         }
     }
 
+    const onEnterPress_child = (e, comment_idx, comment_idx2, cm_depth) => {
+        if(e.keyCode == 13 && e.shiftKey == false) {
+          e.preventDefault();
+          child_comment_write(comment_idx, comment_idx2, cm_depth)
+        }
+    }
+
     //댓글 페이징
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(1);
@@ -478,7 +485,7 @@ function Comment(idx) {
                                             </div>
                                             <div className="white_wrap" style={{height: ((textareaHeight + 1) * 38) + 'px'}} >
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요." value={undefined} onChange={checkItemChangeHandler}></textarea>
+                                                    placeholder="댓글을 입력해주세요." value={undefined} onChange={checkItemChangeHandler} style={{overflow:"hidden"}} onKeyDown={(e) => {onEnterPress_child(e, comment.idx, comment.idx, comment.cm_depth)}}></textarea>
                                                 <button type="button" onClick={() => {child_comment_write(comment.idx, comment.idx, comment.cm_depth)}}>작성</button>
                                             </div>
                                         </div>
@@ -532,7 +539,7 @@ function Comment(idx) {
                                             </div>
                                             <div className="white_wrap" style={{height: ((textareaHeight + 1) * 38) + 'px'}}>
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요." value={checkItemContent} onChange={checkItemChangeHandler}></textarea>
+                                                    placeholder="댓글을 입력해주세요." value={checkItemContent} onChange={checkItemChangeHandler} style={{overflow:"hidden"}}></textarea>
                                                 <button type="button" onClick={() => {child_comment_write(comment.cm_idx, comment.idx, comment.cm_depth)}}>작성</button>
                                             </div>
                                         </div>

@@ -292,6 +292,14 @@ function Main() {
             }
         }, []); 
     }
+
+    /**모바일 헤더용 */
+    if ($('.hamburger').hasClass('active')) {
+        $('.hamburger').removeClass('active');
+        $(".header_mb .side_menu").removeClass('active');
+        $(".header_mb .side_bg").fadeOut(500);
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+    }
     
     /**테스트값 확인용 */
     const aa = () => {

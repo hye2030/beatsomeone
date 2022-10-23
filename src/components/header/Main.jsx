@@ -157,7 +157,7 @@ function Main() {
     useEffect(() => {
         setNowLocation(location.pathname);
         if(location.pathname.includes("feed")){
-            setMHeader("피드 상세");
+            setMHeader("피드");
         }else if(location.pathname.includes("event")){
             setMHeader("EVENT");
         }else if(location.pathname.includes("notice")){

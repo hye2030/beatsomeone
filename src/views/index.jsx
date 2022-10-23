@@ -51,6 +51,14 @@ function Main() {
         });
     }, [localStorage.getItem("language")]);
 
+    /**모바일 헤더용 */
+    if ($('.hamburger').hasClass('active')) {
+        $('.hamburger').removeClass('active');
+        $(".header_mb .side_menu").removeClass('active');
+        $(".header_mb .side_bg").fadeOut(500);
+        $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
+    }
+
     return (
       <>
         {/* BEGIN: Page Layout */}
