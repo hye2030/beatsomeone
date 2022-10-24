@@ -48,7 +48,7 @@ function Main() {
                             <p className="list_title">{wr_title}</p>
                             <p className="date">{created_at}</p>
                         </div>
-                        <div className="content_box" dangerouslySetInnerHTML={ {__html: wr_content} }>
+                        <div className="content_box" style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}} dangerouslySetInnerHTML={ {__html: wr_content} }>
                         </div>
                     </div>
                     ))}
