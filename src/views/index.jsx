@@ -64,7 +64,7 @@ function Main() {
         {/* BEGIN: Page Layout */}
         <div id="wrap_content" className="main_page">
             <div className="top_deco"></div>
-            <section className="content_section">
+            <section className={banners.length > 0 ? 'content_section' :"content_section no_banner"}>
                 <div className="video_wrap">
                     <video playsInline autoPlay loop muted>
                         <source src={MainVideoUrl} type="video/mp4" />

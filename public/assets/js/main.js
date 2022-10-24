@@ -59,7 +59,7 @@ $(document).ready(function(){
         fadeFlow.controller.control = coverFlow;
 
         // 하단슬라이드
-        const swiperBottom = new Swiper('.bottom_section .swiper-container', {
+        const swiperBottom = new Swiper('.survey_box .swiper-container', {
             speed: 500,
             spaceBetween: 20,
             pagination: {

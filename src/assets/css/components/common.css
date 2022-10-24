@@ -1610,6 +1610,10 @@
   }
 
   /* 들은 사람 */
+  .list_item .img::before {
+    display: none;
+  }
+  
   .lesten_num::before {
     width: calc(100vw * (24/428));
     height: calc(100vw * (24/428));

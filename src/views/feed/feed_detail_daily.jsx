@@ -87,7 +87,7 @@ function Main() {
                                             <p className="mark_daily">일상</p>
                                         </div>
                                         
-                                        {extension == "mp4" ?
+                                        {(extension == "mp4") || (extension == "mov") ?
                                         <div className="content play_box vedio">
                                             <video preload="auto" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${cntt.file_url}${cntt.feed_source}`} controls controlsList="nodownload" style={{maxWidth : '740px'}}></video>
                                         </div>
@@ -107,7 +107,7 @@ function Main() {
                             const extension = getExtension(cntt.feed_source);
                                 return (
                                     <div key={cntt.file_no}>
-                                        {extension == "mp4" ?
+                                        {(extension == "mp4") || (extension == "mov") ?
                                         <div className="content content_img">
                                             <video preload="auto" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${cntt.file_url}${cntt.feed_source}`} controls controlsList="nodownload" style={{maxWidth : '740px'}}></video>
                                         </div>

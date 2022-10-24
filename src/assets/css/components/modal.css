@@ -2899,6 +2899,14 @@
         margin-right: calc(100vw* (20/428));
     }
 
+    .route_modal .signIn_btn.newly::after {
+        top: calc(100vw * (16 / 428));
+        left: calc(100vw * (24 / 428));
+        width: calc(100vw * (43 / 428));
+        height: calc(100vw * (42 / 428));
+        font-size: calc(100vw * (12 / 428));
+    }
+
     .route_modal .btn_area .signIn_btn:not(:last-child) {
         margin-bottom: calc(100vw* (10/428));
     }

@@ -199,7 +199,7 @@ function Main() {
             </div>
             {img.filter((el, id) => id == index).map((el, id) => (
             <div className="add_file_box" key={id}>
-                {subExtension[index] == "mp4" ?
+                {(subExtension[index] == "mp4") || (subExtension[index] == "mov") ?
                 <video preload="metadata" src={`${previewImg[index]}#t=0.5`}></video>
                 :
                 <div className="cover_img">
@@ -259,7 +259,7 @@ function Main() {
                     {fileImage && (
                     <div className="add_file_box">
                         <div className="cover_img">
-                            {mainExtension == "mp4" ?
+                            {(mainExtension == "mp4") || (mainExtension == "mov") ?
                             <video preload="metadata" src={`${fileImage}#t=0.5`}></video>
                             :
                             <img src={fileImage} alt="" />

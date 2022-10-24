@@ -224,7 +224,7 @@ function Main() {
             </div>
             {img.filter((el, id) => id == index).map((el, id) => (
             <div className="add_file_box" key={id}>
-                {subExtension[index] == "mp4" ?
+                {(subExtension[index] == "mp4") || (subExtension[index] == "mov") ?
                 <video preload="metadata" src={`${previewImg[index]}#t=0.5`}></video>
                 :
                 <div className="cover_img">
@@ -285,7 +285,7 @@ function Main() {
                     {fileImage && (
                     <div className="add_file_box">
                         <div className="cover_img">
-                            {mainExtension == "mp4" ?
+                            {(mainExtension == "mp4") || (mainExtension == "mov") ?
                             <video preload="metadata" src={`${fileImage}#t=0.5`}></video>
                             :
                             <img src={fileImage} alt="" />
@@ -320,7 +320,7 @@ function Main() {
                         <div className="add_content" style={{display: "block"}} key={edit.feed_source} id={edit.feed_source}>
                             <div className="add_file_box" >
                                 <div className="cover_img">
-                                    {extension == "mp4" ?
+                                    {(extension == "mp4") || (extension == "mov") ?
                                     <video preload="metadata" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${edit.file_url}${edit.feed_source}#t=0.5`}></video>
                                     :
                                     <img src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${edit.file_url}${edit.feed_source}`}/>

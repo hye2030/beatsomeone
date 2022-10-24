@@ -1187,6 +1187,14 @@
         padding-top: calc(100vw* (55/428));
     }
 
+    .main_page .content_section.no_banner {
+        height: calc(100vw* (590/428));
+    }
+
+    .main_page .content_section.no_banner .video_wrap {
+        height: calc(100vw* (590/428));
+    }
+
     /* 상단 슬라이드*/
     .main_page .content_section .top_area {
         display: flex;

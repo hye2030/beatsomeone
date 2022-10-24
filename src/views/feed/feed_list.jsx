@@ -423,7 +423,7 @@ function Main() {
                                     <div className="img_wrap">
                                         <Link to={`/feed/feed_detail_daily/${list.idx}`}>
                                             {/* <a> */}
-                                                {extension == "mp4" ?
+                                                {(extension == "mp4") || (extension == "mov") ?
                                                 <div className="img">
                                                     <video preload="metadata" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${list.file_url}${list.feed_source}#t=0.5`}></video>
                                                     <span className="play"></span>
@@ -448,18 +448,17 @@ function Main() {
                                             <div className="text_wrap">
                                                 <ul>
                                                     <li className="comment">
+                                                        <button className={`like_toggle_btn white ${like_active}`} onClick={(e) => {toggleLike(e, list.idx, list.wr_bit)}}>
+                                                            <span id={`bit_cnt_${list.idx}`}>{list.wr_bit}</span>
+                                                        </button>
+                                                    </li>
+                                                    <li className="like">
                                                         <div className="profile_wrap">
                                                             <ul dangerouslySetInnerHTML={ {__html: comment_profile} }>
                                                             </ul>
 
                                                             <span>{comment_cnt}</span>
                                                         </div>
-                                                    </li>
-
-                                                    <li className="like">
-                                                        <button className={`like_toggle_btn white ${like_active}`} onClick={(e) => {toggleLike(e, list.idx, list.wr_bit)}}>
-                                                            <span id={`bit_cnt_${list.idx}`}>{list.wr_bit}</span>
-                                                        </button>
                                                     </li>
 
                                                     { list.wr_type != "일상" ?

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 
 function MainFeed() {
+    const user = useSelector((state) => {return state.isLogin});
     const user_idx = useSelector((state) => {return state.idx});
     const [feedList, setFeedList] = useState([]);
     useEffect(() => {
@@ -26,6 +27,38 @@ function MainFeed() {
         var lastDot = fileName.lastIndexOf('.');
         var fileExtension = fileName.substring(lastDot+1, fileLength);
         return fileExtension;
+    }
+
+    //좋아요 기능
+    const toggleLike = (e, idx) => {
+        if(user === null || user === false){
+            return false;
+        }
+
+        let bit_cnt = parseInt(document.getElementById('bit_cnt_m_'+idx).textContent);
+        if(e.target.classList.contains("active")){
+            e.target.classList.remove("active");
+            document.getElementById('bit_cnt_m_'+idx).textContent = bit_cnt - 1;
+            axios.delete(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/beatDelete", {
+                params: {
+                    mem_id: user_idx,
+                    service_name: "feed",
+                    service_idx: idx
+                }
+            })
+            .then(function (response) {
+            });
+        }else{
+            e.target.classList.add("active");
+            document.getElementById('bit_cnt_m_'+idx).textContent = bit_cnt + 1;
+            axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/beatAdd", {
+                mem_id: user_idx,
+                service_name: "feed",
+                service_idx: idx
+            })
+            .then(function (response) {
+            });
+        }
     }
 
     return (
@@ -73,7 +106,8 @@ function MainFeed() {
                     <div className="swiper-slide" key={list.idx}>
                         <div className="list_item daily" style={{marginRight:"20px"}}>
                             <div className="img_wrap">
-                                {extension == "mp4" ?
+                                <Link to={`/feed/feed_detail_daily/${list.idx}`}>
+                                {(extension == "mp4") || (extension == "mov") ?
                                 <div className="img">
                                     <video preload="metadata" src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${list.file_url}${list.feed_source}#t=0.5`}></video>
                                     <span className="play"></span>
@@ -83,12 +117,13 @@ function MainFeed() {
                                     <img src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}${list.file_url}${list.feed_source}`} alt="이미지" />
                                 </div>
                                 }
+                                </Link>
                                 <div className="text_box">
                                     <div className="text_wrap">
                                         <ul>
                                             <li className="like">
-                                                <button className={`like_toggle_btn white ${like_active}`}>
-                                                    <span>{list.wr_bit}</span>
+                                                <button className={`like_toggle_btn white ${like_active}`} onClick={(e) => {toggleLike(e, list.idx, list.wr_bit)}}>
+                                                    <span id={`bit_cnt_m_${list.idx}`}>{list.wr_bit}</span>
                                                 </button>
                                             </li>
 

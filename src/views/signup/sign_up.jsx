@@ -498,7 +498,7 @@ function Main() {
                                     </p>
 
                                     <div className="num_wrap">
-                                        <div className="select_box_wrap disabled">
+                                        <div className="select_box_wrap disabled" style={{width:"100px"}}>
                                             <button type="button" onClick={() => { return false; }} className="select_title">{nationTel}</button>
                                             <ul>
                                                 <li className="select_list">{nationTel}</li>
