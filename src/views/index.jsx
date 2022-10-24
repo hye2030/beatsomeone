@@ -51,6 +51,20 @@ function Main() {
         });
     }, [localStorage.getItem("language")]);
 
+    //설문조사 배너
+    const [requestBanner, setRequestBanner] = useState([]);
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL + "/api/v1/bannerList", {
+            params: {
+                bannerCode: "A004",
+                lang: localStorage.getItem("language")
+            }
+        })
+        .then(function (response) {
+            setRequestBanner(response.data.response.data);
+        });
+    }, []);
+
     /**모바일 헤더용 */
     if ($('.hamburger').hasClass('active')) {
         $('.hamburger').removeClass('active');
@@ -1531,14 +1545,17 @@ function Main() {
                         </div>
                         <div className="swiper-container">
                             <div className="swiper-wrapper">
-                                <div className="swiper-slide">
-                                    <img className="pc_only" src="/assets/images/dummy/survey_img01.jpg" alt=""/>
-                                    <img className="mb_only" src="/assets/images/dummy/survey_img_mb01.jpg" alt=""/>
-                                </div>
-                                <div className="swiper-slide">
-                                    <img className="pc_only" src="/assets/images/dummy/survey_img02.jpg" alt=""/>
-                                    <img className="mb_only" src="/assets/images/dummy/survey_img_mb02.jpg" alt=""/>
-                                </div>
+                            {requestBanner.map(banner => {
+                            const imgsrc = import.meta.env.VITE_REACT_APP_API_URL+"/storage/banner/"+banner.bannerSource
+                            if(banner.bannerType == "beatsomeone"){
+                                return (
+                                    <div className="swiper-slide" key={banner.bannerSource}>
+                                        <img className="pc_only" src={imgsrc} alt=""/>
+                                        <img className="mb_only" src={imgsrc} alt=""/>
+                                    </div>
+                                    )
+                                }
+                            })}
                             </div>
                         </div>
                     </div>
