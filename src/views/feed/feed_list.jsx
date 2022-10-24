@@ -438,7 +438,7 @@ function Main() {
                                                     <span>{list.wr_title}</span>
                                                 </p>
 
-                                                <div className="list_text mobile" style={{whiteSpace:"pre-wrap"}}>
+                                                <div className="list_text mobile" style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}}>
                                                     {list.wr_content}
                                                 </div>
                                             {/* </a> */}
@@ -480,7 +480,7 @@ function Main() {
                                         {/* <span className="play">04:17</span> */}
                                     </div>
 
-                                    <div className="list_text pc" style={{whiteSpace:"pre-wrap"}}>
+                                    <div className="list_text pc" style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}}>
                                         {list.wr_content}
                                     </div>
                                 </li>
