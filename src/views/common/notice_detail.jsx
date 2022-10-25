@@ -45,7 +45,7 @@ function Main() {
                     {notice.map(({ idx, wr_title, wr_content, created_at }) => (
                     <div className="list_wrap" key={idx}>
                         <div className="title_box">
-                            <p className="list_title">{wr_title}</p>
+                            <p className="list_title" style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}}>{wr_title}</p>
                             <p className="date">{created_at}</p>
                         </div>
                         <div className="content_box" style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}} dangerouslySetInnerHTML={ {__html: wr_content} }>

@@ -69,11 +69,11 @@ function Main() {
                     <section className="event_content_wrap" key={event.idx}>
                         <h3 className="event_title">Event 상세</h3>
                         {event.gubun == 1 ?
-                        <p className="event_name">
+                        <p className="event_name" style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}}>
                             <span className="category">[진행중]</span>{event.title}
                         </p>
                         :
-                        <p className="event_name end"><span className="category">[종료]</span>{event.title}</p>
+                        <p className="event_name end" style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}}><span className="category">[종료]</span>{event.title}</p>
                         }
 
                         <div className="content_inner">
@@ -84,18 +84,18 @@ function Main() {
                             <div className="event_img_wrap">
                                 <div className="event_img">
                                     {/* <img src="/assets/images/dummy/cover_img_11.jpg" alt="" /> */}
-                                    <img src={`https://beatsomeone-aws.prefinc.kr/storage/event/${event.event_source}`} alt="" />
+                                    <img src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}/storage/event/${event.event_source}`} alt="" />
                                 </div>
                                 {event.gubun == 2 ?
                                 <div className="end_cover">
                                     <p className="end_text">종료된 이벤트</p>
                                 </div>
-                                : "null"}
+                                : null}
                             </div>
                             {event.gubun == 1 ?
-                            <p className="content" dangerouslySetInnerHTML={ {__html: event.content} }></p>
+                            <p className="content" dangerouslySetInnerHTML={ {__html: event.content} } style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}}></p>
                             :
-                            <p className="content end" dangerouslySetInnerHTML={ {__html: event.content} }></p>
+                            <p className="content end" dangerouslySetInnerHTML={ {__html: event.content} } style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}}></p>
                             }
                         </div>
 

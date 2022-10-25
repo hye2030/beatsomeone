@@ -153,7 +153,7 @@ function Main() {
                                     <li className="event_list" key={event.idx}>
                                         <Link to={`/mypage/event_detail/${event.idx}`}>
                                         <div className="event_img">
-                                            <img src={`https://beatsomeone-aws.prefinc.kr/storage/event/${event.event_source}`} alt="" />
+                                            <img src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}/storage/event/${event.event_source}`} alt="" />
                                         </div>
                                         <p className="event_name">
                                             {event.title}
@@ -171,7 +171,7 @@ function Main() {
                                         <Link to={`/mypage/event_detail/${event.idx}`}>
                                         <div className="event_img_wrap">
                                             <div className="event_img">
-                                                <img src={`https://beatsomeone-aws.prefinc.kr/storage/event/${event.event_source}`} alt="" />
+                                                <img src={`${import.meta.env.VITE_REACT_APP_BEAT_SOMEONE_URL}/storage/event/${event.event_source}`} alt="" />
                                             </div>
                                             <div className="end_cover">
                                             <p className="end_text">종료된 이벤트</p>

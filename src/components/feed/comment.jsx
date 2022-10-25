@@ -418,7 +418,7 @@ function Comment(idx) {
                     <div className="comment_item">
                         
                         {commentList.map((comment) => {
-                            let singo_style = {};
+                            let singo_style = { whiteSpace: 'pre-wrap', wordBreak: 'break-all' };
                             let comment_del_style = {};
                             let singo_cntt = comment.cm_content;
                             if(comment.cm_open == "secret"){

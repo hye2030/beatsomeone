@@ -27,6 +27,21 @@ $(document).ready(function(){
                 disableOnInteraction: false,
             }
         });
+
+        $(".aaaaaaa").scrollText({
+            // container
+            'container': '.aaaaaaa', 
+            // child elements
+            'sections': 'li', 
+            // scrolling speed
+            'duration': 3000,
+            // endless loop
+            'loop': true,
+            // CSS appended to the current item
+            'currentClass': 'current',
+            // or 'down'
+            'direction': 'up'
+          });
         
         // 커버플로우 슬라이드
         const coverFlow = new Swiper( '.coverflow .swiper-container', {

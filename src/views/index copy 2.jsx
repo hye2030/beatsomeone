@@ -1438,9 +1438,9 @@ function Main() {
                                 <a href="#" onClick={() => { return false; }}>진행 중 의뢰</a>
                             </h3>
                         </div>
-                        <div className="" style={{height : '265px', overflow : 'hidden'}}>
-
-                                <div className='aaaaaaa'>
+                        <div className="swiper-container" style={{height : '280px', overflow : 'hidden'}}>
+                            <div className="swiper-wrapper">
+                                <div className='swiper-slide'>
                                     <ul className="depth">
                                         <li className="list">
                                             <span className="text">
@@ -1482,7 +1482,10 @@ function Main() {
                                                 30,000원
                                             </span>
                                         </li>
-
+                                    </ul>
+                                </div>
+                                <div className='swiper-slide'>
+                                    <ul className="depth swiper-slide">
                                         <li className="list">
                                             <span className="text">
                                                 저작권 프리 BGM 제작 의뢰합니다.
@@ -1525,7 +1528,7 @@ function Main() {
                                         </li>
                                     </ul>
                                 </div>
-
+                            </div>
                         </div>
                     </div>
 
