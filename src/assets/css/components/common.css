@@ -695,6 +695,7 @@
   border: 1px solid #fff;
   overflow: hidden;
   transition: all 0.3s ease;
+  background: #aaa;
 }
 
 .profile_wrap li+li {
@@ -707,6 +708,22 @@
 
 .profile_wrap li:nth-child(3) {
   z-index: 1;
+}
+
+/* 댓글 없을 때 */
+.profile_wrap.default li {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+}
+
+.profile_wrap.default li:hover {
+  transform: unset;
+}
+
+.profile_wrap.default.mark li img {
+  filter: invert(22%);
 }
 
 
@@ -1280,6 +1297,12 @@
     margin: calc(100vw * (12 /1300)) 0 0;
   }
 
+  /* 댓글 없을 때 */
+  .profile_wrap.default li {
+    width: calc(100vw * (24 /1300));
+    height: calc(100vw * (24 /1300));
+  }
+
   .list_item[class*="category_mark_"]::before {
     top: calc(100vw * (10 /1300));
     right: calc(100vw * (10 /1300));
@@ -1597,6 +1620,12 @@
   .profile_wrap span {
     margin-left: calc(100vw * (10 /428));
     font-size: calc(100vw * (12 /428));
+  }
+
+  /* 댓글 없을 때 */
+  .profile_wrap.default li {
+    width: calc(100vw * (24 /428));
+    height: calc(100vw * (24 /428));
   }
 
   /* 좋아요 버튼 */
