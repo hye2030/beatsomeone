@@ -124,7 +124,7 @@ function MainFeed() {
                                 </li>
 
                                 <li className="comment">
-                                    <div className="profile_wrap">
+                                    <div className={comment_cnt == 0 ? "profile_wrap default" : "profile_wrap"}>
                                         <ul dangerouslySetInnerHTML={ {__html: comment_profile} }>
                                         </ul>
 
