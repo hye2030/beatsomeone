@@ -11,6 +11,7 @@ import LangComponentM from "./Lang_header_mobile";
 
 import { useDispatch, useSelector } from 'react-redux';
 import {loginUser} from '@/stores/userSlice';
+import {clearUser} from '@/stores/userSlice';
 
 function Main() {
     /**언어 API용 변수*/
@@ -105,6 +106,14 @@ function Main() {
                         "idx": localStorage.getItem("emailIdx")
                     }
                 }));
+            }else{
+                dispatch(clearUser());
+                localStorage.setItem("sns", "");
+                localStorage.setItem("snsKey", "");
+                localStorage.setItem("emailId", "");
+                localStorage.setItem("is_login", "");
+                localStorage.setItem("nickname", "");
+                navigate("/");
             }
         });
     }, [])
