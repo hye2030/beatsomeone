@@ -99,7 +99,7 @@ function Comment(idx) {
     //최상위 댓글 작성
     const [feedComment, setFeedComment] = useState("");
     const first_comment_write = () => {
-        if(user == null){
+        if(user == null || user == false){
             $(".plzSignin_modal").fadeIn(200);
             return false;
         }
@@ -121,7 +121,7 @@ function Comment(idx) {
                 setFeedComment("");      
                 setCommentUpdate(true);
             }else{
-                alert("등록중 오류가 발생하였습니다.");
+                alert("로그인이 필요한 서비스입니다.");
                 console.log(response);
             }
         });
@@ -180,7 +180,7 @@ function Comment(idx) {
 
     //하위 댓글 달기
     const child_comment_write = (cm_idx, dir_cm_idx, cm_depth) => {
-        if(user == null){
+        if(user == null || user == false){
             $(".plzSignin_modal").fadeIn(200);
             return false;
         }
@@ -204,7 +204,7 @@ function Comment(idx) {
             if(response.data.code == 0){   
                 setCommentUpdate(true);
             }else{
-                alert("등록중 오류가 발생하였습니다.");
+                alert("로그인이 필요한 서비스입니다.");
                 console.log(response);
             }
         });
@@ -398,7 +398,6 @@ function Comment(idx) {
                     </div>
                 </div>
                     
-                {(user == true) ?
                 <div className="comment_list">
                     {feedContent.map((cntt) => (
                     <div className="num_text" key={cntt.idx}>
@@ -410,7 +409,7 @@ function Comment(idx) {
                             <img src="/assets/images/icon/icon_profile_default.svg" alt="프로필 사진"/>
                         </div>
                         <div className="white_wrap">
-                            <textarea name="" id="first_comment_wr" cols="30" rows="10" value={feedComment} placeholder="댓글을 입력해주세요." onChange={(e) => setFeedComment(e.target.value)} onKeyDown={(e) => {onEnterPress(e)}} style={{overflow:"hidden"}}></textarea>
+                            <textarea name="" id="first_comment_wr" cols="30" rows="10" value={feedComment} placeholder="로그인하셨으면 댓글을 달아보세요!" onChange={(e) => setFeedComment(e.target.value)} onKeyDown={(e) => {onEnterPress(e)}} style={{overflow:"hidden"}}></textarea>
                             <button type="button" onClick={() => {first_comment_write()}}>작성</button>
                         </div>
                     </div>
@@ -485,7 +484,7 @@ function Comment(idx) {
                                             </div>
                                             <div className="white_wrap" style={{height: ((textareaHeight + 1) * 38) + 'px'}} >
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요." value={undefined} onChange={checkItemChangeHandler} style={{overflow:"hidden"}} onKeyDown={(e) => {onEnterPress_child(e, comment.idx, comment.idx, comment.cm_depth)}}></textarea>
+                                                    placeholder="로그인하셨으면 댓글을 달아보세요!" value={undefined} onChange={checkItemChangeHandler} style={{overflow:"hidden"}} onKeyDown={(e) => {onEnterPress_child(e, comment.idx, comment.idx, comment.cm_depth)}}></textarea>
                                                 <button type="button" onClick={() => {child_comment_write(comment.idx, comment.idx, comment.cm_depth)}}>작성</button>
                                             </div>
                                         </div>
@@ -539,7 +538,7 @@ function Comment(idx) {
                                             </div>
                                             <div className="white_wrap" style={{height: ((textareaHeight + 1) * 38) + 'px'}}>
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
-                                                    placeholder="댓글을 입력해주세요." value={checkItemContent} onChange={checkItemChangeHandler} style={{overflow:"hidden"}}></textarea>
+                                                    placeholder="로그인하셨으면 댓글을 달아보세요!" value={checkItemContent} onChange={checkItemChangeHandler} style={{overflow:"hidden"}}></textarea>
                                                 <button type="button" onClick={() => {child_comment_write(comment.cm_idx, comment.idx, comment.cm_depth)}}>작성</button>
                                             </div>
                                         </div>
@@ -569,10 +568,8 @@ function Comment(idx) {
                         </div>
                     </div> */}
                 </div>
-                : null}
             </div>
             {/* <!-- 페이지네이션 --> */}
-            {(user == true) ?
             <div className="pagination_wrap">
                 <Pagination 
                     total={commentTotal}
@@ -580,7 +577,6 @@ function Comment(idx) {
                     page={page}
                     setPage={setPage}/>
             </div>
-            : null}
         </div>
 
         <div className="modal_wrap message_modal conDelete_modal">
