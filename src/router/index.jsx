@@ -29,6 +29,8 @@ import NoticeDetail from "../views/common/notice_detail"
 
 import LoginCheck from "../views/signup/login"
 
+import Toss from "../views/payment/toss"
+
 function Router() {
   const routes = [
     {
@@ -98,7 +100,11 @@ function Router() {
         {
           path: "/feed/feed_edit/:idx",
           element: <FeedEdit />,
-        }
+        },
+        {
+          path: "/payment/toss",
+          element: <Toss />,
+        },
       ],
     },
     {

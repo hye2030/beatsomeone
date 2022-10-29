@@ -14,6 +14,11 @@ function App() {
         window.SomeThingSDK();
   }
   }, [])
+
+  const scriptSwiper = document.createElement("script");
+  scriptSwiper.src = "/assets/js/swiper-bundle.min.js";
+  scriptSwiper.async = true;
+  document.body.appendChild(scriptSwiper);
   
   return (
     <RecoilRoot>

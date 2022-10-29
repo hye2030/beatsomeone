@@ -106,14 +106,6 @@ function Main() {
                         "idx": localStorage.getItem("emailIdx")
                     }
                 }));
-            }else{
-                dispatch(clearUser());
-                localStorage.setItem("sns", "");
-                localStorage.setItem("snsKey", "");
-                localStorage.setItem("emailId", "");
-                localStorage.setItem("is_login", "");
-                localStorage.setItem("nickname", "");
-                navigate("/");
             }
         });
     }, [])
@@ -247,7 +239,7 @@ function Main() {
                 </a>
             </li>
             <li className="list communication">
-                <a onClick={() => { alert("서비스 준비중입니다"); }} className="link">
+                <a onClick={() => {navigate('/feed/feed_list', {state : {type : ""} } )}} className="link">
                     <div className="icon_box"></div>
                     <span>{t('page:커뮤니티')}</span>
                 </a>
