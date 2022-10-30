@@ -106,6 +106,14 @@ function Main() {
                         "idx": localStorage.getItem("emailIdx")
                     }
                 }));
+            }else{
+                dispatch(clearUser());
+                localStorage.setItem("sns", "");
+                localStorage.setItem("snsKey", "");
+                localStorage.setItem("emailId", "");
+                localStorage.setItem("is_login", "");
+                localStorage.setItem("nickname", "");
+                localStorage.setItem("emailIdx", "");
             }
         });
     }, [])

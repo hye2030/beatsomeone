@@ -113,7 +113,7 @@ function Main() {
         setImg(copiedItems);
     };
 
-    const submitBtn = () => {
+    const submitBtn = (e) => {
         const cntt = document.getElementsByName('content[]');
         const sub = document.getElementsByName('sub_file[]');
 
@@ -181,6 +181,7 @@ function Main() {
             }
         )
         .then(function (response) {
+            e.target.disabled = true;
             if(response.data.code == 0){
                 $(".conRegisterC_modal").fadeIn(200);                
             }else{
@@ -193,8 +194,8 @@ function Main() {
     const dailyList = addDaily.map((daily, index) => 
         <div className="add_content" style={{display: "block"}} key={daily.id}>
             <div className="img_add_line" id={`daily_input_id${index}`}>
-                <input type="text" placeholder="이미지 및 영상선택" className="add_input" readOnly />
-                <label htmlFor={`file_${index}`} className="add_btn"> 추가 </label>
+                <label htmlFor={`file_${index}`} className="add_input">이미지 및 영상선택</label>
+                <label htmlFor={`file_${index}`} className="add_btn"> 파일선택 </label>
                 <input type="file" id={`file_${index}`} accept="image/jpg, image/png, image/jpeg, image/svg, video/mp4" name="sub_file[]" onChange={(e) => handleAddImages(e, index)} />
             </div>
             {img.filter((el, id) => id == index).map((el, id) => (
@@ -253,6 +254,7 @@ function Main() {
                     {/* 이미지 선택됐을때 gray 클래스를 추가해주시면 됩니다! */}
                     {/* <input type="text" value="file.jpg" className="add_input gray" readonly /> */}
                     <label htmlFor="image" className="add_input" id="main_file_txt">이미지 및 영상선택</label>
+                    <label htmlFor="image" className="add_btn"> 파일선택 </label>
                     <input type="file" id="image" accept="image/jpg, image/png, image/jpeg, image/svg, video/mp4" name="sub_file[]" onChange={saveFileImage}/>
                     </div>
                     {/* <!-- 이미지 추가 했을 때 --> */}
@@ -289,7 +291,7 @@ function Main() {
 
                 <div className="button_wrap">
                     <button className="basic_btn_red_border cancel_btn" onClick={() => {navigate("/feed/feed_list")}}>취소</button>
-                    <button className="basic_btn_red confirm_btn" type="submit" onClick={() => {submitBtn();}}>등록</button>
+                    <button className="basic_btn_red confirm_btn" type="submit" onClick={(e) => {submitBtn(e);}}>등록</button>
                 </div>
                 </section>
             </div>

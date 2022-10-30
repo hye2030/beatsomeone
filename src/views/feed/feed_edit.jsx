@@ -218,8 +218,8 @@ function Main() {
     const dailyList = addDaily.map((daily, index) => 
         <div className="add_content" style={{display: "block"}} key={daily.id}>
             <div className="img_add_line" id={`daily_input_id${index}`}>
-                <input type="text" placeholder="이미지 및 영상선택" className="add_input" readOnly />
-                <label htmlFor={`file_${index}`} className="add_btn"> 추가</label>
+                <label htmlFor={`file_${index}`} className="add_input">이미지 및 영상선택</label>
+                <label htmlFor={`file_${index}`} className="add_btn"> 파일선택</label>
                 <input type="file" id={`file_${index}`} accept="image/jpg, image/png, image/jpeg, image/svg, video/mp4" name="sub_file[]" onChange={(e) => handleAddImages(e, index)} />
             </div>
             {img.filter((el, id) => id == index).map((el, id) => (
@@ -279,6 +279,7 @@ function Main() {
                 <div className="content">
                     <div className="img_add_line">
                     <label htmlFor="image" className="add_input" id="main_file_txt">이미지 및 영상선택</label>
+                    <label htmlFor="image" className="add_btn"> 파일선택 </label>
                     <input type="file" id="image" accept="image/jpg, image/png, image/jpeg, image/svg, video/mp4" onChange={saveFileImage}/>
                     </div>
                     {/* <!-- 이미지 추가 했을 때 --> */}

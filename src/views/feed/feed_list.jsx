@@ -7,7 +7,8 @@ import "@/assets/css/components/list.css";
 
 function Main() {
     const navigate = useNavigate();
-    const user_idx = useSelector((state) => {return state.idx});
+    // const user_idx = useSelector((state) => {return state.idx});
+    const user_idx = localStorage.getItem("emailIdx");
 
     //피드 타입 받아오기(전체, 자작곡, 커버곡, 데일리)
     const location = useLocation();
@@ -176,11 +177,11 @@ function Main() {
     };
     useEffect(() => {
         updateList(page, limit)
-    }, [page, feedsorting, user, feedType])
+    }, [page, feedsorting, user_idx, feedType])
     useEffect(() => {
         setFeedList([]);
         setPage(1);
-    }, [user])
+    }, [user_idx])
 
     const onSroll = () => {
         const { innerHeight } = window;
@@ -300,15 +301,6 @@ function Main() {
         $(".header_mb .side_bg").fadeOut(500);
         $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
     }
-    
-    /**테스트값 확인용 */
-    const aa = () => {
-        console.log(document.getElementById('aa').duration);
-        const videoTime = parseInt(document.getElementById('aa').duration);
-        const m = Math.floor(videoTime / 60) + ":" + (videoTime % 60);  // 남은 시간 계산
-        console.log(m);
-    }
-    
 
     return (
         <>
@@ -333,7 +325,7 @@ function Main() {
 
                 <section className="tab_section">
                     <div className="section_inner">
-                        <h2 onClick={() => {aa()}} className="title_text" style={{margin:"60px 0 40px", textAlign: "center", fontSize: "24px", fontWeight: "700"}}>피드</h2>
+                        <h2 className="title_text" style={{margin:"60px 0 40px", textAlign: "center", fontSize: "24px", fontWeight: "700"}}>피드</h2>
 
                         <ul className="tab_area">
                             {/* <li className="tab active">전체</li> */}

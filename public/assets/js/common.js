@@ -55,14 +55,16 @@ $(function () {
         const selectBox = $('.select_box_wrap');
         const selectClick = $('.select_list');
         // 셀렉트박스 오픈
-        $(document).on('click', '.select_box_wrap', function () {
-            if ($(this).hasClass('open')) {
-                $(this).removeClass('open active');
-            } else {
-                // selectList.hide();
-                selectBox.removeClass('open active');
-                $(this).addClass('open active');
-            };
+        $(document).on('click', '.select_box_wrap', function (e) {
+            if(e.target.id != "no_box"){
+                if ($(this).hasClass('open')) {
+                    $(this).removeClass('open active');
+                } else {
+                    // selectList.hide();
+                    selectBox.removeClass('open active');
+                    $(this).addClass('open active');
+                };
+            }
         });
 
         // 셀렉트 리스트 클릭

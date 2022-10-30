@@ -203,6 +203,7 @@ function Comment(idx) {
         .then(function (response) {
             if(response.data.code == 0){   
                 setCommentUpdate(true);
+                document.getElementById('child_comment_wr_'+dir_cm_idx).value = "";
             }else{
                 alert("로그인이 필요한 서비스입니다.");
                 console.log(response);
@@ -304,8 +305,12 @@ function Comment(idx) {
     }
 
     //댓글에 대한 좋아요 기능
-    const toggleLike = (e, idx) => {
+    const toggleLike = (e, idx, del_status) => {
         if(user === null || user === false){
+            return false;
+        }
+
+        if(del_status == "Y"){
             return false;
         }
 
@@ -457,7 +462,7 @@ function Comment(idx) {
                                                     <textarea name="" id={`edit_comment_${comment.idx}`} defaultValue={comment.cm_content}></textarea>
                                                 </div>
                                                 <div className="bottom">
-                                                    <button type="button" className={`like_toggle_btn ${like_active}`} onClick={(e) => {toggleLike(e, comment.idx)}}>
+                                                    <button type="button" className={`like_toggle_btn ${like_active}`} onClick={(e) => {toggleLike(e, comment.idx, comment.del_status)}}>
                                                         <span id={`bit_cnt_${comment.idx}`}>
                                                             {comment.cm_bit}
                                                         </span></button>
@@ -484,7 +489,8 @@ function Comment(idx) {
                                             </div>
                                             <div className="white_wrap" style={{height: ((textareaHeight + 1) * 38) + 'px'}} >
                                                 <textarea name="" id={`child_comment_wr_${comment.idx}`} cols="30" rows="10"
-                                                    placeholder="로그인하셨으면 댓글을 달아보세요!" value={undefined} onChange={checkItemChangeHandler} style={{overflow:"hidden"}} onKeyDown={(e) => {onEnterPress_child(e, comment.idx, comment.idx, comment.cm_depth)}}></textarea>
+                                                    placeholder="로그인하셨으면 댓글을 달아보세요!" value={undefined} onChange={checkItemChangeHandler} style={{overflow:"hidden"}} ></textarea>
+                                                    {/* onKeyDown={(e) => {onEnterPress_child(e, comment.idx, comment.idx, comment.cm_depth)}} */}
                                                 <button type="button" onClick={() => {child_comment_write(comment.idx, comment.idx, comment.cm_depth)}}>작성</button>
                                             </div>
                                         </div>
@@ -512,7 +518,7 @@ function Comment(idx) {
                                                     <textarea name="" id={`edit_comment_${comment.idx}`} defaultValue={comment.cm_content}></textarea>
                                                 </div>
                                                 <div className="bottom">
-                                                    <button type="button" className={`like_toggle_btn ${like_active}`} onClick={(e) => {toggleLike(e, comment.idx)}}>
+                                                    <button type="button" className={`like_toggle_btn ${like_active}`} onClick={(e) => {toggleLike(e, comment.idx, comment.del_status)}}>
                                                         <span id={`bit_cnt_${comment.idx}`}>
                                                         {comment.cm_bit}
                                                         </span></button>

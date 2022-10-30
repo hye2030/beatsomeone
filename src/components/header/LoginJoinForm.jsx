@@ -428,9 +428,9 @@ const LoginJoin = () => {
                     <fieldset>
                         <legend hidden>로그인</legend>
                         <div className="input_wrap">
-                            <input type="password" placeholder="Password" onChange={(e) => {setPwd(e.target.value); document.getElementById("LoginPwErr").textContent="";}}/>
+                            <input type="password" placeholder="Password" onChange={(e) => {setPwd(e.target.value); document.getElementById("LoginPwErr").textContent=""; document.getElementById('LoginAlertBox').style.display = 'none';}}/>
 
-                            <div className="alert_box wrap_box" style={{right:"330px"}}>
+                            <div className="alert_box wrap_box" style={{right:"330px"}} id="LoginAlertBox">
                                 영문, 숫자, 특수문자( !@#$%^&* ‘) 중 2가지 이상 조합 6자이상 16자 이하 사용 가능
                                 <button type="button" className="close_button">삭제버튼</button>
                             </div>

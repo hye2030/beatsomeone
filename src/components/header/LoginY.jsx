@@ -13,6 +13,7 @@ function LoginY({value}) {
         localStorage.setItem("emailId", "");
         localStorage.setItem("is_login", "");
         localStorage.setItem("nickname", "");
+        localStorage.setItem("emailIdx", "");
         navigate("/");
     }
 
