@@ -81,7 +81,12 @@ const GoogleLogins = (e) => {
                 if(response.data.response == 0){
                     // $('.route_modal.signIn').fadeOut(200);
                     // $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
-                    $("#noSnsModal").fadeIn(200);
+                    if(currentType != "join"){
+                        $("#noSnsModal").fadeIn(200);
+                    }else{
+                        $('.route_modal.signIn').fadeOut(200);
+                        navigate('/signinup/sign_up'); 
+                    }
                     // navigate('/signinup/sign_up');
                 }else if(response.data.response == 1){
                     $('.route_modal.signIn').fadeOut(200);

@@ -229,9 +229,13 @@ const LoginJoin = () => {
         }
     }
 
-    window.nonSNSNaver = function (data){
-        $("#noSnsModal").fadeIn(200);
-        setNavernm(data);
+    window.nonSNSNaver = function (data, currentType){
+        if(currentType != "join"){
+            $("#noSnsModal").fadeIn(200);
+            setNavernm(data);
+        }else{
+            location.href='/signinup/sign_up?name='+data;
+        }
     }
 
     //회원가입으로 시도했을시 이미 회원가입 계정으로 등록된 상태일 경우

@@ -69,7 +69,7 @@ function Main() {
                                           $('.route_modal.signIn').fadeOut(200);
                                           $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
                                           window.close();
-                                          window.opener.nonSNSNaver(nm);
+                                          window.opener.nonSNSNaver(nm, currentType);
                                           //window.opener.parent.location.href='/signinup/sign_up?name='+nm;
                                     }else if(response.data.response == 1){
                                           $('.route_modal.signIn').fadeOut(200);

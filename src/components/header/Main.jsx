@@ -86,6 +86,11 @@ function Main() {
     ));
 
     /**로그인 유지 */
+    let login_path = "";
+    useEffect(() => {
+        login_path = window.location.pathname;
+    }, [window.location.pathname]);
+
     const dispatch = useDispatch();
     useEffect(() => {
         axios.put(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/loginCheck", {
@@ -107,13 +112,15 @@ function Main() {
                     }
                 }));
             }else{
-                dispatch(clearUser());
-                localStorage.setItem("sns", "");
-                localStorage.setItem("snsKey", "");
-                localStorage.setItem("emailId", "");
-                localStorage.setItem("is_login", "");
-                localStorage.setItem("nickname", "");
-                localStorage.setItem("emailIdx", "");
+                if(login_path != "/signinup/sign_up"){
+                    dispatch(clearUser());
+                    localStorage.setItem("sns", "");
+                    localStorage.setItem("snsKey", "");
+                    localStorage.setItem("emailId", "");
+                    localStorage.setItem("is_login", "");
+                    localStorage.setItem("nickname", "");
+                    localStorage.setItem("emailIdx", "");
+                }
             }
         });
     }, [])
