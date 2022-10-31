@@ -1431,6 +1431,7 @@ input[type=text]::placeholder{
     .signUp_page .agree_box .check_box.top .check_box_text {
         font-size: calc(100vw * (16 / 428));
     }
+    
         
     .signUp_page .check_list {
         margin-top: calc(100vw * (20 / 428));

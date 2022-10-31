@@ -547,7 +547,8 @@
 
 /* 카드형식 리스트 */
 .list_item,
-.list_item .img_wrap {
+.list_item .img_wrap,
+.list_item .img {
   position: relative;
 }
 
@@ -1639,16 +1640,13 @@
   }
 
   /* 들은 사람 */
-  .list_item .img::before {
-    display: none;
-  }
-  
   .lesten_num::before {
     width: calc(100vw * (24/428));
     height: calc(100vw * (24/428));
     margin-right: calc(100vw * (10/428));
   }
 
+  
   .list_item .text_wrap {
     padding: calc(100vw * (16 /428));
   }

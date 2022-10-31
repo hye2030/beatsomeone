@@ -1100,6 +1100,7 @@
     .list_box .list_item .play {
         display: none;
     }
+    
 
     .list_box .list_item .profile_box {
         margin: 0 calc(100vw * (16/428)) calc(100vw * (10/428));
