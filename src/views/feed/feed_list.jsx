@@ -328,11 +328,10 @@ function Main() {
                         <h2 className="title_text" style={{margin:"60px 0 40px", textAlign: "center", fontSize: "24px", fontWeight: "700"}}>피드</h2>
 
                         <ul className="tab_area">
-                            {/* <li className="tab active">전체</li> */}
-                            <li className={menu[0]?"tab active" : "tab"} onClick={() => {setMenu([true,false,false,false]);sessionStorage.setItem("feedType", "")}}>전체</li>
-                            {/* <li className={menu[1]?"tab active" : "tab"} onClick={() => {setMenu([false,true,false,false]);}}>자작곡</li>
-                            <li className={menu[2]?"tab active" : "tab"} onClick={() => {setMenu([false,false,true,false]);}}>커버곡</li> */}
-                            <li className={menu[3]?"tab active" : "tab"} onClick={() => {setMenu([false,false,false,true]);sessionStorage.setItem("feedType", "daily")}}>일상</li>
+                            <li className={menu[0] ? "tab active" : "tab"} onClick={() => {if (!menu[0]) {setMenu([true, false, false, false]);sessionStorage.setItem("feedType", "")}}}>전체</li>
+                            {/*<li className={menu[1] ? "tab active" : "tab"} onClick={() => {if (!menu[1]) {setMenu([false, true, false, false]);}}}>자작곡</li>*/}
+                            {/*<li className={menu[2] ? "tab active" : "tab"} onClick={() => {if (!menu[2]) {setMenu([false, false, true, false]);}}}>커버곡</li>*/}
+                            <li className={menu[3] ? "tab active" : "tab"} onClick={() => {if (!menu[3]) {setMenu([false, false, false, true]);sessionStorage.setItem("feedType", "daily")}}}>일상</li>
                         </ul>
                     </div>
                 </section>
