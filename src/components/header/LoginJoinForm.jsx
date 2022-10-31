@@ -39,7 +39,7 @@ const LoginJoin = () => {
 
     const NextButton = () => {
         if(next_check == true){
-            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
+            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinEmailCheck", {
                 params: {
                     sns: "email",
                     emailId: useremail
@@ -47,8 +47,14 @@ const LoginJoin = () => {
             })
             .then(function (response) {
                 if(response.data.response == 3){
-                    $('.route_modal.signIn').fadeOut(200);
-                    $('.signIn_modal').fadeIn(200);
+                    if(response.data.channel == "email"){
+                        $('.route_modal.signIn').fadeOut(200);
+                        $('.signIn_modal').fadeIn(200); 
+                    }else{
+                        $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_'+response.data.channel+'.svg"alt="" /></div>');
+                        $("#localSNSId").text("SNS 가입 ("+useremail+")");
+                        $("#alreadyJoinModal").fadeIn(200);
+                    }
                 }else if(response.data.response == 0){
                     document.getElementById('login_email_validate').classList.add('error');
                     document.getElementById("login_warning").textContent="입력하신 아이디 정보를 찾을 수 없습니다.";
@@ -139,7 +145,7 @@ const LoginJoin = () => {
         }
 
         if(join_next_check == true){
-            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinCheck", {
+            axios.get(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/member/joinEmailCheck", {
                 params: {
                     sns: "email",
                     emailId: join_useremail
@@ -150,11 +156,15 @@ const LoginJoin = () => {
                     $('.route_modal.signIn').fadeOut(200);
                     $('body').removeClass('scrollOff').off('scroll touchmove mousewheel');
                     
-                    $("#localSNSImg").html('');
-                    $("#localSNSId").text("이메일 가입 ("+join_useremail+")");
-                    $("#alreadyJoinModal").fadeIn(200);
-                    // document.getElementById('email_validate').classList.add('error');
-                    // document.getElementById("warning").textContent="이미 가입된 계정입니다.";
+                    if(response.data.channel == "email"){
+                        $("#localSNSImg").html('');
+                        $("#localSNSId").text("이메일 가입 ("+join_useremail+")");
+                        $("#alreadyJoinModal").fadeIn(200);
+                    }else{
+                        $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_'+response.data.channel+'.svg"alt="" /></div>');
+                        $("#localSNSId").text("SNS 가입 ("+join_useremail+")");
+                        $("#alreadyJoinModal").fadeIn(200);
+                    }
                     return false;
                 }else if(response.data.response == 1){
                     document.getElementById("warning").textContent="통합회원가입 대상입니다.";
@@ -251,7 +261,7 @@ const LoginJoin = () => {
         if(currentType == "join"){
             $('.route_modal.signIn').fadeOut(200);
 
-            $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_naver.svg"alt="" /></div>');
+            $("#localSNSImg").html('<div className="icon_box"><img src="/assets/images/icon/signUp_'+response.data.channel+'.svg"alt="" /></div>');
             $("#localSNSId").text("SNS 가입 ("+naverLogin.user.email+")");
             $("#alreadyJoinModal").fadeIn(200);
         }else{

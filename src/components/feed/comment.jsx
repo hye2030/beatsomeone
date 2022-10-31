@@ -110,7 +110,7 @@ function Comment(idx) {
         }
 
         axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/comment/commentAdd", {
-            "mem_id": user_idx,
+            "mem_id": localStorage.getItem("emailIdx"),
             "wr_idx": idx.idx,
             "cm_main": 1,
             "cm_content": feedComment,
@@ -191,7 +191,7 @@ function Comment(idx) {
         }
 
         axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/comment/commentAdd", {
-            "mem_id": user_idx,
+            "mem_id": localStorage.getItem("emailIdx"),
             "wr_idx": idx.idx,
             "cm_idx": cm_idx,
             "dir_cm_idx": dir_cm_idx,
