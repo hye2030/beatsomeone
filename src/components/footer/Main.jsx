@@ -63,19 +63,16 @@ function Main() {
                         </div>
                         <ul className="sns_wrap">
                             <li className="icon_box insta">
-                                <a href="https://www.instagram.com/BEAT SOMEONE/ " target="_blank"></a>
+                                <a href="https://www.instagram.com/beatsomeone/" target="_blank"></a>
                             </li>
                             <li className="icon_box twitter">
-                                <a href="https://twitter.com/BEAT SOMEONE1" target="_blank"></a>
+                                <a href="https://twitter.com/beatsomeone1" target="_blank"></a>
                             </li>
                             <li className="icon_box facebook">
-                                <a href="https://www.facebook.com/BEAT SOMEONE " target="_blank"></a>
+                                <a href="https://www.facebook.com/beatsomeone" target="_blank"></a>
                             </li>
                             <li className="icon_box youtube">
                                 <a href="https://www.youtube.com/channel/UCkOZTgnHFgC0Cb04W0AJ1LQ" target="_blank"></a>
-                            </li>
-                            <li className="icon_box blog">
-                                <a href="https://post.naver.com/BEAT SOMEONE" target="_blank"></a>
                             </li>
                         </ul>
                     </div>
