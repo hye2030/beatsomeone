@@ -382,7 +382,6 @@ const LoginJoin = () => {
                                     <input type="text" className="emInput" placeholder="Email address" id="login_email" onChange={(e)=>{setUseremail(e.target.value); emailCheck(e.target.value)}} value={useremail || ""}/>
                                 </div>
                                 <p className="error_txt" id="login_warning"></p>
-                                <p className="ex_txt">ex. beatsomeone@beatsomone.com</p>
                                 <button type="button" className="full_btn continue_btn" onClick={() => {NextButton()}}>
                                     로그인
                                 </button>
@@ -428,24 +427,22 @@ const LoginJoin = () => {
                 <h3 className="title">
                     비밀번호
                 </h3>
-                <form>
-                    <fieldset>
-                        <legend hidden>로그인</legend>
-                        <div className="input_wrap">
-                            <input type="password" placeholder="Password" onChange={(e) => {setPwd(e.target.value); document.getElementById("LoginPwErr").textContent=""; document.getElementById('LoginAlertBox').style.display = 'none';}}/>
+                <fieldset>
+                    <legend hidden>로그인</legend>
+                    <div className="input_wrap">
+                        <input type="password" placeholder="Password" onChange={(e) => {setPwd(e.target.value); document.getElementById("LoginPwErr").textContent=""; document.getElementById('LoginAlertBox').style.display = 'none';}}/>
 
-                            <div className="alert_box wrap_box" style={{right:"330px"}} id="LoginAlertBox">
-                                영문, 숫자, 특수문자( !@#$%^&* ‘) 중 2가지 이상 조합 6자이상 16자 이하 사용 가능
-                                <button type="button" className="close_button">삭제버튼</button>
-                            </div>
+                        <div className="alert_box wrap_box" style={{right:"330px"}} id="LoginAlertBox">
+                            영문, 숫자, 특수문자( !@#$%^&* ‘) 중 2가지 이상 조합 6자이상 16자 이하 사용 가능
+                            <button type="button" className="close_button">삭제버튼</button>
                         </div>
-                        <p className="error_txt" id="LoginPwErr">
-                        </p>
-                        <button type="button" className="full_btn signIn_btn" onClick={() => {LoginPage()}}>
-                            로그인
-                        </button>
-                    </fieldset>
-                </form>
+                    </div>
+                    <p className="error_txt" id="LoginPwErr">
+                    </p>
+                    <button type="button" className="full_btn signIn_btn" onClick={() => {LoginPage()}}>
+                        로그인
+                    </button>
+                </fieldset>
                 <button type="button" className="link_btn reset_pw">
                     비밀번호를 잊어버리셨나요?
                 </button>

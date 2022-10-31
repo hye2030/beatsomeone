@@ -299,12 +299,14 @@ function Main() {
                         }}>취소
                         </button>
                         {isLoading &&
-                        <button className="basic_btn_red confirm_btn" type="submit"><ReactLoading
+                        <button className="basic_btn_red confirm_btn" type="submit" disabled>
+                            {/* <ReactLoading
                             type={'spinningBubbles'}
                             color={'white'}
                             height={20}
                             width={20}
-                            className={'align-center'}/>
+                            className={'align-center'}/> */}
+                            등록
                         </button>
                         }
                         {!isLoading &&

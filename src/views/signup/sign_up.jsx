@@ -491,10 +491,12 @@ function Main() {
                                         <ul>
                                             <li className="select_list" onClick={(e) => { setUserNation(""); setNationTel("국번"); }}>(필수)
                                             국가선택</li>
-                                            {nation.map(nations => {
+                                            <li className="select_list" data-codename="대한민국" onClick={(e) => { setUserNation("KR"); setNationTel("82"); setNationTxt("KR") }}>대한민국</li>
+                                            {nation.filter((nations) => nations.codeValue != "KR").map(nations => {
                                                 return (
                                                     <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(nations.codeValue); setNationTel(nations.telNo); setNationTxt(nations.codeName) }}>
-                                                        <span className="flag"><img src="" alt=""/></span>{nations.codeName}</li>
+                                                        {/* <span className="flag"><img src="" alt=""/></span> */}
+                                                    {nations.codeName}</li>
                                                 )
                                             })}
                                         </ul>
