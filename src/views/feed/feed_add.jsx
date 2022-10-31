@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import "@/assets/css/components/content_add.css";
+import ReactLoading from 'react-loading';
 
 function Main() {
     const navigate = useNavigate();
     const user = useSelector((state) => {return state.isLogin});
     const user_idx = useSelector((state) => {return state.idx});
+    const [isLoading, setLoading] = useState(false);
 
     /**파일 확장자 추출 */
     function getExtension(fileName) {
@@ -173,6 +175,7 @@ function Main() {
             frm.append("feed_content[]", cntt[i].value);
         }
 
+        setLoading(true);
         axios.post(import.meta.env.VITE_REACT_APP_API_URL +"/api/v1/feed/feedFileUpdate", frm,
             {
                 headers : {
@@ -183,6 +186,7 @@ function Main() {
         .then(function (response) {
             e.target.disabled = true;
             if(response.data.code == 0){
+                setLoading(false);
                 $(".conRegisterC_modal").fadeIn(200);                
             }else{
                 alert("등록중 오류가 발생하였습니다.");
@@ -289,10 +293,26 @@ function Main() {
                     </button>
                 </div>
 
-                <div className="button_wrap">
-                    <button className="basic_btn_red_border cancel_btn" onClick={() => {navigate("/feed/feed_list")}}>취소</button>
-                    <button className="basic_btn_red confirm_btn" type="submit" onClick={(e) => {submitBtn(e);}}>등록</button>
-                </div>
+                    <div className="button_wrap">
+                        <button className="basic_btn_red_border cancel_btn" onClick={() => {
+                            navigate("/feed/feed_list")
+                        }}>취소
+                        </button>
+                        {isLoading &&
+                        <button className="basic_btn_red confirm_btn" type="submit"><ReactLoading
+                            type={'spinningBubbles'}
+                            color={'white'}
+                            height={20}
+                            width={20}
+                            className={'align-center'}/>
+                        </button>
+                        }
+                        {!isLoading &&
+                        <button className="basic_btn_red confirm_btn" type="submit" onClick={(e) => {
+                            submitBtn(e);
+                        }}>등록</button>
+                        }
+                    </div>
                 </section>
             </div>
         </div>
