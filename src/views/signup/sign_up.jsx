@@ -486,14 +486,15 @@ function Main() {
                                 </div>
                                 {/* <!-- 휴대폰번호 --> */}
                                 <div className="input_box num">
-                                    <div className="select_box_wrap">
+                                    <div className="select_box_wrap country">
                                         <button type="button" onClick={(e) => { document.getElementById("nation_alert").style.display = "none"; clickTest(e) }} className="select_title">{nationTxt}</button>
                                         <ul>
                                             <li className="select_list" onClick={(e) => { setUserNation(""); setNationTel("국번"); }}>(필수)
                                             국가선택</li>
                                             {nation.map(nations => {
                                                 return (
-                                                    <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(nations.codeValue); setNationTel(nations.telNo); setNationTxt(nations.codeName) }}>{nations.codeName}</li>
+                                                    <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(nations.codeValue); setNationTel(nations.telNo); setNationTxt(nations.codeName) }}>
+                                                        <span className="flag"><img src="" alt=""/></span>{nations.codeName}</li>
                                                 )
                                             })}
                                         </ul>
@@ -503,14 +504,14 @@ function Main() {
                                     </div>
 
                                     {/* 국기 추가 마크업 ==> country클래스와 <span class="flag"><img src="" alt=""></span> 추가되었습니다 */}
-                                    {/* <div class="select_box_wrap gray country">
-                                        <button type="button" onclick="return false;" class="select_title">(필수)
+                                    {/* <div className="select_box_wrap gray country">
+                                        <button type="button" onclick="return false;" className="select_title">(필수)
                                             국가선택</button>
                                         <ul>
-                                            <li class="select_list">
-                                                <span class="flag"><img src="" alt=""></span> 옵션1</li>
-                                            <li class="select_list"><span class="flag"><img src="" alt=""></span> 옵션1</li>
-                                            <li class="select_list"><span class="flag"><img src="" alt=""></span> 옵션1</li>
+                                            <li className="select_list">
+                                                <span className="flag"><img src="" alt=""/></span> 옵션1</li>
+                                            <li className="select_list"><span className="flag"><img src="" alt=""/></span> 옵션1</li>
+                                            <li className="select_list"><span className="flag"><img src="" alt=""/></span> 옵션1</li>
                                         </ul>
                                     </div> */}
                                     <p className="error_txt" id="nation_confirm_err">
