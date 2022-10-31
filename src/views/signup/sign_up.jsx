@@ -501,6 +501,18 @@ function Main() {
                                             거주국가 기준으로 선택 권장
                                         </div>
                                     </div>
+
+                                    {/* 국기 추가 마크업 ==> country클래스와 <span class="flag"><img src="" alt=""></span> 추가되었습니다 */}
+                                    {/* <div class="select_box_wrap gray country">
+                                        <button type="button" onclick="return false;" class="select_title">(필수)
+                                            국가선택</button>
+                                        <ul>
+                                            <li class="select_list">
+                                                <span class="flag"><img src="" alt=""></span> 옵션1</li>
+                                            <li class="select_list"><span class="flag"><img src="" alt=""></span> 옵션1</li>
+                                            <li class="select_list"><span class="flag"><img src="" alt=""></span> 옵션1</li>
+                                        </ul>
+                                    </div> */}
                                     <p className="error_txt" id="nation_confirm_err">
                                     </p>
 
