@@ -347,6 +347,27 @@ input[type=text]::placeholder{
     margin-top: 10px;
 }
 
+.signUp_page .input_box.num .select_box_wrap {
+    width: 100%;
+}
+
+.signUp_page .input_box .select_box_wrap.country .flag {
+    width: 30px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    background: #ddd;
+}
+
+.signUp_page .input_box .select_box_wrap.country .flag img {
+    object-fit: cover;
+}
+
+.signUp_page .input_box.num>.select_box_wrap.open>ul {
+    height: 185px;
+}
+
 .signUp_page .select_box_wrap.disabled button:after {
     display: none;
 }
@@ -1000,6 +1021,15 @@ input[type=text]::placeholder{
         margin-right: calc(100vw * (10 / 1300));
     }
     
+    .signUp_page .input_box.num>.select_box_wrap.open>ul {
+        height: calc(100vw * (185 / 1300));
+    }
+
+    .signUp_page .input_box .select_box_wrap.country .flag {
+        width: calc(100vw * (30 / 1300));
+        height: calc(100vw * (20 / 1300));
+    }    
+
     .signUp_page .input_box.num .select_box_wrap:nth-child(3),
     .signUp_page .input_box.num .getNum_btn,
     .signUp_page .input_box.num .input_wrap:nth-child(5),
@@ -1399,6 +1429,15 @@ input[type=text]::placeholder{
         margin-right: calc(100vw * (10 / 428));
     }
     
+    .signUp_page .input_box.num>.select_box_wrap.open>ul {
+        height: calc(100vw * (178 / 428));
+    }
+
+    .signUp_page .input_box .select_box_wrap.country .flag {
+        width: calc(100vw * (30 / 428));
+        height: calc(100vw * (20 / 428));
+    }  
+    
     .signUp_page .input_box.num .select_box_wrap:nth-child(3),
     .signUp_page .input_box.num .getNum_btn,
     .signUp_page .input_box.num .input_wrap:nth-child(5),
@@ -1431,7 +1470,6 @@ input[type=text]::placeholder{
     .signUp_page .agree_box .check_box.top .check_box_text {
         font-size: calc(100vw * (16 / 428));
     }
-    
         
     .signUp_page .check_list {
         margin-top: calc(100vw * (20 / 428));

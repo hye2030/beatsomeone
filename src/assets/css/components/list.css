@@ -217,7 +217,7 @@
     display: block;
     width: 32px;
     height: 32px;
-    margin: 0 0 10px;
+    margin: 0 auto 10px;
     background: url('/src/assets/images/icon/icon_play_border.svg') no-repeat center / cover;
 }
 
@@ -704,7 +704,7 @@
     .list_item .play::before {
         width: calc(100vw * (32 / 1300));
         height: calc(100vw * (32 / 1300));
-        margin: 0 0 calc(100vw * (10 / 1300));
+        margin: 0 auto calc(100vw * (10 / 1300));
     }
 
     .list_box .list_item .profile_wrap li {
@@ -1097,10 +1097,11 @@
         margin-right: 10px;
     }
 
-    .list_box .list_item .play {
-        display: none;
+    .list_item .play::before {
+        width: calc(100vw * (32 / 428));
+        height: calc(100vw * (32 / 428));
+        margin: 0 auto calc(100vw * (10 / 428));
     }
-    
 
     .list_box .list_item .profile_box {
         margin: 0 calc(100vw * (16/428)) calc(100vw * (10/428));
