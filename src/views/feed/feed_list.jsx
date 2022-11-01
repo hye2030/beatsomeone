@@ -471,9 +471,11 @@ function Main() {
                                         {/* <span className="play">04:17</span> */}
                                     </div>
 
+                                    <Link to={`/feed/feed_detail_daily/${list.idx}`}>
                                     <div className="list_text pc" style={{whiteSpace:"pre-wrap", wordBreak:"break-word"}}>
                                         {list.wr_content}
                                     </div>
+                                    </Link>
                                 </li>
                                 )}
                             )}

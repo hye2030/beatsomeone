@@ -56,7 +56,7 @@ $(function () {
         const selectClick = $('.select_list');
         // 셀렉트박스 오픈
         $(document).on('click', '.select_box_wrap', function (e) {
-            if(e.target.id != "no_box"){
+            if((e.target.id != "no_box") && (e.target.id != "no_box2")){
                 if ($(this).hasClass('open')) {
                     $(this).removeClass('open active');
                 } else {
