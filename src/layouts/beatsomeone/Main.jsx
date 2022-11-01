@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Header from "@/components/Header/Main";
-import Footer from "@/components/Footer/Main";
-import JoinForm from "@/components/Header/JoinForm";
-import LoginForm from "@/components/Header/LoginForm";
+import Header from "@/components/header/Main";
+import Footer from "@/components/footer/Main";
+import JoinForm from "@/components/header/JoinForm";
+import LoginForm from "@/components/header/LoginForm";
 import LoginJoin from "../../components/header/LoginJoinForm";
 
 function Main() {

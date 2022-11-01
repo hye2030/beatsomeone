@@ -491,11 +491,13 @@ function Main() {
                                         <ul>
                                             <li className="select_list" onClick={(e) => { setUserNation(""); setNationTel("국번"); }}>(필수)
                                             국가선택</li>
-                                            <li className="select_list" data-codename="대한민국" onClick={(e) => { setUserNation("KR"); setNationTel("82"); setNationTxt("KR") }}>대한민국</li>
+                                            <li className="select_list" data-codename="대한민국" onClick={(e) => { setUserNation("KR"); setNationTel("82"); setNationTxt("KR") }}>
+                                            <span className="flag"><img src="https://opendata.mofa.go.kr:8444/fileDownload/images/country_images/flags/241/20220224_233513043.gif" alt=""/></span>
+                                            대한민국</li>
                                             {nation.filter((nations) => nations.codeValue != "KR").map(nations => {
                                                 return (
                                                     <li key={nations.codeIndex} className="select_list" data-codename={nations.codeName}  onClick={(e) => { setUserNation(nations.codeValue); setNationTel(nations.telNo); setNationTxt(nations.codeName) }}>
-                                                        {/* <span className="flag"><img src="" alt=""/></span> */}
+                                                        <span className="flag"><img src={nations.country_img} alt=""/></span>
                                                     {nations.codeName}</li>
                                                 )
                                             })}

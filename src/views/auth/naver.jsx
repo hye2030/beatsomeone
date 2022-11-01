@@ -8,8 +8,8 @@ function Main() {
       const dispatch = useDispatch();
 
       const { naver } = window
-	const NAVER_CLIENT_ID = "7zMZQ1ATkf_uVtuhDMQO"
-	const NAVER_CALLBACK_URL = "https://beatsomeone-aws.prefinc.kr/auth/naver"
+	const NAVER_CLIENT_ID = "kFIwy52wpxbG8D95tVEu"
+	const NAVER_CALLBACK_URL = "https://beatsomeone.com/auth/naver"
       
       const url = decodeURIComponent(location.href);
       let param = url.substring(url.indexOf('?')+1, url.length);

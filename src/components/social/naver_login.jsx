@@ -11,8 +11,8 @@ const NaverLogin = (e) => {
 	// const NAVER_CLIENT_ID = "M2HPrcC5GH0M80IoRpTw"
 	// const NAVER_CALLBACK_URL = "http://localhost:3000/auth/naver?currentType="+currentType;
 	/**실서버 */
-	const NAVER_CLIENT_ID = "7zMZQ1ATkf_uVtuhDMQO"
-	const NAVER_CALLBACK_URL = "https://beatsomeone-aws.prefinc.kr/auth/naver?currentType="+currentType;
+	const NAVER_CLIENT_ID = "kFIwy52wpxbG8D95tVEu"
+	const NAVER_CALLBACK_URL = "https://beatsomeone.com/auth/naver?currentType="+currentType;
 
 	const initializeNaverLogin = () => {
 		const naverLogin = new naver.LoginWithNaverId({
