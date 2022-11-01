@@ -117,10 +117,10 @@ function Main() {
                         {/* <!-- 버튼 클릭시 active 클래스 추가 -->
                         <!-- <div className="select_box_wrap_gray active"> --> */}
                         <div className="select_box_wrap gray">
-                        <button className="select_title active">이벤트</button>
-                        <ul>
+                        <button className="select_title active" id='no_box2'>이벤트</button>
+                        {/* <ul>
                             <li className="select_list">이벤트</li>
-                        </ul>
+                        </ul> */}
                         </div>
                     </div>
                     </article>

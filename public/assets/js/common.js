@@ -56,7 +56,7 @@ $(function () {
         const selectClick = $('.select_list');
         // 셀렉트박스 오픈
         $(document).on('click', '.select_box_wrap', function (e) {
-            if(e.target.id != "no_box"){
+            if((e.target.id != "no_box") && (e.target.id != "no_box2")){
                 if ($(this).hasClass('open')) {
                     $(this).removeClass('open active');
                 } else {
@@ -252,11 +252,11 @@ $(function () {
         });
 
         // 비밀번호 재설정 모달--------
-        $('.reset_pw').click(() => {
-            $('.route_modal.signIn').fadeOut(200);
-            $('.signIn_modal').fadeOut(200);
-            $('.pwResetting_modal.stepOne').fadeIn(200);
-        });
+        // $('.reset_pw').click(() => {
+        //     $('.route_modal.signIn').fadeOut(200);
+        //     $('.signIn_modal').fadeOut(200);
+        //     $('.pwResetting_modal.stepOne').fadeIn(200);
+        // });
 
         $('.pwResetting_modal.stepOne .next_btn').click(() => {
             $('.pwResetting_modal.stepOne').fadeOut(200);
