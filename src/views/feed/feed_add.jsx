@@ -329,3 +329,12 @@ function Main() {
 }
 
 export default Main;
+
+<div class="loading_modal" style="display: block;">
+    <div class="content_box">
+        <h2 class="loading_icon">
+            <img src="../../assets/images/icon/icon_loading.svg" alt="" />
+        </h2>
+        <p>파일을 업로드 중입니다</p>
+    </div>
+</div>
