@@ -345,7 +345,7 @@ const LoginJoin = () => {
                             { 
                             N : "",
                             facebook: <><FbLogin value="new"/><div className="dividing_line"></div></>,
-                            twitter: <><TwitLogin value="new"/><div className="dividing_line"></div></>,
+                            // twitter: <><TwitLogin value="new"/><div className="dividing_line"></div></>,
                             google: <><GoogleLogins value="new"/><div className="dividing_line"></div></>,
                             apple: <><AppleLogin value="new"/><div className="dividing_line"></div></>,
                             naver: <><NaverLogin value="new"/><div className="dividing_line"></div></>,
@@ -360,9 +360,9 @@ const LoginJoin = () => {
                             {currentType == "login" && last_login == "facebook" ? "" : 
                             <FbLogin />
                             }
-                            {currentType == "login" && last_login == "twitter" ? "" : 
+                            {/* {currentType == "login" && last_login == "twitter" ? "" : 
                             <TwitLogin />
-                            }
+                            } */}
                             {currentType == "login" && last_login == "google" ? "" : 
                             <GoogleLogins />
                             }
