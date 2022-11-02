@@ -24,7 +24,8 @@ const LoginJoin = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
+    // const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
+    const emailRegEx = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]/;
     const emailCheck = (useremail) => {
         if(emailRegEx.test(useremail) == true){
             document.getElementById('login_email_validate').classList.remove('error');
@@ -125,7 +126,7 @@ const LoginJoin = () => {
     const [join_useremail, join_setUseremail] = useState("");
     const [join_next_check, join_next_setCheck] =  useState(false);
 
-    const join_emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
+    const join_emailRegEx = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]/;
     const join_emailCheck = (join_useremail) => {
         if(emailRegEx.test(join_useremail) == true){
             document.getElementById('email_validate').classList.remove('error');
