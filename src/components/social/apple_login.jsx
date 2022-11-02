@@ -201,7 +201,7 @@ const AppleLogin = (e) => {
             <LoginSocialApple
                 client_id= "com.beatsomeone.codeidea.io.beatsomeone"
                 scope={'name email'}
-                redirect_uri='https://beatsomeone-aws.prefinc.kr'
+                redirect_uri='https://beatsomeone.com'
                 onResolve={(data) => {AppleIDSuccess(data)}}
                 onReject={err => {
                     console.log(err);
