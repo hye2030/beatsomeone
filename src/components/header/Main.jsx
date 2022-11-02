@@ -186,7 +186,7 @@ function Main() {
     const user_idx = useSelector((state) => {return state.idx});
     let bybeat_url = "";
     if(user_idx != 0){
-        bybeat_url = "https://bybeats.com/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("emailIdx");
+        bybeat_url = "https://qa.bybeats.com/login?emailId="+localStorage.getItem("emailId")+"&sns="+localStorage.getItem("sns")+"&snsKey="+localStorage.getItem("snsKey")+"&_token="+localStorage.getItem("is_login")+"&last_login="+localStorage.getItem("sns")+"&nickname="+localStorage.getItem("nickname")+"&idx="+localStorage.getItem("emailIdx");
     }
 
     return (
@@ -197,7 +197,7 @@ function Main() {
                 <div className="inner">
                     <div className="tabs">
                         {user_idx == 0 ? 
-                        <a href="https://bybeats.com" className="tab" target="_blank">
+                        <a href="https://qa.bybeats.com" className="tab" target="_blank">
                             <img
                                 alt="바이비트 로고"
                                 className="w-6"
