@@ -53,7 +53,7 @@ footer .inner {
   left: 0;
   content: "";
   display: block;
-  width: calc((100vw - 1260px) / 2 + 115px);
+  width: calc((100% - 1260px) / 2 + 115px);
   height: 1px;
   background: #ddd;
 }
@@ -64,7 +64,7 @@ footer .inner {
   right: 0;
   content: "";
   display: block;
-  width: calc((100vw - 1260px) / 2 + 1260px - 288px);
+  width: calc((100% - 1260px) / 2 + 1260px - 288px);
   height: 1px;
   background: #ddd;
 }
@@ -147,7 +147,7 @@ footer .inner {
     transform: translate(0, -50%);
     right: 15px;
     position: absolute;
-    background: url(@/assets/images/icon/icon_search.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_search.svg) no-repeat center center / contain;
 }
 
 .header_pc .header_top .language_wrap {
@@ -155,53 +155,36 @@ footer .inner {
 }
 
 .header_pc .header_top .language_wrap .language_btn {
-    width: 100px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     font-size: 16px;
     font-weight: 500;
     color: #fff;
     position: relative;
     text-align: left;
     transition: 0.3s ease-in-out;
+    background: url("/src/assets/images/icon/icon_lang.svg") no-repeat center / 100%;
+    filter: invert(99%) sepia(1%) saturate(67%) hue-rotate(42deg) brightness(116%) contrast(100%);
 }
 
 .header_pc.white .header_top .language_wrap .language_btn,
 .header_pc.active .header_top .language_wrap .language_btn {
     color: #222;
-}
-
-.header_pc .header_top .language_wrap .language_btn::after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    top: 0;
-    right: 0;
-    background: url(@/assets/images/icon/icon_white_arrow.svg) no-repeat center center / contain;
-    transition: 0.3s;
-}
-
-.header_pc.white .header_top .language_wrap .language_btn::after,
-.header_pc.active .header_top .language_wrap .language_btn::after {
-    filter: invert(100%);
-}
-
-.header_pc .header_top .language_wrap.open .language_btn::after {
-    transform: rotate(180deg);
+    filter: none;
 }
 
 .header_pc .language_list {
     position: absolute;
     display: none;
     font-size: 16px;
-    top: 29px;
-    left: 0;
+    top: 39px;
+    left: 50%;
     width: 100px;
     padding: 20px 0;
     background: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 5%);
     z-index: 2;
+    transform: translateX(-50%);
 }
 
 .header_pc .language_list li {
@@ -215,7 +198,7 @@ footer .inner {
 }
 
 .header_pc .language_list li.active {
-    color: #24ce7b;
+    color: #DF0B17;
 }
 
 /* 헤더하단---------------------------------------*/
@@ -238,17 +221,18 @@ footer .inner {
 }
 
 .header_pc .logo {
+    flex-shrink: 0;
     width: 106px;
     height: 32px;
     margin-right: 70px;
     cursor: pointer;
-    background: url(@/assets/images/icon/logo_fff.png) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/logo_fff.svg) no-repeat center center / contain;
     transition: 0.3s ease-in-out;
 }
 
 .header_pc.white .logo,
 .header_pc.active .logo {
-    background: url(@/assets/images/icon/logo_222.png) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/logo_222.svg) no-repeat center center / contain;
 }
 
 .header_pc .logo a {
@@ -308,7 +292,7 @@ footer .inner {
     position: absolute;
     width: 60px;
     height: 34px;
-    background: url(@/assets/images/icon/icon_bubble.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_bubble.svg) no-repeat center center / contain;
     text-align: center;
     margin-left: 10px;
     top: -17px;
@@ -394,12 +378,12 @@ footer .inner {
     border-radius: 50%;
     cursor: pointer;
     overflow: hidden;
-    background: url(@/assets/images/icon/icon_user-circle.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_user-circle.svg) no-repeat center center / contain;
 }
 
 .header_pc.white .user_nav .img_box,
 .header_pc.active .user_nav .img_box {
-    background: url(@/assets/images/icon/icon_user-circle_black.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_user-circle_black.svg) no-repeat center center / contain;
 }
 
 .header_pc .user_name {
@@ -559,11 +543,12 @@ footer .inner {
 }
 
 footer .logo {
+    flex-shrink: 0;
     width: 106px;
     height: 32px;
     margin-right: 70px;
     cursor: pointer;
-    background: url(@/assets/images/icon/logo_black.png) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/logo_black.png) no-repeat center center / contain;
 }
 
 footer .logo a {
@@ -634,23 +619,23 @@ footer .sns_wrap .icon_box:not(:last-child) {
 }
 
 footer .sns_wrap .insta {
-    background: url(@/assets/images/icon/icon_insta.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_insta.svg) no-repeat center center / contain;
 }
 
 footer .sns_wrap .twitter {
-    background: url(@/assets/images/icon/icon_twitter.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_twitter.svg) no-repeat center center / contain;
 }
 
 footer .sns_wrap .facebook {
-    background: url(@/assets/images/icon/icon_facebook.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_facebook.svg) no-repeat center center / contain;
 }
 
 footer .sns_wrap .youtube {
-    background: url(@/assets/images/icon/icon_youtube.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_youtube.svg) no-repeat center center / contain;
 }
 
 footer .sns_wrap .blog {
-    background: url(@/assets/images/icon/icon_blog.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_blog.svg) no-repeat center center / contain;
 }
 
 
@@ -675,11 +660,11 @@ footer .sns_wrap .icon_box a {
     
     /* 헤더상단----------------------------------*/
     .header_pc .header_top::before {
-      width: calc((100vw - calc(100vw * (1260 / 1300))) / 2 + calc(100vw * (115 / 1300)));
+      width: calc((100% - calc(100vw * (1260 / 1300))) / 2 + calc(100vw * (115 / 1300)));
     }
     
     .header_pc .header_top::after {
-      width: calc((100vw - calc(100vw * (1260 / 1300))) / 2 + calc(100vw * (1260 / 1300)) - calc(100vw * (288 / 1300)));
+      width: calc((100% - calc(100vw * (1260 / 1300))) / 2 + calc(100vw * (1260 / 1300)) - calc(100vw * (288 / 1300)));
     }
     
     .header_pc .header_top .inner {
@@ -717,19 +702,15 @@ footer .sns_wrap .icon_box a {
     }
     
     .header_pc .header_top .language_wrap .language_btn {
-        width: calc(100vw * (100 / 1300));
-        height: calc(100vw * (24 / 1300));
+        width: calc(100vw * (30 / 1300));
+        height: calc(100vw * (30 / 1300));
         font-size: calc(100vw * (16 / 1300));
-    }
-    
-    .header_pc .header_top .language_wrap .language_btn::after {
-        width: calc(100vw * (24 / 1300));
-        height: calc(100vw * (24 / 1300));
     }
     
     .header_pc .language_list {
         font-size: calc(100vw * (16 / 1300));
-        top: calc(100vw * (29 / 1300));
+        top: calc(100vw * (39 / 1300));
+        left: -4%;
         width: calc(100vw * (100 / 1300));
         padding: calc(100vw * (20 / 1300)) 0;
     }
@@ -963,14 +944,14 @@ footer .sns_wrap .icon_box a {
     .header_mb .logo {
         width: calc(100vw* (104/428));
         height: calc(100vw* (24/428));
-        background: url(@/assets/images/icon/logo_black.png) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/logo_black.png) no-repeat center center / contain;
     }
 
     .header_mb .goBack_btn {
         display: none;
         width: calc(100vw* (24/428));
         height: calc(100vw* (24/428));
-        background: url(@/assets/images/icon/icon_arrow_left.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_arrow_left.svg) no-repeat center center / contain;
     }
 
     .header_mb .page_title {
@@ -1105,8 +1086,8 @@ footer .sns_wrap .icon_box a {
     }
 
     .header_mb .language_wrap .language_btn {
-        width: calc(100vw* (100/428));
-        height: calc(100vw* (24/428));
+        width: calc(100vw* (30/428));
+        height: calc(100vw* (30/428));
         font-size: calc(100vw* (15/428));
         font-weight: 500;
         color: #444;
@@ -1114,23 +1095,7 @@ footer .sns_wrap .icon_box a {
         text-align: left;
         transition: 0.3s ease-in-out;
         user-select: none;
-    }
-
-    .header_mb .language_wrap .language_btn::after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: calc(100vw* (24/428));
-        height: calc(100vw* (24/428));
-        top: 0;
-        right: 0;
-        background: url(@/assets/images/icon/icon_arrow_down_small.svg) no-repeat center center / contain;
-        transition: 0.3s;
-        user-select: none;
-    }
-
-    .header_mb .language_wrap.open .language_btn::after {
-        transform: rotate(180deg);
+        background: url("/src/assets/images/icon/icon_lang.svg") no-repeat center / 100%;
     }
 
     .header_mb .language_list {
@@ -1157,13 +1122,13 @@ footer .sns_wrap .icon_box a {
     }
 
     .header_mb .language_list li.active {
-        color: #24ce7b;
+        color: #DF0B17;
     }
 
     .header_mb .search_btn {
         width: calc(100vw* (24/428));
         height: calc(100vw* (24/428));
-        background: url(@/assets/images/icon/icon_search.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_search.svg) no-repeat center center / contain;
         margin-left: auto;
     }
 
@@ -1256,13 +1221,13 @@ footer .sns_wrap .icon_box a {
         height: calc(100vw* (18/428));
         margin-left: calc(100vw* (6/428));
         vertical-align: middle;
-        background: url("@/assets/images/icon/icon_arrow_right_smooth.svg")  no-repeat center / 100%;
+        background: url("/src/assets/images/icon/icon_arrow_right_smooth.svg")  no-repeat center / 100%;
     }
 
     /* 네비게이션 */
     .header_mb .accordion {
         width: 100%;
-        height: calc(100% - calc(100vw * (183/428)));
+        height: calc(100% - calc(100vw * (207/428)));
         margin-top: calc(100vw* (10/428));
         overflow: auto;
     }
@@ -1289,25 +1254,25 @@ footer .sns_wrap .icon_box a {
     }
 
     .header_mb .accordion>.list:nth-child(1) .main_link::before {
-        background-image: url("@/assets/images/icon/icon_header_feed.svg");
+        background-image: url("/src/assets/images/icon/icon_header_feed.svg");
     }
     .header_mb .accordion>.list:nth-child(2) .main_link::before {
-        background-image: url("@/assets/images/icon/icon_header_music.svg");
+        background-image: url("/src/assets/images/icon/icon_header_music.svg");
     }
     .header_mb .accordion>.list:nth-child(3) .main_link::before {
-        background-image: url("@/assets/images/icon/icon_header_qna.svg");
+        background-image: url("/src/assets/images/icon/icon_header_qna.svg");
     }
     .header_mb .accordion>.list:nth-child(4) .main_link::before {
-        background-image: url("@/assets/images/icon/icon_header_trend.svg");
+        background-image: url("/src/assets/images/icon/icon_header_trend.svg");
     }
     .header_mb .accordion>.list:nth-child(5) .main_link::before {
-        background-image: url("@/assets/images/icon/icon_header_review.svg");
+        background-image: url("/src/assets/images/icon/icon_header_review.svg");
     }
     .header_mb .accordion>.list:nth-child(6) .main_link::before {
-        background-image: url("@/assets/images/icon/icon_header_event.svg");
+        background-image: url("/src/assets/images/icon/icon_header_event.svg");
     }
     .header_mb .accordion>.list:nth-child(7) .main_link::before {
-        background-image: url("@/assets/images/icon/icon_header_notice.svg");
+        background-image: url("/src/assets/images/icon/icon_header_notice.svg");
     }
 
 
@@ -1327,7 +1292,7 @@ footer .sns_wrap .icon_box a {
         content: '';
         display: block;
         position: absolute;
-        background: url(@/assets/images/icon/icon_arrow_down_small.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_arrow_down_small.svg) no-repeat center center / contain;
         top: 50%;
         transform: translate(0, -50%);
         right: 0;
@@ -1389,35 +1354,35 @@ footer .sns_wrap .icon_box a {
     }
 
     .bottom_nav .list.home .icon_box {
-        background: url(@/assets/images/icon/icon_home_empty.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_home_empty.svg) no-repeat center center / contain;
     }
 
     .bottom_nav .list.communication .icon_box {
-        background: url(@/assets/images/icon/icon_commun_empty.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_commun_empty.svg) no-repeat center center / contain;
     }
 
     .bottom_nav .list.event .icon_box {
-        background: url(@/assets/images/icon/icon_event_empty.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_event_empty.svg) no-repeat center center / contain;
     }
 
     .bottom_nav .list.mypage .icon_box {
-        background: url(@/assets/images/icon/icon_mypage_empty.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_mypage_empty.svg) no-repeat center center / contain;
     }
 
     .bottom_nav .list.home.active .icon_box {
-        background: url(@/assets/images/icon/icon_home.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_home.svg) no-repeat center center / contain;
     }
 
     .bottom_nav .list.communication.active .icon_box {
-        background: url(@/assets/images/icon/icon_commun.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_commun.svg) no-repeat center center / contain;
     }
 
     .bottom_nav .list.event.active .icon_box {
-        background: url(@/assets/images/icon/icon_event.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_event.svg) no-repeat center center / contain;
     }
 
     .bottom_nav .list.mypage.active .icon_box {
-        background: url(@/assets/images/icon/icon_mypage.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_mypage.svg) no-repeat center center / contain;
     }
 
     /* 푸터-------------------------------------------------------- */
@@ -1515,27 +1480,27 @@ footer .sns_wrap .icon_box a {
     }
 
     footer .sns_wrap .insta {
-        background: url(@/assets/images/icon/icon_noBg_insta.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_noBg_insta.svg) no-repeat center center / contain;
         order: 4;
     }
 
     footer .sns_wrap .twitter {
-        background: url(@/assets/images/icon/icon_noBg_twitter.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_noBg_twitter.svg) no-repeat center center / contain;
         order: 3;
     }
 
     footer .sns_wrap .facebook {
-        background: url(@/assets/images/icon/icon_noBg_facebook.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_noBg_facebook.svg) no-repeat center center / contain;
         order: 2;
     }
 
     footer .sns_wrap .youtube {
-        background: url(@/assets/images/icon/icon_noBg_youtube.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_noBg_youtube.svg) no-repeat center center / contain;
         order: 1;
     }
 
     footer .sns_wrap .blog {
-        background: url(@/assets/images/icon/icon_noBg_blog.svg) no-repeat center center / contain;
+        background: url(/src/assets/images/icon/icon_noBg_blog.svg) no-repeat center center / contain;
         order: 5;
     }
 

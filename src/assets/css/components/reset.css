@@ -89,7 +89,7 @@
     /* pointer-events: none; */
   }
   
-  video::-webkit-media-controls-play-button {
+  /* video::-webkit-media-controls-play-button {
     display: none !important;
   }
   video::-webkit-media-controls-fullscreen-button {
@@ -100,7 +100,7 @@
   }
   video::-webkit-media-controls-start-playback-button {
     display: none;
-}
+} */
 
   html,
   body,
@@ -362,12 +362,6 @@
     display: block;
     clear: both;
   }
-  
-  /* ::-webkit-scrollbar { width: 6px; height: 6px; } 
-  
-  ::-webkit-scrollbar-track { background: transparent; } 
-  
-  ::-webkit-scrollbar-thumb { background: #888; border-radius: 999px; background-clip: padding-box; border-top: 7px solid transparent; border-bottom: 10px solid transparent; border-right: 2px solid transparent; border-left: 2px solid transparent; } */
   
   html {
     -webkit-text-size-adjust: none;

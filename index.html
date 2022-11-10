@@ -2,9 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="src/assets/images/icon/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/images/icon/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>비트썸원</title>
+
+    <!-- <script type="module" src="/assets/js/swiper-bundle.min.js"></script> -->
+    <script type="module" src="/assets/js/jquery-3.6.0.js"></script>
+    <script type="module" src="/assets/js/jQuery.scrollText.js"></script>
+    
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2-nopolyfill.js"
+    charset="utf-8"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>Kakao.init("51ba89262da32e08623b40983fb42c17")</script>
+    <!-- <script src="https://accounts.google.com/gsi/client"></script> -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '579999516228616',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v15.0'
+        });
+      };
+    </script>
+    <script src="https://js.tosspayments.com/v1"></script>
+    <script src="https://js.tosspayments.com/v1/brandpay"></script>
+    <!-- <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script> -->
+    
+    <title>BEAT SOMEONE</title>
   </head>
   <body>
     <div id="root"></div>

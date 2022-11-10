@@ -85,20 +85,20 @@ input[type=text]::placeholder{
 .logo_wrap .beat_some {
     width: 114px;
     height: 26px;
-    background: url(@/assets/images/icon/logo_black.png) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/logo_black.png) no-repeat center center / contain;
 }
 
 .logo_wrap .icon_x {
     width: 16px;
     height: 16px;
     margin: 0 8px;
-    background: url(@/assets/images/icon/icon_x.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_x.svg) no-repeat center center / contain;
 }
 
 .logo_wrap .by_beats {
     width: 86px;
     height: 26px;
-    background: url(@/assets/images/icon/icon_logo_bybeats.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_logo_bybeats.svg) no-repeat center center / contain;
 }
 
 /* 회원가입 및 로그인 route--------------------------------------*/
@@ -153,41 +153,41 @@ input[type=text]::placeholder{
 
 .signUp_route_page .btn_area .signUp_btn.facebook::before,
 .signIn_route_page .signIn_btn.facebook::before {
-    background: url(@/assets/images/icon/signUp_facebook.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_facebook.svg) no-repeat center center / contain;
 }
 
 .signUp_route_page .btn_area .signUp_btn.twitter::before,
 .signIn_route_page .signIn_btn.twitter::before {
-    background: url(@/assets/images/icon/signUp_twitter.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_twitter.svg) no-repeat center center / contain;
 }
 
 .signUp_route_page .btn_area .signUp_btn.google::before,
 .signIn_route_page .signIn_btn.google::before {
-    background: url(@/assets/images/icon/signUp_google.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_google.svg) no-repeat center center / contain;
 }
 
 .signUp_route_page .btn_area .signUp_btn.apple::before,
 .signIn_route_page .signIn_btn.apple::before {
-    background: url(@/assets/images/icon/signUp_apple.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_apple.svg) no-repeat center center / contain;
 }
 
 .signUp_route_page .btn_area .signUp_btn.naver::before,
 .signIn_route_page .signIn_btn.naver::before {
-    background: url(@/assets/images/icon/signUp_naver.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_naver.svg) no-repeat center center / contain;
 }
 
 .signUp_route_page .btn_area .signUp_btn.kakaotalk::before,
 .signIn_route_page .signIn_btn.kakaotalk::before {
-    background: url(@/assets/images/icon/signUp_kakao.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_kakao.svg) no-repeat center center / contain;
 }
 
 .signUp_route_page .btn_area .signUp_btn.soundcloud::before,
 .signIn_route_page .signIn_btn.soundcloud::before {
-    background: url(@/assets/images/icon/signUp_soundcloud.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_soundcloud.svg) no-repeat center center / contain;
 }
 
 .signIn_route_page .signIn_btn.email::before {
-    background: url(@/assets/images/icon/signUp_email.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/signUp_email.svg) no-repeat center center / contain;
 }
 
 .signUp_route_page .btn_area .signUp_btn:not(:last-child),
@@ -293,7 +293,7 @@ input[type=text]::placeholder{
 }
 
 /* 입력구간 */
-.signUp_page .input_box.password .error_txt {
+.signUp_page .error_txt {
     margin-bottom: 10px;
 }
 
@@ -341,14 +341,49 @@ input[type=text]::placeholder{
     margin-top: 20px;
 }
 
-.signUp_page .input_box.num .select_box_wrap:first-child {
+.signUp_page .num_wrap {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+
+.signUp_page .input_box.num .select_box_wrap {
+    width: 100%;
+}
+
+.signUp_page .input_box .select_box_wrap.country .flag {
+    width: 30px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    background: #ddd;
+}
+
+.signUp_page .input_box .select_box_wrap.country .flag img {
+    object-fit: cover;
+}
+
+.signUp_page .input_box.num>.select_box_wrap.open>ul {
+    height: 185px;
+}
+
+.signUp_page .select_box_wrap.disabled button:after {
+    display: none;
+}
+
+.signUp_page .select_box_wrap.disabled button {
+    color: #ddd;
+}
+
+.signUp_page .num_wrap .select_box_wrap:first-child {
     width: 100px;
     height: 43px;
     margin-right: 10px;
 }
 
-.signUp_page .input_box.num .select_box_wrap:first-child button {
-    color: #111;
+.signUp_page .num_wrap .select_box_wrap:first-child button {
+    /* color: #111; */
     font-weight: 500;
 }
 
@@ -381,6 +416,10 @@ input[type=text]::placeholder{
 
 .signUp_page .input_box.num .chkNum_btn {
     margin-top: 10px;
+}
+
+.signUp_page .input_box.num .select_box_wrap {
+    width: 100%;
 }
 
 /* 동의 */
@@ -417,6 +456,10 @@ input[type=text]::placeholder{
     align-items: center;
 }
 
+.signUp_page .check_list .list .red {
+    color: #DF0B17;
+}
+
 .signUp_page .check_list .list:not(:last-child) {
     margin-bottom: 13px;
 }
@@ -426,6 +469,12 @@ input[type=text]::placeholder{
     font-weight: 400;
     margin-left: 10px;
     color: #acacac;
+}
+
+.signUp_page .check_list p span {
+    margin-right: 3px;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .signUp_page .check_list .open_pop {
@@ -442,7 +491,7 @@ input[type=text]::placeholder{
     top: 50%;
     right: -10px;
     transform: translate(0, -70%);
-    background: url(@/assets/images/icon/icon_arrow_right_gray.svg) no-repeat center center / contain;
+    background: url(/src/assets/images/icon/icon_arrow_right_gray.svg) no-repeat center center / contain;
 }
 
 .signUp_page .last_comment {
@@ -644,7 +693,7 @@ input[type=text]::placeholder{
     height: 24px;
     margin-right: 12px;
     vertical-align: middle;
-    background: url("@/assets/images/icon/icon_check_circle_red.svg") no-repeat center / 100%;
+    background: url("/src/assets/images/icon/icon_check_circle_red.svg") no-repeat center / 100%;
 }
 
 .integrated .descrip_box dl * {
@@ -675,6 +724,7 @@ input[type=text]::placeholder{
 }
 
 .descrip_txt {
+    line-height: 1.2;
     text-align: center;
     margin-top: 50px;
     color: #888;
@@ -728,7 +778,7 @@ input[type=text]::placeholder{
     height: 18px;
     display: inline-block;
     vertical-align: middle;
-    background: url("@/assets/images/icon/icon_arrow_terms.svg") no-repeat center / 100%;
+    background: url("/src/assets/images/icon/icon_arrow_terms.svg") no-repeat center / 100%;
 }
 
 .integrated .terms_box .check_box {
@@ -748,7 +798,7 @@ input[type=text]::placeholder{
 .integrated .check_box>label {
     display: inline-flex;
 }
-
+.integrated .check_box>input:checked+label .check_box_text,
 .integrated .check_box .check_box_text {
     font-size: 14px;
     color: #222222;
@@ -935,7 +985,7 @@ input[type=text]::placeholder{
     }
     
     /* 입력구간 */
-    .signUp_page .input_box.password .error_txt {
+    .signUp_page .error_txt {
         margin-bottom: calc(100vw * (10 / 1300));
     }
     
@@ -960,13 +1010,26 @@ input[type=text]::placeholder{
     .signUp_page .input_box.num {
         margin-top: calc(100vw * (20 / 1300));
     }
+
+    .signUp_page .num_wrap {
+        margin-top: calc(100vw * (10 / 1300));
+    }
     
-    .signUp_page .input_box.num .select_box_wrap:first-child {
+    .signUp_page .num_wrap .select_box_wrap:first-child {
         width: calc(100vw * (100 / 1300));
         height: calc(100vw * (43 / 1300));
         margin-right: calc(100vw * (10 / 1300));
     }
     
+    .signUp_page .input_box.num>.select_box_wrap.open>ul {
+        height: calc(100vw * (185 / 1300));
+    }
+
+    .signUp_page .input_box .select_box_wrap.country .flag {
+        width: calc(100vw * (30 / 1300));
+        height: calc(100vw * (20 / 1300));
+    }    
+
     .signUp_page .input_box.num .select_box_wrap:nth-child(3),
     .signUp_page .input_box.num .getNum_btn,
     .signUp_page .input_box.num .input_wrap:nth-child(5),
@@ -1013,6 +1076,11 @@ input[type=text]::placeholder{
         margin-left: calc(100vw * (10 / 1300));
     }
     
+    .signUp_page .check_list p span {
+        margin-right: calc(100vw * (3 / 1300));
+        font-size: calc(100vw * (16 / 1300));
+    }
+
     .signUp_page .check_list .open_pop::after {
         width: calc(100vw * (6 / 1300));
         height: calc(100vw * (10 / 1300));
@@ -1130,6 +1198,10 @@ input[type=text]::placeholder{
         font-size: calc(100vw * (16 / 1300));
     }
 
+    .integrated .logo_wrap+p {
+        font-size: calc(100vw * (16 / 1300));
+    }
+
     .integrated .descrip_box {
         margin: calc(100vw * (70 / 1300)) auto 0;
         padding: calc(100vw * (29 / 1300)) calc(100vw * (146 / 1300));
@@ -1204,6 +1276,11 @@ input[type=text]::placeholder{
         border-radius: calc(100vw * (10 / 1300));
     }
 
+    .integrated .check_box.arrow::after {
+        width: calc(100vw * (18 / 1300));
+        height: calc(100vw * (18 / 1300));
+    }
+
     .integrated .terms_box .check_box:not(.all) {
         margin-top: calc(100vw * (9 / 1300));
     }
@@ -1212,6 +1289,7 @@ input[type=text]::placeholder{
         padding-bottom: calc(100vw * (9 / 1300));
     }
 
+    .integrated .check_box>input:checked+label .check_box_text,
     .integrated .check_box .check_box_text {
         font-size: calc(100vw * (14 / 1300));
     }
@@ -1276,6 +1354,154 @@ input[type=text]::placeholder{
     .link_wrap span {
         height: calc(100vw * (10/428));
         margin: 0 calc(100vw * (12/428));
+    }
+
+        
+    /* 로고 */
+    .logo_wrap {
+        margin: calc(100vw * (30 / 428)) auto calc(100vw * (50 / 428));
+    }
+    
+    .logo_wrap .beat_some {
+        width: calc(100vw * (114 / 428));
+        height: calc(100vw * (26 / 428));
+    }
+    
+    .logo_wrap .icon_x {
+        width: calc(100vw * (16 / 428));
+        height: calc(100vw * (16 / 428));
+        margin: 0 calc(100vw * (8 / 428));
+    }
+    
+    .logo_wrap .by_beats {
+        width: calc(100vw * (86 / 428));
+        height: calc(100vw * (26 / 428));
+    }
+
+    /* 통합회원가입--------------------------------------*/
+    .signUp_page .wrap_inner {
+        width: calc(100vw * (396 / 428));
+        padding: calc(100vw * (60 / 428)) 0 calc(100vw * (130 / 428));
+    }
+    
+    .signUp_page .title {
+        font-size: calc(100vw * (24 / 428));
+    }
+    
+    .signUp_page .input_wrap {
+        margin-bottom: calc(100vw * (10 / 428));
+    }
+    
+    /* 입력구간 */
+    .signUp_page .error_txt {
+        margin-bottom: calc(100vw * (10 / 428));
+    }
+    
+    .signUp_page .input_box.name {
+        margin-top: calc(100vw * (20 / 428));
+    }
+    
+    .signUp_page .input_box .comment {
+        font-size: calc(100vw * (14 / 428));
+    }
+    
+    .signUp_page .input_box.name .nicknameChk_btn {
+        width: calc(100vw * (100 / 428));
+        height: calc(100vw * (43 / 428));
+        margin-left: calc(100vw * (10 / 428));
+    }
+        
+    .signUp_page .input_box.name .error_txt {
+        margin-bottom: calc(100vw * (10 / 428));
+    }
+    
+    .signUp_page .input_box.num {
+        margin-top: calc(100vw * (20 / 428));
+    }
+
+    .signUp_page .num_wrap {
+        margin-top: calc(100vw * (10 / 428));
+    }
+    
+    .signUp_page .num_wrap .select_box_wrap:first-child {
+        width: calc(100vw * (100 / 428));
+        height: calc(100vw * (43 / 428));
+        margin-right: calc(100vw * (10 / 428));
+    }
+    
+    .signUp_page .input_box.num>.select_box_wrap.open>ul {
+        height: calc(100vw * (178 / 428));
+    }
+
+    .signUp_page .input_box .select_box_wrap.country .flag {
+        width: calc(100vw * (30 / 428));
+        height: calc(100vw * (20 / 428));
+    }  
+    
+    .signUp_page .input_box.num .select_box_wrap:nth-child(3),
+    .signUp_page .input_box.num .getNum_btn,
+    .signUp_page .input_box.num .input_wrap:nth-child(5),
+    .signUp_page .input_box.num .chkNum_btn {
+        height: calc(100vw * (43 / 428));
+    }
+    
+    .signUp_page .input_box.num .select_box_wrap:nth-child(3),
+    .signUp_page .input_box.num .getNum_btn {
+        margin-bottom: calc(100vw * (10 / 428));
+    }
+
+    .signUp_page .input_box.num .chkNum_btn {
+        margin-top: calc(100vw * (10 / 428));
+    }
+    
+    /* 동의 */
+    .signUp_page .agree_box {
+        margin-top: calc(100vw * (30 / 428));
+    }
+    
+    .signUp_page .agree_box .check_box.top {
+        padding-bottom: calc(100vw * (16 / 428));
+    }
+    
+    .signUp_page .agree_box .check_box.top label {
+        margin-right: calc(100vw * (10 / 428));
+    }
+    
+    .signUp_page .agree_box .check_box.top .check_box_text {
+        font-size: calc(100vw * (16 / 428));
+    }
+        
+    .signUp_page .check_list {
+        margin-top: calc(100vw * (20 / 428));
+    }
+        
+    .signUp_page .check_list .list:not(:last-child) {
+        margin-bottom: calc(100vw * (13 / 428));
+    }
+    
+    .signUp_page .check_list p {
+        font-size: calc(100vw * (16 / 428));
+        margin-left: calc(100vw * (10 / 428));
+    }
+        
+    .signUp_page .check_list p span {
+        margin-right: calc(100vw * (3 / 428));
+        font-size: calc(100vw * (16 / 428));
+    }
+
+    .signUp_page .check_list .open_pop::after {
+        width: calc(100vw * (6 / 428));
+        height: calc(100vw * (10 / 428));
+        right: calc(100vw * (-10 / 428));
+    }
+    
+    .signUp_page .last_comment {
+        font-size: calc(100vw * (14 / 428));
+        margin: calc(100vw * (30 / 428)) 0 calc(100vw * (10 / 428));
+    }
+    
+    .signUp_page .complete_btn.full_btn {
+        height: calc(100vw * (45 / 428));
     }
 
     /* 통합회원 로고 그룹 */
@@ -1355,6 +1581,7 @@ input[type=text]::placeholder{
 
     .integrated .btn_apply {
         width: calc(100vw * (396/428));
+        height: calc(100vw * (40/428));
     }
 
     .descrip_box+.btn_apply {
@@ -1362,8 +1589,9 @@ input[type=text]::placeholder{
     }
 
     .descrip_txt {
+        width: calc(100vw * (397/428));
         text-align: left;
-        margin-top: calc(100vw * (31/428));
+        margin: calc(100vw * (31/428)) auto 0;
     }
 
     /* 통합회원가입 약관 */
@@ -1396,6 +1624,11 @@ input[type=text]::placeholder{
         border-radius: calc(100vw * (10/428));
     }
 
+    .integrated .check_box.arrow::after {
+        width: calc(100vw * (18 / 428));
+        height: calc(100vw * (18 / 428));
+    }
+
     .integrated .terms_area>p {
         word-break: keep-all;
         font-size: calc(100vw * (16/428));
@@ -1416,6 +1649,7 @@ input[type=text]::placeholder{
         padding-bottom: calc(100vw * (10/428));
     }
 
+    .integrated .check_box>input:checked+label .check_box_text, 
     .integrated .check_box .check_box_text {
         font-size: calc(100vw * (14/428));
     }
@@ -1430,6 +1664,7 @@ input[type=text]::placeholder{
 
     .integrated .btn_group button {
         width: calc(100vw * (192/428));
+        height: calc(100vw * (40/428));
     }
 
     .integrated .btn_group button+button {
