@@ -98,6 +98,7 @@ function Main() {
                                 비트썸원이 모든 것을 도와드립니다,
                                 <br />
                                 한 번의 음원등록으로 빠르고 정확한 판매와 정산을 경험하세요......!
+                                또롱
                             </p>
                         </div>
                         <TopBanner banners={banners} />
